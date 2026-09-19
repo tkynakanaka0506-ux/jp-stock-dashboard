@@ -1,0 +1,65 @@
+# STEALTH v7.3 (AMBUSH + SMART ENTRY) 株ダッシュボード
+
+日本株・米国株のシグナルを自動収集し、`index.html`（デスクトップ表＋モバイル専用UI）を
+生成する。GitHub Pagesではなく、自宅Mac上の`server.mjs`（LAN配信）と launchd の
+定期ジョブで完結する、常駐型のダッシュボード。
+
+## 体制: 完全無人の自動push（ユーザー承認済み・2026-09-20）
+
+`sync_and_push.sh` が5分おきに launchd (`com.takuya.stock-dashboard`) から起動され、
+以下の順でチェックしてから**人の確認無しで直接 `git push`** する。
+
+1. `node --check` で対象.mjs全部の構文チェック（数百ms、失敗したら即スキップ）
+2. `node --test test/*.test.mjs`（回帰テスト、失敗したら即スキップ）
+3. `node scraper.mjs` 本体実行
+4. 差分があれば `git commit && git pull --ff-only && git push`
+
+**このリポジトリでは、上記の自動テストゲートだけが「壊れたコードを本番に出さない」
+唯一の防波堤。** そのため：
+
+- **バグを直したら、そのたびに必ず `test/*.test.mjs` へ回帰テストを追加すること。**
+  ユーザーから「再発防止して」と毎回言われなくても、これはデフォルトの作業手順にする。
+  テストを足さない修正は、次に同じバグが再発しても誰も気づけない（pushが自動で
+  進んでしまうため）。
+- 新しい実測バグを直すときは、既存テストと同じ「実測バグ（症状）→再発防止テスト」の
+  コメント形式を踏襲する（`test/scraper_checklist.test.mjs` 参照）。
+- モバイルUI（`buildMobileApp`とその周辺JS、`scraper.mjs`内 `#mobile-app`〜`</script>`）
+  のように、生成HTML文字列の中に埋め込まれたクライアントJSは、DOM環境が無い
+  `node --test` では実際には実行されない。この手のコードの回帰テストは、
+  `readFileSync`でscraper.mjs自身のソーステキストを読み、期待するパターンが
+  含まれる/含まれないことを正規表現で確認する形になる（jsdom等の新規依存は
+  入れない方針のため）。
+
+## コマンド
+
+```bash
+node scraper.mjs          # 本体実行(キャッシュが当日分ならv17秒程度、無ければ40〜90分のフルスキャン)
+npm test                  # node --test test/*.test.mjs
+node --check scraper.mjs  # 構文チェックのみ
+bash sync_and_push.sh --no-open --market-hours  # 本番と同じ経路で手動実行
+```
+
+## モバイルUIの設計方針
+
+- `#mobile-app` と `#desktop-view` は同じDOMに両方存在し、`@media(max-width:520px)`で
+  出し分ける。判定ロジック・スコア計算は一切新規実装せず、`main()`が組み立てた
+  配列をそのまま参照する（PC版とスマホ版で判定結果が食い違わないようにするため）。
+- 銘柄の「詳細を見る」は、PC版側の `<article id="card-<code>">` を
+  `cloneNode(true)`してからidを除去し、ボトムシート(`#m-card-modal`)へその場で
+  差し込む。**PC版へ画面ごと切り替える実装（`mobileShowDesktop()`呼び出しや
+  `scrollIntoView`）に戻さないこと** — 2026-09-20にユーザーから「影響が出る株が
+  PCのサイトに飛ぶ」と報告された実測バグで、モバイル画面から離脱してしまい
+  不評だった。回帰テストが `test/scraper_checklist.test.mjs` にある。
+- クローンにPC版と同じidを残すと、同じ銘柄を2回目に開いたときに
+  `document.getElementById`が（DOM順で先に出てくる）前回のクローンを拾って
+  しまい、以後内容が更新されなくなる。cloneNode後は必ず`removeAttribute('id')`する。
+
+## 配信経路
+
+- ローカル: `node server.mjs`（launchd: `com.takuya.stock-server`）が0.0.0.0:8765で
+  `Cache-Control: no-store`付きでLAN配信。スマホは同じWi-Fi内から
+  `http://<Macのローカルip>:8765/`で開く。
+- iCloud Drive (`~/Library/Mobile Documents/com~apple~CloudDocs/AMBUSH/AMBUSH.html`)
+  にも配信するが、これはFilesアプリでの確認用の副経路（Safariの通常タブとしては
+  開けないためPWA機能が働かない）。実運用の入口はLAN URLの方。
+- GitHub (`origin/main`) へのpushは記録・バックアップ目的。GitHub Pagesは使っていない。

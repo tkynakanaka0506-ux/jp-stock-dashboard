@@ -23,10 +23,25 @@ fi
 echo $$ > "$LOCK_FILE"
 trap 'rm -f "$LOCK_FILE"' EXIT
 
+# 構文チェック(軽量・数百ms)。node --testでも大抵の構文エラーは
+# import時に落ちて検知できるが、テンプレートリテラル内の${...}を
+# 使った動的HTML生成(buildMobileApp等)は、そのブロックを実際に呼び出す
+# テストが無い限りimportだけでは踏まれない。誤字1つで本番pushが止まる
+# 側に倒す方が、動かないダッシュボードを配信し続けるより無難なため、
+# 対象ファイルは明示的に--checkを通してからテストに進む。
+for f in scraper.mjs *.mjs; do
+  [ -f "$f" ] || continue
+  /usr/local/bin/node --check "$f" || { echo "⚠️ 構文エラー: $f — scraper実行・pushをスキップ"; exit 1; }
+done
+
 # 評価ロジック・パーサーの回帰テストを毎回の実行前に走らせる。ここで
 # 落ちるということはコード自体が壊れているということなので、壊れた
 # ロジックで生成したページを誤って公開しないよう、scraper実行・push
 # ごと止める（このセッション中に見つかった評価バグの再発防止策）。
+# 体制(2026-09-20、ユーザー要望「自動的に修正と再発防止実行できる体制」):
+# ここでの合否がpush可否を完全無人で決めるゲートそのものなので、
+# バグを見つけて直すたびに必ずこのtest/*.test.mjsへ回帰テストを足すこと。
+# テストを足さない修正は、次に同じバグが再発しても誰にも気づかれない。
 /usr/local/bin/node --test test/*.test.mjs >/tmp/stealth_test.log 2>&1
 TEST_EXIT=$?
 if [ "$TEST_EXIT" -ne 0 ]; then
