@@ -2470,7 +2470,7 @@ function mobileStealthRow(r, i) {
   </a>`;
 }
 
-function buildMobileApp({ now, later, smart, tenbaggerCandidates, macro, amb }) {
+export function buildMobileApp({ now, later, smart, tenbaggerCandidates, macro, amb }) {
   // 「今日の注目」はAMBUSH NOW（決算確定日・SCORE70以上・未織込条件クリア）
   // を最優先にする。無ければSMART ENTRY（需給・乖離ベースの機械的仕込み
   // 候補）で代替する（PC版の並び順・判定基準をそのまま踏襲するだけ）。
@@ -3872,13 +3872,24 @@ ${buildMobileApp({ now, later, smart, tenbaggerCandidates, macro, amb })}
   // 組み立てロジックは複製せず、PC版が生成した同一のHTMLをそのまま
   // 使う（判定結果がPC版とズレない）。
   window.mobileShowDesktopCard = function (code) {
+    // #desktop-view側の原本にしか id="card-<code>" を残さない。
+    // クローン側にも同じidを残すと、同じ銘柄を2回目にタップした際に
+    // document.getElementById()が（DOM順で先に出てくる）前回のクローン
+    // を拾ってしまい、以後ずっと古い内容のまま更新されなくなる
+    // （実測バグ2026-09-19: モーダル化した直後は気づきにくいが、
+    // 60秒の自動リロードを挟まずに同じ銘柄を開き直すと再現する）。
     var src = document.getElementById('card-' + code);
     var body = document.getElementById('m-modal-body');
     var modal = document.getElementById('m-card-modal');
     if (!body || !modal) return false;
-    body.innerHTML = src
-      ? src.outerHTML
-      : '<p class="m-empty">この銘柄の詳細カードは現在の集計対象外です。PC版でご確認ください。</p>';
+    if (src) {
+      var clone = src.cloneNode(true);
+      clone.removeAttribute('id');
+      body.innerHTML = '';
+      body.appendChild(clone);
+    } else {
+      body.innerHTML = '<p class="m-empty">この銘柄の詳細カードは現在の集計対象外です。PC版でご確認ください。</p>';
+    }
     modal.classList.add('is-open');
     document.body.style.overflow = 'hidden';
     return false;

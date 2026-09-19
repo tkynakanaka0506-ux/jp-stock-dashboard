@@ -1,7 +1,8 @@
 // scraper.mjsの「自分ルール」チェックリスト(buyRuleChecklist)の回帰テスト。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { buyRuleChecklist, bottomChips, consensusEvidenceBlock, signalRow, ceilingPriceNote, smartEntryCard, convictionNote, beginnerGuide, entryTimingNote, passesPriceBand, byTenbaggerRank, smartEntryRank, buildReasons, checkReasonConsistency, exitPlanBlock, ceilingPrice, precursorCard, smartEntryExitPlanBlock, tenbaggerExitPlanBlock, tenbaggerFinancialBlock, precursorRank, explosionScore, displayCategoryKey, whyNowBlock, repricingLagBlock } from '../scraper.mjs';
+import { readFileSync } from 'node:fs';
+import { buyRuleChecklist, bottomChips, consensusEvidenceBlock, signalRow, ceilingPriceNote, smartEntryCard, convictionNote, beginnerGuide, entryTimingNote, passesPriceBand, byTenbaggerRank, smartEntryRank, buildReasons, checkReasonConsistency, exitPlanBlock, ceilingPrice, precursorCard, smartEntryExitPlanBlock, tenbaggerExitPlanBlock, tenbaggerFinancialBlock, precursorRank, explosionScore, displayCategoryKey, whyNowBlock, repricingLagBlock, buildMobileApp } from '../scraper.mjs';
 import { hasPrecursor } from '../indicators.mjs';
 import { WINDOW } from '../screener.mjs';
 import { VALUATION_CHIP_FIELDS, reboundPatternSignal, laggingPatternSignal, buildScoreParts, expectationScore, buyScore, PRECURSOR_GOOD_FIELDS, PRECURSOR_CAUTION_FIELDS } from '../indicators.mjs';
@@ -1445,4 +1446,63 @@ test('precursorRank: PRECURSOR_CAUTION_FIELDSのどれがbadになっても、ca
       `${key}をbadにしたのにgoodが増えています（悪材料が好材料としてカウントされる再発）`
     );
   }
+});
+
+// buildMobileApp/モバイルUIのJS(scraper.mjs下部の<script>ブロック):
+// 「詳細を見る」導線の回帰テスト。
+// 実測バグ（ユーザー報告2026-09-19「影響が出る株がPCのサイトに飛ぶ」）:
+// 銘柄行をタップするたびにmobileShowDesktop()でPC版へ画面ごと切り替えて
+// おり、モバイル画面から離脱してしまっていた。PC版側の該当カードを
+// その場のボトムシートに複製する方式に直した後の再発防止として、
+// (1) 画面遷移系の古い実装(mobileShowDesktop呼び出し・scrollIntoView)が
+// 戻っていないか、(2) クローンにidを残す実測バグ（同じ銘柄を2回目に
+// 開くと古いクローンをgetElementByIdが拾って更新されなくなる）が
+// 戻っていないか、を機械的に検知する。
+//
+// mobileShowDesktopCard/mobileCloseCardはbuildMobileApp()の返り値では
+// なく、main()が組み立てるページ全体の<script>ブロック側にある固定の
+// JSソースのため、main()を丸ごと実行(要ネットワークI/O)せずに検証する
+// にはscraper.mjs自身のソーステキストを直接読むしかない。ロジックを
+// 再実装せず、実際に配信されるソースをそのまま検査する。
+const scraperSource = readFileSync(new URL('../scraper.mjs', import.meta.url), 'utf8');
+
+function extractMobileShowDesktopCardBody(source) {
+  const m = source.match(/window\.mobileShowDesktopCard = function \(code\) \{([\s\S]*?)\n {2}\};/);
+  assert.ok(m, 'mobileShowDesktopCard関数がscraper.mjsから見つかりません');
+  return m[1];
+}
+
+test('buildMobileApp: 銘柄詳細のボトムシート要素(#m-card-modal)を出力する', () => {
+  const html = buildMobileApp({
+    now: [{ code: 'AAAA', name: 'テストA', price: 1000, changePct: 1.2, closes: [990, 1000], score: 70 }],
+    later: [],
+    smart: { results: [], universe: 5 },
+    tenbaggerCandidates: [],
+    macro: { nikkei: 40000, usdjpy: 150 },
+    amb: { results: [], universe: 10 },
+  });
+  assert.match(html, /id="m-card-modal"/);
+  assert.match(html, /id="m-modal-body"/);
+  assert.match(scraperSource, /window\.mobileCloseCard = function/);
+});
+
+test('mobileShowDesktopCard: 銘柄行タップ時にPC版へ画面遷移する古い実装(mobileShowDesktop呼び出し・scrollIntoView)に戻っていない', () => {
+  const fnBody = extractMobileShowDesktopCardBody(scraperSource);
+  assert.doesNotMatch(fnBody, /mobileShowDesktop\(\)/, '実測バグ再発防止: 銘柄タップでPC版へ画面ごと切り替える実装に戻っています（2026-09-19「PCのサイトに飛ぶ」報告の再発）');
+  assert.doesNotMatch(fnBody, /scrollIntoView/, '実測バグ再発防止: PC版側へスクロールする実装に戻っています');
+});
+
+test('mobileShowDesktopCard: ボトムシートに複製したカードのidを取り除く(同じ銘柄を2回目に開いた時に古いクローンを拾わないようにする)', () => {
+  // 実測バグ: src.outerHTMLをそのままモーダルへ差し込むと、複製先にも
+  // 元と同じid="card-<code>"が残り、DOM順で先に出てくる複製先を
+  // document.getElementById()が拾ってしまう。同じ銘柄を2回目に開くと
+  // 常に「初回に開いた時点」の内容のまま更新されなくなる。
+  const fnBody = extractMobileShowDesktopCardBody(scraperSource);
+  assert.match(fnBody, /cloneNode\(true\)/, 'src.outerHTMLを直接innerHTMLへ差し込む実装（idが複製されるバグ）に戻っています');
+  assert.match(fnBody, /removeAttribute\('id'\)/, '複製したカードのidを取り除いていません（同じ銘柄再オープン時に古いクローンを拾うバグの再発）');
+});
+
+test('mobileShowDesktopCard: PC版に対応カードが無い銘柄(米国テンバガーTier C等)をタップしても空のボトムシートにはせず案内文を出す', () => {
+  const fnBody = extractMobileShowDesktopCardBody(scraperSource);
+  assert.match(fnBody, /この銘柄の詳細カードは現在の集計対象外です/);
 });
