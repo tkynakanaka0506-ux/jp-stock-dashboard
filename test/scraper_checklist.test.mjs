@@ -1506,3 +1506,24 @@ test('mobileShowDesktopCard: PC版に対応カードが無い銘柄(米国テン
   const fnBody = extractMobileShowDesktopCardBody(scraperSource);
   assert.match(fnBody, /この銘柄の詳細カードは現在の集計対象外です/);
 });
+
+// 実測バグ(2026-09-21発見): kabutan.mjsのgetText()は1リクエストあたりの
+// ハングは30秒タイムアウトで防いでいるが、スキャンループ全体には上限が
+// 無く、ネットワークが広範囲に不調な時間帯に「多くの銘柄がそれぞれ
+// 最悪ケース(30秒×3回)を踏む」が積み重なって合計2時間以上ブロックする
+// ことがあった。sync_and_push.shのPIDロックは「生きていれば奪わない」が
+// 正しい設計(スリープ対応)なので、プロセス自身が長時間かかりすぎたら
+// 自発的に諦めて終了する必要がある。5分おきの場中ジョブが数時間ブロック
+// され「ダッシュボードが止まっている」ように見えた事故の再発防止。
+test('main()の重い処理の前にwatchdogタイマーが仕込まれており、場中ジョブ(--market-hours)は15分、日次フルスキャンは2時間で自発的にprocess.exit(1)する(実測バグ: ネットワーク不調でスキャン全体が数時間ブロックし続けた再発防止)', () => {
+  assert.match(
+    scraperSource,
+    /const WATCHDOG_MS = MARKET_HOURS_ONLY \? 15 \* 60 \* 1000 : 2 \* 60 \* 60 \* 1000;/,
+    'WATCHDOG_MSの定義が変わっています(場中15分・日次2時間の想定が崩れていないか確認してください)',
+  );
+  const lockIdx = scraperSource.indexOf('別のインスタンスが実行中のためスキップ');
+  const afterLock = scraperSource.slice(lockIdx, lockIdx + 800);
+  assert.match(afterLock, /setTimeout\(\(\) => \{/, 'ロック取得直後にwatchdogのsetTimeoutが仕込まれていません');
+  assert.match(afterLock, /process\.exit\(1\);/, 'watchdog発火時にprocess.exit(1)していません(ロックが解放されず次tickもブロックされ続けます)');
+  assert.match(afterLock, /\}, WATCHDOG_MS\)\.unref\(\);/, 'watchdogが.unref()されていません(main()が先に終わってもプロセスが居座る可能性があります)');
+});

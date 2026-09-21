@@ -30,6 +30,26 @@
   含まれる/含まれないことを正規表現で確認する形になる（jsdom等の新規依存は
   入れない方針のため）。
 
+### 取得スケジュール(launchd)
+
+| ジョブ(Label) | 頻度 | 内容 |
+| --- | --- | --- |
+| `com.takuya.stock-server` | 常駐(KeepAlive) | `server.mjs`でLAN配信するだけ。スクレイピングはしない |
+| `com.takuya.stock-dashboard` | 5分おき | `sync_and_push.sh --no-open --market-hours`。場中(9:00〜15:50 JST、土日祝スキップ)以外は即終了 |
+| `com.takuya.stock-daily` | 平日7:00 JSTに1回 | `sync_and_push.sh --no-open`(場外判定なしのフルスキャン) |
+
+**実測バグ(2026-09-21発見、ユーザー報告「更新が止まっている気がする」の調査):**
+`kabutan.mjs`の`getText()`は1リクエストあたり30秒タイムアウト+2リトライで
+個々のハングは防げていたが、スキャンループ全体には上限が無かった。ネットワークが
+広範囲に不調な時間帯には「多くの銘柄がそれぞれ最悪ケース(30秒×3回)を踏む」が
+積み重なり、実際に2.5時間以上ブロックした事例を`/tmp/stealth_sync_and_push.lock`
+のログ(`~/Library/Logs/stealth-dashboard.log`)から確認した。`sync_and_push.sh`の
+PIDロックは「生きているプロセスは奪わない」が正しい設計(Macスリープ対応、
+`scraper.mjs`内コメント参照)なので、ロック側で強制解除するのではなく、
+**プロセス自身が長時間かかりすぎたら自発的に諦めて終了する**watchdogを
+`scraper.mjs`に追加した(`WATCHDOG_MS`: 場中ジョブ=15分、日次フルスキャン=2時間)。
+回帰テストは`test/scraper_checklist.test.mjs`の`watchdog`関連テスト参照。
+
 ## コマンド
 
 ```bash

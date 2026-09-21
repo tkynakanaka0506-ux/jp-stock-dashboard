@@ -80,6 +80,20 @@ const NO_OPEN = process.argv.includes('--no-open');
 const MARKET_HOURS_ONLY = process.argv.includes('--market-hours');
 const DAILY_ONLY = process.argv.includes('--daily-only');
 
+// 実測バグ(2026-09-21発見): kabutan.mjsのgetText()は1リクエストあたり
+// 30秒タイムアウト+2リトライ(個々のハングは防げている)だが、スキャン
+// ループ全体には上限が無いため、ネットワークが広範囲に不調な時間帯には
+// 「多くの銘柄それぞれが最悪ケース(30秒×3回)を踏む」が積み重なって
+// 合計2時間以上かかることがあった。sync_and_push.sh側のPIDロックは
+// 「生きているプロセスは奪わない」が正しい設計(スリープ対応、上のコメント
+// 参照)なので、このプロセス自身が長時間かかりすぎたら自発的に諦めて
+// 終了する必要がある。5分おきの場中ジョブがこれで数時間ブロックされ、
+// 「ダッシュボードが止まっている」ように見えていた実測事故の再発防止。
+// setTimeout().unref()なので、main()が先に終わればこのタイマー自体が
+// プロセスの寿命を延ばすことは無い(Macスリープ中はタイマーも進まないため、
+// スリープ長時間化による誤検知にもならない=既存のロック設計と矛盾しない)。
+const WATCHDOG_MS = MARKET_HOURS_ONLY ? 15 * 60 * 1000 : 2 * 60 * 60 * 1000;
+
 // 場中に価格を再取得する AMBUSH 銘柄数。
 // 全通過銘柄を5分ごとに叩くとリクエストが膨らむので上位のみに絞る。
 const AMBUSH_LIVE = 12;
@@ -2600,6 +2614,16 @@ async function main() {
     console.log(`⏸  別のインスタンスが実行中のためスキップ (${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })})${held}`);
     return;
   }
+  // WATCHDOG_MSの定義コメント参照。ここから先の重い処理が長時間かかり
+  // すぎたら自発的に諦めて終了し、ロック(このプロセス内・sync_and_push.sh
+  // 側の両方)を解放する。
+  setTimeout(() => {
+    console.error(
+      `❌ ${(WATCHDOG_MS / 60000).toFixed(0)}分を超えたため強制終了します`
+      + `(ネットワーク不調で個々のリクエストのリトライが積み重なった可能性。次回tickに委ねます)`
+    );
+    process.exit(1);
+  }, WATCHDOG_MS).unref();
   console.log('🚀 STEALTH v7.3 "AMBUSH + SMART ENTRY" 起動');
   const today = todayJST();
 
