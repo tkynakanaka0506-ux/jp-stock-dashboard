@@ -29,7 +29,7 @@
 // 得ない。そのためニュース側のような永続化ファイル監視はここでは不要
 // (重複した監視を増やさないための意図的な省略)。
 // ==================================================================
-import { readFileSync, statSync } from 'fs';
+import { readFileSync, statSync, writeFileSync, mkdirSync } from 'fs';
 import { execFileSync } from 'child_process';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -38,6 +38,11 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const LOG_DIR = path.join(process.env.HOME ?? '/Users/takuya', 'Library', 'Logs');
 const DASHBOARD_LOG = path.join(LOG_DIR, 'stealth-dashboard.log');
 const DAILY_LOG = path.join(LOG_DIR, 'stealth-daily.log');
+// 「監視そのものが止まっていないか」(2026-09-21ユーザー要望)。「監視の
+// 監視」を新設せず、このスクリプト自身が完走するたびにハートビート
+// ファイルを書き換えるだけに留める(例外で途中終了すれば書き換わらない
+// ので、最後に正常完走した時刻がそのまま分かる)。
+const HEARTBEAT_PATH = path.join(LOG_DIR, 'jp-stock-monitor-heartbeat.txt');
 
 function readLines(filePath) {
   try {
@@ -161,6 +166,10 @@ function reportFor(label, logPath, expectedFreshMinutes) {
 }
 
 function main() {
+  let previousHeartbeat = null;
+  try { previousHeartbeat = readFileSync(HEARTBEAT_PATH, 'utf-8').trim(); } catch { /* 初回実行 */ }
+  console.log(`(前回 monitor.mjs が正常に完走した時刻: ${previousHeartbeat || '記録なし(初回実行)'})`);
+
   console.log('=== STOCK_DASHBOARD_MONITOR ===');
   // 場中ジョブは5分おき(StartInterval=300)。日次は平日7:00の1回だけなので
   // 「鮮度」の考え方が異なる(24時間更新が無くても正常な日がほとんど)。
@@ -174,6 +183,11 @@ function main() {
     + 'git reset --hardを行わず素直にcommit/pushするだけなので、同種のリスクは'
     + '構造的に無い(このため同じ監視をここに重複実装していない)。'
   );
+
+  // ここまで例外無く到達できた=このスクリプト自身が正常に完走した、
+  // という意味でハートビートを書き換える。
+  mkdirSync(LOG_DIR, { recursive: true });
+  writeFileSync(HEARTBEAT_PATH, new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' }));
 }
 
 if (fileURLToPath(import.meta.url) === process.argv[1]) {
