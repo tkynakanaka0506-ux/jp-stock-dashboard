@@ -1,7 +1,14 @@
 {
-  "date": "2026-09-20",
-  "fetchedAt": "2026-09-20T01:25:31.545Z",
+  "date": "2026-09-21",
+  "fetchedAt": "2026-09-21T00:16:33.824Z",
   "stocks": {
+    "ASII": {
+      "code": "ASII",
+      "earningsDate": "2026-11-20",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
     "AZTA": {
       "code": "AZTA",
       "earningsDate": "2026-11-19",
@@ -10466,13 +10473,6 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.2091,
       "consensusRevenueEstimate": 10916550
-    },
-    "ZIM": {
-      "code": "ZIM",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 3.4071,
-      "consensusRevenueEstimate": 2238967394
     }
   }
 }
