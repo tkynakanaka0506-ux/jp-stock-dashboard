@@ -1511,18 +1511,27 @@ test('mobileShowDesktopCard: PC版に対応カードが無い銘柄(米国テン
 // ハングは30秒タイムアウトで防いでいるが、スキャンループ全体には上限が
 // 無く、ネットワークが広範囲に不調な時間帯に「多くの銘柄がそれぞれ
 // 最悪ケース(30秒×3回)を踏む」が積み重なって合計2時間以上ブロックする
-// ことがあった。sync_and_push.shのPIDロックは「生きていれば奪わない」が
-// 正しい設計(スリープ対応)なので、プロセス自身が長時間かかりすぎたら
-// 自発的に諦めて終了する必要がある。5分おきの場中ジョブが数時間ブロック
-// され「ダッシュボードが止まっている」ように見えた事故の再発防止。
-test('main()の重い処理の前にwatchdogタイマーが仕込まれており、場中ジョブ(--market-hours)は15分、日次フルスキャンは2時間で自発的にprocess.exit(1)する(実測バグ: ネットワーク不調でスキャン全体が数時間ブロックし続けた再発防止)', () => {
+// ことがあった。5分おきの場中ジョブが数時間ブロックされ「ダッシュボード
+// が止まっている」ように見えた事故の再発防止として、場中ジョブ
+// (--market-hours)だけにwatchdogを入れる。
+//
+// 訂正(2026-09-21、監視基盤の実装中に発覚): 導入直後は日次フルスキャン
+// にも2時間のwatchdogを入れていたが、実測ログ(stealth-daily.log)を
+// 集計すると正常完了した日次実行が最大149分かかっており、2時間の
+// watchdogは正常なフルスキャンを誤って強制終了しうることが判明した。
+// setTimeoutもDate.now()と同じくOSの壁時計に基づくため、Macスリープ中も
+// 経過時間に含まれてしまう(lockOwnerAlive()が経過時間で判断しない設計に
+// している理由と同じ制約を見落としていた)。日次ジョブは経過時間ベースの
+// watchdogを入れず既存の生存確認ロックだけに委ねる。
+test('main()の重い処理の前に場中ジョブ(--market-hours)だけwatchdogタイマーが仕込まれており、20分で自発的にprocess.exit(1)する。日次フルスキャンにはwatchdogを入れない(実測バグ: 2時間watchdogが実測最大149分の正常な日次実行を誤って強制終了しうる再発防止)', () => {
   assert.match(
     scraperSource,
-    /const WATCHDOG_MS = MARKET_HOURS_ONLY \? 15 \* 60 \* 1000 : 2 \* 60 \* 60 \* 1000;/,
-    'WATCHDOG_MSの定義が変わっています(場中15分・日次2時間の想定が崩れていないか確認してください)',
+    /const WATCHDOG_MS = MARKET_HOURS_ONLY \? 20 \* 60 \* 1000 : null;/,
+    'WATCHDOG_MSの定義が変わっています(場中20分・日次はnullの想定が崩れていないか確認してください)',
   );
   const lockIdx = scraperSource.indexOf('別のインスタンスが実行中のためスキップ');
   const afterLock = scraperSource.slice(lockIdx, lockIdx + 800);
+  assert.match(afterLock, /if \(WATCHDOG_MS != null\) \{/, 'watchdogがWATCHDOG_MS!=nullでガードされていません(日次フルスキャンにも誤って適用されるおそれがあります)');
   assert.match(afterLock, /setTimeout\(\(\) => \{/, 'ロック取得直後にwatchdogのsetTimeoutが仕込まれていません');
   assert.match(afterLock, /process\.exit\(1\);/, 'watchdog発火時にprocess.exit(1)していません(ロックが解放されず次tickもブロックされ続けます)');
   assert.match(afterLock, /\}, WATCHDOG_MS\)\.unref\(\);/, 'watchdogが.unref()されていません(main()が先に終わってもプロセスが居座る可能性があります)');

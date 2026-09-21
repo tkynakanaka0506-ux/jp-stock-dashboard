@@ -47,8 +47,14 @@
 PIDロックは「生きているプロセスは奪わない」が正しい設計(Macスリープ対応、
 `scraper.mjs`内コメント参照)なので、ロック側で強制解除するのではなく、
 **プロセス自身が長時間かかりすぎたら自発的に諦めて終了する**watchdogを
-`scraper.mjs`に追加した(`WATCHDOG_MS`: 場中ジョブ=15分、日次フルスキャン=2時間)。
-回帰テストは`test/scraper_checklist.test.mjs`の`watchdog`関連テスト参照。
+`scraper.mjs`に追加した。**ただし場中ジョブ(`--market-hours`)にだけ適用する
+(`WATCHDOG_MS`=20分)。** 導入直後は日次フルスキャンにも2時間のwatchdogを
+入れていたが、実測ログ集計で正常完了が最大149分かかることが判明し、経過時間
+ベースのwatchdogはMacスリープ中の経過時間も数えてしまう(既存の
+`lockOwnerAlive()`が経過時間で判断しない設計にしている理由と同じ制約)ため、
+日次ジョブはwatchdogを入れず既存の生存確認ロックだけに委ねる形に訂正した
+(2026-09-21)。回帰テストは`test/scraper_checklist.test.mjs`の`watchdog`関連
+テスト参照。
 
 ## コマンド
 
