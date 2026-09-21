@@ -63,6 +63,7 @@ node scraper.mjs          # 本体実行(キャッシュが当日分ならv17秒
 npm test                  # node --test test/*.test.mjs
 node --check scraper.mjs  # 構文チェックのみ
 bash sync_and_push.sh --no-open --market-hours  # 本番と同じ経路で手動実行
+node monitor.mjs          # 稼働監視レポート(実行時間・watchdog強制終了/ロックスキップ回数、読み取り専用)
 ```
 
 ## モバイルUIの設計方針

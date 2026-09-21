@@ -17,7 +17,10 @@ cd "$(dirname "$0")"
 # ロックファイルで多重起動を防ぐ。
 LOCK_FILE="/tmp/stealth_sync_and_push.lock"
 if [ -f "$LOCK_FILE" ] && kill -0 "$(cat "$LOCK_FILE" 2>/dev/null)" 2>/dev/null; then
-  echo "⏭️  別のsync_and_push.sh実行中(PID $(cat "$LOCK_FILE")) — 今回のtickはスキップ"
+  # 監視基盤(monitor.mjs)がログから直近24h/7dのスキップ回数を集計できる
+  # よう、日時を明記する(2026-09-21ユーザー要望「lockによるスキップ回数」
+  # の監視。以前はタイムスタンプが無く期間集計ができなかった)。
+  echo "$(date '+%Y-%m-%d %H:%M:%S') ⏭️  別のsync_and_push.sh実行中(PID $(cat "$LOCK_FILE")) — 今回のtickはスキップ"
   exit 0
 fi
 echo $$ > "$LOCK_FILE"

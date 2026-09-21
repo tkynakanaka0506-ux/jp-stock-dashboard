@@ -2632,8 +2632,11 @@ async function main() {
   // 生存確認ベースのロックだけに委ねる)。
   if (WATCHDOG_MS != null) {
     setTimeout(() => {
+      // 監視基盤(monitor.mjs)が直近24h/7dの強制終了回数を集計できる
+      // よう日時を明記する(2026-09-21ユーザー要望)。
       console.error(
-        `❌ ${(WATCHDOG_MS / 60000).toFixed(0)}分を超えたため強制終了します`
+        `${new Date().toLocaleString('ja-JP', { timeZone: 'Asia/Tokyo' })} `
+        + `❌ ${(WATCHDOG_MS / 60000).toFixed(0)}分を超えたため強制終了します`
         + `(ネットワーク不調で個々のリクエストのリトライが積み重なった可能性。次回tickに委ねます)`
       );
       process.exit(1);
