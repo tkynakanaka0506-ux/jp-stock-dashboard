@@ -655,7 +655,7 @@
 <div id="mobile-app">
   <header class="m-topbar">
     <div class="m-brand"><svg class="m-h2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 16 9 10l4 4 8-9" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 5h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg>日本株 Dashboard</div>
-    <div class="m-updated">15:51 更新</div>
+    <div class="m-updated">17:29 更新</div>
   </header>
 
   <main class="m-screens">
@@ -663,7 +663,7 @@
       <h2 class="m-h2 accent-cyan"><svg class="m-h2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="12" width="4" height="8" rx="1"/><rect x="10" y="7" width="4" height="13" rx="1"/><rect x="16.5" y="3.5" width="4" height="16.5" rx="1"/></svg>市場状況</h2>
       <div class="m-market">
         <div class="m-market-cell"><span class="m-k">NIKKEI 225</span><span class="m-v">65,018.95</span></div>
-        <div class="m-market-cell"><span class="m-k">USD/JPY</span><span class="m-v">157.62</span></div>
+        <div class="m-market-cell"><span class="m-k">USD/JPY</span><span class="m-v">157.74</span></div>
       </div>
 
       <h2 class="m-h2 accent-amber"><svg class="m-h2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></svg>今日の注目</h2>
@@ -1182,7 +1182,7 @@
 
     <section class="m-screen" data-screen="settings">
       <h2 class="m-h2"><svg class="m-h2-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="3.2"/><path d="M12 3.5v2.4M12 18.1v2.4M20.5 12h-2.4M5.9 12H3.5M17.7 6.3l-1.7 1.7M8 16l-1.7 1.7M17.7 17.7 16 16M8 8 6.3 6.3" stroke-linecap="round"/></svg>SETTINGS</h2>
-      <div class="m-settings-row"><span>最終更新</span><span>15:51</span></div>
+      <div class="m-settings-row"><span>最終更新</span><span>17:29</span></div>
       <div class="m-settings-row"><span>スキャン対象</span><span>3418銘柄</span></div>
       <button class="m-cta" onclick="mobileShowDesktop()"><svg class="m-cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4.5" width="18" height="12" rx="1.6"/><path d="M8.5 20h7M12 16.5V20" stroke-linecap="round"/></svg>PC版を表示</button>
       <p class="m-note">このモバイル画面はβ版です。詳細な判定根拠・全項目はPC版でご確認ください。</p>
@@ -1226,7 +1226,7 @@
 
   <div class="hud">
     <div class="ro"><span class="ro-k">NIKKEI 225</span><span class="ro-v ">65,018.95<i> 円</i></span></div>
-    <div class="ro"><span class="ro-k">USD / JPY</span><span class="ro-v ">157.62<i></i></span></div>
+    <div class="ro"><span class="ro-k">USD / JPY</span><span class="ro-v ">157.74<i></i></span></div>
     <!-- 実測バグ: 米国株AMBUSHで「該当48/126」とHUDに出ていたのに、
          セクション本文はRANK_TOP_N(10)件しかカードを出しておらず、
          48件見つかると期待してクリックすると10件しか無い、という
@@ -1244,7 +1244,7 @@
     <a href="#t" style="text-decoration:none;color:inherit" title="テンバガー候補セクションへジャンプ"><div class="ro"><span class="ro-k">💎 テンバガー</span><span class="ro-v up">2<i> 候補</i></span></div></a>
     <div class="ro"><span class="ro-k">先行材料あり</span><span class="ro-v ">7<i> 件</i></span></div>
     <div class="ro"><span class="ro-k">UNIVERSE</span><span class="ro-v ">61/400<i> 通過</i></span></div>
-    <div class="ro"><span class="ro-k">LAST SYNC</span><span class="ro-v ">15:51<i> JST</i></span></div>
+    <div class="ro"><span class="ro-k">LAST SYNC</span><span class="ro-v ">17:29<i> JST</i></span></div>
   </div>
 
   <details class="guide" open>
@@ -1257,7 +1257,7 @@
           <li><span class="chip amber">黄（amber）</span>中立〜軽い注意</li>
           <li><span class="chip red">赤（red）</span>明確な警戒サイン</li>
           <li><span class="chip gray">灰色（gray）</span>データ不足で未確認。「悪い」という意味ではありません</li>
-          <li>「自分ルール」の <b>✓</b>＝条件クリア　<b>✗</b>＝条件を満たさない　<b>？</b>＝判定に必要なデータが無い（不合格ではありません）</li>
+          <li>「自分ルール」の <b>✓</b>＝条件クリア　<b>✗</b>＝条件を満たさない　<b>？</b>＝判定に必要なデータが無い（不合格ではありません）。右上の「n/5」の分母は常に5項目固定で、？の項目があっても分母を減らして表示することはありません</li>
           <li>信号🟢🟡🔴⚪も同じ考え方（🔴＝そのパターンには明確に該当しない、⚪＝判定材料が無い）</li>
         </ul>
       </div>
@@ -1278,7 +1278,7 @@
         <div class="guide-h">「自分ルール」5項目</div>
         <ul class="guide-list">
           <li><b>需給</b>：信用取引が過熱していないか・踏み上げ（買い戻し）の可能性</li>
-          <li><b>下値</b>：解散価値やPBRから見て、これ以上下がりにくいと言える水準か</li>
+          <li><b>下値</b>：解散価値割れ（資産の裏付けがある、が業績・キャッシュフロー悪化が続けば目減りしうる）、または業種平均PBR・自社の過去PBRと比べて相対的に割安（あくまで相対比較で、下値を保証するものではない）のいずれかに該当するか</li>
           <li><b>期待値</b>：会社自身の予想とアナリスト予想（コンセンサス）の差</li>
           <li><b>タイミング</b>：決算発表が近すぎて新規に手を出しにくい時期でないか</li>
           <li><b>財務</b>：売上債権（売掛金）が売上に対して異常に増えていないか</li>
@@ -1330,12 +1330,12 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 50</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 64.4</span>
         
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中10件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip red" title="BUY SCOREの算出に使えたデータの充実度（DATA35%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE LOW</span>
       </div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 手放すタイミング</div>
-        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-1.7%）</li><li>業種平均PBR到達の目安株価（約¥4,284）に近づいたら利益確定を検討</li></ul>
+        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-1.7%）</li><li>業種平均PBRとの相対差の参考値（約¥4,284、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア64.4/100（初動）</li></ul></div>
@@ -1385,7 +1385,7 @@
       </div>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">5/5</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 5 / FAIL 0 / UNKNOWN 0（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">5/5</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用過多の兆候なし">✓ 需給</span><span class="rule mint" title="PBR1.12倍・業種平均2.3倍の48.7%。業種内で相対的に割安な水準です">✓ 下値</span><span class="rule mint" title="会社予想はコンセンサス比-9.8%">✓ 期待値</span><span class="rule mint" title="決算まであと17日">✓ タイミング</span><span class="rule mint" title="売上債権の伸びは売上高に対して異常なし">✓ 財務</span></div>
       </div>
         
@@ -1395,18 +1395,18 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>16.9倍</td><td>32.3倍</td></tr><tr><td>PBR</td><td>1.12倍</td><td>2.3倍</td></tr><tr><td>利回り</td><td>4.07%</td><td>2.18%</td></tr><tr><td>ROE</td><td>4.48%</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>508億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(2.3倍)に到達する株価は約4,284円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR1.12倍・業種平均PBR2.3倍。同じ倍率だと仮定して機械的に計算すると株価は約4,284円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 64.4/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 64.4/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：62.5%</li>
           <li>1ヶ月騰落率：-4.3%　3ヶ月騰落率：データ無し</li>
           <li>PER16.9倍（業種平均32.3倍）</li>
           <li>成長率：売上高+52.4%・利益+115.5%</li>
           <li>先行材料：なし／未検出　次回決算まで：不明</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+33.1pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+33.1pt　業績改善(実績YoY平均)+84% − 株価反応(1ヶ月)-4.3%</li>
         </ul>
         <div class="repricing-why">売上高+52.4%・利益+115.5%（業績改善）に対し、株価は直近1ヶ月-4.3%・3ヶ月データ無しとまだ反応が乏しく（直近3ヶ月レンジ内の位置（52週データの代用）62.5%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア64.4/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -1450,12 +1450,12 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 50</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 61</span>
         
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中10件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip red" title="BUY SCOREの算出に使えたデータの充実度（DATA35%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE LOW</span>
       </div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 手放すタイミング</div>
-        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-3%）</li><li>業種平均PBR到達の目安株価（約¥2,471）に近づいたら利益確定を検討</li></ul>
+        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-3%）</li><li>業種平均PBRとの相対差の参考値（約¥2,471、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア61/100（初動）</li></ul></div>
@@ -1505,7 +1505,7 @@
       </div>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">5/5</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 5 / FAIL 0 / UNKNOWN 0（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">5/5</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用過多の兆候なし">✓ 需給</span><span class="rule mint" title="PBR0.8倍・業種平均1.5倍の53.3%。業種内で相対的に割安な水準です">✓ 下値</span><span class="rule mint" title="会社予想はコンセンサス比-5.9%">✓ 期待値</span><span class="rule mint" title="決算まであと38日">✓ タイミング</span><span class="rule mint" title="売上債権の伸びは売上高に対して異常なし">✓ 財務</span></div>
       </div>
         
@@ -1515,18 +1515,18 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>19.4倍</td><td>21.5倍</td></tr><tr><td>PBR</td><td>0.8倍</td><td>1.5倍</td></tr><tr><td>利回り</td><td>1.82%</td><td>2.55%</td></tr><tr><td>ROE</td><td>27.61%</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>882億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(1.5倍)に到達する株価は約2,471円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR0.8倍・業種平均PBR1.5倍。同じ倍率だと仮定して機械的に計算すると株価は約2,471円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 61/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 61/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：55.9%</li>
           <li>1ヶ月騰落率：-3.2%　3ヶ月騰落率：データ無し</li>
           <li>PER19.4倍（業種平均21.5倍）</li>
           <li>成長率：売上高+33.7%・利益+58.5%</li>
           <li>先行材料：なし／未検出　次回決算まで：不明</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+21.7pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+21.7pt　業績改善(実績YoY平均)+46.1% − 株価反応(1ヶ月)-3.2%</li>
         </ul>
         <div class="repricing-why">売上高+33.7%・利益+58.5%（業績改善）に対し、株価は直近1ヶ月-3.2%・3ヶ月データ無しとまだ反応が乏しく（直近3ヶ月レンジ内の位置（52週データの代用）55.9%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア61/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -1570,12 +1570,12 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 50</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 30.3</span>
         
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中9件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip red" title="BUY SCOREの算出に使えたデータの充実度（DATA35%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE LOW</span>
       </div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 手放すタイミング</div>
-        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+1%）</li><li>業種平均PBR到達の目安株価（約¥3,200）に近づいたら利益確定を検討</li></ul>
+        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+1%）</li><li>業種平均PBRとの相対差の参考値（約¥3,200、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア30.3/100（初動）</li></ul></div>
@@ -1625,7 +1625,7 @@
       </div>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">2/2</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 2 / FAIL 0 / UNKNOWN 3（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">2/5</span><span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN 3）</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用過多の兆候なし">✓ 需給</span><span class="rule mint" title="PBR0.75倍・業種平均1.26倍の59.5%。業種内で相対的に割安な水準です">✓ 下値</span><span class="rule gray" title="会社予想・コンセンサス共にN/A">？ 期待値</span><span class="rule gray" title="決算日情報不明のため判定不能">？ タイミング</span><span class="rule gray" title="売上高または売上債権のデータ不足で判定不能">？ 財務</span></div>
       </div>
         <div class="altbox">
@@ -1638,18 +1638,18 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>9.6倍</td><td>15.4倍</td></tr><tr><td>PBR</td><td>0.75倍</td><td>1.26倍</td></tr><tr><td>利回り</td><td>3.15%</td><td>2.56%</td></tr><tr><td>ROE</td><td>4.85%</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>3,747億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(1.26倍)に到達する株価は約3,200円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR0.75倍・業種平均PBR1.26倍。同じ倍率だと仮定して機械的に計算すると株価は約3,200円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 30.3/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 30.3/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：54.8%</li>
           <li>1ヶ月騰落率：0%　3ヶ月騰落率：データ無し</li>
           <li>PER9.6倍（業種平均15.4倍）</li>
           <li>成長率：売上高+0.1%・利益-15.8%</li>
           <li>先行材料：なし／未検出　次回決算まで：不明</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：-3.5pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：-3.5pt　業績改善(実績YoY平均)-7.8% − 株価反応(1ヶ月)0%</li>
         </ul>
         <div class="repricing-why">売上高+0.1%・利益-15.8%（売上は改善、利益は悪化）に対し、株価は直近1ヶ月0%・3ヶ月データ無しとまだ反応が乏しく（直近3ヶ月レンジ内の位置（52週データの代用）54.8%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア30.3/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -1693,12 +1693,12 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 50</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 27</span>
         
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中10件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip red" title="BUY SCOREの算出に使えたデータの充実度（DATA35%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE LOW</span>
       </div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 手放すタイミング</div>
-        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+2.2%）</li><li>業種平均PBR到達の目安株価（約¥3,575）に近づいたら利益確定を検討</li></ul>
+        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+2.2%）</li><li>業種平均PBRとの相対差の参考値（約¥3,575、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア27/100（初動）</li></ul></div>
@@ -1748,7 +1748,7 @@
       </div>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">4/5</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 4 / FAIL 1 / UNKNOWN 0（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">4/5</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用買い残4週比-4.9%・空売り(売り残)4週比+13.7%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の1.5倍に急増しており、複数の需給指標が一致しています">✓ 需給</span><span class="rule mint" title="PBR0.78倍・業種平均0.87倍の89.7%">✓ 下値</span><span class="rule red" title="会社予想はコンセンサス比-16%">✗ 期待値</span><span class="rule mint" title="決算まであと38日">✓ タイミング</span><span class="rule mint" title="売上債権の伸びは売上高に対して異常なし">✓ 財務</span></div>
       </div>
         
@@ -1758,18 +1758,18 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>13.7倍</td><td>14.4倍</td></tr><tr><td>PBR</td><td>0.78倍</td><td>0.87倍</td></tr><tr><td>利回り</td><td>3.74%</td><td>3.73%</td></tr><tr><td>ROE</td><td>8.99%</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>2,860億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(0.87倍)に到達する株価は約3,575円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR0.78倍・業種平均PBR0.87倍。同じ倍率だと仮定して機械的に計算すると株価は約3,575円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 27/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 27/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：63.8%</li>
           <li>1ヶ月騰落率：+2.6%　3ヶ月騰落率：データ無し</li>
           <li>PER13.7倍（業種平均14.4倍）</li>
           <li>成長率：売上高+4.4%・利益+2.4%</li>
           <li>先行材料：なし／未検出　次回決算まで：不明</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+0.3pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+0.3pt　業績改善(実績YoY平均)+3.4% − 株価反応(1ヶ月)+2.6%</li>
         </ul>
         <div class="repricing-why">売上高+4.4%・利益+2.4%（業績改善）に対し、株価は直近1ヶ月+2.6%・3ヶ月データ無しとまだ反応が乏しく（直近3ヶ月レンジ内の位置（52週データの代用）63.8%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア27/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -1813,12 +1813,12 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 50</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 25.8</span>
         
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中10件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip red" title="BUY SCOREの算出に使えたデータの充実度（DATA35%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE LOW</span>
       </div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 手放すタイミング</div>
-        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+1%）</li><li>業種平均PBR到達の目安株価（約¥4,100）に近づいたら利益確定を検討</li></ul>
+        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+1%）</li><li>業種平均PBRとの相対差の参考値（約¥4,100、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア25.8/100（初動）</li></ul></div>
@@ -1868,7 +1868,7 @@
       </div>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">2/3</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 2 / FAIL 1 / UNKNOWN 2（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">2/5</span><span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN 2）</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用買い残4週比-3.7%・空売り(売り残)4週比+932%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の3.29倍に急増しており、複数の需給指標が一致しています">✓ 需給</span><span class="rule mint" title="PBR1.09倍・業種平均1.26倍の86.5%">✓ 下値</span><span class="rule gray" title="会社予想・コンセンサス共にN/A">？ 期待値</span><span class="rule gray" title="決算日情報不明のため判定不能">？ タイミング</span><span class="rule red" title="売上高+0.5%に対し売上債権+8.6%（売上の17.2倍のペース）。回収サイクルの長期化や押し込み販売の懸念があります。一方で営業キャッシュ・フローは前期比+31.6%と改善しており、季節性・大型案件・M&amp;A等による一時的な運転資本の増加や、需要の裏付けがある可能性があり、必ずしも粉飾等の悪材料とは限りません。">✗ 財務</span></div>
       </div>
         <div class="altbox">
@@ -1881,18 +1881,18 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>14.4倍</td><td>15.4倍</td></tr><tr><td>PBR</td><td>1.09倍</td><td>1.26倍</td></tr><tr><td>利回り</td><td>1.97%</td><td>2.56%</td></tr><tr><td>ROE</td><td>9.3%</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>6,763億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(1.26倍)に到達する株価は約4,100円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR1.09倍・業種平均PBR1.26倍。同じ倍率だと仮定して機械的に計算すると株価は約4,100円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 25.8/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 25.8/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：69%</li>
           <li>1ヶ月騰落率：-0.1%　3ヶ月騰落率：データ無し</li>
           <li>PER14.4倍（業種平均15.4倍）</li>
           <li>成長率：売上高+0.5%・利益+1.8%</li>
           <li>先行材料：なし／未検出　次回決算まで：不明</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+0.4pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+0.4pt　業績改善(実績YoY平均)+1.2% − 株価反応(1ヶ月)-0.1%</li>
         </ul>
         <div class="repricing-why">売上高+0.5%・利益+1.8%（業績改善）に対し、株価は直近1ヶ月-0.1%・3ヶ月データ無しとまだ反応が乏しく（直近3ヶ月レンジ内の位置（52週データの代用）69%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア25.8/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -1936,12 +1936,12 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 50</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 44.5</span>
         
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中9件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip red" title="BUY SCOREの算出に使えたデータの充実度（DATA35%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE LOW</span>
       </div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 手放すタイミング</div>
-        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+5.4%）</li><li>業種平均PBR到達の目安株価（約¥2,687）に近づいたら利益確定を検討</li></ul>
+        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+5.4%）</li><li>業種平均PBRとの相対差の参考値（約¥2,687、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         
         
@@ -1983,7 +1983,7 @@
       </div>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">4/4</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 4 / FAIL 0 / UNKNOWN 1（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">4/5</span><span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN 1）</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用買い残4週比-35.9%・空売り(売り残)4週比+2996.1%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.08倍に急増しており、複数の需給指標が一致しています">✓ 需給</span><span class="rule mint" title="PBR1.82倍・業種平均2.96倍の61.5%。業種内で相対的に割安な水準です">✓ 下値</span><span class="rule gray" title="コンセンサスN/A">？ 期待値</span><span class="rule mint" title="決算まであと38日">✓ タイミング</span><span class="rule mint" title="売上債権の伸びは売上高に対して異常なし">✓ 財務</span></div>
       </div>
         <div class="altbox">
@@ -1996,18 +1996,18 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>14.7倍</td><td>22.5倍</td></tr><tr><td>PBR</td><td>1.82倍</td><td>2.96倍</td></tr><tr><td>利回り</td><td>3.45%</td><td>3.28%</td></tr><tr><td>ROE</td><td>13.1%</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>591億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(2.96倍)に到達する株価は約2,687円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR1.82倍・業種平均PBR2.96倍。同じ倍率だと仮定して機械的に計算すると株価は約2,687円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         
         <div class="repricing">
-        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 44.5/100</span></div>
+        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 44.5/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：88%</li>
           <li>1ヶ月騰落率：+6.2%　3ヶ月騰落率：データ無し</li>
           <li>PER14.7倍（業種平均22.5倍）</li>
           <li>成長率：売上高+7.5%・利益+39%</li>
           <li>先行材料：なし／未検出　次回決算まで：不明</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+2pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+2pt　業績改善(実績YoY平均)+23.3% − 株価反応(1ヶ月)+6.2%</li>
         </ul>
         <div class="repricing-why">売上高+7.5%・利益+39%（業績改善）に対し、直近1ヶ月の上昇は+6.2%と限定的でも、直近3ヶ月レンジ内の位置（52週データの代用）88%と長期的には既に高値圏に位置しているため、新規の仕込み妙味は低下しています。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア44.5/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -2051,12 +2051,12 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 50</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 43.6</span>
         
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中10件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip red" title="BUY SCOREの算出に使えたデータの充実度（DATA35%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE LOW</span>
       </div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 手放すタイミング</div>
-        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+0.4%）</li><li>業種平均PBR到達の目安株価（約¥13,126）に近づいたら利益確定を検討</li></ul>
+        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+0.4%）</li><li>業種平均PBRとの相対差の参考値（約¥13,126、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         
         
@@ -2098,7 +2098,7 @@
       </div>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">3/3</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 3 / FAIL 0 / UNKNOWN 2（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">3/5</span><span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN 2）</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用買い残4週比-19%・空売り(売り残)4週比+38.5%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.17倍に急増しており、複数の需給指標が一致しています">✓ 需給</span><span class="rule mint" title="PBR0.69倍・業種平均3.01倍の22.9%。業種内で相対的に割安な水準です">✓ 下値</span><span class="rule gray" title="会社予想・コンセンサス共にN/A">？ 期待値</span><span class="rule gray" title="決算日情報不明のため判定不能">？ タイミング</span><span class="rule mint" title="売上債権の伸びは売上高に対して異常なし">✓ 財務</span></div>
       </div>
         <div class="altbox">
@@ -2111,18 +2111,18 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>14.2倍</td><td>24.2倍</td></tr><tr><td>PBR</td><td>0.69倍</td><td>3.01倍</td></tr><tr><td>利回り</td><td>1.5%</td><td>2.83%</td></tr><tr><td>ROE</td><td>5.81%</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>7,860億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(3.01倍)に到達する株価は約13,126円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR0.69倍・業種平均PBR3.01倍。同じ倍率だと仮定して機械的に計算すると株価は約13,126円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         
         <div class="repricing">
-        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 43.6/100</span></div>
+        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 43.6/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：81.8%</li>
           <li>1ヶ月騰落率：+1.8%　3ヶ月騰落率：データ無し</li>
           <li>PER14.2倍（業種平均24.2倍）</li>
           <li>成長率：売上高+4.9%・利益+60.7%</li>
           <li>先行材料：なし／未検出　次回決算まで：不明</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+5.6pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+5.6pt　業績改善(実績YoY平均)+32.8% − 株価反応(1ヶ月)+1.8%</li>
         </ul>
         <div class="repricing-why">売上高+4.9%・利益+60.7%（業績改善）に対し、直近1ヶ月の上昇は+1.8%と限定的でも、直近3ヶ月レンジ内の位置（52週データの代用）81.8%と長期的には既に高値圏に位置しているため、新規の仕込み妙味は低下しています。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア43.6/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -2166,12 +2166,12 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 50</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 30.8</span>
         
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中9件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip red" title="BUY SCOREの算出に使えたデータの充実度（DATA35%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE LOW</span>
       </div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 手放すタイミング</div>
-        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+1.7%）</li><li>業種平均PBR到達の目安株価（約¥9,795）に近づいたら利益確定を検討</li></ul>
+        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+1.7%）</li><li>業種平均PBRとの相対差の参考値（約¥9,795、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         
         
@@ -2213,7 +2213,7 @@
       </div>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">2/2</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 2 / FAIL 0 / UNKNOWN 3（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">2/5</span><span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN 3）</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用買い残4週比-27.6%・空売り(売り残)4週比+10%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の1.82倍に急増しており、複数の需給指標が一致しています">✓ 需給</span><span class="rule mint" title="PBR1.43倍・業種平均2.96倍の48.3%。業種内で相対的に割安な水準です">✓ 下値</span><span class="rule gray" title="会社予想・コンセンサス共にN/A">？ 期待値</span><span class="rule gray" title="決算日情報不明のため判定不能">？ タイミング</span><span class="rule gray" title="売上高または売上債権のデータ不足で判定不能">？ 財務</span></div>
       </div>
         <div class="altbox">
@@ -2226,18 +2226,18 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>21倍</td><td>22.5倍</td></tr><tr><td>PBR</td><td>1.43倍</td><td>2.96倍</td></tr><tr><td>利回り</td><td>2.85%</td><td>3.28%</td></tr><tr><td>ROE</td><td>5.94%</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>2,271億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(2.96倍)に到達する株価は約9,795円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR1.43倍・業種平均PBR2.96倍。同じ倍率だと仮定して機械的に計算すると株価は約9,795円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         
         <div class="repricing">
-        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 30.8/100</span></div>
+        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 30.8/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：96.8%</li>
           <li>1ヶ月騰落率：+0.9%　3ヶ月騰落率：データ無し</li>
           <li>PER21倍（業種平均22.5倍）</li>
           <li>成長率：売上高データ無し・利益+55.6%</li>
           <li>先行材料：なし／未検出　次回決算まで：不明</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+1.8pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+1.8pt　業績改善(実績YoY平均)+55.6% − 株価反応(1ヶ月)+0.9%</li>
         </ul>
         <div class="repricing-why">売上高データ無し・利益+55.6%（業績改善）に対し、直近1ヶ月の上昇は+0.9%と限定的でも、直近3ヶ月レンジ内の位置（52週データの代用）96.8%と長期的には既に高値圏に位置しているため、新規の仕込み妙味は低下しています。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア30.8/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -2281,12 +2281,12 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 50</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 29.4</span>
         
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中10件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip red" title="BUY SCOREの算出に使えたデータの充実度（DATA35%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE LOW</span>
       </div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 手放すタイミング</div>
-        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+2.2%）</li><li>業種平均PBR到達の目安株価（約¥3,600）に近づいたら利益確定を検討</li></ul>
+        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+2.2%）</li><li>業種平均PBRとの相対差の参考値（約¥3,600、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         
         
@@ -2328,7 +2328,7 @@
       </div>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">3/4</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 3 / FAIL 1 / UNKNOWN 1（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">3/5</span><span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN 1）</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用買い残4週比-11.9%・空売り(売り残)4週比+1400%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.18倍に急増しており、複数の需給指標が一致しています">✓ 需給</span><span class="rule mint" title="PBR0.69倍・業種平均2.3倍の30%。業種内で相対的に割安な水準です">✓ 下値</span><span class="rule gray" title="コンセンサスN/A">？ 期待値</span><span class="rule mint" title="決算まであと38日">✓ タイミング</span><span class="rule red" title="売上高+3.4%に対し売上債権+6%（売上の1.8倍のペース）。決算での運転資本の動きは確認しておきたいところです">✗ 財務</span></div>
       </div>
         <div class="altbox">
@@ -2341,18 +2341,18 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>8.7倍</td><td>32.3倍</td></tr><tr><td>PBR</td><td>0.69倍</td><td>2.3倍</td></tr><tr><td>利回り</td><td>3.61%</td><td>2.18%</td></tr><tr><td>ROE</td><td>7.89%</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>1,050億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(2.3倍)に到達する株価は約3,600円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR0.69倍・業種平均PBR2.3倍。同じ倍率だと仮定して機械的に計算すると株価は約3,600円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         
         <div class="repricing">
-        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 29.4/100</span></div>
+        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 29.4/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：84.2%</li>
           <li>1ヶ月騰落率：+1.5%　3ヶ月騰落率：データ無し</li>
           <li>PER8.7倍（業種平均32.3倍）</li>
           <li>成長率：売上高+3.4%・利益+8.8%</li>
           <li>先行材料：なし／未検出　次回決算まで：不明</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+0.7pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+0.7pt　業績改善(実績YoY平均)+6.1% − 株価反応(1ヶ月)+1.5%</li>
         </ul>
         <div class="repricing-why">売上高+3.4%・利益+8.8%（業績改善）に対し、直近1ヶ月の上昇は+1.5%と限定的でも、直近3ヶ月レンジ内の位置（52週データの代用）84.2%と長期的には既に高値圏に位置しているため、新規の仕込み妙味は低下しています。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア29.4/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -2396,12 +2396,12 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 50</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 22</span>
         
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中9件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip red" title="BUY SCOREの算出に使えたデータの充実度（DATA35%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE LOW</span>
       </div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 手放すタイミング</div>
-        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-0.2%）</li><li>業種平均PBR到達の目安株価（約¥3,837）に近づいたら利益確定を検討</li></ul>
+        <ul><li>選定時の仕込みパターン（①②③のいずれか）に該当しなくなったら手放す</li><li>判定が様子見／見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-0.2%）</li><li>業種平均PBRとの相対差の参考値（約¥3,837、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         
         
@@ -2443,7 +2443,7 @@
       </div>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">4/4</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 4 / FAIL 0 / UNKNOWN 1（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">4/5</span><span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN 1）</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用過多の兆候なし">✓ 需給</span><span class="rule mint" title="PBR0.41倍・業種平均0.78倍の52.6%。業種内で相対的に割安な水準です">✓ 下値</span><span class="rule mint" title="会社予想はコンセンサス比-5.1%">✓ 期待値</span><span class="rule mint" title="決算まであと38日">✓ タイミング</span><span class="rule gray" title="売上高または売上債権のデータ不足で判定不能">？ 財務</span></div>
       </div>
         
@@ -2453,18 +2453,18 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>10.4倍</td><td>50.9倍</td></tr><tr><td>PBR</td><td>0.41倍</td><td>0.78倍</td></tr><tr><td>利回り</td><td>3.47%</td><td>3.75%</td></tr><tr><td>ROE</td><td>4.76%</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>906億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(0.78倍)に到達する株価は約3,837円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR0.41倍・業種平均PBR0.78倍。同じ倍率だと仮定して機械的に計算すると株価は約3,837円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         
         <div class="repricing">
-        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 22/100</span></div>
+        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 22/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：71.9%</li>
           <li>1ヶ月騰落率：+0.7%　3ヶ月騰落率：データ無し</li>
           <li>PER10.4倍（業種平均50.9倍）</li>
           <li>成長率：売上高データ無し・利益-16.2%</li>
           <li>先行材料：なし／未検出　次回決算まで：不明</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：-4.7pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：-4.7pt　業績改善(実績YoY平均)-16.2% − 株価反応(1ヶ月)+0.7%</li>
         </ul>
         <div class="repricing-why">売上高データ無し・利益-16.2%（業績悪化）に対し、直近1ヶ月の上昇は+0.7%と限定的でも、直近3ヶ月レンジ内の位置（52週データの代用）71.9%と長期的には既に高値圏に位置しているため、新規の仕込み妙味は低下しています。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア22/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -2531,14 +2531,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 45</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 45.8</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中13件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 10月13日（あと21日）。決算をまたぐ新規エントリーは避け、発表前には手仕舞いを検討してください</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月13日 の前営業日までが仕込み期限の目安です（あと21日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-0.6%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBR到達の目安株価（約¥2,418）に近づいたら利益確定を検討</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-0.6%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBRとの相対差の参考値（約¥2,418、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>先行材料Sランク（受注）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで21日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-13）</li></ul></div>
@@ -2587,7 +2587,7 @@
           <span class="conf" title="旧SCORE（月次/PR/進捗/セクター/テクニカルの素点）算出に使えた情報量です。下のBUY SCOREのCONFIDENCE（別の5要素を基準にした信頼度）とは別の指標のため、数値が一致しないことがあります">SCORE用DATA 50%</span>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">5/5</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 5 / FAIL 0 / UNKNOWN 0（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">5/5</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用過多の兆候なし">✓ 需給</span><span class="rule mint" title="PBR1.67倍・業種平均2.27倍の73.6%">✓ 下値</span><span class="rule mint" title="会社予想はコンセンサス比+1.3%">✓ 期待値</span><span class="rule mint" title="決算まであと21日">✓ タイミング</span><span class="rule mint" title="売上債権の伸びは売上高に対して異常なし">✓ 財務</span></div>
       </div>
         
@@ -2597,7 +2597,7 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>17.2倍</td><td>30.8倍</td></tr><tr><td>PBR</td><td>1.67倍</td><td>2.27倍</td></tr><tr><td>利回り</td><td>3.09%</td><td>2.19%</td></tr><tr><td>ROE</td><td>4.7%</td><td>業種平均非対応</td></tr><tr><td>EV/EBITDA</td><td>52.1倍</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>205億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(2.27倍)に到達する株価は約2,418円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR1.67倍・業種平均PBR2.27倍。同じ倍率だと仮定して機械的に計算すると株価は約2,418円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         <div class="divtrend">
         <span class="divtrend-head">配当金推移(円)</span>
@@ -2605,14 +2605,14 @@
         <span class="divtrend-note">4期連続増配中</span>
       </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 45.8/100</span></div>
+        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 45.8/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：44.9%</li>
           <li>1ヶ月騰落率：-5.1%　3ヶ月騰落率：-3.1%</li>
           <li>PER17.2倍（業種平均30.8倍）</li>
           <li>成長率：売上高-27.7%</li>
           <li>先行材料：あり　次回決算まで：あと21日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：-13.6pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：-13.6pt　業績改善(実績YoY平均)-27.7% − 株価反応(1ヶ月)-5.1%</li>
         </ul>
         <div class="repricing-why">売上高-27.7%（業績悪化）に対し、株価は直近1ヶ月-5.1%・3ヶ月-3.1%と既に動き始めており、初動〜再評価の段階に入っている可能性があります。新規の仕込みは値動きを確認しながら慎重に判断してください。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア45.8/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -2669,14 +2669,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 55</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 31.3</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中13件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 10月13日（あと21日）。決算をまたぐ新規エントリーは避け、発表前には手仕舞いを検討してください</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月13日 の前営業日までが仕込み期限の目安です（あと21日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-1.1%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-1.1%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>先行材料Sランク（受注）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで21日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-13）</li></ul></div>
@@ -2725,7 +2725,7 @@
           <span class="conf" title="旧SCORE（月次/PR/進捗/セクター/テクニカルの素点）算出に使えた情報量です。下のBUY SCOREのCONFIDENCE（別の5要素を基準にした信頼度）とは別の指標のため、数値が一致しないことがあります">SCORE用DATA 80%</span>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">4/5</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 4 / FAIL 1 / UNKNOWN 0（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">4/5</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用過多の兆候なし">✓ 需給</span><span class="rule red" title="解散価値・PBR（業種比・歴史的水準）いずれでも下値の裏付けなし">✗ 下値</span><span class="rule mint" title="会社予想はコンセンサス比+2.8%">✓ 期待値</span><span class="rule mint" title="決算まであと21日">✓ タイミング</span><span class="rule mint" title="売上債権の伸びは売上高に対して異常なし">✓ 財務</span></div>
       </div>
         
@@ -2743,14 +2743,14 @@
         <span class="divtrend-note">直近は減配</span>
       </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 31.3/100</span></div>
+        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 31.3/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：42.7%</li>
           <li>1ヶ月騰落率：-6.1%　3ヶ月騰落率：+3.9%</li>
           <li>PER21.1倍（業種平均13.2倍）</li>
           <li>成長率：売上高-1.5%</li>
           <li>先行材料：あり　次回決算まで：あと21日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：-3.1pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：-3.1pt　業績改善(実績YoY平均)-1.5% − 株価反応(1ヶ月)-6.1%</li>
         </ul>
         <div class="repricing-why">売上高-1.5%（業績悪化）に対し、株価は直近1ヶ月-6.1%・3ヶ月+3.9%と既に動き始めており、初動〜再評価の段階に入っている可能性があります。新規の仕込みは値動きを確認しながら慎重に判断してください。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア31.3/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -2807,14 +2807,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 40</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 20</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
+        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中10件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 10月14日（あと22日）。決算をまたぐ新規エントリーは避け、発表前には手仕舞いを検討してください</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月14日 の前営業日までが仕込み期限の目安です（あと22日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+3.8%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+3.8%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>先行材料Sランク（業績上方修正）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで22日</li></ul></div><div class="reason-group"><span class="reason-title">⚠️ リスク</span><ul><li>信用買い残3,053,000株 ÷ 推定浮動株数6,200,637株（発行済株式数から上位3株主の保有分35.92%を控除した近似値）＝49.2%。浮動株に対して信用買いが積み上がっており、好材料が出ても上値が重く飛びにくい状態です</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-14）</li></ul></div>
@@ -2863,7 +2863,7 @@
           <span class="conf" title="旧SCORE（月次/PR/進捗/セクター/テクニカルの素点）算出に使えた情報量です。下のBUY SCOREのCONFIDENCE（別の5要素を基準にした信頼度）とは別の指標のため、数値が一致しないことがあります">SCORE用DATA 70%</span>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">1/2</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 1 / FAIL 1 / UNKNOWN 3（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">1/5</span><span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN 3）</span></div>
         <div class="rulebox-rows"><span class="rule gray" title="信用倍率または空売りのデータが不足しています">？ 需給</span><span class="rule red" title="解散価値・PBR（業種比・歴史的水準）いずれでも下値の裏付けなし">✗ 下値</span><span class="rule gray" title="コンセンサスN/A">？ 期待値</span><span class="rule mint" title="決算まであと22日">✓ タイミング</span><span class="rule gray" title="売上高または売上債権のデータ不足で判定不能">？ 財務</span></div>
       </div>
         
@@ -2881,7 +2881,7 @@
         <span class="divtrend-note">直近は増配</span>
       </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip red">🔴 仕込みゾーン：織り込み済み</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 20/100</span></div>
+        <div class="repricing-head"><span class="chip red">🔴 仕込みゾーン：織り込み済み</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 20/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：65.6%</li>
           <li>1ヶ月騰落率：+24.2%　3ヶ月騰落率：+16.9%</li>
@@ -2945,14 +2945,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 62</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 60.2</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
+        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中12件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 10月14日（あと22日）。決算をまたぐ新規エントリーは避け、発表前には手仕舞いを検討してください</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月14日 の前営業日までが仕込み期限の目安です（あと22日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-3.7%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-3.7%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>業績の進捗率が連続上振れ</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア60.2/100（初動前）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで22日</li></ul></div><div class="reason-group"><span class="reason-title">⚠️ リスク</span><ul><li>信用倍率21.67倍・買い方の含み益が積み上がっており、上昇時に利益確定売りに押されて上値が重くなりやすい状態です</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-14）</li></ul></div>
@@ -3001,7 +3001,7 @@
           <span class="conf" title="旧SCORE（月次/PR/進捗/セクター/テクニカルの素点）算出に使えた情報量です。下のBUY SCOREのCONFIDENCE（別の5要素を基準にした信頼度）とは別の指標のため、数値が一致しないことがあります">SCORE用DATA 100%</span>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">2/4</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 2 / FAIL 2 / UNKNOWN 1（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">2/5</span><span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN 1）</span></div>
         <div class="rulebox-rows"><span class="rule red" title="信用倍率21.67倍・買い方の含み益が積み上がっており、上昇時に利益確定売りに押されて上値が重くなりやすい状態です">✗ 需給</span><span class="rule red" title="解散価値・PBR（業種比・歴史的水準）いずれでも下値の裏付けなし">✗ 下値</span><span class="rule mint" title="会社予想はコンセンサス比-0.9%">✓ 期待値</span><span class="rule mint" title="決算まであと22日">✓ タイミング</span><span class="rule gray" title="売上高または売上債権のデータ不足で判定不能">？ 財務</span></div>
       </div>
         
@@ -3019,14 +3019,14 @@
         <span class="divtrend-note">5期連続増配中</span>
       </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 60.2/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 60.2/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：19.1%</li>
           <li>1ヶ月騰落率：-10.6%　3ヶ月騰落率：-2%</li>
           <li>PER12.7倍（業種平均32.3倍）</li>
           <li>成長率：売上高データ無し・利益+20.9%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと22日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+18.5pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+18.5pt　業績改善(実績YoY平均)+20.9% − 株価反応(1ヶ月)-10.6%</li>
         </ul>
         <div class="repricing-why">売上高データ無し・利益+20.9%（業績改善）に対し、株価は直近1ヶ月-10.6%・3ヶ月-2%とまだ反応が乏しく（直近3ヶ月レンジ内の位置（52週データの代用）19.1%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア60.2/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -3083,14 +3083,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 80</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 41.9</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
+        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中13件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 10月9日（あと17日）。決算をまたぐ新規エントリーは避け、発表前には手仕舞いを検討してください</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月9日 の前営業日までが仕込み期限の目安です（あと17日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-2%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-2%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>業績の進捗率が連続上振れ</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア41.9/100（初動）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで17日</li></ul></div><div class="reason-group"><span class="reason-title">⚠️ リスク</span><ul><li>売上高+2.9%に対し売上債権+14.8%（売上の5.1倍のペース）。回収サイクルの長期化や押し込み販売の懸念があります。</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-09）</li></ul></div>
@@ -3139,7 +3139,7 @@
           <span class="conf" title="旧SCORE（月次/PR/進捗/セクター/テクニカルの素点）算出に使えた情報量です。下のBUY SCOREのCONFIDENCE（別の5要素を基準にした信頼度）とは別の指標のため、数値が一致しないことがあります">SCORE用DATA 100%</span>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">2/4</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 2 / FAIL 2 / UNKNOWN 1（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">2/5</span><span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN 1）</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用過多の兆候なし">✓ 需給</span><span class="rule red" title="解散価値・PBR（業種比・歴史的水準）いずれでも下値の裏付けなし">✗ 下値</span><span class="rule gray" title="コンセンサスN/A">？ 期待値</span><span class="rule mint" title="決算まであと17日">✓ タイミング</span><span class="rule red" title="売上高+2.9%に対し売上債権+14.8%（売上の5.1倍のペース）。回収サイクルの長期化や押し込み販売の懸念があります。">✗ 財務</span></div>
       </div>
         <div class="altbox">
@@ -3160,14 +3160,14 @@
         <span class="divtrend-note">3期連続増配中</span>
       </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 41.9/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 41.9/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：48.6%</li>
           <li>1ヶ月騰落率：-3.1%　3ヶ月騰落率：+6.8%</li>
           <li>PER49.2倍（業種平均32.3倍）</li>
           <li>成長率：売上高+2.9%・利益+15.1%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと17日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+1.1pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+1.1pt　業績改善(実績YoY平均)+9% − 株価反応(1ヶ月)-3.1%</li>
         </ul>
         <div class="repricing-why">売上高+2.9%・利益+15.1%（業績改善）に対し、株価は直近1ヶ月-3.1%・3ヶ月+6.8%とまだ反応が乏しく（直近3ヶ月レンジ内の位置（52週データの代用）48.6%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア41.9/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -3224,14 +3224,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 55</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 18</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中13件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 10月13日（あと21日）。決算をまたぐ新規エントリーは避け、発表前には手仕舞いを検討してください</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月13日 の前営業日までが仕込み期限の目安です（あと21日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-4.6%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBR到達の目安株価（約¥2,768）に近づいたら利益確定を検討</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-4.6%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBRとの相対差の参考値（約¥2,768、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで21日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-13）</li></ul></div>
@@ -3274,7 +3274,7 @@
           <span class="conf" title="旧SCORE（月次/PR/進捗/セクター/テクニカルの素点）算出に使えた情報量です。下のBUY SCOREのCONFIDENCE（別の5要素を基準にした信頼度）とは別の指標のため、数値が一致しないことがあります">SCORE用DATA 80%</span>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">4/5</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 4 / FAIL 1 / UNKNOWN 0（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">4/5</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用過多の兆候なし">✓ 需給</span><span class="rule mint" title="PBR2.27倍・業種平均2.3倍の98.7%">✓ 下値</span><span class="rule mint" title="会社予想はコンセンサス比0%">✓ 期待値</span><span class="rule mint" title="決算まであと21日">✓ タイミング</span><span class="rule red" title="売上高+9.2%に対し売上債権+16.8%（売上の1.8倍のペース）。決算での運転資本の動きは確認しておきたいところです">✗ 財務</span></div>
       </div>
         
@@ -3284,7 +3284,7 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>17.1倍</td><td>32.3倍</td></tr><tr><td>PBR</td><td>2.27倍</td><td>2.3倍</td></tr><tr><td>利回り</td><td>1.46%</td><td>2.18%</td></tr><tr><td>ROE</td><td>13.89%</td><td>業種平均非対応</td></tr><tr><td>EV/EBITDA</td><td>20倍</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>561億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(2.3倍)に到達する株価は約2,768円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR2.27倍・業種平均PBR2.3倍。同じ倍率だと仮定して機械的に計算すると株価は約2,768円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         <div class="divtrend">
         <span class="divtrend-head">配当金推移(円)</span>
@@ -3292,14 +3292,14 @@
         <span class="divtrend-note">直近は増配</span>
       </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip red">🔴 仕込みゾーン：織り込み済み</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 18/100</span></div>
+        <div class="repricing-head"><span class="chip red">🔴 仕込みゾーン：織り込み済み</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 18/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：68.7%</li>
           <li>1ヶ月騰落率：-7.5%　3ヶ月騰落率：+42.8%</li>
           <li>PER17.1倍（業種平均32.3倍）</li>
           <li>成長率：売上高+9.2%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと21日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：-10.5pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：-10.5pt　業績改善(実績YoY平均)+9.2% − 株価反応(1ヶ月)-7.5%</li>
         </ul>
         <div class="repricing-why">直近1ヶ月-7.5%・3ヶ月+42.8%と株価が既に大きく動いており、期待が織り込まれ始めている可能性が高いため、新規の仕込み対象としては見送り推奨です。</div>
         <div class="repricing-caveat">⚠️ オーバーライドルール発動：直近の急騰により、内訳スコアに関係なく強制的に「織り込み済み」と判定しています。</div>
@@ -3356,14 +3356,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 30</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 26.8</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
+        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中13件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 10月13日（あと21日）。決算をまたぐ新規エントリーは避け、発表前には手仕舞いを検討してください</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月13日 の前営業日までが仕込み期限の目安です（あと21日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-2.9%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-2.9%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで21日</li></ul></div><div class="reason-group"><span class="reason-title">⚠️ リスク</span><ul><li>会社予想がコンセンサス比-13.7%・上方修正しても予想に届かず暴落する危険地帯</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-13）</li></ul></div>
@@ -3406,7 +3406,7 @@
           <span class="conf" title="旧SCORE（月次/PR/進捗/セクター/テクニカルの素点）算出に使えた情報量です。下のBUY SCOREのCONFIDENCE（別の5要素を基準にした信頼度）とは別の指標のため、数値が一致しないことがあります">SCORE用DATA 100%</span>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">2/4</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 2 / FAIL 2 / UNKNOWN 1（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">2/5</span><span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN 1）</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用過多の兆候なし">✓ 需給</span><span class="rule red" title="解散価値・PBR（業種比・歴史的水準）いずれでも下値の裏付けなし">✗ 下値</span><span class="rule red" title="会社予想はコンセンサス比-13.7%">✗ 期待値</span><span class="rule mint" title="決算まであと21日">✓ タイミング</span><span class="rule gray" title="売上高または売上債権のデータ不足で判定不能">？ 財務</span></div>
       </div>
         
@@ -3424,14 +3424,14 @@
         <span class="divtrend-note">直近は増配</span>
       </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 26.8/100</span></div>
+        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 26.8/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：60.7%</li>
           <li>1ヶ月騰落率：-5.9%　3ヶ月騰落率：+11%</li>
           <li>PER18倍（業種平均22.5倍）</li>
           <li>成長率：売上高データ無し・利益-16.4%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと21日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：-10.8pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：-10.8pt　業績改善(実績YoY平均)-16.4% − 株価反応(1ヶ月)-5.9%</li>
         </ul>
         <div class="repricing-why">売上高データ無し・利益-16.4%（業績悪化）に対し、株価は直近1ヶ月-5.9%・3ヶ月+11%と既に動き始めており、初動〜再評価の段階に入っている可能性があります。新規の仕込みは値動きを確認しながら慎重に判断してください。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア26.8/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -3491,14 +3491,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 70</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 34.3</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中14件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 2026/10 上旬ごろ（前年同期からの参考値・未確定）（あと18日）。決算をまたぐ新規エントリーは避け、発表前には手仕舞いを検討してください</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 2026/10 上旬ごろ（前年同期からの参考値・未確定） の前営業日までが仕込み期限の目安です（あと18日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-2.3%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBR到達の目安株価（約¥3,352）に近づいたら利益確定を検討</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-2.3%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBRとの相対差の参考値（約¥3,352、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>SCORE(素点)83と高水準</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで18日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026/10 上旬ごろ・未確定）</li></ul></div>
@@ -3547,7 +3547,7 @@
           <span class="conf" title="旧SCORE（月次/PR/進捗/セクター/テクニカルの素点）算出に使えた情報量です。下のBUY SCOREのCONFIDENCE（別の5要素を基準にした信頼度）とは別の指標のため、数値が一致しないことがあります">SCORE用DATA 40%</span>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">4/5</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 4 / FAIL 1 / UNKNOWN 0（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">4/5</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用過多の兆候なし">✓ 需給</span><span class="rule mint" title="PBR0.68倍・業種平均2.3倍の29.6%。業種内で相対的に割安な水準です">✓ 下値</span><span class="rule red" title="会社予想はコンセンサス比+25.9%">✗ 期待値</span><span class="rule mint" title="決算まであと18日">✓ タイミング</span><span class="rule mint" title="売上債権の伸びは売上高に対して異常なし">✓ 財務</span></div>
       </div>
         
@@ -3557,7 +3557,7 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>30.6倍</td><td>32.3倍</td></tr><tr><td>PBR</td><td>0.68倍</td><td>2.3倍</td></tr><tr><td>利回り</td><td>5.45%</td><td>2.18%</td></tr><tr><td>ROE</td><td>0.46%</td><td>業種平均非対応</td></tr><tr><td>EV/EBITDA</td><td>9.7倍</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>341億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(2.3倍)に到達する株価は約3,352円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR0.68倍・業種平均PBR2.3倍。同じ倍率だと仮定して機械的に計算すると株価は約3,352円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         <div class="divtrend">
         <span class="divtrend-head">配当金推移(円)</span>
@@ -3565,14 +3565,14 @@
         <span class="divtrend-note">2期連続増配中</span>
       </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 34.3/100</span></div>
+        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 34.3/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：30.8%</li>
           <li>1ヶ月騰落率：-6.7%　3ヶ月騰落率：+4.2%</li>
           <li>PER30.6倍（業種平均32.3倍）</li>
           <li>成長率：売上高-11.4%・利益-24.6%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと18日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：-15.4pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：-15.4pt　業績改善(実績YoY平均)-18% − 株価反応(1ヶ月)-6.7%</li>
         </ul>
         <div class="repricing-why">売上高-11.4%・利益-24.6%（業績悪化）に対し、株価は直近1ヶ月-6.7%・3ヶ月+4.2%と既に動き始めており、初動〜再評価の段階に入っている可能性があります。新規の仕込みは値動きを確認しながら慎重に判断してください。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア34.3/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -3629,14 +3629,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 45</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 36.7</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中13件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 10月13日（あと21日）。決算をまたぐ新規エントリーは避け、発表前には手仕舞いを検討してください</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月13日 の前営業日までが仕込み期限の目安です（あと21日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-1.2%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBR到達の目安株価（約¥10,488）に近づいたら利益確定を検討</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-1.2%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBRとの相対差の参考値（約¥10,488、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア36.7/100（初動）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで21日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-13）</li></ul></div>
@@ -3685,7 +3685,7 @@
           <span class="conf" title="旧SCORE（月次/PR/進捗/セクター/テクニカルの素点）算出に使えた情報量です。下のBUY SCOREのCONFIDENCE（別の5要素を基準にした信頼度）とは別の指標のため、数値が一致しないことがあります">SCORE用DATA 20%</span>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">5/5</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 5 / FAIL 0 / UNKNOWN 0（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">5/5</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用過多の兆候なし">✓ 需給</span><span class="rule mint" title="PBR1倍・業種平均2.3倍の43.5%。業種内で相対的に割安な水準です">✓ 下値</span><span class="rule mint" title="会社予想はコンセンサス比+3.7%">✓ 期待値</span><span class="rule mint" title="決算まであと21日">✓ タイミング</span><span class="rule mint" title="売上債権の伸びは売上高に対して異常なし">✓ 財務</span></div>
       </div>
         
@@ -3695,7 +3695,7 @@
           <tr><th></th><th>個別</th><th>業種平均</th></tr>
           <tr><td>PER</td><td>13倍</td><td>32.3倍</td></tr><tr><td>PBR</td><td>1倍</td><td>2.3倍</td></tr><tr><td>利回り</td><td>0.86%</td><td>2.18%</td></tr><tr><td>ROE</td><td>5.9%</td><td>業種平均非対応</td></tr><tr><td>EV/EBITDA</td><td>8.5倍</td><td>業種平均非対応</td></tr><tr><td>時価総額</td><td>661億円</td><td>業種平均非対応</td></tr>
         </table>
-        <div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(2.3倍)に到達する株価は約10,488円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+15%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>
+        <div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR1倍・業種平均PBR2.3倍。同じ倍率だと仮定して機械的に計算すると株価は約10,488円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+15%超の短期過熱とは別の、中長期の参考値です）</div>
       </div>
         <div class="divtrend">
         <span class="divtrend-head">配当金推移(円)</span>
@@ -3703,14 +3703,14 @@
         <span class="divtrend-note">直近は据え置き</span>
       </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 36.7/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 36.7/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：67.3%</li>
           <li>1ヶ月騰落率：+0.3%　3ヶ月騰落率：+10.8%</li>
           <li>PER13倍（業種平均32.3倍）</li>
           <li>成長率：売上高+9%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと21日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：-0.6pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：-0.6pt　業績改善(実績YoY平均)+9% − 株価反応(1ヶ月)+0.3%</li>
         </ul>
         <div class="repricing-why">売上高+9%（業績改善）に対し、株価は直近1ヶ月+0.3%・3ヶ月+10.8%とまだ反応が乏しく（直近3ヶ月レンジ内の位置（52週データの代用）67.3%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア36.7/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -3767,14 +3767,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 40</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 6</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
+        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中10件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 10月14日（あと22日）。決算をまたぐ新規エントリーは避け、発表前には手仕舞いを検討してください</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月14日 の前営業日までが仕込み期限の目安です（あと22日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+1.9%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+1.9%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>SCORE(素点)83と高水準</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで22日</li></ul></div><div class="reason-group"><span class="reason-title">⚠️ リスク</span><ul><li>信用倍率11.14倍・買い方の含み益が積み上がっており、上昇時に利益確定売りに押されて上値が重くなりやすい状態です</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-14）</li></ul></div>
@@ -3823,7 +3823,7 @@
           <span class="conf" title="旧SCORE（月次/PR/進捗/セクター/テクニカルの素点）算出に使えた情報量です。下のBUY SCOREのCONFIDENCE（別の5要素を基準にした信頼度）とは別の指標のため、数値が一致しないことがあります">SCORE用DATA 40%</span>
         </div>
         <div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">2/3</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS 2 / FAIL 1 / UNKNOWN 2（分母は元のルール総数5で固定。UNKNOWNは合格に数えていません）">2/5</span><span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN 2）</span></div>
         <div class="rulebox-rows"><span class="rule mint" title="信用買い残4週比-7.8%・空売り(売り残)4週比+0.7%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です">✓ 需給</span><span class="rule red" title="解散価値・PBR（業種比・歴史的水準）いずれでも下値の裏付けなし">✗ 下値</span><span class="rule gray" title="コンセンサスN/A">？ 期待値</span><span class="rule mint" title="決算まであと22日">✓ タイミング</span><span class="rule gray" title="売上高または売上債権のデータ不足で判定不能">？ 財務</span></div>
       </div>
         
@@ -3841,7 +3841,7 @@
         <span class="divtrend-note">直近は据え置き</span>
       </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip red">🔴 仕込みゾーン：織り込み済み</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 6/100</span></div>
+        <div class="repricing-head"><span class="chip red">🔴 仕込みゾーン：織り込み済み</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 6/100</span></div>
         <ul class="repricing-fields">
           <li>直近3ヶ月レンジ内の位置（52週データの代用）：82.5%</li>
           <li>1ヶ月騰落率：+1.2%　3ヶ月騰落率：+46.3%</li>
@@ -4453,7 +4453,7 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 22</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 71.4</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
+        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中14件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <span class="chip flat" title="想定保有期間の目安（1〜3ヶ月）。決算前の値動きを狙う短期の仕込みです">⏱ SHORT</span>
@@ -4476,7 +4476,7 @@
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月9日 の前営業日までが仕込み期限の目安です（あと17日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-1.7%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBR到達の目安株価（約¥4,284）に近づいたら利益確定を検討</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-1.7%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBRとの相対差の参考値（約¥4,284、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア71.4/100（初動）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで17日</li></ul></div><div class="reason-group"><span class="reason-title">⚠️ リスク</span><ul><li>会社予想がコンセンサス比-9.8%・上方修正しても予想に届かず暴落する危険地帯</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-09）</li></ul></div>
@@ -4520,7 +4520,7 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 62</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 60.2</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
+        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中12件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <span class="chip flat" title="想定保有期間の目安（1〜3ヶ月）。決算前の値動きを狙う短期の仕込みです">⏱ SHORT</span>
@@ -4543,7 +4543,7 @@
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月14日 の前営業日までが仕込み期限の目安です（あと22日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-3.7%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-3.7%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>業績の進捗率が連続上振れ</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア60.2/100（初動前）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで22日</li></ul></div><div class="reason-group"><span class="reason-title">⚠️ リスク</span><ul><li>信用倍率21.67倍・買い方の含み益が積み上がっており、上昇時に利益確定売りに押されて上値が重くなりやすい状態です</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-14）</li></ul></div>
@@ -4587,7 +4587,7 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 30</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 75.3</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip red" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK HIGH</span>
+        <span class="chip red" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中13件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK HIGH</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <span class="chip flat" title="想定保有期間の目安（1〜3ヶ月）。決算前の値動きを狙う短期の仕込みです">⏱ SHORT</span>
@@ -4610,7 +4610,7 @@
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月9日 の前営業日までが仕込み期限の目安です（あと17日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-6.4%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-6.4%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>業績の進捗率が連続上振れ</li><li>SCORE(素点)73と高水準</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア75.3/100（初動前）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで17日</li></ul></div><div class="reason-group"><span class="reason-title">⚠️ リスク</span><ul><li>信用倍率107倍・買い方の含み益が積み上がっており、上昇時に利益確定売りに押されて上値が重くなりやすい状態です</li><li>会社予想がコンセンサス比-5.3%・上方修正しても予想に届かず暴落する危険地帯</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-09）</li></ul></div>
@@ -4644,7 +4644,7 @@
         <div class="verdict v-priced_in_caution">
         <span class="verdict-lamp"></span><span class="verdict-label">🟠 織り込み警戒</span>
         <span class="chip gray" title="条件の一部だけ該当する参考銘柄">⚪ REFERENCE</span>
-        <span class="verdict-reason">決算まであと8日と間近で、決算リスク自体が高まっています。新規の仕込みには織り込み警戒が必要な時期です。期待織り込みの兆し：株価や信用買い残の動きから、好材料への期待の一部が既に株価に織り込まれつつある可能性があります</span>
+        <span class="verdict-reason">決算まであと8日と間近です。株価が織り込み済みと確認されたわけではなく、決算をまたぐこと自体のリスク管理（決算発表による急変動リスク）として、新規の仕込みには注意が必要な時期です。期待織り込みの兆し：株価や信用買い残の動きから、好材料への期待の一部が既に株価に織り込まれつつある可能性があります</span>
       </div>
         <div class="score-trio">
         <span class="chip priority" title="仕込み優先度（未織り込み度25・成長加速20・業績の質15・バリュエーション15・カタリスト10・需給10・テーマ性5の100点満点、リスク減点適用後）。SCORE/実質SCOREより優先して見てほしい実戦用スコアです">🎯 仕込み優先度 47 <i title="実質仕込み優先度 = 仕込み優先度 × CONFIDENCE係数（判断材料の充実度）。数値の信頼性を判断する目安です">実質40</i></span>
@@ -4654,7 +4654,7 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 30</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 64.1</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 40</span>
-        <span class="chip red" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK HIGH</span>
+        <span class="chip red" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中13件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK HIGH</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <span class="chip flat" title="想定保有期間の目安（1〜3ヶ月）。決算前の値動きを狙う短期の仕込みです">⏱ SHORT</span>
@@ -4677,7 +4677,7 @@
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算まであと8日と間近です。新規の仕込みは推奨しません（織り込み警戒ゾーン）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-5.3%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBR到達の目安株価（約¥1,644）に近づいたら利益確定を検討</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-5.3%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBRとの相対差の参考値（約¥1,644、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>業績の進捗率が連続上振れ</li><li>SCORE(素点)75と高水準</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア64.1/100（初動前）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで8日</li></ul></div><div class="reason-group"><span class="reason-title">⚠️ リスク</span><ul><li>信用倍率24.73倍・買い方の含み益が積み上がっており、上昇時に利益確定売りに押されて上値が重くなりやすい状態です</li><li>会社予想がコンセンサス比-13.6%・上方修正しても予想に届かず暴落する危険地帯</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-09-30）</li></ul></div>
@@ -4717,7 +4717,7 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 90</span>
         
         
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中1件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip gray" title="BUY SCOREの算出に使えたデータの充実度（DATA0%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE UNKNOWN</span>
       </div>
         <span class="chip flat" title="想定保有期間の目安（3〜12ヶ月）。需給・出遅れの解消を待つ中期の仕込みです">⏱ SWING</span>
@@ -4768,7 +4768,7 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 90</span>
         
         
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中1件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip gray" title="BUY SCOREの算出に使えたデータの充実度（DATA0%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE UNKNOWN</span>
       </div>
         <span class="chip flat" title="想定保有期間の目安（3〜12ヶ月）。需給・出遅れの解消を待つ中期の仕込みです">⏱ SWING</span>
@@ -4823,7 +4823,7 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 80</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 41.9</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
+        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中13件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <span class="chip flat" title="想定保有期間の目安（1〜3ヶ月）。決算前の値動きを狙う短期の仕込みです">⏱ SHORT</span>
@@ -4849,7 +4849,7 @@
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月9日 の前営業日までが仕込み期限の目安です（あと17日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-2%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-2%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>業績の進捗率が連続上振れ</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア41.9/100（初動）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで17日</li></ul></div><div class="reason-group"><span class="reason-title">⚠️ リスク</span><ul><li>売上高+2.9%に対し売上債権+14.8%（売上の5.1倍のペース）。回収サイクルの長期化や押し込み販売の懸念があります。</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-09）</li></ul></div>
@@ -4893,7 +4893,7 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 40</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 34.3</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中13件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <span class="chip flat" title="想定保有期間の目安（1〜3ヶ月）。決算前の値動きを狙う短期の仕込みです">⏱ SHORT</span>
@@ -4916,7 +4916,7 @@
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月15日 の前営業日までが仕込み期限の目安です（あと23日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+0.5%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBR到達の目安株価（約¥5,042）に近づいたら利益確定を検討</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在+0.5%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBRとの相対差の参考値（約¥5,042、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア34.3/100（初動）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで23日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-15）</li></ul></div>
@@ -4960,7 +4960,7 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 55</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 18</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中13件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <span class="chip flat" title="想定保有期間の目安（1〜3ヶ月）。決算前の値動きを狙う短期の仕込みです">⏱ SHORT</span>
@@ -4983,7 +4983,7 @@
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月13日 の前営業日までが仕込み期限の目安です（あと21日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-4.6%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBR到達の目安株価（約¥2,768）に近づいたら利益確定を検討</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-4.6%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li><li>業種平均PBRとの相対差の参考値（約¥2,768、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで21日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-13）</li></ul></div>
@@ -5021,7 +5021,7 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE 45</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 33</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 100</span>
-        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
+        <span class="chip amber" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中13件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK MED</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA100%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <span class="chip flat" title="想定保有期間の目安（1〜3ヶ月）。決算前の値動きを狙う短期の仕込みです">⏱ SHORT</span>
@@ -5044,7 +5044,7 @@
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算発表 10月8日 の前営業日までが仕込み期限の目安です（あと16日）</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-1%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-1%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア33/100（初動）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで16日</li></ul></div><div class="reason-group"><span class="reason-title">⚠️ リスク</span><ul><li>売上高+4.1%に対し売上債権+16.7%（売上の4.1倍のペース）。回収サイクルの長期化や押し込み販売の懸念があります。</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-10-08）</li></ul></div>
@@ -5116,14 +5116,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE --</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 68.6</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 20</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中1件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 11月9日（あと48日）。あと18日ほどでAMBUSHの狙い目ゾーン（決算まで7〜30日）に入ります。それまでは様子見期間です</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算まであと48日。あと18日でAMBUSHの狙い目ゾーンに入ります。仕込みはまだ早めです</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-1.8%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-1.8%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>SCORE(素点)80と高水準</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア68.6/100（初動前）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで48日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-11-09）</li></ul></div>
@@ -5171,14 +5171,14 @@
           <span>EPS予想 0.1306</span>
         </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 68.6/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 68.6/100</span></div>
         <ul class="repricing-fields">
           <li>52週レンジ内の位置：3.7%</li>
           <li>1ヶ月騰落率：-3%　3ヶ月騰落率：-47%</li>
           <li>PSR1.47倍</li>
           <li>成長率：売上高+22.4%・利益+25.2%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと48日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+68.2pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+68.2pt　業績改善(実績YoY平均)+23.8% − 株価反応(1ヶ月)-3%</li>
         </ul>
         <div class="repricing-why">売上高+22.4%・利益+25.2%（業績改善）に対し、株価は直近1ヶ月-3%・3ヶ月-47%とまだ反応が乏しく（52週レンジ内の位置3.7%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア68.6/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -5223,14 +5223,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE --</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 66.5</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 20</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中1件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 11月10日（あと49日）。あと19日ほどでAMBUSHの狙い目ゾーン（決算まで7〜30日）に入ります。それまでは様子見期間です</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算まであと49日。あと19日でAMBUSHの狙い目ゾーンに入ります。仕込みはまだ早めです</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-14.9%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-14.9%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>SCORE(素点)80と高水準</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア66.5/100（初動前）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで49日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-11-10）</li></ul></div>
@@ -5278,14 +5278,14 @@
           <span>EPS予想 0.2601</span>
         </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 66.5/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 66.5/100</span></div>
         <ul class="repricing-fields">
           <li>52週レンジ内の位置：1.9%</li>
           <li>1ヶ月騰落率：-33.7%　3ヶ月騰落率：-32.2%</li>
           <li>PSR3.22倍</li>
           <li>成長率：売上高+18.4%・利益+58.8%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと49日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+69.5pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+69.5pt　業績改善(実績YoY平均)+38.6% − 株価反応(1ヶ月)-33.7%</li>
         </ul>
         <div class="repricing-why">売上高+18.4%・利益+58.8%（業績改善）に対し、株価は直近1ヶ月-33.7%・3ヶ月-32.2%とまだ反応が乏しく（52週レンジ内の位置1.9%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア66.5/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -5330,14 +5330,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE --</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 50.4</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 20</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中1件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 11月9日（あと48日）。あと18日ほどでAMBUSHの狙い目ゾーン（決算まで7〜30日）に入ります。それまでは様子見期間です</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算まであと48日。あと18日でAMBUSHの狙い目ゾーンに入ります。仕込みはまだ早めです</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-4%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-4%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>SCORE(素点)80と高水準</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア50.4/100（初動）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで48日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-11-09）</li></ul></div>
@@ -5385,14 +5385,14 @@
           <span>EPS予想 0.0051</span>
         </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 50.4/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 50.4/100</span></div>
         <ul class="repricing-fields">
           <li>52週レンジ内の位置：34.3%</li>
           <li>1ヶ月騰落率：-10.4%　3ヶ月騰落率：-3.1%</li>
           <li>PSR2.04倍</li>
           <li>成長率：売上高+60.7%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと48日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+41.9pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+41.9pt　業績改善(実績YoY平均)+60.7% − 株価反応(1ヶ月)-10.4%</li>
         </ul>
         <div class="repricing-why">売上高+60.7%（業績改善）に対し、株価は直近1ヶ月-10.4%・3ヶ月-3.1%とまだ反応が乏しく（52週レンジ内の位置34.3%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア50.4/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -5437,14 +5437,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE --</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 48.6</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 20</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中1件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 11月9日（あと48日）。あと18日ほどでAMBUSHの狙い目ゾーン（決算まで7〜30日）に入ります。それまでは様子見期間です</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算まであと48日。あと18日でAMBUSHの狙い目ゾーンに入ります。仕込みはまだ早めです</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-6.9%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-6.9%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>SCORE(素点)80と高水準</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア48.6/100（初動前）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで48日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-11-09）</li></ul></div>
@@ -5492,14 +5492,14 @@
           <span>EPS予想 -0.2652</span>
         </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 48.6/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 48.6/100</span></div>
         <ul class="repricing-fields">
           <li>52週レンジ内の位置：21.5%</li>
           <li>1ヶ月騰落率：-19.7%　3ヶ月騰落率：-41.4%</li>
           <li>PSR5.86倍</li>
           <li>成長率：売上高+52.3%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと48日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+73.6pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+73.6pt　業績改善(実績YoY平均)+52.3% − 株価反応(1ヶ月)-19.7%</li>
         </ul>
         <div class="repricing-why">売上高+52.3%（業績改善）に対し、株価は直近1ヶ月-19.7%・3ヶ月-41.4%とまだ反応が乏しく（52週レンジ内の位置21.5%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア48.6/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -5544,14 +5544,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE --</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 47.2</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 20</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中1件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 11月9日（あと48日）。あと18日ほどでAMBUSHの狙い目ゾーン（決算まで7〜30日）に入ります。それまでは様子見期間です</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算まであと48日。あと18日でAMBUSHの狙い目ゾーンに入ります。仕込みはまだ早めです</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-2.7%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-2.7%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>SCORE(素点)80と高水準</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア47.2/100（初動前）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで48日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-11-09）</li></ul></div>
@@ -5599,14 +5599,14 @@
           <span>EPS予想 -0.051</span>
         </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 47.2/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 47.2/100</span></div>
         <ul class="repricing-fields">
           <li>52週レンジ内の位置：7.1%</li>
           <li>1ヶ月騰落率：-5.5%　3ヶ月騰落率：-39.5%</li>
           <li>PSR12.11倍</li>
           <li>成長率：売上高+48.7%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと48日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+81.9pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+81.9pt　業績改善(実績YoY平均)+48.7% − 株価反応(1ヶ月)-5.5%</li>
         </ul>
         <div class="repricing-why">売上高+48.7%（業績改善）に対し、株価は直近1ヶ月-5.5%・3ヶ月-39.5%とまだ反応が乏しく（52週レンジ内の位置7.1%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア47.2/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -5651,14 +5651,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE --</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 46.6</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 20</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中1件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 11月11日（あと50日）。あと20日ほどでAMBUSHの狙い目ゾーン（決算まで7〜30日）に入ります。それまでは様子見期間です</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算まであと50日。あと20日でAMBUSHの狙い目ゾーンに入ります。仕込みはまだ早めです</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-2%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-2%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>SCORE(素点)80と高水準</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア46.6/100（初動前）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで50日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-11-11）</li></ul></div>
@@ -5706,14 +5706,14 @@
           <span>EPS予想 -0.3468</span>
         </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 46.6/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 46.6/100</span></div>
         <ul class="repricing-fields">
           <li>52週レンジ内の位置：9.8%</li>
           <li>1ヶ月騰落率：-10.3%　3ヶ月騰落率：-51%</li>
           <li>PSR11.31倍</li>
           <li>成長率：売上高+54.5%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと50日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+95.2pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+95.2pt　業績改善(実績YoY平均)+54.5% − 株価反応(1ヶ月)-10.3%</li>
         </ul>
         <div class="repricing-why">売上高+54.5%（業績改善）に対し、株価は直近1ヶ月-10.3%・3ヶ月-51%とまだ反応が乏しく（52週レンジ内の位置9.8%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア46.6/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -5758,14 +5758,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE --</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 42.3</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 20</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中1件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 11月11日（あと50日）。あと20日ほどでAMBUSHの狙い目ゾーン（決算まで7〜30日）に入ります。それまでは様子見期間です</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算まであと50日。あと20日でAMBUSHの狙い目ゾーンに入ります。仕込みはまだ早めです</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-6.8%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-6.8%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>SCORE(素点)80と高水準</li></ul></div><div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア42.3/100（初動前）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで50日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-11-11）</li></ul></div>
@@ -5813,14 +5813,14 @@
           <span>EPS予想 -0.1088</span>
         </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 42.3/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 42.3/100</span></div>
         <ul class="repricing-fields">
           <li>52週レンジ内の位置：26.7%</li>
           <li>1ヶ月騰落率：-11.8%　3ヶ月騰落率：-3.8%</li>
           <li>PSR28.07倍</li>
           <li>成長率：売上高+1235.4%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと50日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+908.3pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+908.3pt　業績改善(実績YoY平均)+200% − 株価反応(1ヶ月)-11.8%</li>
         </ul>
         <div class="repricing-why">売上高+1235.4%（業績改善）に対し、株価は直近1ヶ月-11.8%・3ヶ月-3.8%とまだ反応が乏しく（52週レンジ内の位置26.7%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア42.3/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -5865,14 +5865,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE --</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 66.3</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 20</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中1件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 11月9日（あと48日）。あと18日ほどでAMBUSHの狙い目ゾーン（決算まで7〜30日）に入ります。それまでは様子見期間です</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算まであと48日。あと18日でAMBUSHの狙い目ゾーンに入ります。仕込みはまだ早めです</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-3.6%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-3.6%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア66.3/100（初動前）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで48日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-11-09）</li></ul></div>
@@ -5920,14 +5920,14 @@
           <span>EPS予想 0.3468</span>
         </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 66.3/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 66.3/100</span></div>
         <ul class="repricing-fields">
           <li>52週レンジ内の位置：7%</li>
           <li>1ヶ月騰落率：-2.5%　3ヶ月騰落率：-8.2%</li>
           <li>PSR0.13倍</li>
           <li>成長率：売上高+2.9%・利益+160.7%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと48日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+83.7pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+83.7pt　業績改善(実績YoY平均)+81.8% − 株価反応(1ヶ月)-2.5%</li>
         </ul>
         <div class="repricing-why">売上高+2.9%・利益+160.7%（業績改善）に対し、株価は直近1ヶ月-2.5%・3ヶ月-8.2%とまだ反応が乏しく（52週レンジ内の位置7%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア66.3/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -5972,14 +5972,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE --</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 41.5</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 20</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中1件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 11月9日（あと48日）。あと18日ほどでAMBUSHの狙い目ゾーン（決算まで7〜30日）に入ります。それまでは様子見期間です</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算まであと48日。あと18日でAMBUSHの狙い目ゾーンに入ります。仕込みはまだ早めです</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-0.1%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-0.1%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">📈 上昇要因</span><ul><li>SCORE(素点)80と高水準</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで48日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-11-09）</li></ul></div>
@@ -6027,14 +6027,14 @@
           <span>EPS予想 0.0306</span>
         </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 41.5/100</span></div>
+        <div class="repricing-head"><span class="chip amber">🟡 仕込みゾーン：再評価進行</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 41.5/100</span></div>
         <ul class="repricing-fields">
           <li>52週レンジ内の位置：70%</li>
           <li>1ヶ月騰落率：0%　3ヶ月騰落率：+0.9%</li>
           <li>PSR1.64倍</li>
           <li>成長率：売上高+37.9%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと48日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+11.1pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+11.1pt　業績改善(実績YoY平均)+37.9% − 株価反応(1ヶ月)0%</li>
         </ul>
         <div class="repricing-why">売上高+37.9%（業績改善）に対し、直近1ヶ月の上昇は0%と限定的でも、52週レンジ内の位置70%と長期的には既に高値圏に位置しているため、新規の仕込み妙味は低下しています。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア41.5/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -6079,14 +6079,14 @@
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE --</span>
         <span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED 63.8</span>
         <span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING 20</span>
-        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
+        <span class="chip mint" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は21件中1件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください">RISK LOW</span>
         <span class="chip mint" title="BUY SCOREの算出に使えたデータの充実度（DATA80%）。低いほどEffective Score（実際の順位に使う値）がSCOREより割り引かれます。UNKNOWNはBUY SCOREの5要素のうち1つもデータが揃わなかった状態です">CONFIDENCE HIGH</span>
       </div>
         <div class="timing-note">📅 決算発表 11月11日（あと50日）。あと20日ほどでAMBUSHの狙い目ゾーン（決算まで7〜30日）に入ります。それまでは様子見期間です</div>
         <div class="exit-plan">
         <div class="exit-plan-h">🚪 仕込み期限・手放すタイミング</div>
         <div class="exit-plan-deadline">決算まであと50日。あと20日でAMBUSHの狙い目ゾーンに入ります。仕込みはまだ早めです</div>
-        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-5%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
+        <ul><li>決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）</li><li>判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）</li><li>乖離率が+15%を超えたら手放す（現在-5%）</li><li>妙味ゾーンが「織り込み済み」になったら手放す</li></ul>
       </div>
         <div class="reason-block">
         <div class="reason-group"><span class="reason-title">🔍 未織り込み要因</span><ul><li>妙味スコア63.8/100（初動前）</li></ul></div><div class="reason-group"><span class="reason-title">⏱ タイミング要因</span><ul><li>決算まで50日</li></ul></div><div class="reason-group"><span class="reason-title">🔔 次に確認すべきイベント</span><ul><li>次回決算（2026-11-11）</li></ul></div>
@@ -6134,14 +6134,14 @@
           <span>EPS予想 0.3217</span>
         </div>
         <div class="repricing">
-        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア 63.8/100</span></div>
+        <div class="repricing-head"><span class="chip mint">🟢 仕込みゾーン：初動前</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア 63.8/100</span></div>
         <ul class="repricing-fields">
           <li>52週レンジ内の位置：6.9%</li>
           <li>1ヶ月騰落率：-6.9%　3ヶ月騰落率：-17.4%</li>
           <li>PSR2.41倍</li>
           <li>成長率：売上高+6.6%・利益+121.3%</li>
           <li>先行材料：なし／未検出　次回決算まで：あと50日</li>
-          <li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：+75.7pt</li>
+          <li title="業績側(売上・利益成長率YoYの平均、±200%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：+75.7pt　業績改善(実績YoY平均)+64% − 株価反応(1ヶ月)-6.9%</li>
         </ul>
         <div class="repricing-why">売上高+6.6%・利益+121.3%（業績改善）に対し、株価は直近1ヶ月-6.9%・3ヶ月-17.4%とまだ反応が乏しく（52週レンジ内の位置6.9%）、再評価が遅れている可能性があります。</div>
         <div class="repricing-caveat">⚠️ 内訳スコア63.8/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。</div>
@@ -6223,7 +6223,7 @@
           
           <span class="chip red" title="売上高成長率+58.1%に対し販管費成長率+77.5%と売上以上に膨らみ、営業損益は-2,495,052,000円→-3,822,923,000円と赤字が拡大しています。「高成長」ではありますが、ユニットエコノミクスの改善は確認できません">赤字成長・高リスク</span>
           
-          <span class="chip amber" title="今から買う妙味（織り込み度）。10倍ポテンシャルの判定とは別軸です。妙味スコア24.8/100。Repricing Gap（業績改善率－株価反応率）+10.9pt">🟡 再評価進行</span>
+          <span class="chip amber" title="今から買う妙味（織り込み度）。10倍ポテンシャルの判定とは別軸です。妙味スコア24.8/100。Repricing Gap（再評価余地）+10.9pt">🟡 再評価進行</span>
           <span class="chip mint" title="売上高成長率が前期の-24.8%から今期は+58.1%に加速しています。粗利率・営業利益率も改善しており、成長の質も伴っています">成長が加速</span><span class="chip mint" title="研究開発費が前年（同期）比+99.8%と、売上高成長率+58.1%を上回るペースで増加しています。目先の利益より成長投資を優先しているフェーズと考えられます（研究開発費を開示している銘柄のみ判定できます）">攻めの投資（研究開発費が売上を上回る伸び）</span><span class="chip mint" title="手動で選定したテーマページ一覧（防衛・宇宙開発関連・衛星運営・スマート農業）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません">テーマ性あり（防衛・宇宙開発関連・衛星運営・スマート農業）</span>
           <span class="chip flat" title="時価総額（百万円）">時価総額 ¥35,700M</span>
         </footer>
@@ -6274,7 +6274,7 @@
   
 
   <div class="stamp">
-    UPDATED 2026/9/22 15:51:26 ·
+    UPDATED 2026/9/22 17:29:38 ·
     決算日 SBI証券(2026-09-22 01:58) ·
     開示 TDnet 14営業日/2976件 ·
     株価 kabutan(20分ディレイ) · AUTO-REFRESH 60s<br>
