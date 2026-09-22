@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-22",
+  "date": "2026-09-23",
   "universe": 2,
   "results": [
     {
@@ -8,11 +8,9 @@
       "theme": "量子コンピュータ",
       "industry": "Technology",
       "marketCap": 16412.144556267314,
-      "price": 40.51,
-      "changePct": 3.5,
+      "price": 40.74,
+      "changePct": 0.6,
       "closes": [
-        44.86000061035156,
-        41.060001373291016,
         42.04999923706055,
         40.029998779296875,
         42.459999084472656,
@@ -30,7 +28,9 @@
         37.04999923706055,
         36.84000015258789,
         40.34000015258789,
-        39.130001068115234
+        39.130001068115234,
+        40.5099983215332,
+        40.7400016784668
       ],
       "fiftyTwoWeekHigh": 84.64,
       "tier": "C",
@@ -48,13 +48,20 @@
         "netIncomeGrowthPct": null,
         "prevRevenueGrowthPct": 754.7,
         "rndGrowthPct": 55.4,
+        "pretaxIncomeGrowthPct": null,
         "note": "直近四半期(2026-06-30)の売上高は前年同期比+286.8%"
       },
+      "taxEffectCaution": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false
+      },
       "repricingLag": {
-        "score": 36.8,
+        "score": 35,
         "zone": "early_move",
         "breakdown": {
-          "untapped": 16.8,
+          "untapped": 15,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -63,7 +70,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "repricingGap": 211.5
+        "repricingGap": 60.5
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -106,11 +113,9 @@
       "theme": "自動運転（トラック）",
       "industry": "Technology",
       "marketCap": 13046.991111000001,
-      "price": 6.51,
-      "changePct": 3.2,
+      "price": 6.46,
+      "changePct": -0.8,
       "closes": [
-        6.239999771118164,
-        5.690000057220459,
         5.769999980926514,
         5.760000228881836,
         5.690000057220459,
@@ -128,7 +133,9 @@
         6.440000057220459,
         6.360000133514404,
         6.489999771118164,
-        6.309999942779541
+        6.309999942779541,
+        6.510000228881836,
+        6.460000038146973
       ],
       "fiftyTwoWeekHigh": 8.565,
       "tier": "C",
@@ -146,13 +153,20 @@
         "netIncomeGrowthPct": null,
         "prevRevenueGrowthPct": null,
         "rndGrowthPct": 11.1,
+        "pretaxIncomeGrowthPct": null,
         "note": "直近四半期(2026-06-30)の売上高は前年同期比+100%"
       },
+      "taxEffectCaution": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false
+      },
       "repricingLag": {
-        "score": 33,
-        "zone": "early_move",
+        "score": 25,
+        "zone": "re_rating",
         "breakdown": {
-          "untapped": 13,
+          "untapped": 10.9,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -160,8 +174,8 @@
           "event": 0
         },
         "checked": true,
-        "alreadyMovedStrict": false,
-        "repricingGap": 51.3
+        "alreadyMovedStrict": true,
+        "repricingGap": 15.9
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -198,5 +212,6 @@
         "checked": false
       }
     }
-  ]
+  ],
+  "logicFingerprint": "444b567e36c4a919"
 }

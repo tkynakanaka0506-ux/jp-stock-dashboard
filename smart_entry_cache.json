@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-22",
+  "date": "2026-09-23",
   "universe": 3018,
   "stage2": 401,
   "matched": 88,
@@ -80,6 +80,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0,
         "return3m": null,
+        "sectorReturn1m": -5.4,
         "priceLevelPct": 54.8,
         "revenueGrowthPct": 0.1,
         "profitGrowthPct": -15.8,
@@ -94,7 +95,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -3.5
+        "repricingGap": -6
       },
       "growthAcceleration": {
         "level": null,
@@ -119,8 +120,17 @@
         "level": null,
         "label": null,
         "note": null,
+        "checked": false,
+        "reasonCodes": []
+      },
+      "earningsCashFlowQuality": {
+        "level": null,
+        "label": null,
+        "note": null,
         "checked": false
       },
+      "grossMarginImproving": null,
+      "opMarginImproving": null,
       "climax": {
         "level": "good",
         "label": "底打ち観測",
@@ -156,8 +166,8 @@
       },
       "divFloor": {
         "level": "warn",
-        "label": "配当下限接近",
-        "note": "配当利回り3.15%・もう一段下がれば下支えが期待できる水準です"
+        "label": "配当利回り上昇中",
+        "note": "配当利回り3.15%（3%超）。株価下落や増配で今後さらに上がる可能性がある水準というだけで、下値を保証するものではありません"
       },
       "squeeze": {
         "level": null,
@@ -196,6 +206,12 @@
         "note": null
       },
       "marginOverhang": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "buyingDemand": {
         "level": null,
         "label": null,
         "note": null,
@@ -311,6 +327,7 @@
         "alreadyMovedStrict": false,
         "return1m": 2.6,
         "return3m": null,
+        "sectorReturn1m": -4.4,
         "priceLevelPct": 63.8,
         "revenueGrowthPct": 4.4,
         "profitGrowthPct": 2.4,
@@ -325,7 +342,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.3
+        "repricingGap": -1.3
       },
       "growthAcceleration": {
         "level": "good",
@@ -350,8 +367,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "good",
+        "label": "利益成長・営業CFも整合",
+        "checked": true,
+        "fcf": 8522000000,
+        "fcfPrior": 8575000000,
+        "note": "利益成長率+2.4%に対し、営業キャッシュ・フローも前期比+11.6%と伴っており、利益成長がキャッシュの増加にも裏付けられています"
+      },
+      "grossMarginImproving": false,
+      "opMarginImproving": false,
       "climax": {
         "level": null,
         "label": null,
@@ -387,15 +415,15 @@
       },
       "divFloor": {
         "level": "warn",
-        "label": "配当下限接近",
-        "note": "配当利回り3.74%・もう一段下がれば下支えが期待できる水準です"
+        "label": "配当利回り上昇中",
+        "note": "配当利回り3.74%（3%超）。株価下落や増配で今後さらに上がる可能性がある水準というだけで、下値を保証するものではありません"
       },
       "squeeze": {
         "level": "good",
         "label": "踏み上げ狙い（複合確認）",
         "checked": true,
         "confirmCount": 3,
-        "note": "信用買い残4週比-4.9%・空売り(売り残)4週比+13.7%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の1.5倍に急増しており、複数の需給指標が一致しています"
+        "note": "信用買い残4週比-4.9%・空売り(売り残)4週比+13.7%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の1.5倍に急増しており、複数の需給指標が一致しています（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）"
       },
       "institutionalShort": {
         "level": null,
@@ -433,7 +461,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 38,
+      "buyingDemand": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "earningsDaysLeft": 37,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -449,7 +483,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+2.6%(1週間+2.4%) / 信用買い残4週比-4.9%(前週比0%) / 3ヶ月高値圏位置63.8% / 決算まで38日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+2.6%(1週間+2.4%) / 信用買い残4週比-4.9%(前週比0%) / 3ヶ月高値圏位置63.8% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 2,
       "sig1": {
@@ -543,6 +577,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0.9,
         "return3m": null,
+        "sectorReturn1m": -5,
         "priceLevelPct": 96.8,
         "revenueGrowthPct": null,
         "profitGrowthPct": 55.6,
@@ -557,7 +592,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 1.8
+        "repricingGap": 0.7
       },
       "growthAcceleration": {
         "level": null,
@@ -582,8 +617,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "warn",
+        "label": "利益成長・営業CF減少",
+        "checked": true,
+        "fcf": 8850000000,
+        "fcfPrior": 10826000000,
+        "note": "利益成長率+55.6%に対し、営業キャッシュ・フローは前期比-17.3%と減少しています。利益の伸びほどキャッシュは増えていない可能性があります"
+      },
+      "grossMarginImproving": false,
+      "opMarginImproving": true,
       "climax": {
         "level": null,
         "label": null,
@@ -627,7 +673,7 @@
         "label": "踏み上げ狙い（複合確認）",
         "checked": true,
         "confirmCount": 3,
-        "note": "信用買い残4週比-27.6%・空売り(売り残)4週比+10%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の1.82倍に急増しており、複数の需給指標が一致しています"
+        "note": "信用買い残4週比-27.6%・空売り(売り残)4週比+10%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の1.82倍に急増しており、複数の需給指標が一致しています（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）"
       },
       "institutionalShort": {
         "level": null,
@@ -660,6 +706,12 @@
         "note": null
       },
       "marginOverhang": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "buyingDemand": {
         "level": null,
         "label": null,
         "note": null,
@@ -774,6 +826,7 @@
         "alreadyMovedStrict": false,
         "return1m": -3.2,
         "return3m": null,
+        "sectorReturn1m": -7.7,
         "priceLevelPct": 55.9,
         "revenueGrowthPct": 33.7,
         "profitGrowthPct": 58.5,
@@ -788,7 +841,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 21.7
+        "repricingGap": 18.3
       },
       "growthAcceleration": {
         "level": "good",
@@ -813,8 +866,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "good",
+        "label": "利益成長・営業CFも整合",
+        "checked": true,
+        "fcf": 4430000000,
+        "fcfPrior": 1653000000,
+        "note": "利益成長率+58.5%に対し、営業キャッシュ・フローも前期比+26%と伴っており、利益成長がキャッシュの増加にも裏付けられています"
+      },
+      "grossMarginImproving": true,
+      "opMarginImproving": true,
       "climax": {
         "level": "good",
         "label": "底打ち観測",
@@ -895,7 +959,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 38,
+      "buyingDemand": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "earningsDaysLeft": 37,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -911,7 +981,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-3.2%(1週間-2.3%) / 信用買い残4週比-5.8%(前週比-7.6%) / 3ヶ月高値圏位置55.9% / 決算まで38日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-3.2%(1週間-2.3%) / 信用買い残4週比-5.8%(前週比-7.6%) / 3ヶ月高値圏位置55.9% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -1005,6 +1075,7 @@
         "alreadyMovedStrict": false,
         "return1m": -1.1,
         "return3m": null,
+        "sectorReturn1m": -0.8,
         "priceLevelPct": 77.3,
         "revenueGrowthPct": 4.5,
         "profitGrowthPct": 8.5,
@@ -1019,7 +1090,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 1.7
+        "repricingGap": 1.5
       },
       "growthAcceleration": {
         "level": null,
@@ -1044,8 +1115,17 @@
         "level": null,
         "label": null,
         "note": null,
+        "checked": false,
+        "reasonCodes": []
+      },
+      "earningsCashFlowQuality": {
+        "level": null,
+        "label": null,
+        "note": null,
         "checked": false
       },
+      "grossMarginImproving": null,
+      "opMarginImproving": null,
       "climax": {
         "level": null,
         "label": null,
@@ -1081,15 +1161,15 @@
       },
       "divFloor": {
         "level": "warn",
-        "label": "配当下限接近",
-        "note": "配当利回り3.16%・もう一段下がれば下支えが期待できる水準です"
+        "label": "配当利回り上昇中",
+        "note": "配当利回り3.16%（3%超）。株価下落や増配で今後さらに上がる可能性がある水準というだけで、下値を保証するものではありません"
       },
       "squeeze": {
         "level": "good",
         "label": "踏み上げ狙い",
         "checked": true,
         "confirmCount": 2,
-        "note": "信用買い残4週比-2.6%・空売り(売り残)4週比+6.5%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です"
+        "note": "信用買い残4週比-2.6%・空売り(売り残)4週比+6.5%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）"
       },
       "institutionalShort": {
         "level": null,
@@ -1119,7 +1199,7 @@
       "sectorRotation": {
         "level": "good",
         "label": "出遅れ修正待ち",
-        "note": "同業種は直近5営業日で+5.2%と既に反発トレンドに入っていますが、この銘柄はまだ値動きに反映されていません。業種全体に資金が向かえば遅れて買われる可能性があります"
+        "note": "同業種は直近5営業日で+7.6%と既に反発トレンドに入っていますが、この銘柄はまだ値動きに反映されていません。業種全体に資金が向かえば遅れて買われる可能性があります"
       },
       "marginOverhang": {
         "level": null,
@@ -1127,7 +1207,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 10,
+      "buyingDemand": {
+        "level": "caution",
+        "label": "信用買い減少・出来高細り（低人気の可能性）",
+        "checked": true,
+        "note": "信用買い残は減少傾向（-2.6%）ですが、株価は上昇しておらず出来高も少ない状態です。需給が改善しているとは限らず、単に市場参加者の関心が低い（LOW BUYING INTEREST）可能性があります"
+      },
+      "earningsDaysLeft": 9,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -1143,7 +1229,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-1.1%(1週間+0.8%) / 信用買い残4週比-2.6%(前週比-1.8%) / 3ヶ月高値圏位置77.3% / 決算まで10日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-1.1%(1週間+0.8%) / 信用買い残4週比-2.6%(前週比-1.8%) / 3ヶ月高値圏位置77.3% / 決算まで9日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -1237,6 +1323,7 @@
         "alreadyMovedStrict": false,
         "return1m": 1.8,
         "return3m": null,
+        "sectorReturn1m": 6.3,
         "priceLevelPct": 81.8,
         "revenueGrowthPct": 4.9,
         "profitGrowthPct": 60.7,
@@ -1251,7 +1338,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 5.6
+        "repricingGap": 6.8
       },
       "growthAcceleration": {
         "level": null,
@@ -1276,8 +1363,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "good",
+        "label": "利益成長・営業CFも整合",
+        "checked": true,
+        "fcf": 54003000000,
+        "fcfPrior": 39507000000,
+        "note": "利益成長率+60.7%に対し、営業キャッシュ・フローも前期比+26.9%と伴っており、利益成長がキャッシュの増加にも裏付けられています"
+      },
+      "grossMarginImproving": true,
+      "opMarginImproving": true,
       "climax": {
         "level": null,
         "label": null,
@@ -1321,7 +1419,7 @@
         "label": "踏み上げ狙い（複合確認）",
         "checked": true,
         "confirmCount": 3,
-        "note": "信用買い残4週比-19%・空売り(売り残)4週比+38.5%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.17倍に急増しており、複数の需給指標が一致しています"
+        "note": "信用買い残4週比-19%・空売り(売り残)4週比+38.5%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.17倍に急増しており、複数の需給指標が一致しています（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）"
       },
       "institutionalShort": {
         "level": null,
@@ -1354,6 +1452,12 @@
         "note": null
       },
       "marginOverhang": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "buyingDemand": {
         "level": null,
         "label": null,
         "note": null,
@@ -1469,6 +1573,7 @@
         "alreadyMovedStrict": false,
         "return1m": 1.5,
         "return3m": null,
+        "sectorReturn1m": -8.3,
         "priceLevelPct": 84.2,
         "revenueGrowthPct": 3.4,
         "profitGrowthPct": 8.8,
@@ -1483,7 +1588,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.7
+        "repricingGap": -0.6
       },
       "growthAcceleration": {
         "level": "good",
@@ -1508,8 +1613,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "good",
+        "label": "利益成長・営業CFも整合",
+        "checked": true,
+        "fcf": -14842000000,
+        "fcfPrior": -5342000000,
+        "note": "利益成長率+8.8%に対し、営業キャッシュ・フローも前期比+90.6%と伴っており、利益成長がキャッシュの増加にも裏付けられています（参考: 設備投資を差し引いたFCFはマイナスです。大型投資中の可能性もあり、これ単独で悪材料とは判定していません）"
+      },
+      "grossMarginImproving": true,
+      "opMarginImproving": true,
       "climax": {
         "level": null,
         "label": null,
@@ -1545,15 +1661,15 @@
       },
       "divFloor": {
         "level": "warn",
-        "label": "配当下限接近",
-        "note": "配当利回り3.61%・もう一段下がれば下支えが期待できる水準です"
+        "label": "配当利回り上昇中",
+        "note": "配当利回り3.61%（3%超）。株価下落や増配で今後さらに上がる可能性がある水準というだけで、下値を保証するものではありません"
       },
       "squeeze": {
         "level": "good",
         "label": "踏み上げ狙い（複合確認）",
         "checked": true,
         "confirmCount": 3,
-        "note": "信用買い残4週比-11.9%・空売り(売り残)4週比+1400%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.18倍に急増しており、複数の需給指標が一致しています"
+        "note": "信用買い残4週比-11.9%・空売り(売り残)4週比+1400%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.18倍に急増しており、複数の需給指標が一致しています（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）"
       },
       "institutionalShort": {
         "level": null,
@@ -1591,7 +1707,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 38,
+      "buyingDemand": {
+        "level": "good",
+        "label": "信用買い減少・株価上昇（需給改善の可能性）",
+        "checked": true,
+        "note": "信用買い残は減少傾向（-11.9%）ですが、株価は上昇し出来高も20日平均の2.18倍に増えています。単なる信用整理ではなく、新規の買い需要が入ってきている可能性があります"
+      },
+      "earningsDaysLeft": 37,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -1607,7 +1729,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+1.5%(1週間+4.4%) / 信用買い残4週比-11.9%(前週比-2.1%) / 3ヶ月高値圏位置84.2% / 決算まで38日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+1.5%(1週間+4.4%) / 信用買い残4週比-11.9%(前週比-2.1%) / 3ヶ月高値圏位置84.2% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -1701,6 +1823,7 @@
         "alreadyMovedStrict": false,
         "return1m": 2.1,
         "return3m": null,
+        "sectorReturn1m": -5,
         "priceLevelPct": 95.4,
         "revenueGrowthPct": 8,
         "profitGrowthPct": -8.9,
@@ -1715,7 +1838,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -0.1
+        "repricingGap": -0.3
       },
       "growthAcceleration": {
         "level": "good",
@@ -1740,8 +1863,17 @@
         "level": null,
         "label": null,
         "note": null,
+        "checked": false,
+        "reasonCodes": []
+      },
+      "earningsCashFlowQuality": {
+        "level": null,
+        "label": null,
+        "note": null,
         "checked": false
       },
+      "grossMarginImproving": null,
+      "opMarginImproving": null,
       "climax": {
         "level": null,
         "label": null,
@@ -1817,6 +1949,12 @@
         "note": null
       },
       "marginOverhang": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "buyingDemand": {
         "level": null,
         "label": null,
         "note": null,
@@ -1932,6 +2070,7 @@
         "alreadyMovedStrict": false,
         "return1m": 3.2,
         "return3m": null,
+        "sectorReturn1m": -6.5,
         "priceLevelPct": 98.3,
         "revenueGrowthPct": 2.5,
         "profitGrowthPct": 8.6,
@@ -1946,7 +2085,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0
+        "repricingGap": -0.1
       },
       "growthAcceleration": {
         "level": null,
@@ -1971,8 +2110,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "good",
+        "label": "利益成長・営業CFも整合",
+        "checked": true,
+        "fcf": 4569000000,
+        "fcfPrior": 14691000000,
+        "note": "利益成長率+8.6%に対し、営業キャッシュ・フローも前期比+1%と伴っており、利益成長がキャッシュの増加にも裏付けられています"
+      },
+      "grossMarginImproving": true,
+      "opMarginImproving": true,
       "climax": {
         "level": null,
         "label": null,
@@ -2016,7 +2166,7 @@
         "label": "踏み上げ狙い（複合確認）",
         "checked": true,
         "confirmCount": 3,
-        "note": "信用買い残4週比-49.7%・空売り(売り残)4週比+57.1%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の1.7倍に急増しており、複数の需給指標が一致しています"
+        "note": "信用買い残4週比-49.7%・空売り(売り残)4週比+57.1%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の1.7倍に急増しており、複数の需給指標が一致しています（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）"
       },
       "institutionalShort": {
         "level": null,
@@ -2049,6 +2199,12 @@
         "note": null
       },
       "marginOverhang": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "buyingDemand": {
         "level": null,
         "label": null,
         "note": null,
@@ -2164,6 +2320,7 @@
         "alreadyMovedStrict": false,
         "return1m": 5.5,
         "return3m": null,
+        "sectorReturn1m": -0.8,
         "priceLevelPct": 95.4,
         "revenueGrowthPct": 1,
         "profitGrowthPct": -31.6,
@@ -2203,8 +2360,17 @@
         "level": null,
         "label": null,
         "note": null,
+        "checked": false,
+        "reasonCodes": []
+      },
+      "earningsCashFlowQuality": {
+        "level": null,
+        "label": null,
+        "note": null,
         "checked": false
       },
+      "grossMarginImproving": false,
+      "opMarginImproving": false,
       "climax": {
         "level": null,
         "label": null,
@@ -2240,8 +2406,8 @@
       },
       "divFloor": {
         "level": "warn",
-        "label": "配当下限接近",
-        "note": "配当利回り3.63%・もう一段下がれば下支えが期待できる水準です"
+        "label": "配当利回り上昇中",
+        "note": "配当利回り3.63%（3%超）。株価下落や増配で今後さらに上がる可能性がある水準というだけで、下値を保証するものではありません"
       },
       "squeeze": {
         "level": null,
@@ -2285,7 +2451,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 38,
+      "buyingDemand": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "earningsDaysLeft": 37,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -2301,7 +2473,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+5.5%(1週間+5.1%) / 信用買い残4週比+3.6%(前週比+2.6%) / 3ヶ月高値圏位置95.4% / 決算まで38日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+5.5%(1週間+5.1%) / 信用買い残4週比+3.6%(前週比+2.6%) / 3ヶ月高値圏位置95.4% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -2394,6 +2566,7 @@
         "alreadyMovedStrict": false,
         "return1m": -4.3,
         "return3m": null,
+        "sectorReturn1m": -8.3,
         "priceLevelPct": 62.5,
         "revenueGrowthPct": 52.4,
         "profitGrowthPct": 115.5,
@@ -2408,7 +2581,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 33.1
+        "repricingGap": 30
       },
       "growthAcceleration": {
         "level": "good",
@@ -2433,8 +2606,21 @@
         "level": "warn",
         "label": "異常成長・要確認",
         "checked": true,
+        "reasonCodes": [
+          "ONE_TIME_ITEM_CURRENT"
+        ],
         "note": "売上高成長率+52.4%・利益成長率+115.5%という高い伸びですが、特別損益・減損等の一時的な項目（合計1,655,000,000円）が計上されており、本業の成長とは別の要因が業績に影響している可能性があります。「異常値だから無条件で高評価」にはせず、決算内容の確認をおすすめします"
       },
+      "earningsCashFlowQuality": {
+        "level": "warn",
+        "label": "利益成長・営業CF減少",
+        "checked": true,
+        "fcf": 466000000,
+        "fcfPrior": 2264000000,
+        "note": "利益成長率+115.5%に対し、営業キャッシュ・フローは前期比-63.5%と減少しています。利益の伸びほどキャッシュは増えていない可能性があります"
+      },
+      "grossMarginImproving": false,
+      "opMarginImproving": false,
       "climax": {
         "level": null,
         "label": null,
@@ -2470,8 +2656,8 @@
       },
       "divFloor": {
         "level": "good",
-        "label": "配当下限",
-        "note": "配当利回り4.07%・4%超は機関投資家の買いが入りやすい水準です"
+        "label": "高配当利回り",
+        "note": "配当利回り4.07%（4%超は相対的に高水準です）。減配リスクや株価変動により変わりうる目安で、下値を保証するものではありません"
       },
       "squeeze": {
         "level": null,
@@ -2515,7 +2701,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 17,
+      "buyingDemand": {
+        "level": "caution",
+        "label": "信用買い減少・出来高細り（低人気の可能性）",
+        "checked": true,
+        "note": "信用買い残は減少傾向（-29.7%）ですが、株価は上昇しておらず出来高も少ない状態です。需給が改善しているとは限らず、単に市場参加者の関心が低い（LOW BUYING INTEREST）可能性があります"
+      },
+      "earningsDaysLeft": 16,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -2531,7 +2723,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-4.3%(1週間+1.4%) / 信用買い残4週比-29.7%(前週比+1%) / 3ヶ月高値圏位置62.5% / 決算まで17日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-4.3%(1週間+1.4%) / 信用買い残4週比-29.7%(前週比+1%) / 3ヶ月高値圏位置62.5% / 決算まで16日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -2625,6 +2817,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.1,
         "return3m": null,
+        "sectorReturn1m": -5.4,
         "priceLevelPct": 69,
         "revenueGrowthPct": 0.5,
         "profitGrowthPct": 1.8,
@@ -2639,7 +2832,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.4
+        "repricingGap": -1.3
       },
       "growthAcceleration": {
         "level": null,
@@ -2664,8 +2857,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "good",
+        "label": "利益成長・営業CFも整合",
+        "checked": true,
+        "fcf": null,
+        "fcfPrior": null,
+        "note": "利益成長率+1.8%に対し、営業キャッシュ・フローも前期比+31.6%と伴っており、利益成長がキャッシュの増加にも裏付けられています"
+      },
+      "grossMarginImproving": null,
+      "opMarginImproving": null,
       "climax": {
         "level": null,
         "label": null,
@@ -2709,7 +2913,7 @@
         "label": "踏み上げ狙い（複合確認）",
         "checked": true,
         "confirmCount": 3,
-        "note": "信用買い残4週比-3.7%・空売り(売り残)4週比+932%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の3.29倍に急増しており、複数の需給指標が一致しています"
+        "note": "信用買い残4週比-3.7%・空売り(売り残)4週比+932%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の3.29倍に急増しており、複数の需給指標が一致しています（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）"
       },
       "institutionalShort": {
         "level": null,
@@ -2742,6 +2946,12 @@
         "note": null
       },
       "marginOverhang": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "buyingDemand": {
         "level": null,
         "label": null,
         "note": null,
@@ -2857,6 +3067,7 @@
         "alreadyMovedStrict": false,
         "return1m": 1,
         "return3m": null,
+        "sectorReturn1m": -4.2,
         "priceLevelPct": 89.6,
         "revenueGrowthPct": -9.7,
         "profitGrowthPct": 0.7,
@@ -2871,7 +3082,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -0.6
+        "repricingGap": -1
       },
       "growthAcceleration": {
         "level": null,
@@ -2896,8 +3107,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "good",
+        "label": "利益成長・営業CFも整合",
+        "checked": true,
+        "fcf": 39290000000,
+        "fcfPrior": -5388000000,
+        "note": "利益成長率+0.7%に対し、営業キャッシュ・フローも前期比+2080.3%と伴っており、利益成長がキャッシュの増加にも裏付けられています"
+      },
+      "grossMarginImproving": true,
+      "opMarginImproving": false,
       "climax": {
         "level": null,
         "label": null,
@@ -2933,8 +3155,8 @@
       },
       "divFloor": {
         "level": "good",
-        "label": "配当下限",
-        "note": "配当利回り4.31%・4%超は機関投資家の買いが入りやすい水準です"
+        "label": "高配当利回り",
+        "note": "配当利回り4.31%（4%超は相対的に高水準です）。減配リスクや株価変動により変わりうる目安で、下値を保証するものではありません"
       },
       "squeeze": {
         "level": null,
@@ -2978,7 +3200,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 38,
+      "buyingDemand": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "earningsDaysLeft": 37,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -2994,7 +3222,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+1%(1週間+2%) / 信用買い残4週比-2.8%(前週比-0.2%) / 3ヶ月高値圏位置89.6% / 決算まで38日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+1%(1週間+2%) / 信用買い残4週比-2.8%(前週比-0.2%) / 3ヶ月高値圏位置89.6% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -3088,6 +3316,7 @@
         "alreadyMovedStrict": false,
         "return1m": 6.2,
         "return3m": null,
+        "sectorReturn1m": -5,
         "priceLevelPct": 88,
         "revenueGrowthPct": 7.5,
         "profitGrowthPct": 39,
@@ -3102,7 +3331,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 2
+        "repricingGap": 1.5
       },
       "growthAcceleration": {
         "level": null,
@@ -3127,8 +3356,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "warn",
+        "label": "利益成長・営業CF減少",
+        "checked": true,
+        "fcf": 1323000000,
+        "fcfPrior": 1644000000,
+        "note": "利益成長率+39%に対し、営業キャッシュ・フローは前期比-44.4%と減少しています。利益の伸びほどキャッシュは増えていない可能性があります"
+      },
+      "grossMarginImproving": true,
+      "opMarginImproving": true,
       "climax": {
         "level": null,
         "label": null,
@@ -3164,15 +3404,15 @@
       },
       "divFloor": {
         "level": "warn",
-        "label": "配当下限接近",
-        "note": "配当利回り3.45%・もう一段下がれば下支えが期待できる水準です"
+        "label": "配当利回り上昇中",
+        "note": "配当利回り3.45%（3%超）。株価下落や増配で今後さらに上がる可能性がある水準というだけで、下値を保証するものではありません"
       },
       "squeeze": {
         "level": "good",
         "label": "踏み上げ狙い（複合確認）",
         "checked": true,
         "confirmCount": 3,
-        "note": "信用買い残4週比-35.9%・空売り(売り残)4週比+2996.1%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.08倍に急増しており、複数の需給指標が一致しています"
+        "note": "信用買い残4週比-35.9%・空売り(売り残)4週比+2996.1%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.08倍に急増しており、複数の需給指標が一致しています（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）"
       },
       "institutionalShort": {
         "level": null,
@@ -3210,7 +3450,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 38,
+      "buyingDemand": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "earningsDaysLeft": 37,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -3226,7 +3472,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+6.2%(1週間+8.3%) / 信用買い残4週比-35.9%(前週比+11.5%) / 3ヶ月高値圏位置88% / 決算まで38日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+6.2%(1週間+8.3%) / 信用買い残4週比-35.9%(前週比+11.5%) / 3ヶ月高値圏位置88% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -3320,6 +3566,7 @@
         "alreadyMovedStrict": false,
         "return1m": -3.7,
         "return3m": null,
+        "sectorReturn1m": -0.8,
         "priceLevelPct": 9.9,
         "revenueGrowthPct": 2.2,
         "profitGrowthPct": 17.4,
@@ -3335,7 +3582,7 @@
           "profitYoyPct": 17.4,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:39.6%→25.04-06:42%→26.04-06:48.8%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+17.4%）"
         },
-        "repricingGap": 12.2
+        "repricingGap": 11.4
       },
       "growthAcceleration": {
         "level": null,
@@ -3360,8 +3607,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "good",
+        "label": "利益成長・営業CFも整合",
+        "checked": true,
+        "fcf": 3562681000,
+        "fcfPrior": 2138965000,
+        "note": "利益成長率+17.4%に対し、営業キャッシュ・フローも前期比+21.2%と伴っており、利益成長がキャッシュの増加にも裏付けられています"
+      },
+      "grossMarginImproving": false,
+      "opMarginImproving": true,
       "climax": {
         "level": null,
         "label": null,
@@ -3434,7 +3692,7 @@
       "sectorRotation": {
         "level": "good",
         "label": "出遅れ修正待ち",
-        "note": "同業種は直近5営業日で+5.2%と既に反発トレンドに入っていますが、この銘柄はまだ値動きに反映されていません。業種全体に資金が向かえば遅れて買われる可能性があります"
+        "note": "同業種は直近5営業日で+7.6%と既に反発トレンドに入っていますが、この銘柄はまだ値動きに反映されていません。業種全体に資金が向かえば遅れて買われる可能性があります"
       },
       "marginOverhang": {
         "level": "bad",
@@ -3442,7 +3700,13 @@
         "checked": true,
         "note": "信用倍率35.03倍・買い方の含み益が積み上がっており、上昇時に利益確定売りに押されて上値が重くなりやすい状態です"
       },
-      "earningsDaysLeft": 38,
+      "buyingDemand": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "earningsDaysLeft": 37,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -3458,7 +3722,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月-3.7%(1週間+1.7%) / 信用買い残4週比+13.4%(前週比+17.2%) / 3ヶ月高値圏位置9.9% / 決算まで38日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
+        "note": "1ヶ月-3.7%(1週間+1.7%) / 信用買い残4週比+13.4%(前週比+17.2%) / 3ヶ月高値圏位置9.9% / 決算まで37日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
       },
       "matched": 1,
       "sig1": {
@@ -3551,6 +3815,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.7,
         "return3m": null,
+        "sectorReturn1m": -7.8,
         "priceLevelPct": 92.9,
         "revenueGrowthPct": 1.2,
         "profitGrowthPct": 32.6,
@@ -3565,7 +3830,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 1.2
+        "repricingGap": 0.7
       },
       "growthAcceleration": {
         "level": null,
@@ -3590,8 +3855,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "warn",
+        "label": "利益成長・営業CF減少",
+        "checked": true,
+        "fcf": 3553000000,
+        "fcfPrior": 4824000000,
+        "note": "利益成長率+32.6%に対し、営業キャッシュ・フローは前期比-6%と減少しています。利益の伸びほどキャッシュは増えていない可能性があります"
+      },
+      "grossMarginImproving": false,
+      "opMarginImproving": false,
       "climax": {
         "level": "good",
         "label": "底打ち観測",
@@ -3627,15 +3903,15 @@
       },
       "divFloor": {
         "level": "warn",
-        "label": "配当下限接近",
-        "note": "配当利回り3.67%・もう一段下がれば下支えが期待できる水準です"
+        "label": "配当利回り上昇中",
+        "note": "配当利回り3.67%（3%超）。株価下落や増配で今後さらに上がる可能性がある水準というだけで、下値を保証するものではありません"
       },
       "squeeze": {
         "level": "good",
         "label": "踏み上げ狙い（複合確認）",
         "checked": true,
         "confirmCount": 4,
-        "note": "信用買い残4週比-13.2%・空売り(売り残)4週比+12.3%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに機関投資家の空売りも縮小中・出来高が20日平均の2.04倍に急増しており、複数の需給指標が一致しています"
+        "note": "信用買い残4週比-13.2%・空売り(売り残)4週比+12.3%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに機関投資家の空売りも縮小中・出来高が20日平均の2.04倍に急増しており、複数の需給指標が一致しています（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）"
       },
       "institutionalShort": {
         "level": "good",
@@ -3673,7 +3949,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 38,
+      "buyingDemand": {
+        "level": "good",
+        "label": "信用買い減少・株価上昇（需給改善の可能性）",
+        "checked": true,
+        "note": "信用買い残は減少傾向（-13.2%）ですが、株価は上昇し出来高も20日平均の2.04倍に増えています。単なる信用整理ではなく、新規の買い需要が入ってきている可能性があります"
+      },
+      "earningsDaysLeft": 37,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -3689,7 +3971,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-0.7%(1週間+0.4%) / 信用買い残4週比-13.2%(前週比+2.9%) / 3ヶ月高値圏位置92.9% / 決算まで38日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-0.7%(1週間+0.4%) / 信用買い残4週比-13.2%(前週比+2.9%) / 3ヶ月高値圏位置92.9% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -3782,6 +4064,7 @@
         "alreadyMovedStrict": false,
         "return1m": 6.8,
         "return3m": null,
+        "sectorReturn1m": -0.8,
         "priceLevelPct": 91.5,
         "revenueGrowthPct": 2.8,
         "profitGrowthPct": -68.4,
@@ -3821,8 +4104,17 @@
         "level": null,
         "label": null,
         "note": null,
+        "checked": false,
+        "reasonCodes": []
+      },
+      "earningsCashFlowQuality": {
+        "level": null,
+        "label": null,
+        "note": null,
         "checked": false
       },
+      "grossMarginImproving": false,
+      "opMarginImproving": false,
       "climax": {
         "level": null,
         "label": null,
@@ -3895,7 +4187,7 @@
       "sectorRotation": {
         "level": "good",
         "label": "出遅れ修正待ち",
-        "note": "同業種は直近5営業日で+5.2%と既に反発トレンドに入っていますが、この銘柄はまだ値動きに反映されていません。業種全体に資金が向かえば遅れて買われる可能性があります"
+        "note": "同業種は直近5営業日で+7.6%と既に反発トレンドに入っていますが、この銘柄はまだ値動きに反映されていません。業種全体に資金が向かえば遅れて買われる可能性があります"
       },
       "marginOverhang": {
         "level": null,
@@ -3903,7 +4195,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 38,
+      "buyingDemand": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "earningsDaysLeft": 37,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -3919,7 +4217,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+6.8%(1週間+1.4%) / 信用買い残4週比-33.2%(前週比-11.7%) / 3ヶ月高値圏位置91.5% / 決算まで38日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+6.8%(1週間+1.4%) / 信用買い残4週比-33.2%(前週比-11.7%) / 3ヶ月高値圏位置91.5% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -4013,6 +4311,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.9,
         "return3m": null,
+        "sectorReturn1m": -5,
         "priceLevelPct": 65.9,
         "revenueGrowthPct": -9.7,
         "profitGrowthPct": -56.5,
@@ -4027,7 +4326,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -11
+        "repricingGap": -12.7
       },
       "growthAcceleration": {
         "level": null,
@@ -4052,8 +4351,17 @@
         "level": null,
         "label": null,
         "note": null,
+        "checked": false,
+        "reasonCodes": []
+      },
+      "earningsCashFlowQuality": {
+        "level": null,
+        "label": null,
+        "note": null,
         "checked": false
       },
+      "grossMarginImproving": null,
+      "opMarginImproving": null,
       "climax": {
         "level": null,
         "label": null,
@@ -4129,6 +4437,12 @@
         "note": null
       },
       "marginOverhang": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "buyingDemand": {
         "level": null,
         "label": null,
         "note": null,
@@ -4243,6 +4557,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0.7,
         "return3m": null,
+        "sectorReturn1m": -0.7,
         "priceLevelPct": 71.9,
         "revenueGrowthPct": null,
         "profitGrowthPct": -16.2,
@@ -4257,7 +4572,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -4.7
+        "repricingGap": -2.7
       },
       "growthAcceleration": {
         "level": null,
@@ -4282,8 +4597,17 @@
         "level": null,
         "label": null,
         "note": null,
+        "checked": false,
+        "reasonCodes": []
+      },
+      "earningsCashFlowQuality": {
+        "level": null,
+        "label": null,
+        "note": null,
         "checked": false
       },
+      "grossMarginImproving": true,
+      "opMarginImproving": true,
       "climax": {
         "level": null,
         "label": null,
@@ -4319,8 +4643,8 @@
       },
       "divFloor": {
         "level": "warn",
-        "label": "配当下限接近",
-        "note": "配当利回り3.47%・もう一段下がれば下支えが期待できる水準です"
+        "label": "配当利回り上昇中",
+        "note": "配当利回り3.47%（3%超）。株価下落や増配で今後さらに上がる可能性がある水準というだけで、下値を保証するものではありません"
       },
       "squeeze": {
         "level": null,
@@ -4364,7 +4688,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 38,
+      "buyingDemand": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "earningsDaysLeft": 37,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -4380,7 +4710,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+0.7%(1週間+3%) / 信用買い残4週比+0.2%(前週比-0.9%) / 3ヶ月高値圏位置71.9% / 決算まで38日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+0.7%(1週間+3%) / 信用買い残4週比+0.2%(前週比-0.9%) / 3ヶ月高値圏位置71.9% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -4474,6 +4804,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0,
         "return3m": null,
+        "sectorReturn1m": 1.5,
         "priceLevelPct": 92.8,
         "revenueGrowthPct": null,
         "profitGrowthPct": 3.8,
@@ -4488,7 +4819,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.3
+        "repricingGap": 0.2
       },
       "growthAcceleration": {
         "level": null,
@@ -4513,8 +4844,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "warn",
+        "label": "利益成長・営業CF減少",
+        "checked": true,
+        "fcf": 11793000000,
+        "fcfPrior": 15095000000,
+        "note": "利益成長率+3.8%に対し、営業キャッシュ・フローは前期比-20%と減少しています。利益の伸びほどキャッシュは増えていない可能性があります"
+      },
+      "grossMarginImproving": true,
+      "opMarginImproving": false,
       "climax": {
         "level": null,
         "label": null,
@@ -4550,15 +4892,15 @@
       },
       "divFloor": {
         "level": "good",
-        "label": "配当下限",
-        "note": "配当利回り5.07%・4%超は機関投資家の買いが入りやすい水準です"
+        "label": "高配当利回り",
+        "note": "配当利回り5.07%（4%超は相対的に高水準です）。減配リスクや株価変動により変わりうる目安で、下値を保証するものではありません"
       },
       "squeeze": {
         "level": "good",
         "label": "踏み上げ狙い（複合確認）",
         "checked": true,
         "confirmCount": 3,
-        "note": "信用買い残4週比-24.1%・空売り(売り残)4週比+61.6%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.31倍に急増しており、複数の需給指標が一致しています"
+        "note": "信用買い残4週比-24.1%・空売り(売り残)4週比+61.6%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.31倍に急増しており、複数の需給指標が一致しています（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）"
       },
       "institutionalShort": {
         "level": null,
@@ -4596,7 +4938,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 16,
+      "buyingDemand": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "earningsDaysLeft": 15,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -4612,7 +4960,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月0%(1週間+0.9%) / 信用買い残4週比-24.1%(前週比-1%) / 3ヶ月高値圏位置92.8% / 決算まで16日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月0%(1週間+0.9%) / 信用買い残4週比-24.1%(前週比-1%) / 3ヶ月高値圏位置92.8% / 決算まで15日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -4706,6 +5054,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.1,
         "return3m": null,
+        "sectorReturn1m": 1.5,
         "priceLevelPct": 89.7,
         "revenueGrowthPct": null,
         "profitGrowthPct": 1.8,
@@ -4720,7 +5069,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.2
+        "repricingGap": 0.3
       },
       "growthAcceleration": {
         "level": null,
@@ -4745,8 +5094,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "warn",
+        "label": "利益成長・営業CF減少",
+        "checked": true,
+        "fcf": 6272000000,
+        "fcfPrior": 7563000000,
+        "note": "利益成長率+1.8%に対し、営業キャッシュ・フローは前期比-10.3%と減少しています。利益の伸びほどキャッシュは増えていない可能性があります"
+      },
+      "grossMarginImproving": false,
+      "opMarginImproving": false,
       "climax": {
         "level": null,
         "label": null,
@@ -4782,15 +5142,15 @@
       },
       "divFloor": {
         "level": "good",
-        "label": "配当下限",
-        "note": "配当利回り5.14%・4%超は機関投資家の買いが入りやすい水準です"
+        "label": "高配当利回り",
+        "note": "配当利回り5.14%（4%超は相対的に高水準です）。減配リスクや株価変動により変わりうる目安で、下値を保証するものではありません"
       },
       "squeeze": {
         "level": "good",
         "label": "踏み上げ狙い",
         "checked": true,
         "confirmCount": 2,
-        "note": "信用買い残4週比-3.3%・空売り(売り残)4週比+17.3%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です"
+        "note": "信用買い残4週比-3.3%・空売り(売り残)4週比+17.3%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）"
       },
       "institutionalShort": {
         "level": null,
@@ -4828,7 +5188,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 38,
+      "buyingDemand": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "earningsDaysLeft": 37,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -4844,7 +5210,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-0.1%(1週間+3.3%) / 信用買い残4週比-3.3%(前週比+3.4%) / 3ヶ月高値圏位置89.7% / 決算まで38日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-0.1%(1週間+3.3%) / 信用買い残4週比-3.3%(前週比+3.4%) / 3ヶ月高値圏位置89.7% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -4938,6 +5304,7 @@
         "alreadyMovedStrict": false,
         "return1m": 2.5,
         "return3m": null,
+        "sectorReturn1m": 6.3,
         "priceLevelPct": 97.3,
         "revenueGrowthPct": null,
         "profitGrowthPct": -1.1,
@@ -4952,7 +5319,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -0.1
+        "repricingGap": 0.1
       },
       "growthAcceleration": {
         "level": null,
@@ -4977,8 +5344,17 @@
         "level": null,
         "label": null,
         "note": null,
+        "checked": false,
+        "reasonCodes": []
+      },
+      "earningsCashFlowQuality": {
+        "level": null,
+        "label": null,
+        "note": null,
         "checked": false
       },
+      "grossMarginImproving": false,
+      "opMarginImproving": true,
       "climax": {
         "level": null,
         "label": null,
@@ -5022,7 +5398,7 @@
         "label": "踏み上げ狙い（複合確認）",
         "checked": true,
         "confirmCount": 3,
-        "note": "信用買い残4週比-38.2%・空売り(売り残)4週比+687.1%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.52倍に急増しており、複数の需給指標が一致しています"
+        "note": "信用買い残4週比-38.2%・空売り(売り残)4週比+687.1%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です。さらに出来高が20日平均の2.52倍に急増しており、複数の需給指標が一致しています（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）"
       },
       "institutionalShort": {
         "level": null,
@@ -5059,6 +5435,12 @@
         "label": null,
         "note": null,
         "checked": true
+      },
+      "buyingDemand": {
+        "level": "good",
+        "label": "信用買い減少・株価上昇（需給改善の可能性）",
+        "checked": true,
+        "note": "信用買い残は減少傾向（-38.2%）ですが、株価は上昇し出来高も20日平均の2.52倍に増えています。単なる信用整理ではなく、新規の買い需要が入ってきている可能性があります"
       },
       "earningsDaysLeft": null,
       "earningsWarning": {
@@ -5169,6 +5551,7 @@
         "alreadyMovedStrict": false,
         "return1m": -5,
         "return3m": null,
+        "sectorReturn1m": -7.7,
         "priceLevelPct": 39.4,
         "revenueGrowthPct": 6.2,
         "profitGrowthPct": 14,
@@ -5183,7 +5566,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 9.2
+        "repricingGap": 4.5
       },
       "growthAcceleration": {
         "level": "good",
@@ -5208,8 +5591,19 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       },
+      "earningsCashFlowQuality": {
+        "level": "good",
+        "label": "利益成長・営業CFも整合",
+        "checked": true,
+        "fcf": -1267000000,
+        "fcfPrior": -4212000000,
+        "note": "利益成長率+14%に対し、営業キャッシュ・フローも前期比+19.8%と伴っており、利益成長がキャッシュの増加にも裏付けられています（参考: 設備投資を差し引いたFCFはマイナスです。大型投資中の可能性もあり、これ単独で悪材料とは判定していません）"
+      },
+      "grossMarginImproving": true,
+      "opMarginImproving": true,
       "climax": {
         "level": null,
         "label": null,
@@ -5245,8 +5639,8 @@
       },
       "divFloor": {
         "level": "good",
-        "label": "配当下限",
-        "note": "配当利回り4.01%・4%超は機関投資家の買いが入りやすい水準です"
+        "label": "高配当利回り",
+        "note": "配当利回り4.01%（4%超は相対的に高水準です）。減配リスクや株価変動により変わりうる目安で、下値を保証するものではありません"
       },
       "squeeze": {
         "level": null,
@@ -5290,7 +5684,13 @@
         "checked": true,
         "note": "信用倍率11.16倍・買い方の含み益が積み上がっており、上昇時に利益確定売りに押されて上値が重くなりやすい状態です"
       },
-      "earningsDaysLeft": 22,
+      "buyingDemand": {
+        "level": "caution",
+        "label": "信用買い減少・出来高細り（低人気の可能性）",
+        "checked": true,
+        "note": "信用買い残は減少傾向（-19.7%）ですが、株価は上昇しておらず出来高も少ない状態です。需給が改善しているとは限らず、単に市場参加者の関心が低い（LOW BUYING INTEREST）可能性があります"
+      },
+      "earningsDaysLeft": 21,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -5306,7 +5706,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-5%(1週間+1%) / 信用買い残4週比-19.7%(前週比+5.9%) / 3ヶ月高値圏位置39.4% / 決算まで22日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-5%(1週間+1%) / 信用買い残4週比-19.7%(前週比+5.9%) / 3ヶ月高値圏位置39.4% / 決算まで21日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -5374,8 +5774,8 @@
       "sectorDividendYield": 2.68,
       "marketCap": 242200,
       "roe": 10.37,
-      "balanceSheetSource": "edinet",
-      "balanceSheetAsOf": "2026-03-31",
+      "balanceSheetSource": null,
+      "balanceSheetAsOf": null,
       "revenueGrowthPct": -5.1,
       "profitGrowthPct": 25.6,
       "progressStreak": {
@@ -5399,6 +5799,7 @@
         "alreadyMovedStrict": false,
         "return1m": 3.4,
         "return3m": null,
+        "sectorReturn1m": -3.6,
         "priceLevelPct": 81.7,
         "revenueGrowthPct": -5.1,
         "profitGrowthPct": 25.6,
@@ -5413,14 +5814,14 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 1.3
+        "repricingGap": 0.6
       },
       "growthAcceleration": {
         "level": null,
         "label": null,
         "note": null,
         "checked": true,
-        "score": 15
+        "score": 0
       },
       "themeMatch": {
         "level": null,
@@ -5438,8 +5839,17 @@
         "level": null,
         "label": null,
         "note": null,
+        "checked": false,
+        "reasonCodes": []
+      },
+      "earningsCashFlowQuality": {
+        "level": null,
+        "label": null,
+        "note": null,
         "checked": false
       },
+      "grossMarginImproving": null,
+      "opMarginImproving": null,
       "climax": {
         "level": null,
         "label": null,
@@ -5449,7 +5859,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": true
+        "checked": false
       },
       "lowPbr": {
         "level": "good",
@@ -5520,7 +5930,13 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 38,
+      "buyingDemand": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "earningsDaysLeft": 37,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -5530,13 +5946,13 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": true
+        "checked": false
       },
       "retailExpectation": {
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+3.4%(1週間+0.9%) / 信用買い残4週比-21.3%(前週比-11.1%) / 3ヶ月高値圏位置81.7% / 決算まで38日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+3.4%(1週間+0.9%) / 信用買い残4週比-21.3%(前週比-11.1%) / 3ヶ月高値圏位置81.7% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -5626,11 +6042,16 @@
         "checked": true
       },
       "growthAnomalyCaution": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": false
-      }
+        "level": "warn",
+        "label": "異常成長・要確認",
+        "checked": true,
+        "reasonCodes": [
+          "ONE_TIME_ITEM_CURRENT"
+        ],
+        "note": "利益成長率+139.5%という高い伸びですが、特別損益・減損等の一時的な項目（合計2,933,000円）が計上されており、本業の成長とは別の要因が業績に影響している可能性があります。「異常値だから無条件で高評価」にはせず、決算内容の確認をおすすめします"
+      },
+      "grossMarginImproving": null,
+      "opMarginImproving": null
     },
     {
       "code": "9251",
@@ -5704,8 +6125,11 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
-      }
+        "checked": false,
+        "reasonCodes": []
+      },
+      "grossMarginImproving": null,
+      "opMarginImproving": null
     }
   ],
   "tenbaggerCandidatesA": [
@@ -5759,7 +6183,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": true,
-        "repricingGap": 0.2
+        "repricingGap": 0.1
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -5817,10 +6241,13 @@
         "checked": true
       },
       "growthAnomalyCaution": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": false
+        "level": "warn",
+        "label": "異常成長・要確認",
+        "checked": true,
+        "reasonCodes": [
+          "ONE_TIME_ITEM_CURRENT"
+        ],
+        "note": "売上高成長率+54.9%という高い伸びですが、特別損益・減損等の一時的な項目（合計5,513,000円）が計上されており、本業の成長とは別の要因が業績に影響している可能性があります。「異常値だから無条件で高評価」にはせず、決算内容の確認をおすすめします"
       }
     },
     {
@@ -5934,7 +6361,8 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       }
     }
   ],
@@ -6050,7 +6478,8 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       }
     },
     {
@@ -6103,7 +6532,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": true,
-        "repricingGap": 16.5
+        "repricingGap": 10.7
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -6164,7 +6593,8 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": false,
+        "reasonCodes": []
       }
     },
     {
@@ -6275,10 +6705,13 @@
         "checked": true
       },
       "growthAnomalyCaution": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": false
+        "level": "good",
+        "label": "本物の成長（ベース効果なし）",
+        "checked": true,
+        "reasonCodes": [
+          "ORGANIC_GROWTH"
+        ],
+        "note": "売上高成長率+52.9%という高い伸びですが、前期の水準・特別損益・減損のいずれにも異常は確認されず、本業の実力による成長とみられます"
       }
     },
     {
@@ -6331,7 +6764,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "repricingGap": 10.9
+        "repricingGap": 4.6
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -6389,10 +6822,13 @@
         "checked": true
       },
       "growthAnomalyCaution": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": false
+        "level": "warn",
+        "label": "異常成長・要確認",
+        "checked": true,
+        "reasonCodes": [
+          "ONE_TIME_ITEM_CURRENT"
+        ],
+        "note": "売上高成長率+58.1%という高い伸びですが、特別損益・減損等の一時的な項目（合計629,927,000円）が計上されており、本業の成長とは別の要因が業績に影響している可能性があります。「異常値だから無条件で高評価」にはせず、決算内容の確認をおすすめします"
       }
     }
   ],
@@ -6614,6 +7050,7 @@
         "alreadyMovedStrict": false,
         "return1m": 1,
         "return3m": null,
+        "sectorReturn1m": -7.7,
         "priceLevelPct": 84.8,
         "revenueGrowthPct": 0.8,
         "profitGrowthPct": 0.6,
@@ -6628,7 +7065,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0
+        "repricingGap": -1.2
       },
       "themeMatch": {
         "level": null,
@@ -6832,6 +7269,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.3,
         "return3m": null,
+        "sectorReturn1m": -5.4,
         "priceLevelPct": 79.7,
         "revenueGrowthPct": null,
         "profitGrowthPct": 4,
@@ -6847,7 +7285,7 @@
           "profitYoyPct": 4,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:78.5%→25.04-06:81.6%→26.04-06:82.2%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+4%）"
         },
-        "repricingGap": 0.9
+        "repricingGap": -0.6
       },
       "themeMatch": {
         "level": null,
@@ -7056,6 +7494,7 @@
         "alreadyMovedStrict": false,
         "return1m": -2.5,
         "return3m": null,
+        "sectorReturn1m": -5.4,
         "priceLevelPct": 13.9,
         "revenueGrowthPct": 4.1,
         "profitGrowthPct": 11,
@@ -7071,7 +7510,7 @@
           "profitYoyPct": 11,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:46.9%→25.04-06:48%→26.04-06:51.6%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+11%）"
         },
-        "repricingGap": 8.7
+        "repricingGap": 4
       },
       "themeMatch": {
         "level": null,
@@ -7275,6 +7714,7 @@
         "alreadyMovedStrict": false,
         "return1m": 8.8,
         "return3m": null,
+        "sectorReturn1m": -8.6,
         "priceLevelPct": 95.6,
         "revenueGrowthPct": -4.6,
         "profitGrowthPct": 28.4,
@@ -7290,7 +7730,7 @@
           "profitYoyPct": 28.4,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:57%→25.04-06:62.4%→26.04-06:69.3%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+28.4%）"
         },
-        "repricingGap": 0.1
+        "repricingGap": -0.2
       },
       "themeMatch": {
         "level": "good",
@@ -7494,6 +7934,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.7,
         "return3m": null,
+        "sectorReturn1m": -7.8,
         "priceLevelPct": 92.9,
         "revenueGrowthPct": 1.2,
         "profitGrowthPct": 32.6,
@@ -7508,7 +7949,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 1.2
+        "repricingGap": 0.7
       },
       "themeMatch": {
         "level": null,
@@ -7717,6 +8158,7 @@
         "alreadyMovedStrict": false,
         "return1m": 1.2,
         "return3m": null,
+        "sectorReturn1m": -0.7,
         "priceLevelPct": 79.9,
         "revenueGrowthPct": 6,
         "profitGrowthPct": 60,
@@ -7731,7 +8173,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 6.4
+        "repricingGap": 6.3
       },
       "themeMatch": {
         "level": null,
@@ -7935,6 +8377,7 @@
         "alreadyMovedStrict": false,
         "return1m": -5.5,
         "return3m": null,
+        "sectorReturn1m": -7.8,
         "priceLevelPct": 8.1,
         "revenueGrowthPct": 0.9,
         "profitGrowthPct": 39.1,
@@ -7949,7 +8392,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 23.4
+        "repricingGap": 16.3
       },
       "themeMatch": {
         "level": null,
@@ -8163,6 +8606,7 @@
         "alreadyMovedStrict": false,
         "return1m": 2.2,
         "return3m": null,
+        "sectorReturn1m": 1.9,
         "priceLevelPct": 48,
         "revenueGrowthPct": 6.4,
         "profitGrowthPct": 57.8,
@@ -8177,7 +8621,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 15.5
+        "repricingGap": 16.5
       },
       "themeMatch": {
         "level": null,
@@ -8380,6 +8824,7 @@
         "alreadyMovedStrict": false,
         "return1m": 2,
         "return3m": null,
+        "sectorReturn1m": -0.7,
         "priceLevelPct": 86.3,
         "revenueGrowthPct": -16.5,
         "profitGrowthPct": 616.1,
@@ -8394,7 +8839,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 40.8
+        "repricingGap": 12.2
       },
       "themeMatch": {
         "level": null,
@@ -8599,6 +9044,7 @@
         "alreadyMovedStrict": false,
         "return1m": -1.7,
         "return3m": null,
+        "sectorReturn1m": -4.4,
         "priceLevelPct": 15.7,
         "revenueGrowthPct": 5.3,
         "profitGrowthPct": 1.8,
@@ -8613,7 +9059,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 4.4
+        "repricingGap": 0.8
       },
       "themeMatch": {
         "level": "good",
@@ -8622,5 +9068,6 @@
         "note": "手動で選定したテーマページ一覧（バイオ航空燃料）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
       }
     }
-  ]
+  ],
+  "logicFingerprint": "444b567e36c4a919"
 }
