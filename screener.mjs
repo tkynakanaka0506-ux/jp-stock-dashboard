@@ -23,7 +23,7 @@ import {
   sectorRotationSignal, SECTOR_ROTATION, marginOverhangSignal, buyingDemandSignal, receivablesAnomalySignal, dividendYieldPeakSignal,
   institutionalShortSignal, majorShareholderSignal, pbrHistoricalLowSignal, hiddenGemSignal,
   retailExpectationSignal, returnPct, priceLevelVsRange, volumeRatio, creditTrend,
-  progressStreakSignal, dividendPotentialSignal, hiddenAssetSignal, creditFloatSignal, consensusTrapSignal,
+  progressStreakSignal, dividendPotentialSignal, hiddenAssetSignal, creditFloatSignal, creditSupplyQualitySignal, consensusTrapSignal,
   latestProfitYoyPct, repricingLagScore, repricingGapScore, evEbitda, buildScoreParts, buyScore, buyScoreRiskPenalty,
 } from './indicators.mjs';
 import { evaluate } from './tdnet.mjs';
@@ -587,6 +587,16 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
       top3PctNow: shareholderInfo.top3PctNow ?? null,
       loanRatio: main.loanRatio ?? null,
     });
+    // 第9優先改修 Phase5（ユーザー提案）: Phase1〜4（信用買残の重さ・
+    // 4パターン・反発品質・安値更新×買残増加）を1つのcreditSupplyQuality
+    // Signalにまとめる。weekly/ivFresh.closes/volumesとも既に取得済みの
+    // ため追加リクエスト無し。表示専用でSCORE/buyScoreRiskPenaltyには
+    // 一切渡さない（riskPenaltyInputsに含めない）。SUPPLY_CREDITクラスタ
+    // へのlevel:'good'時のみの1件加算はclusterConfirmation側で行う。
+    const creditSupplyQuality = creditSupplyQualitySignal({
+      weekly, closes: ivFresh?.closes, volumes: ivFresh?.volumes,
+      price: s.tech.price, loanRatio: main.loanRatio ?? null, today,
+    });
     // 期待値のワナ（過去にWATCHLIST時代の「エントリー健康診断」カードで
     // 使われていたが、SMART ENTRY化の際に呼び出し側だけ削除され関数定義
     // だけがデッドコード化していたのを発掘・復活。s.estimateProfit/
@@ -742,6 +752,7 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
       dividendPotential,
       hiddenAsset,
       creditFloat,
+      creditSupplyQuality,
       consensusTrap,
       repricingLag,
       buyScore: buyScoreForBucket, // v7.3改修 項目5: NOWのゲートに使う。scraper.mjs側のattachScoresが表示用に再計算して上書きする

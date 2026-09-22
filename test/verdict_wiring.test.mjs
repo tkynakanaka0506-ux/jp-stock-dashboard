@@ -113,11 +113,20 @@ test('indicators.mjsのexport function ...Signal は全てscreener.mjs/smart_ent
   // scraper.mjs側で直接呼ばれるためこれも含める）のいずれかで
   // `関数名(`の形で呼ばれているか確認する。
   const indicatorsSrc = fs.readFileSync(path.join(root, 'indicators.mjs'), 'utf-8');
+  // 第9優先改修 Phase5（ユーザー提案）: creditSupplyQualitySignalのように
+  // 複数のSignal関数を内部で呼び出して1つにまとめる「合成シグナル」が
+  // 新たに登場したため、indicators.mjs自身の中での呼び出しも「呼ばれて
+  // いる」に含める。ただし`export function X(`という宣言行自体は
+  // 「Xが呼ばれている」と誤検出されてしまうため、比較対象からは除去する
+  // （宣言行を消してもindicators.mjs内の他の呼び出し箇所は残るため、
+  // 本当にどこからも呼ばれていない関数を見逃すことはない）。
+  const indicatorsInternalCallSites = indicatorsSrc.replace(/^export function [a-zA-Z0-9]+\(/gm, '');
   const callSites = fs.readFileSync(path.join(root, 'screener.mjs'), 'utf-8')
     + fs.readFileSync(path.join(root, 'smart_entry.mjs'), 'utf-8')
     + fs.readFileSync(path.join(root, 'scraper.mjs'), 'utf-8')
     + fs.readFileSync(path.join(root, 'us_screener.mjs'), 'utf-8')
-    + fs.readFileSync(path.join(root, 'us_tenbagger.mjs'), 'utf-8');
+    + fs.readFileSync(path.join(root, 'us_tenbagger.mjs'), 'utf-8')
+    + indicatorsInternalCallSites;
 
   const names = [...indicatorsSrc.matchAll(/^export function ([a-zA-Z0-9]+Signal)\(/gm)].map((m) => m[1]);
   assert.ok(names.length > 20, `抽出できたSignal関数が${names.length}件しかありません（正規表現が壊れている疑い）`);

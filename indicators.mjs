@@ -1433,6 +1433,11 @@ export function clusterConfirmation(r) {
   if (Number.isFinite(r.loanRatio) && r.loanRatio < MARGIN_OVERHANG.heavy) supplyCreditHits.push('loanRatio');
   if (r.squeeze?.level === 'good') supplyCreditHits.push('creditTrend');
   if (r.creditFloat?.level === 'good' || (Number.isFinite(r.creditFloat?.occupancy) && r.creditFloat.occupancy <= CREDIT_FLOAT.light)) supplyCreditHits.push('creditFloatOccupancy');
+  // 第9優先改修 Phase5（ユーザー提案）: 残高の絶対量だけでなく、
+  // 残高×価格×出来高の変化（creditSupplyQualitySignal）もSUPPLY_CREDIT
+  // クラスタの判定材料に加える。level:'good'のときだけ1件としてカウント
+  // し（1クラスタ1回のルールは維持）、既存の3つのヒットは変更しない。
+  if (r.creditSupplyQuality?.level === 'good') supplyCreditHits.push('creditSupplyQuality');
 
   // FUNDAMENTALS: 業績成長（売上/利益成長率・成長加速）。EPS成長率単体の
   // 指標は現状実装されていない（revenueGrowthPct/profitGrowthPctのみ）。
@@ -2904,6 +2909,225 @@ export function breakoutVolumeSignal({ priceLevelPct, volumeRatio } = {}) {
     };
   }
   return { level: null, label: null, note: null, checked: true };
+}
+
+// ==================================================================
+// 第9優先改修（ユーザー提案）: 既存のSUPPLY_CREDIT（信用倍率・信用買い
+// 残の「残高の絶対量」中心の判定）を、「残高×価格×出来高の変化」を見る
+// 判定へ拡張する。marginOverhangSignal/creditFloatSignal/shortSqueeze
+// Signal等の既存の判定・閾値は一切変更しない（並行の観測レイヤーとして
+// 追加する）。まず観測・表示・検証を完成させ、バックテストを見てから
+// SCOREへの加点を検討する（ユーザー方針。今回はスコア変更を一切含まない）。
+// ==================================================================
+
+// Phase1 ①信用買残の「重さ」＝ 信用買残を、普段の出来高・売買代金で
+// 何日かけて消化できるかを実数で示す。信用倍率という比率ではなく、
+// 銘柄ごとの流動性差を直接反映する絶対量の指標。0.5日/1日/2日のような
+// 固定閾値でのスコア化は行わない（銘柄ごとの流動性差が大きいため、
+// 帯分けは表示側の裁量とする、というユーザー方針）。
+export const CREDIT_BUY_PRESSURE = { avgDays: 20 };
+
+export function creditBuyPressureDays({ creditBuyBalance, price, closes, volumes } = {}) {
+  const n = CREDIT_BUY_PRESSURE.avgDays;
+  if (!Number.isFinite(creditBuyBalance) || !closes || !volumes || closes.length < n || volumes.length < n) {
+    return { days: null, valueDays: null, checked: false, note: null };
+  }
+  const recentCloses = closes.slice(-n), recentVols = volumes.slice(-n);
+  const avgVolume = recentVols.reduce((a, b) => a + (b ?? 0), 0) / n;
+  const avgValueYen = recentCloses.reduce((sum, c, i) => sum + c * (recentVols[i] ?? 0), 0) / n;
+  if (avgVolume <= 0) return { days: null, valueDays: null, checked: false, note: null };
+  const days = round2(creditBuyBalance / avgVolume);
+  const valueDays = (avgValueYen > 0 && Number.isFinite(price)) ? round2((creditBuyBalance * price) / avgValueYen) : null;
+  return {
+    days, valueDays, checked: true,
+    note: `信用買残${Math.round(creditBuyBalance).toLocaleString()}株 ÷ ${n}日平均出来高${Math.round(avgVolume).toLocaleString()}株 ＝ ${days}日分`,
+  };
+}
+
+// Phase2 ②「株価×信用買残」4パターン（ユーザー提案）。直近の信用残
+// 発表とその1回前を比較し、株価変化と信用買い残変化の組み合わせで
+// 需給の状態を分類する。priceChangePctはreturn1w（既存、returnPct(closes,5)
+// ＝5営業日≒週次の信用残発表間隔に対応、screener.mjs/smart_entry.mjsで
+// 既に計算済み）、buyChangePctはcreditTrend(weekly,1)（既存）をそのまま
+// 渡す想定で、新規のデータ取得は発生しない。0%以上を「上昇/増加」、
+// 負を「下落/減少」として扱う（境界の曖昧さを残さないための決め）。
+// この時点ではgood/bad等のlevelは付けない（4パターンのどれが望ましい
+// かはSCORE/クラスタへの統合方針とセットで決める話のため、Phase2では
+// 分類のみ行い、価値判断はPhase5に委ねる）。
+export const CREDIT_PATTERN = {
+  CLEANUP: { label: '買残整理', note: '株価が下落する中で信用買い残も減少しています。信用整理が進んでいる状態です' },
+  OVERHANG_BUILDUP: { label: '買残積み上がり', note: '株価が下落しているのに信用買い残が増加しています。将来の戻り売り圧力（オーバーハング）が積み上がっている可能性があります' },
+  SUPPLY_IMPROVING: { label: '需給改善', note: '株価が上昇する中で信用買い残が減少しています。信用整理と株価上昇が同時に進む、需給が改善しやすい状態です' },
+  LEVERAGED_RISE: { label: '買残増加上昇', note: '株価上昇と同時に信用買い残も増加しています。信用買いに支えられた上昇のため、反落時に売り圧力に転じやすい点に注意が必要です' },
+};
+
+export function creditPatternSignal({ priceChangePct, buyChangePct } = {}) {
+  if (!Number.isFinite(priceChangePct) || !Number.isFinite(buyChangePct)) {
+    return { pattern: null, label: null, note: null, checked: false };
+  }
+  const priceUp = priceChangePct >= 0;
+  const buyUp = buyChangePct >= 0;
+  const pattern = priceUp
+    ? (buyUp ? 'LEVERAGED_RISE' : 'SUPPLY_IMPROVING')
+    : (buyUp ? 'OVERHANG_BUILDUP' : 'CLEANUP');
+  const def = CREDIT_PATTERN[pattern];
+  return {
+    pattern, label: def.label, checked: true,
+    note: `株価${priceChangePct >= 0 ? '+' : ''}${priceChangePct}% × 信用買い残${buyChangePct >= 0 ? '+' : ''}${buyChangePct}% ＝ ${def.label}。${def.note}`,
+  };
+}
+
+// Phase3 ③「反発の質」（ユーザー提案）。単に株価が反発しただけでなく、
+// 信用買い残が減っているか（＝新規の空買いではなく実需に近い反発か）を
+// 出来高確認込みで判定する。creditPatternSignalのSUPPLY_IMPROVING/
+// LEVERAGED_RISEと入力（priceChangePct/buyChangePct）は共通だが、こちらは
+// 「株価上昇局面に限定した質の判定」という別の切り口（週次4象限の
+// 分類そのものではなく、出来高という第3軸を加えた確認判定）のため、
+// creditPatternの別名ではなく独立した信号として持つ。
+// 出来高確認の閾値はfloatSqueezeSignalと同じFLOAT_SQUEEZE.minVolumeRatio
+// を再構成する（新しい閾値を作らない）。
+// PENDING（信用残データがまだ反映されていない未確定状態）はここでは
+// 扱わない。creditAsOf/creditDataAgeDaysと合わせてPhase5で追加する
+// （データ鮮度の判定はcreditSupplyQualitySignal側の責務にする）。
+export function bounceQualitySignal({ priceChangePct, buyChangePct, volRatio } = {}) {
+  if (!Number.isFinite(priceChangePct)) return { bounceQuality: null, checked: false, note: null };
+  if (priceChangePct <= 0) return { bounceQuality: null, checked: true, note: null }; // 反発局面でなければ判定対象外
+  if (!Number.isFinite(buyChangePct)) return { bounceQuality: null, checked: false, note: null };
+
+  const creditUnwinding = buyChangePct < 0;
+  const volumeConfirms = Number.isFinite(volRatio) && volRatio >= FLOAT_SQUEEZE.minVolumeRatio;
+  const buyChangeText = `${buyChangePct >= 0 ? '+' : ''}${buyChangePct}%`;
+
+  if (creditUnwinding && volumeConfirms) {
+    return {
+      bounceQuality: 'IMPROVING', checked: true,
+      note: `株価+${priceChangePct}%の反発局面で、信用買い残${buyChangeText}・出来高は20日平均の${volRatio}倍。信用整理を伴う反発です`,
+    };
+  }
+  return {
+    bounceQuality: 'WEAK', checked: true,
+    note: creditUnwinding
+      ? `株価+${priceChangePct}%の反発局面で信用買い残は${buyChangeText}と減少していますが、出来高の増加が伴っていません（信用整理が本物か出来高で確認できていません）`
+      : `株価+${priceChangePct}%の反発局面ですが、信用買い残は${buyChangeText}で減少しておらず、信用整理を伴わない反発です`,
+  };
+}
+
+// Phase4 ④「安値更新×買残増加」（ユーザー提案。独立フラグとして持つ）。
+// 直近の信用残観測期間中（≒直近observationDays営業日。Phase2/3の
+// priceChangePctと同じ、週次発表間隔の近似）にlowWindowDays営業日安値を
+// 更新し、かつその期間の信用買い残が増加していれば、「下がるたびに
+// 信用買いが入っている」状態として検出する。「新安値」の判定窓は
+// 20営業日（ユーザー確認済み。52週安値ではなく、信用残の観測頻度
+// （週次）に近い直近のレンジ安値を見る）。0%以上を「増加」として扱う
+// （creditPatternSignalと同じ境界の決め方）。
+export const LOW_BREAK_BUY_BUILDUP = { lowWindowDays: 20, observationDays: 5 };
+
+export function lowBreakBuyBuildupSignal({ closes, buyChangePct } = {}) {
+  const { lowWindowDays: n, observationDays: obs } = LOW_BREAK_BUY_BUILDUP;
+  if (!closes || closes.length < n || !Number.isFinite(buyChangePct)) {
+    return { lowBreakBuyBuildUp: false, checked: false, note: null };
+  }
+  const windowCloses = closes.slice(-n).filter(Number.isFinite);
+  const recentCloses = closes.slice(-obs).filter(Number.isFinite);
+  if (!windowCloses.length || !recentCloses.length) return { lowBreakBuyBuildUp: false, checked: false, note: null };
+  const windowLow = Math.min(...windowCloses);
+  const recentLow = Math.min(...recentCloses);
+  const madeNewLow = recentLow <= windowLow; // recentLowはwindowLowの部分集合の最小値なので理論上windowLow以上にしかならない
+  if (!madeNewLow) return { lowBreakBuyBuildUp: false, checked: true, note: null };
+
+  const buildUp = buyChangePct >= 0;
+  const buyChangeText = `${buyChangePct >= 0 ? '+' : ''}${buyChangePct}%`;
+  return {
+    lowBreakBuyBuildUp: buildUp, checked: true,
+    note: buildUp
+      ? `直近${obs}営業日以内に${n}営業日安値（${Math.round(windowLow).toLocaleString()}円）を更新し、信用買い残も${buyChangeText}と増加しています。下がるたびに信用買いが入っている状態です`
+      : `直近${obs}営業日以内に${n}営業日安値（${Math.round(windowLow).toLocaleString()}円）を更新しましたが、信用買い残は${buyChangeText}で増加していません`,
+  };
+}
+
+// Phase5 統合（ユーザー提案）: Phase1〜4（creditBuyPressureDays/
+// creditPatternSignal/bounceQualitySignal/lowBreakBuyBuildupSignal）を
+// 1つのcreditSupplyQualitySignalにまとめる。既存のmarginOverhangSignal/
+// creditFloatSignal/shortSqueezeSignal等は一切変更しない。SCOREへの
+// 新規加点も行わない（clusterConfirmationのSUPPLY_CREDITクラスタへ
+// level:'good'のときだけ1判定材料として追加する。1クラスタ1回の
+// ルールは維持）。
+
+// weekly[].dateはkabutan.mjs: parseWeeklyCreditの生テキスト（実測:
+// "26/09/11"のようなYY/MM/DD形式。ページ上の<time datetime="2026-09-11">
+// のISO属性はparseTablesのstripTagsで失われるため使えない）。2桁年は
+// "20"を補完する（このプロジェクトの運用期間を考えれば十分安全な前提）。
+function creditDateToIso(dateStr) {
+  const m = /^(\d{2})\/(\d{2})\/(\d{2})$/.exec(dateStr ?? '');
+  return m ? `20${m[1]}-${m[2]}-${m[3]}` : null;
+}
+
+function daysBetweenIso(fromIso, toIso) {
+  if (!fromIso || !toIso) return null;
+  const a = new Date(`${fromIso}T00:00:00Z`);
+  const b = new Date(`${toIso}T00:00:00Z`);
+  if (Number.isNaN(a.getTime()) || Number.isNaN(b.getTime())) return null;
+  return Math.round((b - a) / 86400000);
+}
+
+export function creditSupplyQualitySignal({ weekly, closes, volumes, price, loanRatio, today } = {}) {
+  const buyBalance = weekly?.[0]?.buy ?? null;
+  const buyBalancePrior = weekly?.[1]?.buy ?? null;
+  const sellBalance = weekly?.[0]?.sell ?? null;
+  const sellBalancePrior = weekly?.[1]?.sell ?? null;
+  const buyChangePct = creditTrend(weekly ?? [], 1);
+  const sellChangePct = shortTrend(weekly ?? [], 1);
+  const priceChangePct = returnPct(closes, 5);
+  const avgVolumeRatio = volumeRatio(volumes);
+
+  const pressure = creditBuyPressureDays({ creditBuyBalance: buyBalance, price, closes, volumes });
+  const patternResult = creditPatternSignal({ priceChangePct, buyChangePct });
+  const lowBreakResult = lowBreakBuyBuildupSignal({ closes, buyChangePct });
+  const bqResult = bounceQualitySignal({ priceChangePct, buyChangePct, volRatio: avgVolumeRatio });
+
+  // データ鮮度: 固定の日数を決め打ちせず、その銘柄自身の過去の発表間隔
+  // （weekly[0].date - weekly[1].date）を基準に、今その間隔を超えて次の
+  // 発表がまだ来ていなければ「次回発表が既に来ていておかしくない古さ」
+  // と判定する（ユーザー確認済み）。この状態で、かつ直近5営業日の株価・
+  // 出来高が反発を示している場合は、bounceQualityが参照する信用データ
+  // （直近の確定済み週次比較）がその反発を捉えきれていない可能性がある
+  // ため、IMPROVING/WEAKではなくPENDINGとして扱う。
+  const asOfIso = creditDateToIso(weekly?.[0]?.date);
+  const priorIso = creditDateToIso(weekly?.[1]?.date);
+  const typicalGapDays = daysBetweenIso(priorIso, asOfIso);
+  const creditDataAgeDays = daysBetweenIso(asOfIso, today ?? null);
+  const isStale = Number.isFinite(creditDataAgeDays) && Number.isFinite(typicalGapDays) && creditDataAgeDays > typicalGapDays;
+  const priceVolumeBouncing = Number.isFinite(priceChangePct) && priceChangePct > 0
+    && Number.isFinite(avgVolumeRatio) && avgVolumeRatio >= FLOAT_SQUEEZE.minVolumeRatio;
+  const bounceQuality = (isStale && priceVolumeBouncing) ? 'PENDING' : bqResult.bounceQuality;
+
+  const reasonCodes = [];
+  if (patternResult.pattern) reasonCodes.push(`CREDIT_PATTERN_${patternResult.pattern}`);
+  if (bounceQuality) reasonCodes.push(`BOUNCE_QUALITY_${bounceQuality}`);
+  if (lowBreakResult.lowBreakBuyBuildUp) reasonCodes.push('LOW_BREAK_BUY_BUILDUP');
+
+  const level = (patternResult.pattern === 'SUPPLY_IMPROVING' || bounceQuality === 'IMPROVING')
+    ? 'good'
+    : (patternResult.pattern === 'OVERHANG_BUILDUP' || lowBreakResult.lowBreakBuyBuildUp === true)
+      ? 'warn'
+      : null;
+
+  return {
+    level,
+    pattern: patternResult.pattern,
+    buyBalance, buyBalancePrior, buyChangePct,
+    sellBalance, sellBalancePrior, sellChangePct,
+    creditRatio: Number.isFinite(loanRatio) ? loanRatio : null,
+    buyPressureDays: pressure.days,
+    buyPressureValueDays: pressure.valueDays,
+    priceChangePct, avgVolumeRatio,
+    lowBreakBuyBuildUp: lowBreakResult.lowBreakBuyBuildUp,
+    bounceQuality,
+    creditAsOf: weekly?.[0]?.date ?? null,
+    creditDataAgeDays,
+    checked: patternResult.checked || pressure.checked || lowBreakResult.checked,
+    reasonCodes,
+  };
 }
 
 // 「攻めの赤字」（ユーザー提案: 研究開発費・広告宣伝費が売上を上回る
