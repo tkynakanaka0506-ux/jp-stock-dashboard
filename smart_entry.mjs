@@ -886,6 +886,8 @@ export async function runSmartEntryScreen({ today, tdNames, sbiStocks, sectors =
       const repricingLagInputs = {
         return1m: returnPct(ivFresh?.closes, 20),
         return3m: returnPct(ivFresh?.closes, 60),
+        // Repricing Gap v2用（indicators.mjsのコメント参照）。
+        sectorReturn1m: sectorTrendPct(sectorHistory, main.sectorName, today, 20),
         priceLevelPct: priceLevelVsRange(ivFresh?.closes, 60),
         revenueGrowthPct, profitGrowthPct,
         per: main.per ?? null, sectorPer: sec?.per ?? null, psr: psrForRepricing,

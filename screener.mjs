@@ -217,10 +217,14 @@ export function composite(parts) {
     detail[k] = p;
     if (p && p.value !== null) { got += p.value; max += w; }
   }
-  if (max === 0) return { score: null, confidence: 0, detail };
+  if (max === 0) return { score: null, confidence: 0, detail, coverageScore: 0 };
   return {
     score: Math.round((got / max) * 100),
     confidence: Math.round((max / 100) * 100), // 満点合計＝取得できた情報量(%)
+    // coverageScore: 未取得の軸を0点として数えた場合の点数（indicators.mjs
+    // のweightedComposite()と同じ考え方。第2優先改修、CASE4対応）。
+    // scoreは既存通りrankOf()等の判定に使われている値のため変更しない。
+    coverageScore: Math.round(got),
     detail,
   };
 }
@@ -503,7 +507,7 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
       sector: sectorScore(sec?.changePct ?? null),
       technical: { value: unpricedScore(s.tech.kairi), note: `乖離${s.tech.kairi}%` },
     };
-    const { score, confidence, detail } = composite(parts);
+    const { score, confidence, detail, coverageScore } = composite(parts);
     const evidence = hasEvidence(ev);
 
     // 底打ち確認（＋α）— 除外/加点には使わず、根拠を積み増す一言メモとして
@@ -591,6 +595,11 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
     const repricingLagInputs = {
       return1m: returnPct(ivFresh?.closes, 20),
       return3m: returnPct(ivFresh?.closes, 60),
+      // Repricing Gap v2用。「株価反応」を業種の同期間(直近20営業日)累積
+      // 騰落率で相対化するための入力（sector_history.mjsの日次履歴、
+      // 30日分保持。履歴が足りない間はnull→repricingGapScore側が単純な
+      // return1mにフォールバックする）。
+      sectorReturn1m: sectorTrendPct(sectorHistory, main.sectorName, today, 20),
       priceLevelPct: priceLevelVsRange(ivFresh?.closes, 60),
       revenueGrowthPct: fin.revenueGrowth?.growthPct ?? null,
       profitGrowthPct: latestProfitYoyPct(fin.progressHistory),
@@ -670,6 +679,9 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
       ambiguous: ev.ambiguous.length,
       hasMonthly: ev.hasMonthly,
       score,
+      // 未取得の軸を0点として数えた場合の参考値（第2優先改修、CASE4対応）。
+      // rank/verdictの判定には使わない（scoreの意味自体は変えない）。
+      coverageScore,
       rank: rankOf(score, evidence),
       confidence: reportedConfidence(confidence, ev),
       confidenceRaw: confidence, // スコアの分母（= 取得できた配点合計）

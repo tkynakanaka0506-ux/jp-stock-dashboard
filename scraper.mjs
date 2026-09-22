@@ -46,7 +46,8 @@ import {
   ambushVerdict, smartEntryVerdict, stage1, STAGE1, CHIP_SIGNAL_FIELDS, VALUATION_CHIP_FIELDS, hasConsensusProfit,
   OVERHEAT_KAIRI, hasPrecursor, PRECURSOR_GOOD_FIELDS, PRECURSOR_CAUTION_FIELDS, VERDICT_SEVERITY,
   buildScoreParts, buyScore, buyScoreRiskPenalty, expectationScore, earningsSurpriseScore, confidenceTier, effectiveScore, badChipSignals,
-  entryPriorityScore, tenbaggerDifficultyLabel, riskLevel,
+  entryPriorityScore, tenbaggerDifficultyLabel, riskLevel, riskCoverage, repricingGapBreakdown, REPRICING_GAP, evaluationAxes,
+  clusterConfirmation,
 } from './indicators.mjs';
 import { loadEarningsCalendar } from './sbi.mjs';
 import { loadHolidays, isMarketHoliday } from './holidays.mjs';
@@ -325,7 +326,13 @@ const DISPLAY_CATEGORY = {
 export function displayCategoryKey(verdictLevel, priority, risk) {
   if (!verdictLevel || !Number.isFinite(priority)) return null;
   if (risk === 'HIGH' && priority >= 50) return 'SPECULATIVE';
-  if ((verdictLevel === 'strong_buy' || verdictLevel === 'buy') && priority >= 70 && risk !== 'HIGH') return 'TOP_PICK';
+  // 第2優先改修（CASE6/CASE7対応）: risk==='UNKNOWN'（リスク評価材料が
+  // 事実上無い）はriskLevelの新設状態。「HIGHではない」という理由だけで
+  // 「本当に仕込みたい候補」に分類しない（確認できていないリスクを
+  // 低リスクと同じ扱いにしない）。SPECULATIVE（明確なbad級シグナル複数）
+  // に押し込むのも実態と違うため、TOP_PICKの対象から外すに留める
+  // （WATCH/REFERENCEへの自然なフォールスルーに任せる）。
+  if ((verdictLevel === 'strong_buy' || verdictLevel === 'buy') && priority >= 70 && risk !== 'HIGH' && risk !== 'UNKNOWN') return 'TOP_PICK';
   if (verdictLevel === 'strong_buy' || verdictLevel === 'buy' || verdictLevel === 'hold') return 'WATCH';
   return 'REFERENCE';
 }
@@ -358,7 +365,7 @@ function verdictBlock(v, r) {
 // 計算済みなのに、単独の数値としては一度も画面に出しておらず、RISKに
 // 至っては相当する表示自体が存在しなかった（badChipSignals由来のリスク
 // 件数はreasonBlockの箇条書きにしか出ていない）。
-const RISK_LEVEL_CLS = { LOW: 'mint', MED: 'amber', HIGH: 'red' };
+const RISK_LEVEL_CLS = { LOW: 'mint', MED: 'amber', HIGH: 'red', UNKNOWN: 'gray' };
 export function scoreTrio(r) {
   if (!r.buyScore) return '';
   // A指示 項目24「CONFIDENCEを実質的な投資判断信頼度にする」:
@@ -376,6 +383,14 @@ export function scoreTrio(r) {
   const unpriced = r.buyScore.detail?.unpriced?.value;
   const timing = r.buyScore.detail?.timing?.value;
   const risk = riskLevel(r);
+  // 第2優先改修（CASE6/CASE7対応）: RISK LOWは「bad級のシグナルが0件」
+  // という意味で、「確認した結果リスクが無かった」とは限らない。何件中
+  // 何件を実際に評価できたかを添えて、UNKNOWN（判定材料が事実上無い）
+  // との違い・LOWの根拠の薄さの両方を透明にする。
+  const { checked: riskChecked, total: riskTotal } = riskCoverage(r);
+  const riskTitle = risk === 'UNKNOWN'
+    ? `リスクを評価できる材料（${riskTotal}種類のシグナル）が1件も確認できていません。「リスクが低い」のではなく「リスクを判定できていない」状態です`
+    : `bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。判定材料は${riskTotal}件中${riskChecked}件を確認できています（LOWでも確認件数が少ない場合はご注意ください）。詳細は下の理由欄またはリスクのチップを確認してください`;
   // A指示 項目1-2/32「仕込み優先度」: 「ユーザーが最も見たい実戦用
   // スコア」として、BUY/実質SCOREより先頭に表示する。
   // A指示 項目23「DATA%を順位に反映する」: 仕込み優先度自体にも
@@ -395,7 +410,7 @@ export function scoreTrio(r) {
         <span class="chip flat" title="次回決算で市場予想を上回る可能性（会社予想とコンセンサスの差・進捗率モメンタム・月次開示の有無）">SURPRISE ${fmtScore(r.earningsSurpriseScore)}</span>
         ${Number.isFinite(unpriced) ? `<span class="chip flat" title="好材料がまだ株価に織り込まれていない度合い（BUY SCOREの内訳。妙味スコアを流用）">UNPRICED ${unpriced}</span>` : ''}
         ${Number.isFinite(timing) ? `<span class="chip flat" title="決算までの日数から見た仕込みタイミングの良さ（BUY SCOREの内訳）">TIMING ${timing}</span>` : ''}
-        <span class="chip ${RISK_LEVEL_CLS[risk]}" title="bad級のリスクシグナル該当件数（0件=LOW/1件=MED/2件以上=HIGH）。詳細は下の理由欄またはリスクのチップを確認してください">RISK ${risk}</span>
+        <span class="chip ${RISK_LEVEL_CLS[risk]}" title="${esc(riskTitle)}">RISK ${risk}</span>
         ${confBadge}
       </div>`;
 }
@@ -556,19 +571,27 @@ export function buyRuleChecklist(r) {
   return rows;
 }
 
-function ruleChecklistBlock(r) {
+export function ruleChecklistBlock(r) {
   const rows = buyRuleChecklist(r);
-  // データ不足で判定できない項目（ok:null）はスコアの分母に入れない
-  // （「不明」を「未達成」に読み替えて厳しく見せない＝仕様書§25と同じ方針）。
-  const resolved = rows.filter((row) => row.ok !== null);
-  const passed = resolved.filter((row) => row.ok === true).length;
+  // 実測バグ（2026-09-22、ユーザー報告。例: 9048名古屋鉄道は期待値/
+  // タイミング/財務の3項目が判定不能（？）なのに「2/2」と表示されて
+  // いた）。旧実装はok:null（＝UNKNOWN、判定不能）の項目を分母から
+  // 除外してから「合格数/残った分母」を出しており、5項目中2項目しか
+  // 判定できていない銘柄が、あたかも「2項目中2項目クリア＝フルスコア」
+  // であるかのように見えていた。UNKNOWNは「合格」でも「不合格」でも
+  // ないため、分母は必ず元のルール総数（rows.length）で固定し、
+  // PASS/FAIL/UNKNOWNの内訳を分けて数える（第2優先改修 CASE1〜3）。
+  const passed = rows.filter((row) => row.ok === true).length;
+  const failed = rows.filter((row) => row.ok === false).length;
+  const unknown = rows.filter((row) => row.ok === null).length;
   const pills = rows.map((row) => {
     const mark = row.ok === true ? '✓' : row.ok === false ? '✗' : '？';
     const cls = row.ok === true ? 'mint' : row.ok === false ? 'red' : 'gray';
     return `<span class="rule ${cls}" title="${esc(row.note)}">${mark} ${esc(row.label)}</span>`;
   }).join('');
+  const unknownNote = unknown > 0 ? `<span class="rulebox-unknown" title="判定に必要なデータが無く、合格・不合格のどちらとも判定できていない項目です（分母には含めていますが、達成済みとして扱ってはいません）">（うちUNKNOWN ${unknown}）</span>` : '';
   return `<div class="rulebox">
-        <div class="rulebox-head">自分ルール <span class="rulebox-score">${passed}/${resolved.length}</span></div>
+        <div class="rulebox-head">自分ルール <span class="rulebox-score" title="PASS ${passed} / FAIL ${failed} / UNKNOWN ${unknown}（分母は元のルール総数${rows.length}で固定。UNKNOWNは合格に数えていません）">${passed}/${rows.length}</span>${unknownNote}</div>
         <div class="rulebox-rows">${pills}</div>
       </div>`;
 }
@@ -620,23 +643,30 @@ function peerComparisonBlock(r) {
 // 機関投資家の物色等で織り込まれつつある可能性を見落とし、「まだ割安
 // だから」と高値まで買い上がるリスクがある（ユーザー指摘: 9052の
 // 株価上昇局面で「割安」の根拠ばかりが並ぶ状態）。
-// 業種平均PBRに現在のPBRが追いつく株価を、ファンダメンタルズ側の
-// 目安として示す。overheatSignal（乖離+${OVERHEAT_KAIRI}%超の短期過熱）
-// とは別の切り口であることを明記する（短期的な過熱と中長期のバリュ
-// エーション上の天井は別物であり、混同すると「乖離は正常だから
+// 業種平均PBRに現在のPBRが追いつく株価を、割安という相対評価の根拠が
+// どこまで有効かの参考値として示す。overheatSignal（乖離+${OVERHEAT_KAIRI}%超の
+// 短期過熱）とは別の切り口であることを明記する（短期的な過熱と中長期の
+// バリュエーション上の参考値は別物であり、混同すると「乖離は正常だから
 // まだ買える」と誤読されるおそれがあるため）。
-// 業種平均PBRに到達する株価（生の数値）。ceilingPriceNote（表示用）と
-// exitPlanBlock（手放すタイミングの目安、v7.4）の両方から使う。
+//
+// 第4優先改修（ユーザー報告）: 「業種平均PBRに到達する株価」という
+// 機械的な計算結果を、あたかも「そこまで株価が上がる」という予測・
+// 適正株価であるかのように読める表現になっていた（「目安株価」「到達」
+// 「利益確定を検討」という言い回し）。業種平均PBRは同業他社の単純平均に
+// すぎず、個別銘柄の理論株価・適正株価ではない。計算式自体（現在PBRが
+// 業種平均PBRと数値上一致する株価）は変更せず、"PBRが業種平均まで戻れば
+// 株価が○円になる"という予測ではなく"割安という相対評価の根拠が薄れて
+// いく参考値"であることを明記する表現に改める。
 export function ceilingPrice(r) {
   if (![r.pbr, r.sectorPbr, r.price].every(Number.isFinite) || r.pbr <= 0) return null;
-  if (r.pbr >= r.sectorPbr) return null; // 既に業種平均以上なら「割安の上限」という概念自体が成立しない
+  if (r.pbr >= r.sectorPbr) return null; // 既に業種平均以上なら「割安の相対評価」という前提自体が成立しない
   return Math.round(r.price * (r.sectorPbr / r.pbr));
 }
 
 export function ceilingPriceNote(r) {
   const cp = ceilingPrice(r);
   if (cp === null) return '';
-  return `<div class="peerbox-note">📐 バリュエーション上の目安：業種平均PBR(${r.sectorPbr}倍)に到達する株価は約${cp.toLocaleString()}円。「割安」を根拠に仕込むなら、そこに近づくほど下値の裏付けは薄れます（乖離+${OVERHEAT_KAIRI}%超の短期過熱とは別の、中長期のバリュエーション上の目安です）</div>`;
+  return `<div class="peerbox-note">📐 業種平均PBRとの相対差（参考値）：現在PBR${r.pbr}倍・業種平均PBR${r.sectorPbr}倍。同じ倍率だと仮定して機械的に計算すると株価は約${cp.toLocaleString()}円になりますが、これは株価がそこまで上がることを予測するものでも、適正株価・目標株価でもありません。株価が上がってこの水準に近づくほど「業種内で割安」という相対評価の根拠は薄れます（乖離+${OVERHEAT_KAIRI}%超の短期過熱とは別の、中長期の参考値です）</div>`;
 }
 
 // 「いつまでに仕込むべきか」の目安（ユーザー要望。AMBUSH専用——SMART
@@ -735,7 +765,7 @@ export function exitPlanBlock(r, verdict) {
   }
   const cp = ceilingPrice(r);
   if (cp !== null) {
-    exits.push(`業種平均PBR到達の目安株価（約¥${cp.toLocaleString()}）に近づいたら利益確定を検討`);
+    exits.push(`業種平均PBRとの相対差の参考値（約¥${cp.toLocaleString()}、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする`);
   }
 
   return `<div class="exit-plan">
@@ -766,7 +796,7 @@ export function smartEntryExitPlanBlock(r, verdict, overheat, growthSurge, patte
   }
   const cp = ceilingPrice(r);
   if (cp !== null) {
-    exits.push(`業種平均PBR到達の目安株価（約¥${cp.toLocaleString()}）に近づいたら利益確定を検討`);
+    exits.push(`業種平均PBRとの相対差の参考値（約¥${cp.toLocaleString()}、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする`);
   }
   return `<div class="exit-plan">
         <div class="exit-plan-h">🚪 手放すタイミング</div>
@@ -842,7 +872,7 @@ export function whyNowBlock(r, verdict) {
   const addMoreCondition = zoneLabel
     ? `${zoneLabel}のまま業績改善（売上・利益成長率）が続けば買い増しを検討できます`
     : '業績改善（売上・利益成長率）が確認できれば買い増しを検討できます';
-  const passCondition = riskLevel(r) === 'HIGH' || r.repricingLag?.zone === 'priced_in'
+  const passCondition = riskLevel(r) === 'HIGH' || riskLevel(r) === 'UNKNOWN' || r.repricingLag?.zone === 'priced_in'
     ? '既にリスクシグナルが複数該当、または株価が織り込み済みの水準まで動いています。ここからの新規の買い増しは見送るのが無難です'
     : '仕込みゾーンが「過熱警戒」「織り込み済み」まで進む、または新たなリスクシグナルが出た場合は見送りを検討してください';
 
@@ -974,6 +1004,29 @@ const REPRICING_ZONE = {
   priced_in: { emoji: '🔴', label: '織り込み済み', cls: 'red' },
 };
 
+// Repricing Gap（再評価余地）の表示行。仕込み妙味スコア（repricingLagScore、
+// zone/whyNote/caveat）とは独立した別指標のため、repricingLagBlock本体の
+// 文言（whyNote/caveat）は一切変更せず、この行だけを差し替える。
+// 「なぜGapが出たのか」を内訳（業績側・株価側）で見せる（ユーザー要望）。
+function repricingGapLine(rl) {
+  if (!Number.isFinite(rl.repricingGap)) return '';
+  const d = repricingGapBreakdown({
+    revenueGrowthPct: rl.revenueGrowthPct, profitGrowthPct: rl.profitGrowthPct,
+    return1m: rl.return1m, sectorReturn1m: rl.sectorReturn1m,
+  });
+  const signed = (v) => `${v > 0 ? '+' : ''}${v}%`;
+  const perfPart = d.performanceRate === null ? '業績データ不足' : `業績改善(実績YoY平均)${signed(d.performanceRate)}`;
+  const pricePart = d.priceReaction === null
+    ? '株価反応データ不足'
+    : `株価反応(1ヶ月${d.sectorAdjusted ? '・業種相対' : ''})${signed(d.priceReaction)}`;
+  // 業績も株価もマイナスの場合、Gapが正でも「未織り込み」の意味ではない
+  // （株価が業績以上に売られているだけの可能性がある）ため注記する。
+  const overshootNote = d.performanceRate !== null && d.performanceRate <= 0 && rl.repricingGap > 0
+    ? '　※業績側もマイナスのため「未織り込み」ではなく株価の下振れ超過の可能性があります'
+    : '';
+  return `<li title="業績側(売上・利益成長率YoYの平均、±${REPRICING_GAP.growthCapPct}%で丸め)－株価側(直近1ヶ月の騰落率、可能なら同業種の同期間騰落率を差し引いた超過リターン)の差。妙味スコアとは別の単独指標（v2再設計）">Repricing Gap（再評価余地）：${rl.repricingGap > 0 ? '+' : ''}${rl.repricingGap}pt　${perfPart} − ${pricePart}${overshootNote}</li>`;
+}
+
 export function repricingLagBlock(r, { isUs = false } = {}) {
   const rl = r.repricingLag;
   if (!rl || !rl.checked || !rl.zone) return ''; // データ不足時は「無い」ことにする（捏造しない）
@@ -1033,14 +1086,14 @@ export function repricingLagBlock(r, { isUs = false } = {}) {
     : `内訳スコア${rl.score}/100点。SNS言及数・検索急増・アナリスト評価の変化・決算以外のイベントは自動取得できていないため（Phase 1の既知の限界）、実際には既に一部織り込まれている可能性もある点にご注意ください。`;
 
   return `<div class="repricing">
-        <div class="repricing-head"><span class="chip ${z.cls}">${z.emoji} 仕込みゾーン：${z.label}</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません">妙味スコア ${rl.score}/100</span></div>
+        <div class="repricing-head"><span class="chip ${z.cls}">${z.emoji} 仕込みゾーン：${z.label}</span><span class="repricing-score" title="上部のSCOREとは別軸（今から買うタイミング/織り込み度）。SCOREによる順位には使っていません。未織り込み度・業績改善・株価割安度・成長率・先行材料・イベントの6要素を合成した相対評価で、目標株価や期待リターン(%)を意味する数値ではありません（第4優先改修で明記）">妙味スコア ${rl.score}/100</span></div>
         <ul class="repricing-fields">
           <li>${priceLevelLabel}：${fmt(rl.priceLevelPct, '%')}</li>
           <li>1ヶ月騰落率：${pct(rl.return1m)}　3ヶ月騰落率：${pct(rl.return3m)}</li>
           <li>${valuationText}</li>
           <li>成長率：${growthText ?? 'データ不足'}</li>
           <li>先行材料：${rl.hasCatalyst ? 'あり' : 'なし／未検出'}　次回決算まで：${Number.isFinite(rl.daysToEarnings) ? `あと${rl.daysToEarnings}日` : '不明'}</li>
-          ${Number.isFinite(rl.repricingGap) ? `<li title="業績改善率(売上・利益成長率の平均)－株価反応率(直近の騰落率)を、レンジ内位置で割り引いた値。妙味スコアとは別の単独指標（A指示 項目3）">Repricing Gap（業績と株価の差）：${rl.repricingGap > 0 ? '+' : ''}${rl.repricingGap}pt</li>` : ''}
+          ${repricingGapLine(rl)}
         </ul>
         <div class="repricing-why">${esc(whyNote)}</div>
         <div class="repricing-caveat">⚠️ ${esc(caveat)}</div>
@@ -1855,7 +1908,7 @@ function tenbaggerRepricingBadge(repricingLag) {
   const z = repricingLag?.checked && repricingLag.zone ? REPRICING_ZONE[repricingLag.zone] : null;
   if (!z) return '<span class="chip gray" title="仕込みゾーン判定に必要なデータ（株価位置・成長率）が不足しています">仕込みゾーン判定不可</span>';
   const gapNote = Number.isFinite(repricingLag.repricingGap)
-    ? `。Repricing Gap（業績改善率－株価反応率）${repricingLag.repricingGap > 0 ? '+' : ''}${repricingLag.repricingGap}pt`
+    ? `。Repricing Gap（再評価余地）${repricingLag.repricingGap > 0 ? '+' : ''}${repricingLag.repricingGap}pt`
     : '';
   return `<span class="chip ${z.cls}" title="今から買う妙味（織り込み度）。10倍ポテンシャルの判定とは別軸です。妙味スコア${repricingLag.score}/100${gapNote}">${z.emoji} ${z.label}</span>`;
 }
@@ -2173,7 +2226,7 @@ export function beginnerGuide() {
           <li><span class="chip amber">黄（amber）</span>中立〜軽い注意</li>
           <li><span class="chip red">赤（red）</span>明確な警戒サイン</li>
           <li><span class="chip gray">灰色（gray）</span>データ不足で未確認。「悪い」という意味ではありません</li>
-          <li>「自分ルール」の <b>✓</b>＝条件クリア　<b>✗</b>＝条件を満たさない　<b>？</b>＝判定に必要なデータが無い（不合格ではありません）</li>
+          <li>「自分ルール」の <b>✓</b>＝条件クリア　<b>✗</b>＝条件を満たさない　<b>？</b>＝判定に必要なデータが無い（不合格ではありません）。右上の「n/5」の分母は常に5項目固定で、？の項目があっても分母を減らして表示することはありません</li>
           <li>信号🟢🟡🔴⚪も同じ考え方（🔴＝そのパターンには明確に該当しない、⚪＝判定材料が無い）</li>
         </ul>
       </div>
@@ -2194,7 +2247,7 @@ export function beginnerGuide() {
         <div class="guide-h">「自分ルール」5項目</div>
         <ul class="guide-list">
           <li><b>需給</b>：信用取引が過熱していないか・踏み上げ（買い戻し）の可能性</li>
-          <li><b>下値</b>：解散価値やPBRから見て、これ以上下がりにくいと言える水準か</li>
+          <li><b>下値</b>：解散価値割れ（資産の裏付けがある、が業績・キャッシュフロー悪化が続けば目減りしうる）、または業種平均PBR・自社の過去PBRと比べて相対的に割安（あくまで相対比較で、下値を保証するものではない）のいずれかに該当するか</li>
           <li><b>期待値</b>：会社自身の予想とアナリスト予想（コンセンサス）の差</li>
           <li><b>タイミング</b>：決算発表が近すぎて新規に手を出しにくい時期でないか</li>
           <li><b>財務</b>：売上債権（売掛金）が売上に対して異常に増えていないか</li>
@@ -2699,6 +2752,14 @@ async function main() {
       confidenceTier: confidenceTier(buy.confidence),
       effectiveScore: effectiveScore(buy.score, buy.confidence),
       entryPriorityScore: priority,
+      // 第3優先改修: VALUATION/FUNDAMENTALS/CATALYST/PRICE_SUPPLY/TIMING
+      // への分類（読み取り専用の集計。既存スコアの配点は変更しない。
+      // indicators.mjsのevaluationAxes()参照）。
+      evaluationAxes: evaluationAxes(r),
+      // 第5優先改修: クラスタ内の重複カウント抑制（読み取り専用の新規
+      // 診断指標。既存スコアの配点は変更しない。indicators.mjsの
+      // clusterConfirmation()参照）。
+      clusterConfirmation: clusterConfirmation(r),
       // A指示 項目23「DATA%を順位に反映する（Confidence Adjustmentを
       // 最終スコアに追加する）」: BUY SCOREにはeffectiveScoreで既に
       // 適用済みだが、項目32が「ユーザーが見るべき」と明言した仕込み

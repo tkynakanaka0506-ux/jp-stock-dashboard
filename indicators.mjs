@@ -565,12 +565,36 @@ export function badChipSignals(r) {
   return CHIP_SIGNAL_FIELDS.map((k) => r[k]).filter((s) => s && s.level === 'bad');
 }
 
-// bad級のリスクシグナル該当件数からLOW/MED/HIGHの3段階に丸める。
+// bad級のリスクシグナル該当件数からLOW/MED/HIGH/UNKNOWNの4段階に丸める。
 // scraper.mjs(scoreTrioのRISKバッジ)とpolicy_catalyst_backtest.mjs
 // (検証ログのrisk項目)の両方から同じ定義を参照する単一の情報源。
+//
+// ■ 実測バグ（2026-09-22、ユーザー報告）の再発防止
+// CHIP_SIGNAL_FIELDS（21種類のリスク系シグナル）が1つも`checked:true`に
+// なっていない銘柄（＝リスクを評価できる材料が実質ゼロ）でも、
+// badChipSignals()が単に空配列を返すため、旧実装は無条件に'LOW'（リスク
+// 低い）と判定していた。「bad級のシグナルが0件」と「そもそも判定材料が
+// 0件」は全く別の状態であり、後者を'LOW'と呼ぶと「検知できるリスクが
+// 少なかっただけ」を「リスクが低い」と誤読させる（confidenceTierの
+// UNKNOWN=confidenceRaw===0と同じ考え方）。判定材料が1件もチェックできて
+// いない場合だけ'UNKNOWN'にする（実データでは滅多に起きない極端な
+// ケースのため、通常の銘柄でのLOW/MED/HIGHの分布は変えない）。
 export function riskLevel(r) {
+  const checked = CHIP_SIGNAL_FIELDS.map((k) => r[k]).filter((s) => s?.checked === true).length;
+  if (checked === 0) return 'UNKNOWN';
   const n = badChipSignals(r).length;
   return n === 0 ? 'LOW' : n === 1 ? 'MED' : 'HIGH';
+}
+
+// riskLevel()の判定に実際何件のシグナルが評価できたか（分母固定・
+// 欠損を隠さない）。scraper.mjs側でRISK LOW/MED/HIGHのチップに
+// 「n/21件で判定」という根拠を添えるための補助情報（CASE6対応:
+// LOWが「確認して問題なかった」のか「ほとんど確認できていない」のかを
+// 区別できるようにする）。
+export function riskCoverage(r) {
+  const total = CHIP_SIGNAL_FIELDS.length;
+  const checked = CHIP_SIGNAL_FIELDS.map((k) => r[k]).filter((s) => s?.checked === true).length;
+  return { checked, total };
 }
 
 // retailExpectationがwarn段階のとき、結論の理由に必ず一言補足する
@@ -786,8 +810,18 @@ function weightedComposite(parts, weights) {
     detail[k] = p ?? null;
     if (p && Number.isFinite(p.value)) { got += (p.value / 100) * w; max += w; }
   }
-  if (max === 0) return { score: null, confidence: 0, detail };
-  return { score: Math.round((got / max) * 100), confidence: Math.round(max), detail };
+  if (max === 0) return { score: null, confidence: 0, detail, coverageScore: 0 };
+  // coverageScore: 「データが無い軸は0点として数えた場合」の点数
+  // （＝got自体。weightsは常に固定の全軸合計＝100点満点の表なので、
+  // 分母を縮めずに済む）。scoreは既存通り「揃った軸だけで100点満点に
+  // 再配点した値」のまま変更しない（AMBUSH/SMART ENTRYの判定条件
+  // ＝BUY SCORE等の閾値比較がこの値を参照しているため、ここを変えると
+  // 判定条件自体が変わってしまう）。coverageScoreは新規の追加フィールド
+  // で、「取得できた項目だけで100点換算されているため、情報不足でも
+  // 見かけ上高得点になりうる」という既存設計の限界を、既存のconfidence
+  // （＝分母/取得できた配点の合計、常に固定100点満点基準）と並べて
+  // 補足表示するために追加した（第2優先改修、ユーザー報告CASE4対応）。
+  return { score: Math.round((got / max) * 100), confidence: Math.round(max), detail, coverageScore: Math.round(got) };
 }
 
 export const BUY_SCORE_WEIGHTS = { expectedReturn: 30, unpriced: 25, surprise: 20, timing: 15, quality: 10 };
@@ -1009,6 +1043,226 @@ export function effectiveScore(rawScore, confidenceRaw) {
 }
 
 // ==================================================================
+// 評価軸の分離（第3優先改修、ユーザー報告）
+//
+// ■ 問題
+// SCORE（composite）/BUY SCORE/仕込み優先度などの各複合スコアは、
+// 「割安性(PER/PBR)」「業績」「カタリスト（適時開示・受注・政策等）」
+// 「需給・テクニカル」「決算タイミング」という性質の異なる情報を、
+// 銘柄ごとに異なる配点で1つの数値に積み上げている。そのため「割安だから
+// 評価が高い」のか「近い将来に株価が動く材料が強いから評価が高い」のかが
+// 数字だけでは区別できない。
+//
+// ■ 今回やること・やらないこと
+// 既存スコアの配点・重みは一切変更しない（AMBUSH/SMART ENTRYの判定条件、
+// Repricing Gap、欠損データの扱いは全て前回までの改修のまま）。ここでは
+// 既に計算済みの値を、後から5つの評価軸（VALUATION/FUNDAMENTALS/
+// CATALYST/PRICE_SUPPLY/TIMING）に分類し直すだけの、読み取り専用の
+// 集計レイヤーを追加する。
+//
+// ■ 各軸のscoreを「新規に合成しない」方針について
+// 「配分が最適」と仮定した新スコアをバックテスト無しで作らないという
+// 禁止事項に従い、各軸のscoreは「その軸の意味に一致する既存のcomposite
+// 値をそのまま流用できる場合だけ」設定する。
+//  - valuation: valuationQualityScore()（既存、PER/PBRの業種平均比）を
+//    entryPriorityScoreと同じ式で0-100に換算し直したもの（新規の重みは
+//    無い）。
+//  - catalyst: catalystScore100（既存、TDnet開示ベース）をそのまま流用。
+//  - timing: buildScoreParts().buy.timingの値（既存、決算までの日数）を
+//    そのまま流用。
+//  - fundamentals/priceSupply: 複数指標をまとめた既存の単一composite値が
+//    無い（expectationScoreはsectorMomentumが混入・entryPriority.
+//    supplyDemandはRSI/乖離率/52週位置を含まない等）ため、新規に重みを
+//    決めて合成することはせず、score:nullのまま個別指標の一覧
+//    （components）だけを返す。
+//
+// ■ 実データで見つかった「重複」の代表例（詳細はコミットメッセージ/
+// 報告参照）
+//  - repricingLag.scoreがBUY SCOREのunpriced(25%)とentryPriorityScoreの
+//    untapped(25%)の両方に使われている（同じ値が2つの見出しスコアに
+//    別々の顔で出る）。
+//  - r.score（旧SCORE、月次+PR+進捗+セクター+テクニカルの合成）が
+//    そのままBUY SCOREのexpectedReturn(30%)として再利用されているため、
+//    旧SCOREに混ざっていたカタリスト(PR)・需給(セクター)・テクニカル
+//    要素がBUY SCORE全体にも間接的に効いている。
+//  - progressStreakが「旧SCOREのprogress軸」「entryPriorityScoreの
+//    quality(業績の質)軸」「earningsSurpriseScoreのprogressMomentum軸」
+//    の3か所で使われている。
+//  - consensusTrap（会社予想とコンセンサスの差）は「業績予想の相対値」
+//    でもあり「市場の期待とのギャップ＝カタリスト的な先行指標」でもある
+//    ため、FUNDAMENTALS/CATALYSTのどちらに分類しても一部重複が残る
+//    （このため下ではCATALYST側に分類しつつコメントで明記する）。
+export function evaluationAxes(r) {
+  const parts = buildScoreParts(r);
+  const valuationRaw = valuationQualityScore({ per: r.per, sectorPer: r.sectorPer, pbr: r.pbr, sectorPbr: r.sectorPbr });
+  return {
+    // A. VALUATION（割安性・バリュエーション）
+    valuation: {
+      score: valuationRaw.checked ? Math.round((valuationRaw.score / 30) * 100) : null,
+      components: {
+        per: r.per ?? null, sectorPer: r.sectorPer ?? null,
+        pbr: r.pbr ?? null, sectorPbr: r.sectorPbr ?? null,
+        psr: r.psr ?? r.repricingLag?.psr ?? null,
+        evEbitda: r.evEbitda?.checked ? r.evEbitda.ratio : null,
+        dividendYield: r.dividendYield ?? null,
+        netNet: r.netNet?.level ?? null,
+        lowPbr: r.lowPbr?.level ?? null,
+        pbrHistoricalLow: r.pbrHistoricalLow?.level ?? null,
+        divFloor: r.divFloor?.level ?? null,
+        dividendPeak: r.dividendPeak?.level ?? null,
+        hiddenAsset: r.hiddenAsset?.level ?? null,
+      },
+    },
+    // B. FUNDAMENTALS / EARNINGS（業績）
+    fundamentals: {
+      score: null, // 既存に単独compositeが無いため新規の重み付けはしない（上記コメント参照）
+      components: {
+        revenueGrowthPct: r.revenueGrowthPct ?? null,
+        profitGrowthPct: r.profitGrowthPct ?? r.earningsTrend?.netIncomeGrowthPct ?? null,
+        progressStreak: r.progressStreak?.level ?? null,
+        growthAcceleration: r.growthAcceleration?.score ?? null,
+        growthAnomalyCaution: r.growthAnomalyCaution?.level ?? null,
+        deficitGrowth: r.deficitGrowth?.level ?? null,
+        roe: r.roe ?? null,
+        receivablesAnomaly: r.receivablesAnomaly?.level ?? null,
+        dividendPotential: r.dividendPotential?.level ?? null,
+      },
+    },
+    // C. CATALYST（近い将来の再評価材料。適時開示・受注・政策・テーマ性等）
+    catalyst: {
+      score: Number.isFinite(r.catalystScore100) ? r.catalystScore100 : null,
+      components: {
+        catalystTier: r.catalystTier ?? null,
+        hasCatalyst: typeof r.hasCatalyst === 'boolean' ? r.hasCatalyst : null,
+        hasMonthly: typeof r.hasMonthly === 'boolean' ? r.hasMonthly : null,
+        // 業績予想の相対値でもあり、市場の期待とのギャップという意味では
+        // カタリスト的でもある重複指標（上記コメント参照）。
+        consensusTrap: r.consensusTrap?.level ?? null,
+        themeMatch: r.themeMatch?.level ?? null,
+        policyCatalystScore: r.policyCatalystScore?.score ?? null,
+      },
+    },
+    // D. PRICE / SUPPLY（テクニカル・需給。RSI・乖離率・出来高・信用・
+    // 52週位置・株価モメンタム等）
+    priceSupply: {
+      score: null, // 既存に単独compositeが無いため新規の重み付けはしない（上記コメント参照）
+      components: {
+        kairi: r.kairi ?? null, rsi: r.rsi ?? null, volZ: r.volZ ?? null,
+        loanRatio: r.loanRatio ?? null,
+        creditFloat: r.creditFloat?.level ?? null,
+        squeeze: r.squeeze?.level ?? null,
+        priceLevelPct: r.repricingLag?.priceLevelPct ?? null,
+        return1m: r.repricingLag?.return1m ?? null,
+        return3m: r.repricingLag?.return3m ?? null,
+        marginOverhang: r.marginOverhang?.level ?? null,
+        sectorLag: r.sectorLag?.level ?? null,
+        sectorRotation: r.sectorRotation?.level ?? null,
+        sectorChangePct: r.sectorChangePct ?? null,
+        retailExpectation: r.retailExpectation?.level ?? null,
+        institutionalShort: r.institutionalShort?.level ?? null,
+        majorShareholder: r.majorShareholder?.level ?? null,
+        climax: r.climax?.level ?? null,
+      },
+    },
+    // TIMING（決算タイミング）
+    timing: {
+      score: Number.isFinite(parts.buy?.timing?.value) ? parts.buy.timing.value : null,
+      components: {
+        daysLeft: r.daysLeft ?? r.earningsDaysLeft ?? null,
+        earningsWarning: r.earningsWarning?.level ?? null,
+        bucket: r.bucket ?? null,
+      },
+    },
+  };
+}
+
+// ==================================================================
+// クラスタ単位での重複カウント抑制（第5優先改修、ユーザー報告）
+//
+// ■ 問題
+// RSI・乖離率・52週(60日)レンジ内の位置・1ヶ月/3ヶ月騰落率は、実質的に
+// 「株価が売られている/出遅れている」という1つの現象を複数の数字で
+// 表現していることが多い。PER・PBR・配当利回りも「割安」という1つの
+// 現象を複数の切り口で示すことが多い。信用倍率・信用買い残トレンド・
+// 信用買い占有率も「信用需給の緊張度」という1つの現象を指すことが多い。
+// これらを独立した根拠として別々に加点すると、実質1つの現象を複数回
+// 加点してしまう（第3優先改修で発見した重複の実例:
+// repricingLag.scoreがBUY SCORE/仕込み優先度の両方に使われる、
+// r.score(旧SCORE)がBUY SCOREのexpectedReturnに丸ごと再利用される等）。
+//
+// ■ 今回の方針（ユーザー指定の原則）
+// - raw指標(kairi/rsi/per/pbr等)そのもの・各シグナル関数の意味・閾値は
+//   一切変更しない。
+// - composite()/weightedComposite()系の既存SCORE（旧SCORE・BUY SCORE・
+//   仕込み優先度・smartEntryConviction等）の配点・重みは一切変更しない
+//   （重み再設計は別工程。今回はバックテスト無しで「この重みが最適」と
+//   決めない）。
+// - 「クラスタ」（PRICE/SUPPLY_CREDIT/VALUATION/FUNDAMENTALS/CATALYST）を
+//   導入し、クラスタ内で複数の指標が同時に同じ方向を示していても、
+//   独立した根拠としては「そのクラスタ1件」としてしか数えない、新しい
+//   並行の集計（clusterConfirmation）を追加する。既存のどのSCOREの
+//   合計点も書き換えない（加算方式を変えるのではなく、別の診断指標として
+//   並べて出す）。
+// - 各指標の「個別に注目に値するか」の判定は、新しい閾値を1つも作らず、
+//   既存のsignal関数・既存の定数（LOW_PBR.goodRatio/DIVIDEND_FLOOR.strong/
+//   MARGIN_OVERHANG.heavy/CREDIT_FLOAT.light/REPRICING_LAG.
+//   preMovePriceLevelMax、scraper.mjsのrsiTone(<40)と同じ閾値等）を
+//   そのまま参照する。
+// - 欠損（判定材料が無い）はhitに含めない（0扱いにもgood扱いにもしない
+//   ＝第2優先改修のUNKNOWNの考え方と同じ）。
+export function clusterConfirmation(r) {
+  // PRICE: 株価そのものの位置・反応（RSI/乖離率/52週位置/1M・3M騰落率）。
+  // 「売られすぎ・出遅れ」方向の個別ヒットをそのまま列挙する。
+  const priceHits = [];
+  if (Number.isFinite(r.kairi) && r.kairi < 0) priceHits.push('kairi');
+  if (Number.isFinite(r.rsi) && r.rsi < 40) priceHits.push('rsi'); // scraper.mjs rsiToneと同じ閾値(<40)
+  const priceLevelPct = r.repricingLag?.priceLevelPct;
+  if (Number.isFinite(priceLevelPct) && priceLevelPct <= REPRICING_LAG.preMovePriceLevelMax) priceHits.push('priceLevelPct');
+  const return1m = r.repricingLag?.return1m ?? r.return1m;
+  if (Number.isFinite(return1m) && return1m < 0) priceHits.push('return1m');
+  const return3m = r.repricingLag?.return3m ?? r.return3m;
+  if (Number.isFinite(return3m) && return3m < 0) priceHits.push('return3m');
+
+  // VALUATION: 割安性（PER/PBR業種比・配当利回り）。
+  const valuationHits = [];
+  if (Number.isFinite(r.per) && Number.isFinite(r.sectorPer) && r.sectorPer > 0 && r.per / r.sectorPer <= LOW_PBR.goodRatio) valuationHits.push('per'); // valuationQualityScoreと同じ閾値(0.7)
+  if (r.lowPbr?.level === 'good') valuationHits.push('pbr');
+  if (Number.isFinite(r.dividendYield) && r.dividendYield >= DIVIDEND_FLOOR.strong) valuationHits.push('dividendYield');
+  if (r.pbrHistoricalLow?.level === 'good') valuationHits.push('pbrHistoricalLow');
+
+  // SUPPLY_CREDIT: 信用需給の緊張度（信用倍率・信用買い残トレンド・
+  // 信用買い占有率）。squeezeは既に「買い残減少×売り残増加」を合成
+  // 判定済みのため、これ単体で1指標としてカウントする（内部で二重に
+  // 分解しない）。
+  const supplyCreditHits = [];
+  if (Number.isFinite(r.loanRatio) && r.loanRatio < MARGIN_OVERHANG.heavy) supplyCreditHits.push('loanRatio');
+  if (r.squeeze?.level === 'good') supplyCreditHits.push('creditTrend');
+  if (r.creditFloat?.level === 'good' || (Number.isFinite(r.creditFloat?.occupancy) && r.creditFloat.occupancy <= CREDIT_FLOAT.light)) supplyCreditHits.push('creditFloatOccupancy');
+
+  // FUNDAMENTALS: 業績成長（売上/利益成長率・成長加速）。EPS成長率単体の
+  // 指標は現状実装されていない（revenueGrowthPct/profitGrowthPctのみ）。
+  const fundamentalsHits = [];
+  if (Number.isFinite(r.revenueGrowthPct) && r.revenueGrowthPct > 0) fundamentalsHits.push('revenueGrowthPct');
+  if (Number.isFinite(r.profitGrowthPct) && r.profitGrowthPct > 0) fundamentalsHits.push('profitGrowthPct');
+  if (r.growthAcceleration?.level === 'good') fundamentalsHits.push('growthAcceleration');
+
+  // CATALYST: 近い将来の再評価材料。
+  const catalystHits = [];
+  if (Number.isFinite(r.catalystScore100) && r.catalystScore100 > 0) catalystHits.push('catalystScore100');
+  if (r.consensusTrap?.level === 'good') catalystHits.push('consensusTrap');
+
+  const clusters = {
+    PRICE: priceHits, VALUATION: valuationHits, SUPPLY_CREDIT: supplyCreditHits,
+    FUNDAMENTALS: fundamentalsHits, CATALYST: catalystHits,
+  };
+  const rawHitCount = Object.values(clusters).reduce((a, hits) => a + hits.length, 0);
+  // independentClusterCount: 「本当に独立した根拠の数」。同じクラスタ内で
+  // 何指標ヒットしても1としてしか数えない（過剰加点の抑制）。
+  const independentClusterCount = Object.values(clusters).filter((hits) => hits.length > 0).length;
+  return { clusters, rawHitCount, independentClusterCount };
+}
+
+// ==================================================================
 // 底打ち確認（＋α）— 「まだ下がるかも」という不安を裏付けデータで払拭する
 // ための補助シグナル。いずれも除外条件ではなく、根拠を積み増す一言メモ。
 // データが無い/判定できない場合は level:null（何も主張しない）を返す。
@@ -1127,9 +1381,16 @@ export function netNetSignal({ cash, totalAssets, equity, marketCap, receivables
   const ratio = netAssets / marketCapYen(marketCap);
   const basis = hasReceivables ? '現預金+売掛金×0.75-負債' : '現預金-負債(簡易版・売掛金データ無し)';
   if (ratio >= 1) {
+    // 第4優先改修（ユーザー報告）: 「下値は極めて限定的」は解散価値
+    // （現時点のBS）だけを根拠にした話法で、業績・キャッシュフローの
+    // 悪化が続けば解散価値自体が目減りする可能性に触れていなかった。
+    // 「現時点の資産で見ると」という条件付きに変更し、将来の悪化まで
+    // 保証しない表現にする（valuationとdownside protectionを同義に
+    // しないという方針。下のvaluation/repricingLagとは別データソース
+    // で個別に算出しており重複はない）。
     return {
       level: 'good', label: '解散価値割れ', checked: true,
-      note: `${basis}が時価総額の${round1(ratio * 100)}%・会社を今すぐ解散して資産を分けた方が株価より高い計算です。事業の価値はほぼ0円評価されており、下値は極めて限定的とみられます`,
+      note: `${basis}が時価総額の${round1(ratio * 100)}%・会社を今すぐ解散して資産を分けた方が株価より高い計算です。現時点の資産の裏付けは厚いといえますが、今後業績やキャッシュフローが悪化すれば解散価値自体が目減りする可能性はあります`,
     };
   }
   if (ratio >= 0.7) {
@@ -1174,13 +1435,21 @@ export function lowPbrSignal({ pbr, sectorPbr } = {}) {
 // ③ 配当利回りの下限サポート
 export const DIVIDEND_FLOOR = { strong: 4, watch: 3 };
 
+// 第4優先改修（ユーザー報告）: 旧ラベル「配当下限」「配当下限接近」・
+// 旧ノート「下支えが期待できる水準」は、配当利回りの高さをそのまま
+// 株価の下値支持（downside protection）であるかのように読める表現
+// だった。配当利回りは現在株価・会社予想配当・減配リスク・利益/FCFとの
+// 関係で変わるものであり、「高利回り＝下値が固い」を自動的に意味しない
+// （ユーザー方針）。閾値・level判定ロジック自体は変更せず（今回は表現の
+// 整理のみが目的）、ラベル・ノートだけを「相対的に高い利回り」という
+// 事実の記述に変える。
 export function dividendYieldFloorSignal(yieldPct) {
   if (!Number.isFinite(yieldPct)) return { level: null, label: null, note: null };
   if (yieldPct >= DIVIDEND_FLOOR.strong) {
-    return { level: 'good', label: '配当下限', note: `配当利回り${yieldPct}%・4%超は機関投資家の買いが入りやすい水準です` };
+    return { level: 'good', label: '高配当利回り', note: `配当利回り${yieldPct}%（${DIVIDEND_FLOOR.strong}%超は相対的に高水準です）。減配リスクや株価変動により変わりうる目安で、下値を保証するものではありません` };
   }
   if (yieldPct >= DIVIDEND_FLOOR.watch) {
-    return { level: 'warn', label: '配当下限接近', note: `配当利回り${yieldPct}%・もう一段下がれば下支えが期待できる水準です` };
+    return { level: 'warn', label: '配当利回り上昇中', note: `配当利回り${yieldPct}%（${DIVIDEND_FLOOR.watch}%超）。株価下落や増配で今後さらに上がる可能性がある水準というだけで、下値を保証するものではありません` };
   }
   return { level: null, label: null, note: null };
 }
@@ -2574,31 +2843,94 @@ export function growthPotentialScore({ revenueGrowthPct, growthAcceleration } = 
 // A指示 項目3「『業績改善率－株価反応率』の概念を導入する（Repricing
 // Gap＝再評価ギャップ）」。既存のrepricingLagScore（未織り込み度25点+
 // 業績改善25点+株価割安度15点+成長率15点+先行材料10点+イベント10点を
-// 配点合成した複合スコア）とは別の、シンプルな「業績と株価の差分」
-// 単独指標。項目33の同点解消カスケードで「未織り込み度」「成長加速」
-// とは独立した3番目の基準として使われるため、既存スコアへ統合せず
-// growthPotentialScore/tenbaggerRealizabilityScoreと同じ「素の数値を
-// 返す」形の新規関数として実装する。
+// 配点合成した複合スコア）とは別の、「業績と株価の差」単独指標。
 //
-// ■ 数式の根拠（指示書の2つの実例で検証済み）
-// パターンA: 売上+42%・利益+31%・株価3M-19.9%・52週位置9%
-//   → performanceRate=36.5・priceReaction=-19.9・rawGap=56.4
-//   → 52週位置9%（ほぼ底値圏）は割り引きがわずかで済み、score=51.3
-// パターンB: 売上+52%・利益+115%・株価1M+4%・52週位置79%
-//   → performanceRate=83.5・priceReaction=4・rawGap=79.5
-//   → 52週位置79%（高値圏）で大きく割り引かれ、score=16.7
-// 「業績は良いが既に株価位置が高い」という指示書の結論（A>>B）と
-// 実例ベースで一致することを確認済み。
-// priceLevelPctは呼び出し側がJP=60日レンジ・US=52週レンジのどちらを
-// 渡しても同じ「レンジ内の相対位置(0-100)」という意味なので通貨/市場
-// 非依存（repricingLagScoreと同じ設計方針）。
-export function repricingGapScore({ revenueGrowthPct, profitGrowthPct, return1m, return3m, priceLevelPct } = {}) {
-  const rates = [revenueGrowthPct, profitGrowthPct].filter(Number.isFinite);
-  const priceReaction = Number.isFinite(return3m) ? return3m : Number.isFinite(return1m) ? return1m : null;
-  if (!rates.length || priceReaction === null) return null;
-  const performanceRate = rates.reduce((a, b) => a + b, 0) / rates.length;
+// ■ v2再設計の経緯（ユーザー報告・実測バグ）
+// 旧式は「業績成長率(YoY %) − 株価騰落率(%)」という異なる尺度の単純差分
+// だった。実測（2026-09-22、米国株ONDS）で、売上高成長率+1235.4%（利益
+// データ欠損のため売上単独採用）・株価3ヶ月-3.8%という組み合わせから
+// Repricing Gap +908.3ptという、投資判断上ほぼ無意味な数値が発生した。
+// 原因は2つ複合している。
+//  (1) 売上高成長率が極小の前年ベースからの反発等で三桁%に達しても、
+//      そのまま差分の一方に使うと外れ値が結果を支配する（winsorization
+//      無し）。
+//  (2) 業績側はYoY（1年前との比較）、株価側は直近1ヶ月/3ヶ月という
+//      異なる期間の数字を、同じ「その場で使える方」を採用する形で
+//      混ぜていた（return3mがあればreturn1mより優先、という実装）。
+//
+// ■ 新しい定義
+// 「業績側（実績の改善度）」と「株価側（市場の反応度）」を、どちらも
+// 同じ1ヶ月という時間軸・同じ%スケールに揃えたうえで差を取る。
+//  - 業績側: 売上高成長率・経常利益成長率（どちらもYoY実績、%）を
+//    ±REPRICING_GAP.growthCapPctでwinsorizeしてから平均する。
+//  - 株価側: 直近1ヶ月騰落率(return1m)。同業種の直近1ヶ月累積騰落率
+//    （sectorTrendPct、sector_history.mjsが日次で積み上げている実データ）
+//    が取得できれば、そこからの超過リターンに変換する（「銘柄固有の
+//    反応」と「セクター全体・市場全体の地合い」を分離するため）。
+//    セクター側の履歴が足りない場合（運用開始直後・米国株など）は
+//    単純なreturn1mにフォールバックする（推測で埋めない）。
+// 両者を「差分」で比較する点は変えていないが、(1)(2)の問題はこの
+// 前処理（winsorize・期間統一・セクター相対化）で解消している。
+//
+// ■ winsorization閾値の根拠（実データ確認済み・2026-09-22）
+// 本番index.htmlの実測値を確認したところ、成長率は売上-27.7%〜+60.7%・
+// 利益-24.6%〜+160.7%の範囲にほぼ収まっており、+1235.4%（ONDS、売上が
+// 極小額からの反発）だけが明確な外れ値だった。growthCapPct=200は実測の
+// 最大値（利益+160.7%）を割り引かずに残しつつ、この種の外れ値だけを
+// 大きく圧縮する（1235.4→200、約84%圧縮）水準として選んだ。全銘柄の
+// 分布を毎回集計してpercentile化する方式（案としては検討した）は、
+// 現状すべて「1銘柄ずつ計算する純関数」であるこのファイルの設計を、
+// スクリーニング全体を2パスにする構成へ変える必要があり、Repricing Gap
+// 以外のランキング・表示コードへの影響範囲が広がりすぎるため見送った。
+//
+// ■ データ欠損の扱い
+// - 売上高成長率・経常利益成長率のどちらも無ければ算出しない（null）。
+// - 片方しか無い場合は、その1指標だけで満額評価にしない
+//   （completeness=0.5を乗じる）。欠損銘柄が、両方揃っている銘柄より
+//   有利にならないようにするため。
+// - EPS予想（会社/コンセンサスの times series）は現状収集していない
+//   （Phase 1の既知の限界。growthAcceleration等と同じ制約）。将来
+//   収集できるようになるまでrepricingGapBreakdown().epsForecastChangeは
+//   常にnullを返し、「N/A」として扱う。
+//
+// ■ 符号についての注意（業績も株価も悪化しているケース）
+// rawGapは「業績側 − 株価側」の差分のため、業績も株価も悪化している
+// 場合でも株価の下落幅の方が大きければ正の値になりうる（例: 業績-20%・
+// 株価-30%→rawGap=+10）。これは「業績改善なのに株価が反応していない」
+// という意味の未織り込みではなく、「株価が業績以上に売られている」別の
+// 意味（オーバーシュート）なので、呼び出し側（scraper.mjs）は
+// performanceRateの符号を見て「未織り込み」の文言を出し分ける。
+export const REPRICING_GAP = { growthCapPct: 200 };
+
+// repricingGapScore（算出）とscraper.mjs側の表示文言生成の両方から
+// 呼ばれる共有ロジック。判定ロジックを2箇所に複製しないため独立関数に
+// している（sample.pyがbuild_news()に委譲するのと同じ考え方）。
+export function repricingGapBreakdown({ revenueGrowthPct, profitGrowthPct, return1m, sectorReturn1m } = {}) {
+  const clamp = (v) => (Number.isFinite(v) ? Math.max(-REPRICING_GAP.growthCapPct, Math.min(REPRICING_GAP.growthCapPct, v)) : null);
+  const revenueGrowthPctClamped = clamp(revenueGrowthPct);
+  const profitGrowthPctClamped = clamp(profitGrowthPct);
+  const rates = [revenueGrowthPctClamped, profitGrowthPctClamped].filter(Number.isFinite);
+  const performanceRate = rates.length ? round1(rates.reduce((a, b) => a + b, 0) / rates.length) : null;
+  const completeness = rates.length ? rates.length / 2 : null; // 2指標中いくつ確認できたか（欠損を有利にしないため）
+  const sectorAdjusted = Number.isFinite(return1m) && Number.isFinite(sectorReturn1m);
+  const priceReaction = Number.isFinite(return1m)
+    ? (sectorAdjusted ? round1(return1m - sectorReturn1m) : round1(return1m))
+    : null;
+  return {
+    performanceRate, priceReaction, sectorAdjusted, completeness,
+    revenueGrowthPctRaw: Number.isFinite(revenueGrowthPct) ? revenueGrowthPct : null,
+    profitGrowthPctRaw: Number.isFinite(profitGrowthPct) ? profitGrowthPct : null,
+    revenueGrowthPctClamped, profitGrowthPctClamped,
+    epsForecastChange: null, // Phase 1の既知の限界: EPS予想の時系列は未収集のためN/A固定
+  };
+}
+
+export function repricingGapScore({ revenueGrowthPct, profitGrowthPct, return1m, sectorReturn1m, priceLevelPct } = {}) {
+  const b = repricingGapBreakdown({ revenueGrowthPct, profitGrowthPct, return1m, sectorReturn1m });
+  if (b.performanceRate === null || b.priceReaction === null) return null;
+  const rawGap = (b.performanceRate * b.completeness) - b.priceReaction;
   const tempering = Number.isFinite(priceLevelPct) ? Math.max(0, Math.min(1, 1 - priceLevelPct / 100)) : 1;
-  return round1((performanceRate - priceReaction) * tempering);
+  return round1(rawGap * tempering);
 }
 
 export function tenbaggerSignal({ marketCap, maxMarketCap, revenueGrowthPct, unitLabel = '' } = {}) {

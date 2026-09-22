@@ -15,7 +15,8 @@ import {
   computeFloatRatio, floatSqueezeSignal, breakoutVolumeSignal, growthAccelerationSignal, aggressiveInvestmentSignal,
   themeMatchSignal, buyScore, buyScoreRiskPenalty, expectationScore, earningsSurpriseScore, buildScoreParts, confidenceTier, effectiveScore,
   evEbitda, valuationQualityScore, diamondSignal, tenbaggerRealizabilityScore, growthPotentialScore,
-  deficitGrowthSignal, growthAnomalyCautionSignal, marginImproving, repricingGapScore, entryPriorityScore,
+  deficitGrowthSignal, growthAnomalyCautionSignal, marginImproving, repricingGapScore, repricingGapBreakdown, REPRICING_GAP, entryPriorityScore,
+  riskLevel, riskCoverage, CHIP_SIGNAL_FIELDS, evaluationAxes, dividendYieldFloorSignal, clusterConfirmation,
   tenbaggerDifficultyLabel, inflectionCauseSignal, turnaroundCountermeasureSignal,
   coreScreeningSignal, inflectionSpreadSignal, inflectionProgressSurpriseSignal, inflectionHurdleRatioSignal,
   inflectionDownsideRiskSignal, inflectionPatternType,
@@ -1770,34 +1771,75 @@ test('growthPotentialScore: 売上高成長率×2＋成長加速ボーナスを0
   assert.equal(growthPotentialScore({ revenueGrowthPct: null }), null);
 });
 
-// A指示 項目3「業績改善率-株価反応率」の概念を導入する（Repricing Gap）。
-// 指示書の2つの実例（パターンA/B）をそのまま使う。
-test('repricingGapScore: パターンA（売上+42%・利益+31%・株価3M-19.9%・52週位置9%）は非常に大きなgapになる', () => {
-  const r = repricingGapScore({ revenueGrowthPct: 42, profitGrowthPct: 31, return3m: -19.9, priceLevelPct: 9 });
-  assert.equal(r, 51.3);
+// Repricing Gap v2再設計（ユーザー報告の実測バグ: 米国株ONDSで売上高成長率
+// +1235.4%・利益データ欠損・株価3ヶ月-3.8%という組み合わせからRepricing
+// Gap +908.3ptという投資判断上ほぼ無意味な数値が出ていた）。
+// 「業績成長率(YoY %)－株価騰落率(%)の単純差分」を廃止し、winsorize・
+// 期間統一(1ヶ月)・セクター相対化を経た差分に再設計した（indicators.mjs
+// のrepricingGapScore/repricingGapBreakdownのコメント参照）。
+// 以下は再設計時にユーザーが指定した8ケースの検証。
+
+test('repricingGapScore: ①業績予想↑・株価ほぼ横ばいは、②業績↑・株価↑↑より大きい（再評価余地ありの方向）', () => {
+  const flat = repricingGapScore({ revenueGrowthPct: 40, profitGrowthPct: 30, return1m: 1, priceLevelPct: 30 });
+  const surged = repricingGapScore({ revenueGrowthPct: 40, profitGrowthPct: 30, return1m: 40, priceLevelPct: 80 });
+  assert.equal(flat, 23.8);
+  assert.equal(surged, -1);
+  assert.ok(flat > surged, '株価が既に大きく反応済みのケースは、同じ業績改善でもgapが縮む方向であるべき');
 });
 
-test('repricingGapScore: パターンB（売上+52%・利益+115%・株価1M+4%・52週位置79%）は業績は良いが株価位置が高いため、パターンAよりかなり小さいgapになる', () => {
-  const patternA = repricingGapScore({ revenueGrowthPct: 42, profitGrowthPct: 31, return3m: -19.9, priceLevelPct: 9 });
-  const patternB = repricingGapScore({ revenueGrowthPct: 52, profitGrowthPct: 115, return1m: 4, priceLevelPct: 79 });
-  assert.equal(patternB, 16.7);
-  assert.ok(patternB < patternA, '株価位置が高いパターンBは、業績改善率自体はAより大きくてもgapは小さくなるべき');
+test('repricingGapScore: ③業績予想↓・株価↓が同程度ならgapはほぼ0（未織り込みとは判定しない）', () => {
+  const r = repricingGapScore({ revenueGrowthPct: -20, profitGrowthPct: -20, return1m: -20, priceLevelPct: 30 });
+  assert.equal(r, 0);
 });
 
-test('repricingGapScore: return3mがあればreturn1mより優先する', () => {
-  const r = repricingGapScore({ revenueGrowthPct: 30, return1m: 100, return3m: 10, priceLevelPct: 50 });
-  assert.equal(r, 10); // (30-10)*(1-50/100) = 20*0.5 = 10（return1m:100は無視される）
+test('repricingGapScore: ③業績↓・株価が業績以上に下げていてgapが正でも、performanceRateの符号で「未織り込み」ではなく下振れ超過と区別できる', () => {
+  const r = repricingGapScore({ revenueGrowthPct: -20, profitGrowthPct: -20, return1m: -35, priceLevelPct: 30 });
+  const detail = repricingGapBreakdown({ revenueGrowthPct: -20, profitGrowthPct: -20, return1m: -35 });
+  assert.equal(r, 10.5);
+  assert.ok(r > 0 && detail.performanceRate <= 0, '呼び出し側(scraper.mjs)はperformanceRate<=0を見て「未織り込み」の文言を出さない判断ができる');
+});
+
+test('repricingGapScore: ④業績データ（売上・利益とも）が無ければ推定しない（null）', () => {
+  assert.equal(repricingGapScore({ revenueGrowthPct: null, profitGrowthPct: null, return1m: 10, priceLevelPct: 30 }), null);
+  assert.equal(repricingGapScore({ return1m: 10, priceLevelPct: 30 }), null);
+});
+
+test('repricingGapScore: 株価反応データが無ければ推定しない（null）', () => {
+  assert.equal(repricingGapScore({ revenueGrowthPct: 30, profitGrowthPct: 20, priceLevelPct: 30 }), null);
+});
+
+test('repricingGapBreakdown: ⑤EPS予想の変化は未収集のため常にN/A（null）扱い', () => {
+  const d = repricingGapBreakdown({ revenueGrowthPct: 30, profitGrowthPct: 20, return1m: 5 });
+  assert.equal(d.epsForecastChange, null);
+});
+
+test('repricingGapScore: ⑥前年比売上が異常に大きい(+1235.4%、実測ONDS)だけでGapが異常値化しない（winsorizeで頭打ち）', () => {
+  const extreme = repricingGapScore({ revenueGrowthPct: 1235.4, profitGrowthPct: null, return1m: -11.8, priceLevelPct: 26.7 });
+  const normal = repricingGapScore({ revenueGrowthPct: REPRICING_GAP.growthCapPct, profitGrowthPct: null, return1m: -11.8, priceLevelPct: 26.7 });
+  assert.equal(extreme, 81.9); // 旧式なら+908.3ptだった組み合わせ
+  assert.equal(extreme, normal, 'growthCapPctちょうどと、それを大幅に超える値は同じ結果になる（青天井にならない）');
+  assert.ok(extreme < 200, '旧式の+908.3ptのような3桁後半の異常値にはならない');
+});
+
+test('repricingGapScore: ⑦セクター(業種)の同期間騰落率が分かれば、市場全体・セクター全体の上昇と銘柄固有の反応を区別できる', () => {
+  const withoutSector = repricingGapScore({ revenueGrowthPct: 40, profitGrowthPct: 30, return1m: 20, priceLevelPct: 30 });
+  const withSector = repricingGapScore({ revenueGrowthPct: 40, profitGrowthPct: 30, return1m: 20, sectorReturn1m: 18, priceLevelPct: 30 });
+  assert.equal(withoutSector, 10.5);
+  assert.equal(withSector, 23.1);
+  assert.notEqual(withoutSector, withSector, 'セクターも同時に+18%上がっていた場合、銘柄固有の反応は+2%しかなく、単純な+20%読みとは異なる結果になるべき');
+});
+
+test('repricingGapScore: ⑧売上・利益の片方が欠損している銘柄は、両方揃っている銘柄よりスコアが有利にならない', () => {
+  const bothAvailable = repricingGapScore({ revenueGrowthPct: 50, profitGrowthPct: 50, return1m: 5, priceLevelPct: 30 });
+  const onlyRevenue = repricingGapScore({ revenueGrowthPct: 50, profitGrowthPct: null, return1m: 5, priceLevelPct: 30 });
+  assert.equal(bothAvailable, 31.5);
+  assert.equal(onlyRevenue, 14);
+  assert.ok(onlyRevenue < bothAvailable, '欠損（利益データ無し）を良い方に補完せず、確認できた指標が少ない分スコアを割り引く');
 });
 
 test('repricingGapScore: priceLevelPctが無ければ割り引かない（tempering=1のまま）', () => {
-  const r = repricingGapScore({ revenueGrowthPct: 30, return3m: 10 });
+  const r = repricingGapScore({ revenueGrowthPct: 30, profitGrowthPct: 30, return1m: 10 });
   assert.equal(r, 20);
-});
-
-test('repricingGapScore: 業績データ・株価反応データのいずれかが無ければnull', () => {
-  assert.equal(repricingGapScore({ return3m: 10, priceLevelPct: 50 }), null);
-  assert.equal(repricingGapScore({ revenueGrowthPct: 30, priceLevelPct: 50 }), null);
-  assert.equal(repricingGapScore({}), null);
 });
 
 test('repricingLagScore: 直近1ヶ月+20%以上騰落していれば、スコアの内訳に関係なく強制的にzone:priced_in（オーバーライドルール）', () => {
@@ -2018,6 +2060,72 @@ test('buyScore: 一部の要素が欠けていてもscoreは計算でき、confi
   assert.equal(full.score, 80);
   assert.equal(partial.score, 80); // 揃っている要素だけで見れば同じ水準
   assert.ok(partial.confidence < full.confidence);
+});
+
+// 第2優先改修 CASE7「全データ欠損→高スコアにならない・高CONFIDENCEに
+// ならない」: buyScore({})は既にscore:null・confidence:0を返す（下の
+// テストで確認済み）。coverageScoreも0であることを確認する。
+test('buyScore: 全データ欠損ならcoverageScoreも0（CASE7: 全データ欠損→高スコアにならない）', () => {
+  const r = buyScore({});
+  assert.equal(r.coverageScore, 0);
+});
+
+// 第2優先改修 CASE4「10個のスコア項目のうち2個しか取得できない→2項目
+// だけで100点換算されない」対応。既存のscore（揃った軸だけで100点満点に
+// 再配点する値。AMBUSH/SMART ENTRYの判定条件がこの値の閾値比較を使って
+// いるため、値も意味も変更していない）とは別に、「未取得の軸は0点として
+// 数えた場合の点数」をcoverageScoreとして追加した（weightedComposite内部
+// のgotをそのまま公開するだけの追加フィールドで、既存の分岐・判定条件は
+// 一切変えていない）。
+test('entryPriorityScore: coverageScoreは未取得の軸を0点として数える（scoreのように100点換算しない。CASE4対応）', () => {
+  const parts = { untapped: { value: 100 } }; // 7軸中untapped(25点)だけ
+  const r = entryPriorityScore(parts);
+  assert.equal(r.score, 100, 'score自体は既存通り、揃った軸だけで100点満点に再配点する（AMBUSH/SMART ENTRYの判定条件を変えないため不変更）');
+  assert.equal(r.coverageScore, 25, 'coverageScoreは7軸中untappedの配点(25)だけを反映し、100点換算にはならない');
+});
+
+test('buyScore: coverageScoreは5軸中1軸(quality=10点)しか無ければ10点にとどまる（2項目だけで100点換算されない）', () => {
+  const r = buyScore({ quality: { value: 100 } });
+  assert.equal(r.score, 100);
+  assert.equal(r.coverageScore, 10);
+});
+
+// 第2優先改修 CASE5「重要なデータが欠損している→HIGH CONFIDENCEに
+// ならない」。BUY_SCORE_WEIGHTSの最大配点軸(expectedReturn=30)が欠損して
+// いれば、残り4軸を満点で揃えても70点(<80)までしか届かずMEDIUM止まりに
+// なることを確認する（既存のconfidenceTier閾値・重み配分は変更していない
+// ＝この挙動は既存実装が元々持っていた性質を確認するテスト）。
+test('confidenceTier: CASE5 — 最大配点の軸(expectedReturn)が欠損していればBUY SCOREのCONFIDENCEはHIGHにならない', () => {
+  const r = buyScore({
+    unpriced: { value: 80 }, surprise: { value: 80 }, timing: { value: 80 }, quality: { value: 80 },
+  }); // expectedReturn(30点、5軸中最大の配点)だけ欠損
+  assert.equal(r.confidence, 70);
+  assert.equal(confidenceTier(r.confidence), 'MEDIUM');
+});
+
+// 第2優先改修 CASE6/CASE7「RISK LOWを自動付与しない」。CHIP_SIGNAL_FIELDS
+// （21種類のリスク系シグナル）が1件もchecked:trueになっていない銘柄は、
+// bad級のシグナルが0件でも'LOW'ではなく'UNKNOWN'を返す（「確認して問題
+// なかった」と「そもそも確認できていない」を区別する。実測バグ:
+// 旧実装はbadChipSignals().length===0だけを見て無条件にLOWにしていた）。
+test('riskLevel: CASE7 — 判定材料(CHIP_SIGNAL_FIELDS)が1件もchecked:trueでなければUNKNOWN（LOWと自動判定しない）', () => {
+  assert.equal(riskLevel({}), 'UNKNOWN');
+});
+
+test('riskLevel: 1件でもchecked:trueで確認できていて、bad級が無ければ従来通りLOW（実データの挙動は変えない）', () => {
+  assert.equal(riskLevel({ netNet: { level: null, checked: true } }), 'LOW');
+});
+
+test('riskLevel: bad級が1件ならMED・2件以上ならHIGH（従来通り。ただしchecked:trueが前提）', () => {
+  assert.equal(riskLevel({ netNet: { level: 'bad', checked: true } }), 'MED');
+  assert.equal(riskLevel({ netNet: { level: 'bad', checked: true }, receivablesAnomaly: { level: 'bad', checked: true } }), 'HIGH');
+});
+
+test('riskCoverage: 何件中何件を実際に評価できたかを返す（RISK LOWの根拠の薄さを隠さないため。CASE6対応）', () => {
+  const cov = riskCoverage({ netNet: { level: null, checked: true }, marginOverhang: { level: null, checked: true } });
+  assert.equal(cov.checked, 2);
+  assert.equal(cov.total, CHIP_SIGNAL_FIELDS.length);
+  assert.equal(riskCoverage({}).checked, 0);
 });
 
 test('buyScore: 何も無ければscore:null・confidence:0', () => {
@@ -2282,4 +2390,219 @@ test('valuationQualityScore: データが無ければscore:0・checked:false', (
   const r = valuationQualityScore({});
   assert.equal(r.score, 0);
   assert.equal(r.checked, false);
+});
+
+// ==================================================================
+// evaluationAxes（第3優先改修）: VALUATION/FUNDAMENTALS/CATALYST/
+// PRICE_SUPPLY/TIMINGの分離。ユーザー指定のCASE A〜Dをそのまま検証する。
+// 既存スコアの配点は変更していないため、ここでは「軸が正しく独立して
+// いるか」（割安=近い将来の材料ではない、材料があっても割安とは限らない、
+// 株価が動いていても割安評価は自己修正しない）だけを確認する。
+// ==================================================================
+
+test('evaluationAxes: CASE A — 低PER/低PBR・カタリストなし・業績/株価横ばい → VALUATIONは高くなり得るがCATALYSTは高くしない', () => {
+  const r = {
+    per: 8, sectorPer: 15, pbr: 0.7, sectorPbr: 1.3, // 業種平均より明確に割安
+    revenueGrowthPct: 0, profitGrowthPct: 0, // 業績横ばい
+    kairi: 0, rsi: 50, // 株価横ばい
+    // カタリストデータ無し（hasCatalyst/catalystScore100とも未設定）
+  };
+  const axes = evaluationAxes(r);
+  assert.ok(axes.valuation.score >= 80, `割安なのでVALUATIONは高いはず（実際: ${axes.valuation.score}）`);
+  assert.equal(axes.catalyst.score, null, 'カタリストのデータが無いのに高いCATALYSTスコアを作ってはいけない');
+});
+
+test('evaluationAxes: CASE B — 業績上方修正・受注増加・しかしPERが極端に高い → CATALYST/FUNDAMENTALSは評価できるがVALUATIONは高くしない', () => {
+  const r = {
+    per: 80, sectorPer: 15, // 業種平均を大幅に上回る＝割高
+    revenueGrowthPct: 40, profitGrowthPct: 50, // 業績上方修正・受注増加に相当
+    catalystScore100: 90, hasCatalyst: true, catalystTier: 'S',
+  };
+  const axes = evaluationAxes(r);
+  assert.equal(axes.catalyst.score, 90, 'カタリストは正しく評価できるはず');
+  assert.equal(axes.fundamentals.components.revenueGrowthPct, 40, '業績データも正しく参照できるはず');
+  assert.equal(axes.fundamentals.components.profitGrowthPct, 50);
+  assert.ok(axes.valuation.score <= 10, `PERが業種平均の5倍以上なのにVALUATIONを高くしてはいけない（実際: ${axes.valuation.score}）`);
+});
+
+test('evaluationAxes: CASE C — 割安・業績改善・カタリストありでも、株価が既に大幅上昇していればPRICE_SUPPLYで別途過熱が見える（VALUATIONが自動で「未織込み」を主張しない）', () => {
+  const r = {
+    per: 8, sectorPer: 15, pbr: 0.7, sectorPbr: 1.3, // 割安
+    revenueGrowthPct: 30, profitGrowthPct: 40, // 業績改善
+    catalystScore100: 85, hasCatalyst: true, // カタリストあり
+    kairi: 25, rsi: 85, // 株価は既に大幅上昇（過熱）
+    repricingLag: { priceLevelPct: 95, return1m: 40, return3m: 60 },
+  };
+  const axes = evaluationAxes(r);
+  assert.ok(axes.valuation.score >= 80, 'VALUATIONは割安さそのものを表すため、株価の動きだけでは変化しない（自己修正しない）');
+  assert.equal(axes.priceSupply.components.kairi, 25);
+  assert.equal(axes.priceSupply.components.rsi, 85);
+  assert.equal(axes.priceSupply.components.priceLevelPct, 95, '「割安だから未織込み」と自動判断せず、株価位置は別軸(PRICE_SUPPLY)にそのまま出す');
+});
+
+test('evaluationAxes: CASE D — 割安・業績改善・カタリストあり・株価低迷 → 5軸が互いに干渉せず独立して存在する', () => {
+  const r = {
+    per: 8, sectorPer: 15, pbr: 0.7, sectorPbr: 1.3,
+    revenueGrowthPct: 30, profitGrowthPct: 40,
+    catalystScore100: 85, hasCatalyst: true,
+    kairi: -15, rsi: 25,
+    repricingLag: { priceLevelPct: 10, return1m: -10, return3m: -5 },
+    daysLeft: 20,
+  };
+  const axes = evaluationAxes(r);
+  assert.ok(axes.valuation.score >= 80);
+  assert.equal(axes.fundamentals.components.revenueGrowthPct, 30);
+  assert.equal(axes.catalyst.score, 85);
+  assert.equal(axes.priceSupply.components.kairi, -15);
+  assert.equal(axes.priceSupply.components.priceLevelPct, 10);
+  assert.equal(axes.timing.components.daysLeft, 20);
+});
+
+test('evaluationAxes: 何も無ければ全軸score:null（推測で埋めない）', () => {
+  const axes = evaluationAxes({});
+  assert.equal(axes.valuation.score, null);
+  assert.equal(axes.fundamentals.score, null);
+  assert.equal(axes.catalyst.score, null);
+  assert.equal(axes.priceSupply.score, null);
+  assert.equal(axes.timing.score, null);
+});
+
+// 実データで見つかった重複の再発防止用スナップショット: repricingLag.score
+// が2つの見出しスコア（BUY SCOREのunpriced・entryPriorityScoreのuntapped）
+// に同時に使われることを明示的に確認する（buildScoreParts参照）。
+test('buildScoreParts: repricingLag.scoreは buy.unpriced と entryPriority.untapped の両方に同じ値が使われる（見出しスコア間の重複を可視化）', () => {
+  const r = { repricingLag: { checked: true, score: 42, zone: 'pre_move' } };
+  const parts = buildScoreParts(r);
+  assert.equal(parts.buy.unpriced.value, 42);
+  assert.equal(parts.entryPriority.untapped.value, 42);
+});
+
+// ==================================================================
+// 第4優先改修（ユーザー報告）: バリュエーション表示の意味の正確化。
+// 「業種平均PBR/PERまで戻れば株価が上がる」「高配当利回りなら下値が
+// 固い」といった、計算根拠以上の予測・保証を自動的に主張していないかを
+// ユーザー指定のCASE A〜Fで検証する。
+// ==================================================================
+
+test('lowPbrSignal: CASE A — PBR0.5・業界平均PBR1.0は「相対的に低PBR」と判定できるが、ノートは価格予測をしない', () => {
+  const r = lowPbrSignal({ pbr: 0.5, sectorPbr: 1.0 });
+  assert.equal(r.level, 'good');
+  assert.match(r.note, /相対的に割安/);
+  assert.doesNotMatch(r.note, /まで(戻|上が|到達)/, '「PBR1倍まで戻る」のような価格予測をしてはいけない');
+  assert.doesNotMatch(r.note, /円/, '個別の目標株価(円)を主張してはいけない');
+});
+
+test('valuationQualityScore: CASE B — PER8倍・業界平均15倍は相対的に低PERとして評価できるが、score自体は0-30の相対点にとどまり「上昇余地」という言葉は一切含まない', () => {
+  const r = valuationQualityScore({ per: 8, sectorPer: 15 });
+  assert.ok(r.score > 0, '相対的に低PERなので加点されるべき');
+  assert.ok(!('note' in r) || !/上昇余地/.test(JSON.stringify(r)), 'valuationQualityScoreの返り値に「上昇余地」という表現を含めてはいけない（数値のみ返す設計を維持）');
+});
+
+test('dividendYieldFloorSignal: CASE C — 配当利回り5%は高利回りと判定できるが「下値が固い」とは自動判定しない', () => {
+  const r = dividendYieldFloorSignal(5);
+  assert.equal(r.level, 'good');
+  assert.doesNotMatch(r.note, /下値.*(固い|支え|下支え)|下支え.*期待/, '「下値が固い」「下支えが期待できる」という自動判定をしてはいけない');
+  assert.match(r.note, /下値を保証するものではありません/);
+});
+
+test('dividendYieldFloorSignal: warn段階(3%以上4%未満)も同様に下値保証の文言を含まない', () => {
+  const r = dividendYieldFloorSignal(3.5);
+  assert.equal(r.level, 'warn');
+  assert.doesNotMatch(r.note, /下支えが期待できる/);
+  assert.match(r.note, /下値を保証するものではありません/);
+});
+
+test('netNetSignal: CASE準拠 — 解散価値割れでも「下値は極めて限定的」と言い切らず、業績・CF悪化が続けば目減りしうる旨を明記する', () => {
+  const r = netNetSignal({ cash: 2_000_000, totalAssets: 1000, equity: 1000, marketCap: 1, receivables: 0 });
+  assert.equal(r.level, 'good');
+  assert.doesNotMatch(r.note, /下値は極めて限定的/);
+  assert.match(r.note, /目減りする可能性/);
+});
+
+test('evaluationAxes: CASE D — 低PBR(割安)と業績悪化(growthAnomalyCaution:bad)が同時に存在できる（一方が他方を打ち消さない）', () => {
+  const r = {
+    per: 8, sectorPer: 15, pbr: 0.5, sectorPbr: 1.0, // 割安
+    growthAnomalyCaution: { level: 'bad', checked: true }, // 業績悪化
+  };
+  const axes = evaluationAxes(r);
+  assert.ok(axes.valuation.score >= 80, '割安であることはVALUATIONにそのまま反映される');
+  assert.equal(axes.fundamentals.components.growthAnomalyCaution, 'bad', '業績悪化もFUNDAMENTALSにそのまま反映され、VALUATIONによって隠されたり打ち消されたりしない');
+});
+
+test('evaluationAxes: CASE E — 高ROE・高PBRでも、VALUATIONの低さとROEの高さは別々の値として両方見える（高PBRだけで単純な割高断定にしない）', () => {
+  const r = {
+    per: 40, sectorPer: 15, pbr: 5, sectorPbr: 1.5, // 業種平均より明確に割高（PER/PBRとも）
+    roe: 25, // ただし高ROE
+  };
+  const axes = evaluationAxes(r);
+  assert.equal(axes.valuation.score, 0, 'PER/PBRとも業種平均を大きく上回るためVALUATIONは低い（相対バリュエーションとしては正しい）');
+  assert.equal(axes.fundamentals.components.roe, 25, '高ROEという文脈はFUNDAMENTALS側に別途保持され、VALUATIONの低さに埋もれて消えない');
+});
+
+test('valuationQualityScore/lowPbrSignal/ceilingPrice: CASE F — 業界平均データが欠損していれば0や平均で補完せずUNKNOWN(checked:false/null)として扱う', () => {
+  assert.equal(valuationQualityScore({ per: 8 }).checked, false, '業界平均PERが無ければcheckedはfalse（0点をそのまま「割高」と誤読させない）');
+  assert.equal(lowPbrSignal({ pbr: 0.5 }).checked, false, '業界平均PBRが無ければUNKNOWN扱い（checked:false）');
+  assert.equal(evaluationAxes({ per: 8 }).valuation.score, null, 'evaluationAxesもvaluation.scoreをnullのままにする（0点で埋めない）');
+});
+
+// ==================================================================
+// 第5優先改修（ユーザー報告）: クラスタ内の相関・二重/三重カウントの
+// 洗い出しと抑制。clusterConfirmation()はraw指標・既存SCOREの配点を
+// 一切変更せず、「同じ現象を指す指標が複数PASSしても、クラスタとしては
+// 1件としてしか数えない」新しい並行の診断指標を追加したもの。
+// ユーザー指定のCASE A〜Eをそのまま検証する。
+// ==================================================================
+
+test('clusterConfirmation: CASE A — RSI低い・乖離率大幅マイナス・52週位置低い・1M/3Mリターンマイナスは「株価低迷」という1つの現象。rawHitCountは5でもindependentClusterCountはPRICE分の1のみ', () => {
+  const r = {
+    kairi: -12, rsi: 25,
+    repricingLag: { priceLevelPct: 15, return1m: -8, return3m: -5 },
+  };
+  const cc = clusterConfirmation(r);
+  assert.deepEqual(cc.clusters.PRICE.sort(), ['kairi', 'priceLevelPct', 'return1m', 'return3m', 'rsi']);
+  assert.equal(cc.rawHitCount, 5, '生の指標ヒット数は5件（raw指標自体は変更していない）');
+  assert.equal(cc.independentClusterCount, 1, '「株価低迷」という同じ現象なので、独立した根拠としては1件のみ数える（4倍評価しない）');
+});
+
+test('clusterConfirmation: CASE B — PER低い・PBR低い・配当利回り高いは「割安性」という1つの現象。3件PASSしてもVALUATIONは1件', () => {
+  const r = { per: 8, sectorPer: 15, lowPbr: { level: 'good' }, dividendYield: 5 };
+  const cc = clusterConfirmation(r);
+  assert.equal(cc.clusters.VALUATION.length, 3);
+  assert.equal(cc.rawHitCount, 3);
+  assert.equal(cc.independentClusterCount, 1, '「割安性」が3倍評価されてはいけない');
+});
+
+test('clusterConfirmation: CASE C — 信用倍率低い・信用買い残トレンド改善(squeeze)・信用買い占有率低いは「信用需給改善」という1つの現象', () => {
+  const r = { loanRatio: 2, squeeze: { level: 'good' }, creditFloat: { level: null, occupancy: 3 } };
+  const cc = clusterConfirmation(r);
+  assert.equal(cc.clusters.SUPPLY_CREDIT.length, 3);
+  assert.equal(cc.rawHitCount, 3);
+  assert.equal(cc.independentClusterCount, 1, '「信用需給改善」が過剰評価されてはいけない');
+});
+
+test('clusterConfirmation: CASE D — 売上成長率・利益成長率・成長加速はいずれも「業績成長」という同じ現象による重複', () => {
+  const r = { revenueGrowthPct: 30, profitGrowthPct: 40, growthAcceleration: { level: 'good' } };
+  const cc = clusterConfirmation(r);
+  assert.equal(cc.clusters.FUNDAMENTALS.length, 3);
+  assert.equal(cc.rawHitCount, 3);
+  assert.equal(cc.independentClusterCount, 1, '同じ業績成長という現象による過剰加点を抑制する（EPS成長率は現状未実装のため対象外）');
+});
+
+test('clusterConfirmation: CASE E — 5クラスタすべてで独立した根拠が本当に存在する場合は、抑制せずきちんと5と評価する', () => {
+  const r = {
+    kairi: -12, // PRICE
+    per: 8, sectorPer: 15, // VALUATION
+    loanRatio: 2, // SUPPLY_CREDIT
+    revenueGrowthPct: 30, // FUNDAMENTALS
+    catalystScore100: 80, // CATALYST
+  };
+  const cc = clusterConfirmation(r);
+  assert.equal(cc.independentClusterCount, 5, '5つの独立したクラスタが本当に確認できる場合は、抑制しすぎず5と評価できなければならない');
+});
+
+test('clusterConfirmation: 該当が無いクラスタは空配列（推測で埋めない）。全データ欠損ならindependentClusterCount:0', () => {
+  const cc = clusterConfirmation({});
+  assert.equal(cc.independentClusterCount, 0);
+  assert.equal(cc.rawHitCount, 0);
+  for (const hits of Object.values(cc.clusters)) assert.deepEqual(hits, []);
 });

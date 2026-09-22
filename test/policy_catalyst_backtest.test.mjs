@@ -27,6 +27,12 @@ function sampleResult(overrides = {}) {
       score: 86, confidence: 100, eventId: 'news-1|8035', theme: '半導体産業政策', direction: 'positive',
       parts: { policy: 88, unpriced: 80, timing: 100, exposure: 100 },
     },
+    // riskLevel()はCASE7再発防止(indicators.mjs参照)で、CHIP_SIGNAL_FIELDS
+    // が1件もchecked:trueでなければ'UNKNOWN'を返すようになった。このモックは
+    // 「確認した結果bad級シグナルが無かった」ケースを表すため、最低1件は
+    // checked:trueにしておく（実際のnetNetSignal等も判定できた場合は
+    // 必ずchecked:trueを伴う）。
+    netNet: { level: null, label: null, note: null, checked: true },
     ...overrides,
   };
 }
@@ -91,7 +97,7 @@ test('buyScore.detailが無ければunpriced/timingはnullになる(推測で埋
 test('badChipSignals該当のシグナルがあればriskがLOWより悪化する(riskLevelをそのまま反映する)', () => {
   const file = tmpFile();
   try {
-    recordPolicyCatalystSnapshot('2026-09-13', [sampleResult({ netNet: { level: 'bad', label: 'ネットネット割れ', note: 'テスト' } })], file);
+    recordPolicyCatalystSnapshot('2026-09-13', [sampleResult({ netNet: { level: 'bad', label: 'ネットネット割れ', note: 'テスト', checked: true } })], file);
     const row = loadPolicyCatalystBacktest(file)['2026-09-13']['8035|news-1|8035'];
     assert.equal(row.risk, 'MED');
   } finally {

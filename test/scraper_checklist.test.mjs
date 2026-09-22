@@ -2,7 +2,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { buyRuleChecklist, bottomChips, consensusEvidenceBlock, signalRow, ceilingPriceNote, smartEntryCard, convictionNote, beginnerGuide, entryTimingNote, passesPriceBand, byTenbaggerRank, smartEntryRank, buildReasons, checkReasonConsistency, exitPlanBlock, ceilingPrice, precursorCard, smartEntryExitPlanBlock, tenbaggerExitPlanBlock, tenbaggerFinancialBlock, precursorRank, explosionScore, displayCategoryKey, whyNowBlock, repricingLagBlock, buildMobileApp } from '../scraper.mjs';
+import { buyRuleChecklist, ruleChecklistBlock, bottomChips, consensusEvidenceBlock, signalRow, ceilingPriceNote, smartEntryCard, convictionNote, beginnerGuide, entryTimingNote, passesPriceBand, byTenbaggerRank, smartEntryRank, buildReasons, checkReasonConsistency, exitPlanBlock, ceilingPrice, precursorCard, smartEntryExitPlanBlock, tenbaggerExitPlanBlock, tenbaggerFinancialBlock, precursorRank, explosionScore, displayCategoryKey, whyNowBlock, repricingLagBlock, buildMobileApp } from '../scraper.mjs';
 import { hasPrecursor } from '../indicators.mjs';
 import { WINDOW } from '../screener.mjs';
 import { VALUATION_CHIP_FIELDS, reboundPatternSignal, laggingPatternSignal, buildScoreParts, expectationScore, buyScore, PRECURSOR_GOOD_FIELDS, PRECURSOR_CAUTION_FIELDS } from '../indicators.mjs';
@@ -170,6 +170,72 @@ test('構造チェック: データが完全に空(r={})なら、期待値以外
   }
 });
 
+// 第2優先改修（ユーザー報告の実測バグ。例: 9048名古屋鉄道は期待値/
+// タイミング/財務の3項目がok:null（？）なのに「自分ルール 2/2」と表示
+// されていた）。ruleChecklistBlock()の分母は、UNKNOWNの項目を除外した
+// 「判定できた項目数」ではなく、元のルール総数（5）で常に固定する。
+// 以下はユーザー指定のCASE1〜3をそのまま検証する。
+
+test('ruleChecklistBlock: CASE1 — 5ルール中PASS5・FAIL0・UNKNOWN0 → 5/5', () => {
+  const r = {
+    marginOverhang: { level: null, checked: true }, // 需給: PASS
+    netNet: { level: 'good', checked: true }, // 下値: PASS
+    estimateProfit: 100, consensusProfit: 95, // 期待値: PASS（差10%以内）
+    daysLeft: 20, earningsWarning: { level: null }, // タイミング: PASS
+    receivablesAnomaly: { level: null, checked: true }, // 財務: PASS
+  };
+  const html = ruleChecklistBlock(r);
+  assert.match(html, /自分ルール <span class="rulebox-score"[^>]*>5\/5<\/span>/);
+  assert.doesNotMatch(html, /rulebox-unknown/);
+});
+
+test('ruleChecklistBlock: CASE2 — 5ルール中PASS3・FAIL1・UNKNOWN1 → 3/5（5\/4や3\/4にしてはいけない）', () => {
+  const r = {
+    marginOverhang: { level: null, checked: true }, // 需給: PASS
+    netNet: { level: 'good', checked: true }, // 下値: PASS
+    estimateProfit: 100, consensusProfit: 95, // 期待値: PASS
+    daysLeft: 5, earningsWarning: { level: 'bad', note: '決算間近' }, // タイミング: FAIL
+    // 財務: receivablesAnomaly無し → UNKNOWN
+  };
+  const rows = buyRuleChecklist(r);
+  assert.equal(rows.filter((x) => x.ok === true).length, 3);
+  assert.equal(rows.filter((x) => x.ok === false).length, 1);
+  assert.equal(rows.filter((x) => x.ok === null).length, 1);
+  const html = ruleChecklistBlock(r);
+  assert.match(html, /自分ルール <span class="rulebox-score"[^>]*>3\/5<\/span>/);
+  assert.doesNotMatch(html, />5\/4</);
+  assert.doesNotMatch(html, />3\/4</);
+});
+
+test('ruleChecklistBlock: CASE3 — 5ルール中PASS2・FAIL0・UNKNOWN3 → 2/5（「2/2」には絶対にしない）', () => {
+  const r = {
+    marginOverhang: { level: null, checked: true }, // 需給: PASS
+    netNet: { level: 'good', checked: true }, // 下値: PASS
+    // 期待値・タイミング・財務は一切データ無し → UNKNOWN×3
+  };
+  const rows = buyRuleChecklist(r);
+  assert.equal(rows.filter((x) => x.ok === true).length, 2);
+  assert.equal(rows.filter((x) => x.ok === null).length, 3);
+  const html = ruleChecklistBlock(r);
+  assert.match(html, /自分ルール <span class="rulebox-score"[^>]*>2\/5<\/span>/);
+  assert.doesNotMatch(html, />2\/2</, '判定不能の3項目を分母から除外して2/2にしてはいけない');
+});
+
+// 実測ケース（ユーザー報告）: 9048名古屋鉄道相当（需給/下値はPASS、
+// 期待値/タイミング/財務がUNKNOWN）を再現し、2/5になることを確認する。
+test('ruleChecklistBlock: 実測ケース(9048名古屋鉄道相当) — 需給✓・下値✓・期待値？・タイミング？・財務？ → 2/5', () => {
+  const r = {
+    marginOverhang: { level: null, checked: true, note: '信用過多の兆候なし' },
+    netNet: { level: null, checked: false },
+    lowPbr: { level: 'good', checked: true, note: 'PBR0.75倍・業種平均1.26倍の59.5%' },
+    estimateProfit: null, consensusProfit: null, // 会社予想・コンセンサス共にN/A
+    daysLeft: null, // 決算日情報不明
+    // receivablesAnomaly無し（売上高または売上債権のデータ不足）
+  };
+  const html = ruleChecklistBlock(r);
+  assert.match(html, /自分ルール <span class="rulebox-score"[^>]*>2\/5<\/span>/);
+});
+
 test('bottomChips: コンセンサスが無い銘柄は「過去の事実」系チップ（お宝候補・解散価値・PBR・配当）を先頭に並べる', () => {
   // コンセンサス（アナリスト予想）が無い銘柄は「未来の期待値」との比較が
   // そもそもできないため、代わりに過去の実績に基づくチップを優先表示する。
@@ -276,13 +342,16 @@ test('signalRow: composePatternの4状態（該当/一部該当/非該当/N/A）
   assert.equal(new Set([eGood, ePartial, eNone, eNa]).size, 4, '4状態が絵文字を使い回さず、それぞれ別々に区別できていません');
 });
 
-test('ceilingPriceNote: 業種平均PBRに追いつく株価を「割安の上限目安」として計算する', () => {
+test('ceilingPriceNote: 業種平均PBRに追いつく株価を「割安の相対評価が薄れていく参考値」として計算する（予測・適正株価ではない）', () => {
   // ユーザー指摘: 9052山陽電鉄の実例で検証（現在PBR0.7倍・業種平均1.26倍・
   // 株価2031円）。追いつく株価 = 2031 * (1.26/0.7) ≈ 3656円。
   const r = { pbr: 0.7, sectorPbr: 1.26, price: 2031 };
   const html = ceilingPriceNote(r);
   assert.match(html, /約3,656円/);
-  assert.match(html, /バリュエーション上の目安/);
+  assert.match(html, /相対差（参考値）/);
+  // 第4優先改修（ユーザー報告）: 機械的な計算結果を株価の予測・適正
+  // 株価であるかのように読める表現にしない。
+  assert.match(html, /予測するものでも、適正株価・目標株価でもありません/);
 });
 
 test('ceilingPriceNote: 既に業種平均以上のPBRなら「割安の上限」という概念が成立しないため何も出さない', () => {
@@ -663,6 +732,11 @@ test('verdictBlock（precursorCard経由）: displayCategoryBadge（TOP PICK等�
     score: 70, buyScore: { score: 60, confidence: 100, detail: {} },
     expectationScore: { score: 40 }, earningsSurpriseScore: { score: 50 }, confidenceTier: 'HIGH', effectiveScore: 60,
     entryPriorityScore: { score: 90 },
+    // riskLevel()はCASE7再発防止(indicators.mjs参照)で、CHIP_SIGNAL_FIELDS
+    // が1件もchecked:trueでなければ'UNKNOWN'を返し、'UNKNOWN'はTOP_PICKの
+    // 対象外になった。このテストは「リスクは確認済みで問題なし」を表す
+    // ためのモックなので、最低1件はchecked:trueにする。
+    netNet: { level: null, label: null, note: null, checked: true },
   };
   const html = precursorCard(r, 0);
   assert.match(html, /🔥 TOP PICK/);
@@ -741,13 +815,25 @@ test('whyNowBlock: 最大のリスクはbadChipSignalsの最初の1件、無け�
 test('whyNowBlock: 見送り条件は、リスクHIGHまたはzone:priced_inなら「見送るのが無難」、そうでなければ将来の条件文を出す', () => {
   const highRisk = whyNowBlock({
     catalystTier: 'A', catalysts: [{ label: 'テスト' }],
-    netNet: { level: 'bad' }, receivablesAnomaly: { level: 'bad' },
+    netNet: { level: 'bad', checked: true }, receivablesAnomaly: { level: 'bad', checked: true },
   }, {});
   assert.match(highRisk, /➖ 見送り条件/);
   assert.match(highRisk, /見送るのが無難です/);
 
-  const lowRisk = whyNowBlock({ catalystTier: 'A', catalysts: [{ label: 'テスト' }] }, {});
+  // riskLevel()が確認済みで0件bad（＝genuinely LOW）の場合だけ、将来の
+  // 条件文（見送りを検討してください）を出す。
+  const lowRisk = whyNowBlock({
+    catalystTier: 'A', catalysts: [{ label: 'テスト' }],
+    netNet: { level: null, checked: true },
+  }, {});
   assert.match(lowRisk, /見送りを検討してください/);
+});
+
+// 第2優先改修（CASE7対応）: リスク評価材料が1件も無い（riskLevel==='UNKNOWN'）
+// 銘柄を、旧実装のように「確認して問題なし」の低リスク扱いにしない。
+test('whyNowBlock: リスク評価材料が1件も無い（UNKNOWN）場合もHIGHと同じく「見送るのが無難」にする（欠損を低リスク扱いしない）', () => {
+  const unknownRisk = whyNowBlock({ catalystTier: 'A', catalysts: [{ label: 'テスト' }] }, {});
+  assert.match(unknownRisk, /見送るのが無難です/);
 });
 
 test('whyNowBlock: 買い増し条件は仕込みゾーンのラベルを含める', () => {
@@ -958,7 +1044,7 @@ test('exitPlanBlock: repricingLagがchecked済みなら「織り込み済み」�
 test('exitPlanBlock: 業種平均PBR到達の目安株価が計算できれば利益確定の目安として含める', () => {
   const r = { daysLeft: 20, earningsDate: '2026-09-30', price: 1000, pbr: 1, sectorPbr: 2 };
   const html = exitPlanBlock(r, { level: 'hold' });
-  assert.match(html, /業種平均PBR到達の目安株価（約¥2,000）に近づいたら利益確定を検討/);
+  assert.match(html, /業種平均PBRとの相対差の参考値（約¥2,000、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする/);
 });
 
 test('exitPlanBlock: 決算日・残日数のどちらも無ければ何も出さない', () => {
@@ -1026,11 +1112,15 @@ test('scoreTrio（precursorCard経由）: UNPRICED・TIMING・RISKも表示す�
     score: 70,
     buyScore: { score: 60, confidence: 100, detail: { unpriced: { value: 72 }, timing: { value: 100 } } },
     expectationScore: { score: 40 }, earningsSurpriseScore: { score: 50 }, confidenceTier: 'HIGH', effectiveScore: 60,
+    // riskLevel()はCHIP_SIGNAL_FIELDSが1件もchecked:trueでなければ
+    // 'UNKNOWN'を返す（CASE7再発防止）。「確認したがbad級のシグナルが
+    // 無かった」ことを表すため、最低1件はchecked:trueにする。
+    netNet: { level: null, label: null, note: null, checked: true },
   };
   const html = precursorCard(r, 0);
   assert.match(html, /UNPRICED 72/);
   assert.match(html, /TIMING 100/);
-  assert.match(html, /RISK LOW/); // badレベルのシグナルを持たないためLOW
+  assert.match(html, /RISK LOW/); // badレベルのシグナルを持たない（かつ確認は取れている）ためLOW
 });
 
 // A指示 項目1-2/32「仕込み優先度」: 「ユーザーが最も見たい実戦用
@@ -1105,7 +1195,7 @@ test('scoreTrio（precursorCard経由）: bad級のリスクシグナルが2件�
     daysLeft: 20, earningsDate: '2026-10-10',
     score: 70, buyScore: { score: 60, confidence: 100, detail: {} },
     expectationScore: { score: 40 }, earningsSurpriseScore: { score: 50 }, confidenceTier: 'HIGH', effectiveScore: 60,
-    netNet: { level: 'bad' }, receivablesAnomaly: { level: 'bad' },
+    netNet: { level: 'bad', checked: true }, receivablesAnomaly: { level: 'bad', checked: true },
   };
   const html = precursorCard(r, 0);
   assert.match(html, /RISK HIGH/);
@@ -1183,7 +1273,7 @@ test('smartEntryExitPlanBlock: 「🚪 手放すタイミング」ブロック�
   assert.match(html, /🚪 手放すタイミング/);
   assert.doesNotMatch(html, /仕込み期限/);
   assert.match(html, /乖離率が\+15%を超えたら手放す（現在\+3%）/);
-  assert.match(html, /業種平均PBR到達の目安株価（約¥2,000）に近づいたら利益確定を検討/);
+  assert.match(html, /業種平均PBRとの相対差の参考値（約¥2,000、株価予測ではありません）に近づくほど「業種内で割安」の根拠が薄れるため、利益確定の検討材料にする/);
 });
 
 test('smartEntryExitPlanBlock: patternExpired（選定時のパターンにもう該当しない）状態を反映する', () => {
