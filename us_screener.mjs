@@ -24,7 +24,7 @@ import { loadTickerCikMap, fetchCompanyFacts, extractBalanceSheetSnapshot, extra
 import { loadUsEarningsCalendar, fetchProfile } from './us_finnhub.mjs';
 import {
   kairi, rsi, volumeZScore, stage1, unpricedScore, STAGE1,
-  netNetSignal, receivablesAnomalySignal, usEarningsTrendSignal,
+  netNetSignal, receivablesAnomalySignal, usEarningsTrendSignal, usTaxEffectCautionSignal,
   returnPct, priceLevelVsRange, marketCapYen, repricingLagScore, repricingGapScore, marketCapExclusion,
 } from './indicators.mjs';
 
@@ -205,6 +205,12 @@ export async function runUsScreen({ today, force = false } = {}) {
     }
     const netNet = netNetSignal({ cash: bs.cash, totalAssets: bs.totalAssets, equity: bs.equity, marketCap: profile.marketCap ?? null, receivables: bs.receivables });
     const earningsTrend = usEarningsTrendSignal(trend, today);
+    // 第6優先改修②（ユーザー報告「税効果」）: netIncomeGrowthPct（税引後）
+    // とpretaxIncomeGrowthPct（税引前、上のearningsTrendで同時に計算済み）
+    // の乖離から、税効果の影響を検知する。新規リクエスト無し。
+    const taxEffectCaution = usTaxEffectCautionSignal({
+      netIncomeGrowthPct: earningsTrend.netIncomeGrowthPct, pretaxIncomeGrowthPct: earningsTrend.pretaxIncomeGrowthPct,
+    });
     // 米国は売上債権の伸び率をEDGARの数値からYoYで計算できないため
     // （extractQuarterlyTrendは残高ではなく損益の系列）、Phase 1では
     // receivablesAnomalyはchecked:falseのまま据え置く（Phase 2で残高の
@@ -275,6 +281,7 @@ export async function runUsScreen({ today, force = false } = {}) {
       closes: s.tech.closes,
       netNet,
       earningsTrend,
+      taxEffectCaution,
       receivablesAnomaly,
       repricingLag,
       score,

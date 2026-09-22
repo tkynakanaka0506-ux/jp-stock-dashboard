@@ -360,6 +360,14 @@ export function extractBalanceSheetSnapshot(table) {
   const extraordinaryIncome = two(table, EXTRAORDINARY_INCOME_IDS, durationScheme.current);
   const extraordinaryLoss = two(table, EXTRAORDINARY_LOSS_IDS, durationScheme.current);
   const impairmentLoss = two(table, IMPAIRMENT_LOSS_IDS, durationScheme.current);
+  // 第6優先改修（ユーザー報告「構造改革費用の反動」）: 上のgrossProfitPrior
+  // 等と同じパターンで前期分も取得する。「前期に構造改革費用（特別損失）
+  // を計上し、今期は無い/大幅に縮小した」ことによる見かけ上の増益を
+  // growthAnomalyCautionSignalで検知できるようにするため（未検証。
+  // 標準タグ名からの類推で、EXTRAORDINARY_*_IDSと同じ扱い）。
+  const extraordinaryIncomePrior = durationScheme.comparable ? two(table, EXTRAORDINARY_INCOME_IDS, durationScheme.prior) : null;
+  const extraordinaryLossPrior = durationScheme.comparable ? two(table, EXTRAORDINARY_LOSS_IDS, durationScheme.prior) : null;
+  const impairmentLossPrior = durationScheme.comparable ? two(table, IMPAIRMENT_LOSS_IDS, durationScheme.prior) : null;
   return {
     receivables,
     receivablesGrowthPct: pct(receivables, receivablesPrior),
@@ -399,6 +407,7 @@ export function extractBalanceSheetSnapshot(table) {
     operatingIncome, operatingIncomePrior,
     capex, capexPrior,
     extraordinaryIncome, extraordinaryLoss, impairmentLoss,
+    extraordinaryIncomePrior, extraordinaryLossPrior, impairmentLossPrior,
   };
 }
 

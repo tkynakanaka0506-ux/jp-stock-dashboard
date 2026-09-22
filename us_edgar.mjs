@@ -118,6 +118,12 @@ const NET_INCOME_TAGS = ['NetIncomeLoss'];
 // 「攻めの赤字」判定（aggressiveInvestmentSignal、ユーザー提案）用。
 // 標準的なUS GAAPタグで、AAPLのcompanyfacts実データで存在を確認済み。
 const RND_TAGS = ['ResearchAndDevelopmentExpense'];
+// 第6優先改修②（ユーザー報告「税効果」）用。AAPLの実データ
+// （CIK0000320193のcompanyfacts）で四半期(duration 75〜100日)の実測値が
+// 取得できることを確認済み（2026Q3実測: 税引前36,267,000,000ドル -
+// 法人税等6,478,000,000ドル = 純利益29,789,000,000ドルとNetIncomeLossの
+// 実値が一致することも確認済み）。
+const PRETAX_INCOME_TAGS = ['IncomeLossFromContinuingOperationsBeforeIncomeTaxesExtraordinaryItemsNoncontrollingInterest'];
 
 // ■ 単一四半期 vs 累計（YTD）の混在に注意（実データ検証で発覚）
 // XBRLの売上高・純利益タグには「その四半期単独」の値と「年度開始からの
@@ -150,7 +156,14 @@ export function extractQuarterlyTrend(facts) {
   const revenue = quarterlySeries(pickConcept(usgaap, REVENUE_TAGS));
   const netIncome = quarterlySeries(pickConcept(usgaap, NET_INCOME_TAGS));
   const rnd = quarterlySeries(pickConcept(usgaap, RND_TAGS));
+  // 第6優先改修②（税効果）: 税引前利益。取得できない企業も多いため
+  // （pickConcept自体がタグ不在ならnullを返す）、無理に補完しない。
+  const pretaxIncome = quarterlySeries(pickConcept(usgaap, PRETAX_INCOME_TAGS));
   const niByEnd = new Map(netIncome.map((e) => [e.end, e.val]));
   const rndByEnd = new Map(rnd.map((e) => [e.end, e.val]));
-  return revenue.map((e) => ({ end: e.end, revenue: e.val, netIncome: niByEnd.get(e.end) ?? null, rnd: rndByEnd.get(e.end) ?? null }));
+  const pretaxByEnd = new Map(pretaxIncome.map((e) => [e.end, e.val]));
+  return revenue.map((e) => ({
+    end: e.end, revenue: e.val, netIncome: niByEnd.get(e.end) ?? null, rnd: rndByEnd.get(e.end) ?? null,
+    pretaxIncome: pretaxByEnd.get(e.end) ?? null,
+  }));
 }

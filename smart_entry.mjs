@@ -51,14 +51,14 @@ import {
   reboundPatternSignal, trendReversalPatternSignal, laggingPatternSignal,
   cheapExclusion, fundamentalExclusion,
   sellingClimaxSignal, netNetSignal, lowPbrSignal, dividendYieldFloorSignal, shortSqueezeSignal, sectorMomentumSignal,
-  sectorRotationSignal, SECTOR_ROTATION, marginOverhangSignal, earningsProximitySignal, receivablesAnomalySignal,
+  sectorRotationSignal, SECTOR_ROTATION, marginOverhangSignal, buyingDemandSignal, earningsProximitySignal, receivablesAnomalySignal,
   institutionalShortSignal, majorShareholderSignal, dividendYieldPeakSignal, pbrHistoricalLowSignal, hiddenGemSignal,
   retailExpectationSignal, returnPct, priceLevelVsRange,
   progressStreakSignal, dividendPotentialSignal, hiddenAssetSignal, hasPrecursor, GROWTH_MARKET,
   tenbaggerSignal, midCapGrowthSignal, repricingLagScore, repricingGapScore, latestProfitYoyPct, growthAccelerationSignal, diamondSignal,
   breakoutVolumeSignal, computeFloatRatio, floatSqueezeSignal, aggressiveInvestmentSignal, themeMatchSignal,
   valuationQualityScore, tenbaggerRealizabilityScore, growthPotentialScore, deficitGrowthSignal,
-  growthAnomalyCautionSignal, marginImproving, inflectionCauseSignal, turnaroundCountermeasureSignal,
+  growthAnomalyCautionSignal, earningsCashFlowQualitySignal, marginImproving, inflectionCauseSignal, turnaroundCountermeasureSignal,
   evEbitda, coreScreeningSignal, inflectionSpreadSignal, inflectionProgressSurpriseSignal, inflectionHurdleRatioSignal,
   inflectionDownsideRiskSignal, inflectionPatternType,
 } from './indicators.mjs';
@@ -415,10 +415,16 @@ async function scanGrowthPrecursors(techByCode, universe) {
     // 東証グロース500〜650銘柄分の追加リクエストが発生してしまうため）。
     // A指示 項目7「成長加速を独立スコア化する」: 粗利率・営業利益率改善
     // ボーナスも渡す。bsは全銘柄向けに既に取得済みのため追加リクエスト無し。
+    // 第6優先改修■3（ユーザー報告）: 売上成長・利益成長とは別に「利益率
+    // (MARGIN)が改善しているか」を専用フィールドとして保持する
+    // （growthAccelerationSignalの内部でも同じ値を使っているが、これまで
+    // 呼び出し側に生値として残しておらず、evaluationAxesから参照できな
+    // かった）。marginImproving自体は既存関数の再利用で新規計算は無い。
+    const grossMarginImproving = marginImproving(bs.grossProfit, bs.netSales, bs.grossProfitPrior, bs.netSalesPrior);
+    const opMarginImproving = marginImproving(bs.operatingIncome, bs.netSales, bs.operatingIncomePrior, bs.netSalesPrior);
     const growthAcceleration = growthAccelerationSignal({
       growthPct: revenueGrowthPct, prevGrowthPct: fin.revenueGrowth?.prevGrowthPct ?? null,
-      grossMarginImproving: marginImproving(bs.grossProfit, bs.netSales, bs.grossProfitPrior, bs.netSalesPrior),
-      opMarginImproving: marginImproving(bs.operatingIncome, bs.netSales, bs.operatingIncomePrior, bs.netSalesPrior),
+      grossMarginImproving, opMarginImproving,
     });
     const themeMatch = themeMatchSignal({ matchedThemes: themeCodeMap.get(code) ?? [] });
     const withinTierACap = Number.isFinite(main.marketCap) && main.marketCap <= TENBAGGER_MAX_MARKET_CAP_JPY;
@@ -446,6 +452,7 @@ async function scanGrowthPrecursors(techByCode, universe) {
       revenueGrowthPct, profitGrowthPct: latestProfitYoyPct(ph),
       operatingIncomePrior: bs.operatingIncomePrior, netSalesPrior: bs.netSalesPrior,
       extraordinaryIncome: bs.extraordinaryIncome, extraordinaryLoss: bs.extraordinaryLoss, impairmentLoss: bs.impairmentLoss,
+      extraordinaryIncomePrior: bs.extraordinaryIncomePrior, extraordinaryLossPrior: bs.extraordinaryLossPrior, impairmentLossPrior: bs.impairmentLossPrior,
     });
     const tenbaggerHit = !progressDeclining
       ? (tenbaggerA.level === 'good' ? { tier: 'A', signal: tenbaggerA } : tenbaggerB.level === 'good' ? { tier: 'B', signal: tenbaggerB } : null)
@@ -576,6 +583,7 @@ async function scanGrowthPrecursors(techByCode, universe) {
       // repricingLagが無いと判定できず、この銘柄群には未取得のため含めない
       // （tenbaggerHit分岐に該当した銘柄だけがdiamond判定の対象になる）。
       revenueGrowthPct, growthAcceleration, themeMatch, growthAnomalyCaution,
+      grossMarginImproving, opMarginImproving,
     });
   }
   console.log(`   成長株予兆スキャン完了（時価総額${GROWTH_PRECURSOR.minMarketCap}百万円未満で除外 ${capExcluded} / 取得失敗 ${err}） / 該当 ${out.length}銘柄 / テンバガー候補 Tier A ${tenbaggersA.length}銘柄・Tier B ${tenbaggersB.length}銘柄`);
@@ -825,6 +833,9 @@ export async function runSmartEntryScreen({ today, tdNames, sbiStocks, sectors =
       // 該当パターンが要求する信用倍率としてではなく、一般的な注意喚起
       // として（該当パターンに関係なく）出す。
       const marginOverhang = marginOverhangSignal(loanRatio);
+      // 第7優先改修: 「信用買い残が減っている＝買い需要が強い」を自動
+      // 判定しない（indicators.mjsのbuyingDemandSignal参照。新規リクエスト無し）。
+      const buyingDemand = buyingDemandSignal({ creditTrendPct, changePct: tech.changePct, volRatio: squeezeVolRatio });
       // SMART ENTRYは決算スケジュールを見ずに選ぶが、「決算直前の新規
       // エントリーは避ける」のは需給とは独立した地雷回避ルールなので、
       // 該当パターンの判定とは別枠で警告する（除外はしない）。
@@ -867,10 +878,12 @@ export async function runSmartEntryScreen({ today, tdNames, sbiStocks, sectors =
       // 取得済みのthemeCodeMapを参照するだけ）。
       // A指示 項目7「成長加速を独立スコア化する」: bsは上で既にEDINETから
       // 取得済みのため追加リクエスト無し。
+      // 第6優先改修■3（ユーザー報告）: MARGINトレンド専用フィールド。
+      const grossMarginImproving = marginImproving(bs.grossProfit, bs.netSales, bs.grossProfitPrior, bs.netSalesPrior);
+      const opMarginImproving = marginImproving(bs.operatingIncome, bs.netSales, bs.operatingIncomePrior, bs.netSalesPrior);
       const growthAcceleration = growthAccelerationSignal({
         growthPct: revenueGrowthPct, prevGrowthPct: fin.revenueGrowth?.prevGrowthPct ?? null,
-        grossMarginImproving: marginImproving(bs.grossProfit, bs.netSales, bs.grossProfitPrior, bs.netSalesPrior),
-        opMarginImproving: marginImproving(bs.operatingIncome, bs.netSales, bs.operatingIncomePrior, bs.netSalesPrior),
+        grossMarginImproving, opMarginImproving,
       });
       const themeMatch = themeMatchSignal({ matchedThemes: themeCodeMap.get(code) ?? [] });
       // A指示 項目8「異常成長のベース効果・一時要因を確認する」。bsは
@@ -879,6 +892,15 @@ export async function runSmartEntryScreen({ today, tdNames, sbiStocks, sectors =
         revenueGrowthPct, profitGrowthPct,
         operatingIncomePrior: bs.operatingIncomePrior, netSalesPrior: bs.netSalesPrior,
         extraordinaryIncome: bs.extraordinaryIncome, extraordinaryLoss: bs.extraordinaryLoss, impairmentLoss: bs.impairmentLoss,
+        extraordinaryIncomePrior: bs.extraordinaryIncomePrior, extraordinaryLossPrior: bs.extraordinaryLossPrior, impairmentLossPrior: bs.impairmentLossPrior,
+      });
+      // 第6優先改修（ユーザー報告）: 「利益成長率が高い」だけでは営業
+      // キャッシュ・フローが伴っているかまでは分からない。bsは上で既に
+      // EDINETから取得済み（receivablesAnomalySignal向けのoperatingCf*と
+      // 同じ入力元）のため追加リクエスト無し。
+      const earningsCashFlowQuality = earningsCashFlowQualitySignal({
+        profitGrowthPct, operatingCf: bs.operatingCf, operatingCfPrior: bs.operatingCfPrior, operatingCfGrowthPct: bs.operatingCfGrowthPct,
+        capex: bs.capex, capexPrior: bs.capexPrior,
       });
       const psrForRepricing = Number.isFinite(fin.revenueGrowth?.latestSales) && fin.revenueGrowth.latestSales > 0 && Number.isFinite(main.marketCap)
         ? main.marketCap / fin.revenueGrowth.latestSales
@@ -946,7 +968,7 @@ export async function runSmartEntryScreen({ today, tdNames, sbiStocks, sectors =
           // scraper.mjs側のattachScores（buildScoreParts/expectationScore/
           // repricingLagBlock）が参照する。
           revenueGrowthPct, profitGrowthPct, progressStreak, repricingLag, growthAcceleration, themeMatch, diamond,
-          growthAnomalyCaution,
+          growthAnomalyCaution, earningsCashFlowQuality, grossMarginImproving, opMarginImproving,
           climax, netNet, lowPbr, pbrHistoricalLow, dividendPeak, hiddenGem, divFloor, squeeze, institutionalShort,
           institutionalShortPct: institutionalShortInfo.totalPct ?? null,
           majorShareholder,
@@ -957,7 +979,7 @@ export async function runSmartEntryScreen({ today, tdNames, sbiStocks, sectors =
           dividendStreakDirection: dividendHistory.streakDirection ?? null,
           pbrMin: pbrHistory.minPbr ?? null,
           pbrMinPeriod: pbrHistory.minPeriod ?? null,
-          sectorLag, sectorRotation, marginOverhang,
+          sectorLag, sectorRotation, marginOverhang, buyingDemand,
           earningsDaysLeft, earningsWarning, receivablesAnomaly, retailExpectation,
           matched,
           sig1, sig2, sig3,

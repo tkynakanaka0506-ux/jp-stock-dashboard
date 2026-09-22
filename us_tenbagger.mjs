@@ -27,7 +27,7 @@ import { fetchDailyBars } from './us_yahoo.mjs';
 import { loadTickerCikMap, fetchCompanyFacts, extractQuarterlyTrend } from './us_edgar.mjs';
 import { fetchProfile, loadUsEarningsCalendar } from './us_finnhub.mjs';
 import {
-  returnPct, priceLevelVsRange, usEarningsTrendSignal, volumeRatio,
+  returnPct, priceLevelVsRange, usEarningsTrendSignal, usTaxEffectCautionSignal, volumeRatio,
   tenbaggerSignal, midCapGrowthSignal, repricingLagScore, repricingGapScore, marketCapYen,
   growthAccelerationSignal, breakoutVolumeSignal, aggressiveInvestmentSignal, themeMatchSignal,
   tenbaggerRealizabilityScore, growthPotentialScore,
@@ -104,6 +104,10 @@ export async function runUsTenbaggerScreen({ today, force = false } = {}) {
         trend = extractQuarterlyTrend(facts);
       }
       const earningsTrend = usEarningsTrendSignal(trend, today);
+      // 第6優先改修②（ユーザー報告「税効果」）。新規リクエスト無し。
+      const taxEffectCaution = usTaxEffectCautionSignal({
+        netIncomeGrowthPct: earningsTrend.netIncomeGrowthPct, pretaxIncomeGrowthPct: earningsTrend.pretaxIncomeGrowthPct,
+      });
 
       const marketCap = profile.marketCap ?? null;
       const revenueGrowthPct = earningsTrend.revenueGrowthPct ?? null;
@@ -196,7 +200,7 @@ export async function runUsTenbaggerScreen({ today, force = false } = {}) {
         price: bars.price, changePct: bars.changePct, closes: bars.closes.slice(-20),
         fiftyTwoWeekHigh: bars.fiftyTwoWeekHigh,
         tier, tenbagger: tier === 'A' ? tenbaggerA : tier === 'B' ? tenbaggerB : tenbaggerC,
-        earningsTrend, repricingLag, hasCatalyst,
+        earningsTrend, taxEffectCaution, repricingLag, hasCatalyst,
         growthAcceleration, breakoutVolume, aggressiveInvestment, themeMatch,
         realizability, growthPotential,
         floatSqueeze: { level: null, label: null, note: null, checked: false }, // Phase 1の既知の限界: US側は非対応

@@ -47,7 +47,7 @@ import {
   OVERHEAT_KAIRI, hasPrecursor, PRECURSOR_GOOD_FIELDS, PRECURSOR_CAUTION_FIELDS, VERDICT_SEVERITY,
   buildScoreParts, buyScore, buyScoreRiskPenalty, expectationScore, earningsSurpriseScore, confidenceTier, effectiveScore, badChipSignals,
   entryPriorityScore, tenbaggerDifficultyLabel, riskLevel, riskCoverage, repricingGapBreakdown, REPRICING_GAP, evaluationAxes,
-  clusterConfirmation,
+  clusterConfirmation, creditSupplyBreakdown, ambushTimingBreakdown, financialQualityBreakdown,
 } from './indicators.mjs';
 import { loadEarningsCalendar } from './sbi.mjs';
 import { loadHolidays, isMarketHoliday } from './holidays.mjs';
@@ -62,6 +62,7 @@ import { loadListedIssues } from './jpx.mjs';
 import { loadPolicyCatalystByCode } from './policy_catalyst.mjs';
 import { computePolicyCatalystScore } from './policy_catalyst_score.mjs';
 import { recordPolicyCatalystSnapshot, policyCatalystBacktestStatus } from './policy_catalyst_backtest.mjs';
+import { recordAmbushTimingSnapshot, ambushTimingBacktestStatus } from './ambush_timing_backtest.mjs';
 import { groupPolicyCatalystByTheme, AXIS_LABEL } from './policy_catalyst_compare.mjs';
 import { loadAiCapexCatalystByCode } from './ai_capex_catalyst.mjs';
 import { recordAiCapexCatalystSnapshot, aiCapexCatalystBacktestStatus } from './ai_capex_catalyst_backtest.mjs';
@@ -755,7 +756,14 @@ export function exitPlanBlock(r, verdict) {
     deadline = `決算まであと${daysLeft}日。あと${daysLeft - WINDOW.nowMax}日でAMBUSHの狙い目ゾーンに入ります。仕込みはまだ早めです`;
   }
 
-  const exits = ['決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避ける）'];
+  // 第8優先改修（ユーザー報告）: 「決算をまたぐと危険」は検証済みの事実
+  // ではなく、決算発表による急変動リスクを避けるためのリスク管理ルール
+  // （RISK CONTROL RULE）として扱う。ルール自体（決算前に手仕舞う）は
+  // 変更しない。決算を跨いだ場合との比較検証は、ambush_timing_backtest.mjs
+  // が記録するdaysToEarnings/bucketのスナップショットを将来分析すれば
+  // 可能（今回はバックテスト結果を捏造したり、最適な売却日数を決めたり
+  // しない）。
+  const exits = ['決算発表の前営業日までに手仕舞う（決算をまたぐリスクを避けるためのリスク管理ルールで、決算を跨いだ方が良い結果になるかは別途検証が必要です）'];
   exits.push('判定が🟠織り込み警戒／🔴見送りに悪化したら手放す（次回更新時に確認）');
   if (Number.isFinite(r.kairi)) {
     exits.push(`乖離率が+${OVERHEAT_KAIRI}%を超えたら手放す（現在${r.kairi >= 0 ? '+' : ''}${r.kairi}%）`);
@@ -2760,6 +2768,20 @@ async function main() {
       // 診断指標。既存スコアの配点は変更しない。indicators.mjsの
       // clusterConfirmation()参照）。
       clusterConfirmation: clusterConfirmation(r),
+      // 第7優先改修: 信用需給の意味の分離（SUPPLY_PRESSURE/BUYING_DEMAND/
+      // SQUEEZE_POTENTIAL/LIQUIDITY_QUALITY、読み取り専用。既存スコアの
+      // 配点は変更しない。indicators.mjsのcreditSupplyBreakdown()参照）。
+      creditSupplyBreakdown: creditSupplyBreakdown(r),
+      // 第8優先改修: AMBUSHの時間軸とシグナルの分離（EARNINGS_DISTANCE/
+      // EARNINGS_DATE_CONFIDENCE/CATALYST_SIGNAL/PRICE_REACTION/
+      // PRICING_STATUS、読み取り専用。既存のWINDOW/bucket判定・
+      // ambushVerdictの条件は変更しない。indicators.mjsの
+      // ambushTimingBreakdown()参照）。
+      ambushTimingBreakdown: ambushTimingBreakdown(r),
+      // 第6優先改修■5: 財務品質のまとめ表示構造（読み取り専用。既存
+      // シグナルの判定は変更しない。indicators.mjsのfinancialQuality
+      // Breakdown()参照）。
+      financialQualityBreakdown: financialQualityBreakdown(r),
       // A指示 項目23「DATA%を順位に反映する（Confidence Adjustmentを
       // 最終スコアに追加する）」: BUY SCOREにはeffectiveScoreで既に
       // 適用済みだが、項目32が「ユーザーが見るべき」と明言した仕込み
@@ -2825,6 +2847,17 @@ async function main() {
     }
   } catch (e) {
     console.error(`⚠️ POLICY CATALYST検証ログの記録に失敗しました(${e?.message ?? e})。サイト生成は続行します。`);
+  }
+  // 第8優先改修: AMBUSHの時間軸区分（7〜30日等）が将来検証できるよう、
+  // AMBUSH側だけを対象に記録する（POLICY CATALYSTとは別ファイル・別集計）。
+  try {
+    const addedTiming = recordAmbushTimingSnapshot(today, amb.results ?? []);
+    if (addedTiming > 0) {
+      const status = ambushTimingBacktestStatus();
+      console.log(`📊 AMBUSH時間軸検証ログ: 本日+${addedTiming}件(累計${status.days}日分・${status.totalSnapshots}件、${status.firstDate}〜${status.lastDate})`);
+    }
+  } catch (e) {
+    console.error(`⚠️ AMBUSH時間軸検証ログの記録に失敗しました(${e?.message ?? e})。サイト生成は続行します。`);
   }
   // AI CAPEX CATALYSTも同じ方針で記録する(POLICY CATALYSTとは別ファイル・
   // 別集計。合算しない)。

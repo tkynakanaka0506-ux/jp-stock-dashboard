@@ -11,12 +11,14 @@ import {
   reboundPatternSignal, trendReversalPatternSignal, laggingPatternSignal, shortSqueezeSignal,
   pbrHistoricalLowSignal, hiddenGemSignal, hasConsensusProfit, retailExpectationSignal, priceLevelVsRange,
   progressStreakSignal, dividendPotentialSignal, hiddenAssetSignal, creditFloatSignal, consensusTrapSignal,
-  usEarningsTrendSignal, tenbaggerSignal, midCapGrowthSignal, repricingLagScore, marketCapExclusion,
+  usEarningsTrendSignal, usTaxEffectCautionSignal, tenbaggerSignal, midCapGrowthSignal, repricingLagScore, marketCapExclusion,
   computeFloatRatio, floatSqueezeSignal, breakoutVolumeSignal, growthAccelerationSignal, aggressiveInvestmentSignal,
   themeMatchSignal, buyScore, buyScoreRiskPenalty, expectationScore, earningsSurpriseScore, buildScoreParts, confidenceTier, effectiveScore,
   evEbitda, valuationQualityScore, diamondSignal, tenbaggerRealizabilityScore, growthPotentialScore,
   deficitGrowthSignal, growthAnomalyCautionSignal, marginImproving, repricingGapScore, repricingGapBreakdown, REPRICING_GAP, entryPriorityScore,
   riskLevel, riskCoverage, CHIP_SIGNAL_FIELDS, evaluationAxes, dividendYieldFloorSignal, clusterConfirmation,
+  earningsCashFlowQualitySignal, latestProfitYoyPct,
+  buyingDemandSignal, creditSupplyBreakdown, ambushTimingBreakdown, financialQualityBreakdown,
   tenbaggerDifficultyLabel, inflectionCauseSignal, turnaroundCountermeasureSignal,
   coreScreeningSignal, inflectionSpreadSignal, inflectionProgressSurpriseSignal, inflectionHurdleRatioSignal,
   inflectionDownsideRiskSignal, inflectionPatternType,
@@ -364,6 +366,49 @@ test('growthAnomalyCautionSignal: 異常成長ではあるが確認材料（前�
   const r = growthAnomalyCautionSignal({ revenueGrowthPct: 70, profitGrowthPct: 463 });
   assert.equal(r.checked, false);
   assert.equal(r.level, null);
+  assert.deepEqual(r.reasonCodes, []);
+});
+
+// 第6優先改修①（構造改革費用の反動、ユーザー報告）: 前期に大きな特別損失
+// （構造改革費用等）があり、今期は大幅に縮小・消失している場合を検知する。
+// 既存のlowPriorBase/hasOneTimeItemとは別の3つ目の理由として保持し、
+// 既存2つの判定・閾値は一切変更しない。
+test('growthAnomalyCautionSignal: 前期に大きな特別損失があり今期は大幅縮小・消失していれば「前期特別損失の反動」を検知する（PRIOR_ONE_TIME_ITEM_REVERSAL）', () => {
+  const r = growthAnomalyCautionSignal({
+    revenueGrowthPct: 50, profitGrowthPct: 150,
+    operatingIncomePrior: 100_000_000, netSalesPrior: 1_000_000_000, // 前期営業利益率10%（低ベースではない）
+    extraordinaryIncome: null, extraordinaryLoss: null, impairmentLoss: null, // 当期は一時要因なし
+    extraordinaryLossPrior: 500_000_000, // 前期は大型の特別損失（構造改革費用相当）
+  });
+  assert.equal(r.level, 'warn');
+  assert.deepEqual(r.reasonCodes, ['PRIOR_ONE_TIME_ITEM_REVERSAL'], 'ベース効果・当期一時要因のどちらにも該当せず、前期特別損失の反動だけが理由になる');
+  assert.match(r.note, /前期の一時的な費用が無くなったことによる反動増益の可能性/);
+});
+
+test('growthAnomalyCautionSignal: 前期の特別損失が今期もほぼ同水準で残っていれば「反動」とは判定しない（縮小していないため）', () => {
+  const r = growthAnomalyCautionSignal({
+    revenueGrowthPct: 50, profitGrowthPct: 150,
+    operatingIncomePrior: 100_000_000, netSalesPrior: 1_000_000_000,
+    extraordinaryLoss: 450_000_000, // 当期もほぼ同水準の特別損失が継続
+    extraordinaryLossPrior: 500_000_000,
+  });
+  assert.ok(!r.reasonCodes.includes('PRIOR_ONE_TIME_ITEM_REVERSAL'), '前期比で大幅縮小していないため反動とは判定しない');
+  assert.ok(r.reasonCodes.includes('ONE_TIME_ITEM_CURRENT'), '当期の特別損失自体は別理由(ONE_TIME_ITEM_CURRENT)として検知される');
+});
+
+test('growthAnomalyCautionSignal: 低ベース効果・当期一時要因・前期一時要因の反動が同時に該当すれば、reasonCodesに全て含める（二重カウントではなく複数の独立した理由として保持）', () => {
+  const r = growthAnomalyCautionSignal({
+    revenueGrowthPct: 50, profitGrowthPct: 150,
+    operatingIncomePrior: 5_000_000, netSalesPrior: 1_000_000_000, // 前期営業利益率0.5%（低ベース）
+    extraordinaryIncome: 100_000_000, // 当期に特別利益
+    extraordinaryLossPrior: 500_000_000, // 前期に特別損失、今期は無い
+  });
+  assert.deepEqual(r.reasonCodes.sort(), ['LOW_BASE_EFFECT', 'ONE_TIME_ITEM_CURRENT', 'PRIOR_ONE_TIME_ITEM_REVERSAL'].sort());
+});
+
+test('growthAnomalyCautionSignal: 前期特別損益データが無ければ「反動なし」と決めつけず、他の判定材料もrevenue/profitAnomalousの閾値未満なら従来通りchecked:false', () => {
+  const r = growthAnomalyCautionSignal({ revenueGrowthPct: 15, profitGrowthPct: 20 });
+  assert.equal(r.checked, false, '閾値未満のため判定対象外（既存挙動のまま）');
 });
 
 // marginImproving: deficitGrowthSignal/growthAccelerationSignal（A指示
@@ -1375,6 +1420,45 @@ test('usEarningsTrendSignal: 1つ前の四半期のYoYも計算できればprevR
   assert.equal(r.prevRevenueGrowthPct, 10);
 });
 
+test('usEarningsTrendSignal: pretaxIncomeがあればpretaxIncomeGrowthPctを返す（第6優先改修②「税効果」用。実測: AAPLの2026Q3で税引前36,267,000,000ドル-法人税等6,478,000,000ドル=純利益29,789,000,000ドルと一致することを確認済み）', () => {
+  const trend = [
+    { end: '2024-09-27', revenue: 105, netIncome: 10, pretaxIncome: 15 },
+    { end: '2025-09-27', revenue: 130, netIncome: 13, pretaxIncome: 18 },
+  ];
+  const r = usEarningsTrendSignal(trend);
+  assert.equal(r.pretaxIncomeGrowthPct, 20, '(18-15)/15=20%');
+});
+
+test('usEarningsTrendSignal: pretaxIncomeが無い/前期が0以下なら推測でpretaxIncomeGrowthPctを埋めずnullのまま', () => {
+  const trend = [
+    { end: '2024-09-27', revenue: 105, netIncome: 10 },
+    { end: '2025-09-27', revenue: 130, netIncome: 13 },
+  ];
+  const r = usEarningsTrendSignal(trend);
+  assert.equal(r.pretaxIncomeGrowthPct, null);
+});
+
+// 第6優先改修②（ユーザー報告「税効果」）: US株のnetIncomeGrowthPct
+// （税引後）とpretaxIncomeGrowthPct（税引前）の乖離から、税効果の
+// 影響を検知する。新しいSCOREは作らず既存パターンの独立シグナル。
+test('usTaxEffectCautionSignal: 税引前利益はほぼ横ばいなのに純利益だけ大きく伸びていれば「税効果の影響の疑い」を検知する', () => {
+  const r = usTaxEffectCautionSignal({ netIncomeGrowthPct: 40, pretaxIncomeGrowthPct: 5 });
+  assert.equal(r.level, 'warn');
+  assert.equal(r.divergencePct, 35);
+  assert.match(r.note, /税率変動や一時的な税効果/);
+});
+
+test('usTaxEffectCautionSignal: 税引前・税引後の成長率の乖離が小さければ発火しない（実測AAPLパターン: 27.1% vs 29.4%）', () => {
+  const r = usTaxEffectCautionSignal({ netIncomeGrowthPct: 27.1, pretaxIncomeGrowthPct: 29.4 });
+  assert.equal(r.level, null);
+  assert.equal(r.checked, true);
+});
+
+test('usTaxEffectCautionSignal: 税引前利益のデータが無ければUNKNOWN(checked:false)。推測で埋めない', () => {
+  assert.equal(usTaxEffectCautionSignal({ netIncomeGrowthPct: 40 }).checked, false);
+  assert.equal(usTaxEffectCautionSignal({}).checked, false);
+});
+
 test('usEarningsTrendSignal: 研究開発費（rnd）があればrndGrowthPctを返す（aggressiveInvestmentSignal用）', () => {
   const trend = [
     { end: '2024-09-27', revenue: 105, netIncome: 10, rnd: 20 },
@@ -2199,6 +2283,30 @@ test('entryPriorityScore: データが揃っている軸だけで再配点する
   assert.equal(r.score, Math.round((100 * 25) / 45));
 });
 
+// 第2優先改修 ### 3再送分（ユーザー報告）: SIGNAL SCORE/DATA COVERAGE/
+// CONFIDENCEの分離。「10項目中4項目しか取得できないのに、その4項目
+// だけで100点満点相当になる設計は禁止」という具体例をそのまま検証する。
+test('entryPriorityScore: signalScoreは7軸中1軸(untapped=25点)しか無ければ25点にとどまり、100点満点相当にならない（scoreは従来通り100のまま変更しない）', () => {
+  const r = entryPriorityScore({ untapped: { value: 100 } });
+  assert.equal(r.score, 100, 'score(AMBUSH/SMART ENTRYの閾値比較に使う既存値)は変更しない');
+  assert.equal(r.signalScore, 25, 'signalScoreは未取得の6軸を0点として数え、100点満点相当にはならない');
+  assert.equal(r.dataCoverage, 25, 'dataCoverageは7軸中untappedの配点(25)ぶんしかカバーできていないことを示す');
+  assert.deepEqual(r.ruleCoverage, { known: 1, total: 7 }, '7軸中1軸しかデータが無いことを明示する');
+});
+
+test('buyScore: CONFIDENCEはscoreの値を一切参照せず、dataCoverageだけから算出される（低スコア+データ十分でもLOWにしない、高スコア+データ不足でもHIGHにしない）', () => {
+  const lowScoreFullData = buyScore({
+    expectedReturn: { value: 10 }, unpriced: { value: 10 }, surprise: { value: 10 }, timing: { value: 10 }, quality: { value: 10 },
+  });
+  assert.equal(lowScoreFullData.score, 10, 'スコア自体は低い');
+  assert.equal(lowScoreFullData.dataCoverage, 100, 'だがデータは5軸とも揃っている');
+  assert.equal(confidenceTier(lowScoreFullData.confidence), 'HIGH', '低スコアでもデータが十分ならCONFIDENCEはHIGHになりうる（LOWに自動的にしない）');
+
+  const highScoreLowData = buyScore({ unpriced: { value: 100 } });
+  assert.equal(highScoreLowData.score, 100, 'スコア自体は満点');
+  assert.equal(confidenceTier(highScoreLowData.confidence), 'LOW', '高スコアでもデータが1軸しか無ければCONFIDENCEはHIGHにならない');
+});
+
 test('entryPriorityScore: リスク減点（buyScoreRiskPenaltyと同じ考え方）を適用できる', () => {
   const parts = { untapped: { value: 100 }, growthAccel: { value: 100 }, quality: { value: 100 }, valuation: { value: 100 }, catalyst: { value: 100 }, supplyDemand: { value: 100 }, theme: { value: 100 } };
   const withPenalty = entryPriorityScore(parts, 20);
@@ -2467,6 +2575,65 @@ test('evaluationAxes: 何も無ければ全軸score:null（推測で埋めない
   assert.equal(axes.timing.score, null);
 });
 
+// 第6優先改修■3（ユーザー報告）: 「売上+30%・利益+30%・利益率横ばい」と
+// 「売上+30%・利益+50%・利益率改善」を区別できる構造にする。
+// revenueGrowthPct/profitGrowthPctは既に別フィールドで分離済みだが、
+// MARGINの専用フィールド（marginTrend）が無かったため追加した。
+test('evaluationAxes: 売上+30%・利益+30%・利益率横ばい と 売上+30%・利益+50%・利益率改善 をmarginTrendで区別できる', () => {
+  const flatMargin = evaluationAxes({
+    revenueGrowthPct: 30, profitGrowthPct: 30, grossMarginImproving: false, opMarginImproving: false,
+  });
+  const improvingMargin = evaluationAxes({
+    revenueGrowthPct: 30, profitGrowthPct: 50, grossMarginImproving: true, opMarginImproving: true,
+  });
+  assert.equal(flatMargin.fundamentals.components.profitGrowthPct, 30);
+  assert.equal(improvingMargin.fundamentals.components.profitGrowthPct, 50);
+  assert.equal(flatMargin.fundamentals.components.marginTrend.opMarginImproving, false);
+  assert.equal(improvingMargin.fundamentals.components.marginTrend.opMarginImproving, true, '利益成長率の差だけでなく、利益率が改善しているかどうかも別途確認できる');
+});
+
+test('evaluationAxes: 売上+30%・利益+5% と 売上+5%・利益+30% を同じ「高成長」として扱わず、REVENUE_GROWTHとPROFIT_GROWTHを別々に保持する', () => {
+  const revenueDriven = evaluationAxes({ revenueGrowthPct: 30, profitGrowthPct: 5 });
+  const profitDriven = evaluationAxes({ revenueGrowthPct: 5, profitGrowthPct: 30 });
+  assert.equal(revenueDriven.fundamentals.components.revenueGrowthPct, 30);
+  assert.equal(revenueDriven.fundamentals.components.profitGrowthPct, 5);
+  assert.equal(profitDriven.fundamentals.components.revenueGrowthPct, 5);
+  assert.equal(profitDriven.fundamentals.components.profitGrowthPct, 30);
+  assert.notDeepEqual(revenueDriven.fundamentals.components, profitDriven.fundamentals.components);
+});
+
+// 第6優先改修■5（ユーザー報告）: 売上・営業利益・営業CF・FCF・売掛金・
+// 在庫・利益率を同じまとまりで確認できる構造。「利益成長がある」という
+// 事実と「キャッシュ化の確認が必要」という情報を同時に表示できることを
+// 確認する（ユーザー例: 売上+20%・利益+30%・売掛金+60%・営業CFマイナス）。
+test('financialQualityBreakdown: 「利益成長がある」事実と「キャッシュ化の確認が必要」という情報を同時に保持する', () => {
+  const r = {
+    revenueGrowthPct: 20, profitGrowthPct: 30,
+    receivablesAnomaly: { level: 'bad', checked: true },
+    earningsCashFlowQuality: { level: 'warn', fcf: -50, checked: true },
+  };
+  const b = financialQualityBreakdown(r);
+  assert.equal(b.growth.profitGrowthPct, 30, '利益成長率30%という事実は消えない');
+  assert.equal(b.workingCapital.receivablesAnomaly, 'bad', '同時に売掛金の異常も確認できる');
+  assert.equal(b.cashFlow.qualityLevel, 'warn', 'キャッシュ化の確認が必要な状態も併記される');
+});
+
+test('financialQualityBreakdown: データが無ければ各カテゴリともnull/空配列（推測で埋めない）', () => {
+  const b = financialQualityBreakdown({});
+  assert.equal(b.growth.revenueGrowthPct, null);
+  assert.equal(b.margin.grossMarginImproving, null);
+  assert.equal(b.cashFlow.fcf, null);
+  assert.equal(b.workingCapital.receivablesAnomaly, null);
+  assert.equal(b.taxEffect.level, null);
+  assert.deepEqual(b.growth.anomalyReasonCodes, []);
+});
+
+test('evaluationAxes: marginTrendのデータが無ければnull（推測で埋めない）', () => {
+  const axes = evaluationAxes({});
+  assert.equal(axes.fundamentals.components.marginTrend.grossMarginImproving, null);
+  assert.equal(axes.fundamentals.components.marginTrend.opMarginImproving, null);
+});
+
 // 実データで見つかった重複の再発防止用スナップショット: repricingLag.score
 // が2つの見出しスコア（BUY SCOREのunpriced・entryPriorityScoreのuntapped）
 // に同時に使われることを明示的に確認する（buildScoreParts参照）。
@@ -2605,4 +2772,284 @@ test('clusterConfirmation: 該当が無いクラスタは空配列（推測で�
   assert.equal(cc.independentClusterCount, 0);
   assert.equal(cc.rawHitCount, 0);
   for (const hits of Object.values(cc.clusters)) assert.deepEqual(hits, []);
+});
+
+// ==================================================================
+// 第6優先改修（ユーザー報告）: 「利益成長率が高い」だけで業績の質を
+// 過大評価しない。ユーザー指定のCASE A〜Hをそのまま検証する
+// （CASE G「売上減少・利益増加」はscraper.mjsのperformanceDirectionText
+// が既に「売上は悪化、利益率改善」と区別しており、
+// test/scraper_checklist.test.mjsで既にテスト済みのため重複追加しない）。
+// ==================================================================
+
+test('earningsCashFlowQualitySignal: CASE A — 利益+10%・営業CF+10%は整合(good)', () => {
+  const r = earningsCashFlowQualitySignal({ profitGrowthPct: 10, operatingCfGrowthPct: 10, operatingCf: 100 });
+  assert.equal(r.level, 'good');
+  assert.match(r.note, /整合|裏付けられています/);
+});
+
+test('earningsCashFlowQualitySignal: CASE B — 利益+100%・営業CFマイナスは警告(warn)。利益成長率だけで最高評価にしない', () => {
+  const r = earningsCashFlowQualitySignal({ profitGrowthPct: 100, operatingCf: -50 });
+  assert.equal(r.level, 'warn');
+  assert.match(r.note, /マイナス/);
+});
+
+test('earningsCashFlowQualitySignal: CASE C — 利益+50%・営業CF改善は整合的に評価できる(good)', () => {
+  const r = earningsCashFlowQualitySignal({ profitGrowthPct: 50, operatingCfGrowthPct: 20, operatingCf: 80 });
+  assert.equal(r.level, 'good');
+});
+
+test('earningsCashFlowQualitySignal: CASE F — 営業利益は増加・営業CFは減少（黒字のまま）は「利益成長」と「キャッシュ面の注意」を両方保持する(warn)', () => {
+  const r = earningsCashFlowQualitySignal({ profitGrowthPct: 15, operatingCfGrowthPct: -10, operatingCf: 30 });
+  assert.equal(r.level, 'warn');
+  assert.match(r.note, /利益成長率\+15%/, '利益成長そのものは否定せず、CFの注意点だけを添える');
+  assert.match(r.note, /減少/);
+});
+
+test('earningsCashFlowQualitySignal: CASE H — データ不足ならUNKNOWN(checked:false)。0や平均で補完しない', () => {
+  assert.equal(earningsCashFlowQualitySignal({}).checked, false);
+  assert.equal(earningsCashFlowQualitySignal({ profitGrowthPct: 10 }).checked, false, '利益成長率はあっても営業CFのデータが無ければ判定しない');
+  assert.equal(earningsCashFlowQualitySignal({ profitGrowthPct: -5, operatingCf: 30 }).checked, false, '利益が伸びていなければこの注意喚起自体が対象外');
+});
+
+// 第6優先改修■4（ユーザー報告）: 営業CF→FCFまで拡張するが、FCF単独では
+// 判定しない（補助情報扱い）。大型設備投資企業を機械的に低評価しない。
+test('earningsCashFlowQualitySignal: 営業CFは伸びているが設備投資が大きくFCFはマイナス、というケースでもlevelはgoodのまま（FCF単独でwarnに落とさない）', () => {
+  const r = earningsCashFlowQualitySignal({
+    profitGrowthPct: 30, operatingCfGrowthPct: 20, operatingCf: 100, capex: -150, // FCF = 100-150 = -50（マイナス）
+  });
+  assert.equal(r.level, 'good', '営業CFが利益成長に伴っていればgoodのまま。大型投資企業を機械的に低評価しない');
+  assert.equal(r.fcf, -50, 'FCFの値自体は補助情報として保持する');
+  assert.match(r.note, /設備投資を差し引いたFCFはマイナスです/, 'FCFがマイナスであることは参考情報として明記する');
+  assert.match(r.note, /これ単独で悪材料とは判定していません/);
+});
+
+test('earningsCashFlowQualitySignal: FCFがプラスなら補助的な注記も付かない', () => {
+  const r = earningsCashFlowQualitySignal({
+    profitGrowthPct: 30, operatingCfGrowthPct: 20, operatingCf: 100, capex: -30, // FCF = 70（プラス）
+  });
+  assert.equal(r.level, 'good');
+  assert.equal(r.fcf, 70);
+  assert.doesNotMatch(r.note, /FCFはマイナス/);
+});
+
+test('earningsCashFlowQualitySignal: capexが無ければfcfはnullのまま（推測で埋めない）', () => {
+  const r = earningsCashFlowQualitySignal({ profitGrowthPct: 30, operatingCfGrowthPct: 20, operatingCf: 100 });
+  assert.equal(r.fcf, null);
+});
+
+test('latestProfitYoyPct: CASE D — 前年が赤字(0以下)の赤字→黒字転換は、利益成長率を異常な数値として計算しない（nullを返す）', () => {
+  const history = [{ period: '前期', profit: -500 }, { period: '今期', profit: 300 }];
+  assert.equal(latestProfitYoyPct(history), null, '前年が赤字の場合、%成長率は定義上意味を持たないためnullにする（巨大な数値を作らない）');
+});
+
+// ==================================================================
+// 第7優先改修（ユーザー報告）: 「信用買いが少ない」「信用倍率が低い」を
+// 「株価が上昇しやすい」「上昇余地が大きい」と自動的に解釈しない。
+// ユーザー指定のCASE A〜Hをそのまま検証する。
+// ==================================================================
+
+test('marginOverhangSignal: CASE A/F — 信用倍率が低い（1倍未満含む）だけでは自動的にgoodにしない（「需給良好」を自動判断しない）', () => {
+  assert.equal(marginOverhangSignal(0.5).level, null, '信用倍率1倍未満でも「上昇余地大」等のgood判定は返さない');
+  assert.equal(marginOverhangSignal(2).level, null);
+  assert.equal(marginOverhangSignal(0.5).checked, true, '判定はできている（データ不足のUNKNOWNではない）が、ポジティブな主張はしない');
+});
+
+test('marginOverhangSignal: CASE B — 買い残少・売り残多で信用倍率が低くなるケースでも、それだけでは「上昇余地大」と判定しない（スクイーズ要因は別関数squeezeで評価する）', () => {
+  // 買い残10・売り残50 → 倍率0.2倍（ユーザー提示のケースBと同じ発想）
+  const r = marginOverhangSignal(0.2);
+  assert.equal(r.level, null, '信用倍率が低いという事実だけからは「上昇余地大」を主張しない');
+});
+
+test('marginOverhangSignal: CASE G — 信用倍率20倍でもbadと同時に、断定的でなく確率的な表現（〜なりやすい）に留める', () => {
+  const r = marginOverhangSignal(20);
+  assert.equal(r.level, 'bad');
+  assert.match(r.note, /なりやすい/);
+  assert.doesNotMatch(r.note, /必ず|確実に/, '「必ず上値が重くなる」のような断定表現は使わない');
+});
+
+test('marginOverhangSignal: CASE H — 信用データ欠損ならUNKNOWN(checked:false)。良いとも悪いとも自動判定しない', () => {
+  const r = marginOverhangSignal(null);
+  assert.equal(r.checked, false);
+  assert.equal(r.level, null);
+});
+
+test('buyingDemandSignal: CASE C — 信用買い残大幅減・株価横ばい・出来高減少では「需給改善」と断定しない（低人気の可能性を保持）', () => {
+  const r = buyingDemandSignal({ creditTrendPct: -50, changePct: 0, volRatio: 0.5 });
+  assert.notEqual(r.level, 'good', '株価が動かず出来高も細っている状態を「需給改善」と判定してはいけない');
+  assert.equal(r.level, 'caution');
+  assert.match(r.note, /LOW BUYING INTEREST/);
+});
+
+test('buyingDemandSignal: CASE D — 信用買い残大幅減・株価上昇・出来高増加は「需給改善の可能性」を別情報として保持する（goodだが断定ではない書き方）', () => {
+  const r = buyingDemandSignal({ creditTrendPct: -50, changePct: 5, volRatio: 3 });
+  assert.equal(r.level, 'good');
+  assert.match(r.note, /可能性があります/, '確定ではなく可能性として表現する');
+});
+
+test('buyingDemandSignal: CASE A — 信用買い残の増減が無い(0以上)場合は判定対象外（減少している場合だけを対象にする）', () => {
+  const r = buyingDemandSignal({ creditTrendPct: 5, changePct: 0, volRatio: 0.5 });
+  assert.equal(r.level, null);
+});
+
+test('buyingDemandSignal: CASE H — データ不足ならUNKNOWN(checked:false)', () => {
+  assert.equal(buyingDemandSignal({}).checked, false);
+});
+
+test('shortSqueezeSignal: CASE E — 信用売り残増加・株価上昇・出来高増加でも、通常の買い需要とは別軸である旨をnoteに明記する（SHORT SQUEEZEと混同しない）', () => {
+  const weekly = [{ buy: 80, sell: 30 }, { buy: 80, sell: 30 }, { buy: 80, sell: 30 }, { buy: 80, sell: 30 }, { buy: 100, sell: 10 }];
+  const r = shortSqueezeSignal(weekly, { institutionalShort: { level: null }, volRatio: 2 });
+  assert.equal(r.level, 'good');
+  assert.match(r.note, /株価が上がることを保証するものではありません/);
+  assert.match(r.note, /通常の買い需要とは別軸/);
+});
+
+test('creditSupplyBreakdown: SUPPLY_PRESSURE(売りが少ない)とBUYING_DEMAND(買いが強い)を別変数として保持する', () => {
+  const r = {
+    marginOverhang: { level: null, label: null, note: null, checked: true }, // 信用過多の兆候なし＝売り圧力は小さい
+    buyingDemand: { level: 'caution', label: '低人気の可能性', note: 'x', checked: true }, // だが買い需要が強いとは限らない
+  };
+  const b = creditSupplyBreakdown(r);
+  assert.equal(b.supplyPressure.level, null);
+  assert.equal(b.buyingDemand.level, 'caution');
+  assert.notEqual(b.supplyPressure, b.buyingDemand, '「売りが少ない」と「買いが強い」は同じ変数にしない');
+});
+
+test('creditSupplyBreakdown: SQUEEZE_POTENTIALは個人(squeeze)と機関(institutionalShort)を別々に保持し、LIQUIDITY_QUALITYはcreditFloatSignal（推定精度フラグ込み）をそのまま保持する', () => {
+  const r = {
+    squeeze: { level: 'good', checked: true },
+    institutionalShort: { level: null, checked: true },
+    creditFloat: { level: 'good', occupancy: 3, lowPrecision: true, checked: true },
+  };
+  const b = creditSupplyBreakdown(r);
+  assert.equal(b.squeezePotential.retail.level, 'good');
+  assert.equal(b.squeezePotential.institutional.level, null);
+  assert.equal(b.liquidityQuality.lowPrecision, true);
+});
+
+test('creditSupplyBreakdown: CASE A(積み残し) — 信用買い残少・信用売り残少・出来高少が同時に揃っていても、どのカテゴリも自動的にgoodにはしない（買い需要が弱い可能性を保持する）', () => {
+  const r = {
+    // 信用買い残少・信用売り残少 → 信用倍率は低い(1.25倍)が、
+    // marginOverhangSignal自体は「低い倍率=good」という主張はしない
+    // （第7優先改修で確認済みの既存挙動）。
+    marginOverhang: { level: null, label: null, note: null, checked: true },
+    // 出来高が少なく、信用買い残のトレンドも特に動いていない
+    // （declineしていないためbuyingDemandSignal自体は判定対象外のまま）。
+    buyingDemand: { level: null, label: null, note: null, checked: true },
+    // 週次信用残データ不足で踏み上げも確認できない。
+    squeeze: { level: null, label: null, note: null, checked: false },
+  };
+  const b = creditSupplyBreakdown(r);
+  assert.notEqual(b.supplyPressure.level, 'good', '信用買い残・売り残がともに少ないというだけで需給良好とみなさない');
+  assert.notEqual(b.buyingDemand.level, 'good', '出来高が細っている状況を自動的に買い需要ありとみなさない');
+  assert.notEqual(b.squeezePotential.retail.level, 'good');
+});
+
+test('buyingDemandSignal: CASE A(積み残し) — 信用買い残が横ばい（減少トレンドではない）で出来高も薄い場合、判定対象外のまま「弱い可能性」を隠さない（goodを主張しない）', () => {
+  const r = buyingDemandSignal({ creditTrendPct: 0, changePct: 0, volRatio: 0.3 });
+  assert.equal(r.level, null, 'creditTrendPctが0（減少トレンドではない）場合は判定対象外のままで、goodを主張しない');
+});
+
+test('creditSupplyBreakdown: データが無ければ4カテゴリとも未確認(checked:false)。推測で埋めない', () => {
+  const b = creditSupplyBreakdown({});
+  assert.equal(b.supplyPressure.checked, false);
+  assert.equal(b.buyingDemand.checked, false);
+  assert.equal(b.squeezePotential.retail.checked, false);
+  assert.equal(b.liquidityQuality.checked, false);
+});
+
+test('creditFloatSignal: 上位3株主保有比率が高い（推定浮動株の分母が小さい）場合、占有率の推定精度が低い旨をlowPrecisionフラグとnoteに明記する', () => {
+  const r = creditFloatSignal({ creditBuyBalance: 5000, sharesOutstanding: 1_000_000, top3PctNow: 85, loanRatio: 2 });
+  assert.equal(r.lowPrecision, true);
+  assert.match(r.note, /推定精度は低めです/);
+});
+
+test('creditFloatSignal: 上位3株主保有比率が低ければlowPrecision:falseで、精度注記も付かない', () => {
+  const r = creditFloatSignal({ creditBuyBalance: 10000, sharesOutstanding: 1_000_000, top3PctNow: 30, loanRatio: 2 });
+  assert.equal(r.lowPrecision, false);
+  assert.doesNotMatch(r.note, /推定精度は低めです/);
+});
+
+// ==================================================================
+// 第8優先改修（ユーザー報告）: AMBUSHの「決算まで7〜30日」という時間軸を
+// 検証済みの事実ではなく仮説として扱い、EARNINGS_DISTANCE/CATALYST_
+// SIGNAL/PRICE_REACTION/PRICING_STATUS/EARNINGS_DATE_CONFIDENCEを分離
+// する。ユーザー指定のCASE A〜Hをそのまま検証する。
+// ==================================================================
+
+test('ambushTimingBreakdown: CASE A — 決算まで10日・カタリストなしでも、EARNINGS_DISTANCEだけでCATALYST_SIGNALを埋めない（時間条件だけで強い判定にしない）', () => {
+  const b = ambushTimingBreakdown({ daysLeft: 10, hasCatalyst: false, catalystScore100: null });
+  assert.equal(b.earningsDistance.days, 10);
+  assert.equal(b.catalystSignal.hasCatalyst, false);
+  assert.equal(b.catalystSignal.catalystScore100, null, '時間条件が満たされていてもカタリスト無しのままにする');
+});
+
+test('ambushTimingBreakdown: CASE B — 決算まで10日・強いカタリストあり・株価反応ほぼ無しは、TIMEとCATALYSTとPRICE_REACTIONを独立した値として保持する', () => {
+  const b = ambushTimingBreakdown({
+    daysLeft: 10, hasCatalyst: true, catalystScore100: 90, catalystTier: 'S',
+    kairi: 0.5, repricingLag: { return1m: 1, return3m: 0.5 },
+  });
+  assert.equal(b.earningsDistance.days, 10);
+  assert.equal(b.catalystSignal.catalystScore100, 90);
+  assert.equal(b.priceReaction.return1m, 1, '材料の強さと株価反応は別フィールドで、互いを上書きしない');
+});
+
+test('ambushTimingBreakdown: CASE C — 材料は存在するが株価が既に+30%反応している場合、PRICE_REACTIONに素直に記録し、材料の有無を打ち消さない', () => {
+  const b = ambushTimingBreakdown({
+    daysLeft: 10, hasCatalyst: true, catalystScore100: 90,
+    kairi: 20, repricingLag: { return1m: 30, return3m: 35 },
+  });
+  assert.equal(b.catalystSignal.hasCatalyst, true, '材料の存在自体は消えない');
+  assert.equal(b.priceReaction.return1m, 30, '既に大きく反応していることも別途正しく記録する');
+});
+
+test('ambushTimingBreakdown: CASE D — 決算まで40日（7〜30日の範囲外）でも、EARNINGS_DISTANCEはそのまま40日として保持し、CATALYST_SIGNALがあることを理由に勝手にNOW扱いのbucketへ書き換えない', () => {
+  const b = ambushTimingBreakdown({ daysLeft: 40, hasCatalyst: true, catalystScore100: 95, bucket: 'WATCH' });
+  assert.equal(b.earningsDistance.days, 40);
+  assert.equal(b.earningsDistance.bucket, 'WATCH', '既存のbucket判定（screener.mjs側）をそのまま表示するだけで、ここでは書き換えない');
+});
+
+test('ambushTimingBreakdown: CASE E/9 — 決算予定日が推定値(ESTIMATED)はCONFIRMEDと同じ扱いにしない', () => {
+  const confirmed = ambushTimingBreakdown({ earningsDateStatus: 'confirmed' });
+  const estimated = ambushTimingBreakdown({ earningsDateStatus: 'estimated' });
+  assert.equal(confirmed.earningsDateConfidence.status, 'CONFIRMED');
+  assert.equal(estimated.earningsDateConfidence.status, 'ESTIMATED');
+  assert.notEqual(confirmed.earningsDateConfidence.status, estimated.earningsDateConfidence.status);
+});
+
+test('ambushTimingBreakdown: CASE F — 決算日データなしはearnings_days:null(UNKNOWN)。0日などで補完しない', () => {
+  const b = ambushTimingBreakdown({});
+  assert.equal(b.earningsDistance.days, null);
+  assert.equal(b.earningsDateConfidence.status, 'UNKNOWN');
+});
+
+test('ambushTimingBreakdown: CASE H — 時間軸の単位はカレンダー日数であることを明示する（土日祝日を考慮した営業日ではない）', () => {
+  const b = ambushTimingBreakdown({ daysLeft: 7 });
+  assert.equal(b.earningsDistance.unit, 'calendar_days');
+});
+
+test('ambushTimingBreakdown: PRICING_STATUSはdaysLeftを一切参照せず、TIMINGとは独立の入力（stage1・repricingLag.zone）から算出される', () => {
+  const b = ambushTimingBreakdown({ daysLeft: 5, kairi: 0, rsi: 40, volZ: 0, repricingLag: { zone: 'pre_move' } });
+  assert.equal(b.pricingStatus.stage1Pass, true);
+  assert.equal(b.pricingStatus.repricingLagZone, 'pre_move');
+});
+
+test('ambushTimingBreakdown: 「7〜30日」の区分は検証済みの事実ではなく仮説として明示する（isHypothesis:true固定）', () => {
+  const b = ambushTimingBreakdown({ daysLeft: 15 });
+  assert.equal(b.earningsDistance.isHypothesis, true);
+});
+
+test('growthAnomalyCautionSignal: CASE E — 前年利益が極端に小さく売上高成長率は緩やかでも、利益成長率単独が閾値を超えればベース効果チェックが発動する', () => {
+  // 売上高成長率+5%（GROWTH_ANOMALY.minRevenueGrowthPct=40未満）だが、
+  // 利益成長率+300%（minProfitGrowthPct=100以上）というベース効果の
+  // 典型例。旧実装（両方が閾値超えのAND条件）ではchecked:falseのまま
+  // 見過ごされていた。
+  const r = growthAnomalyCautionSignal({
+    revenueGrowthPct: 5, profitGrowthPct: 300,
+    operatingIncomePrior: 1_000_000, netSalesPrior: 1_000_000_000, // 前期営業利益率0.1%（低いベース）
+  });
+  assert.equal(r.checked, true, '利益成長率単独でも閾値を超えていればベース効果チェックが発動するべき');
+  assert.equal(r.level, 'warn');
+  assert.match(r.note, /ベース効果/);
+  assert.doesNotMatch(r.note, /undefined/, '売上高成長率が閾値未満でも文章が壊れない');
 });

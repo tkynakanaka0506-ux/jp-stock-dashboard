@@ -20,7 +20,7 @@ import { fetchIntraday, fetchIntradayExtended, fetchMain, fetchFinance, fetchWee
 import {
   kairi, rsi, volumeZScore, stage1, unpricedScore, STAGE1, cheapExclusion, fundamentalExclusion, marketCapExclusion,
   sellingClimaxSignal, netNetSignal, lowPbrSignal, dividendYieldFloorSignal, shortSqueezeSignal, sectorMomentumSignal,
-  sectorRotationSignal, SECTOR_ROTATION, marginOverhangSignal, receivablesAnomalySignal, dividendYieldPeakSignal,
+  sectorRotationSignal, SECTOR_ROTATION, marginOverhangSignal, buyingDemandSignal, receivablesAnomalySignal, dividendYieldPeakSignal,
   institutionalShortSignal, majorShareholderSignal, pbrHistoricalLowSignal, hiddenGemSignal,
   retailExpectationSignal, returnPct, priceLevelVsRange, volumeRatio, creditTrend,
   progressStreakSignal, dividendPotentialSignal, hiddenAssetSignal, creditFloatSignal, consensusTrapSignal,
@@ -535,6 +535,12 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
       cross: null, // AMBUSHはゴールデンクロスを算出していないため乖離のみで判定
     });
     const marginOverhang = marginOverhangSignal(main.loanRatio);
+    // 第7優先改修: 「信用買い残が減っている＝買い需要が強い」を自動判定
+    // しない。株価・出来高と組み合わせて「需給改善」と「単なる低人気」を
+    // 分離する（indicators.mjsのbuyingDemandSignal参照。新規リクエスト無し）。
+    const buyingDemand = buyingDemandSignal({
+      creditTrendPct: creditTrend(weekly, 4), changePct: s.tech.changePct, volRatio: squeezeVolRatio,
+    });
     const receivablesAnomaly = receivablesAnomalySignal({
       revenueGrowthPct: fin.revenueGrowth?.growthPct ?? null,
       receivablesGrowthPct: bs.receivablesGrowthPct ?? null,
@@ -724,6 +730,7 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
       sectorLag,
       sectorRotation,
       marginOverhang,
+      buyingDemand,
       receivablesAnomaly,
       retailExpectation,
       progressStreak,

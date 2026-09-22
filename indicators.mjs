@@ -727,8 +727,18 @@ export function ambushVerdict(r) {
   // （決算直前・sweetMinの外側）は「まだ狙い目の核ではない」ことを
   // verdictにも反映する。daysLeftが無い呼び出し元（SMART ENTRY等）は
   // 対象外。
+  // 第8優先改修（ユーザー報告）: この理由文は「決算までの日数が近い」
+  // という時間軸だけを根拠にしており、上のpricedIn判定（stage1の
+  // 価格・出来高ベースの判定）とは異なる情報源から来ている。同じ
+  // 'priced_in_caution'状態・似た文言を使うと「決算が近い＝織り込み
+  // 済み」であるかのように読め、TIMINGとPRICING/UNPRICEDを混同させる
+  // （このリポジトリでは「決算まで7〜30日」という時間軸自体、
+  // バックテストで検証済みの事実ではなく仮説として扱う方針にした）。
+  // 判定条件（NEAR_EARNINGS_MIN_DAYS=14、v.levelの重大度）は変更せず、
+  // 理由文だけを「決算をまたぐリスク管理」という時間軸由来の理由だと
+  // 明確に分かる表現に変える。
   if (Number.isFinite(r.daysLeft) && r.daysLeft >= 0 && r.daysLeft < NEAR_EARNINGS_MIN_DAYS) {
-    v = worsen(v, 'priced_in_caution', `決算まであと${r.daysLeft}日と間近で、決算リスク自体が高まっています。新規の仕込みには織り込み警戒が必要な時期です`);
+    v = worsen(v, 'priced_in_caution', `決算まであと${r.daysLeft}日と間近です。株価が織り込み済みと確認されたわけではなく、決算をまたぐこと自体のリスク管理（決算発表による急変動リスク）として、新規の仕込みには注意が必要な時期です`);
   }
 
   // retailExpectationSignal（個人投資家の期待織り込み）がbad段階なら
@@ -803,25 +813,44 @@ export function smartEntryVerdict(r, overheat, growthSurge) {
 // ------------------------------------------------------------------
 
 function weightedComposite(parts, weights) {
-  let got = 0, max = 0;
+  let got = 0, max = 0, knownCount = 0;
+  const totalCount = Object.keys(weights).length;
   const detail = {};
   for (const [k, w] of Object.entries(weights)) {
     const p = parts[k];
     detail[k] = p ?? null;
-    if (p && Number.isFinite(p.value)) { got += (p.value / 100) * w; max += w; }
+    if (p && Number.isFinite(p.value)) { got += (p.value / 100) * w; max += w; knownCount += 1; }
   }
-  if (max === 0) return { score: null, confidence: 0, detail, coverageScore: 0 };
-  // coverageScore: 「データが無い軸は0点として数えた場合」の点数
-  // （＝got自体。weightsは常に固定の全軸合計＝100点満点の表なので、
-  // 分母を縮めずに済む）。scoreは既存通り「揃った軸だけで100点満点に
-  // 再配点した値」のまま変更しない（AMBUSH/SMART ENTRYの判定条件
-  // ＝BUY SCORE等の閾値比較がこの値を参照しているため、ここを変えると
-  // 判定条件自体が変わってしまう）。coverageScoreは新規の追加フィールド
-  // で、「取得できた項目だけで100点換算されているため、情報不足でも
-  // 見かけ上高得点になりうる」という既存設計の限界を、既存のconfidence
-  // （＝分母/取得できた配点の合計、常に固定100点満点基準）と並べて
-  // 補足表示するために追加した（第2優先改修、ユーザー報告CASE4対応）。
-  return { score: Math.round((got / max) * 100), confidence: Math.round(max), detail, coverageScore: Math.round(got) };
+  // 第2優先改修 ### 3再送分（ユーザー報告）: SIGNAL SCORE/DATA COVERAGE/
+  // CONFIDENCEを明示的に分離する。
+  //  - signalScore（=coverageScore）: 未取得の軸を0点として数えた点数。
+  //    「10項目中4項目しか取得できないのに、その4項目だけで100点満点
+  //    相当になる」設計を禁止するというユーザー指示に対応する値
+  //    （weightsは常に固定の全軸合計＝100点満点の表なので、分母を
+  //    縮めずに済む）。
+  //  - dataCoverage（=confidence）: 必要データのうち何%を確認できたか
+  //    （固定100点満点基準の実カバー率）。
+  //  - confidence（後述confidenceTier）: scoreを一切参照せず、
+  //    dataCoverageだけから算出する（低スコア+データ十分でもLOWにしない、
+    // 高スコア+データ不足でもHIGHにしない。confidenceTier()参照）。
+  //  - ruleCoverage: 何軸中何軸にデータがあったか（PASS/FAIL/UNKNOWNの
+  //    自分ルールと同じ考え方を、重み付け合成スコアの軸にも適用したもの）。
+  // scoreは既存通り「揃った軸だけで100点満点に再配点した値」のまま変更
+  // しない（AMBUSH/SMART ENTRYの判定条件＝BUY SCORE等の閾値比較がこの
+  // 値を参照しているため、ここを変えると判定条件自体が変わってしまう）。
+  // 新しい表示・報告にはscoreではなくsignalScore/dataCoverageを使うこと。
+  if (max === 0) {
+    return {
+      score: null, confidence: 0, detail, coverageScore: 0,
+      signalScore: 0, dataCoverage: 0, ruleCoverage: { known: 0, total: totalCount },
+    };
+  }
+  return {
+    score: Math.round((got / max) * 100), confidence: Math.round(max), detail,
+    coverageScore: Math.round(got),
+    signalScore: Math.round(got), dataCoverage: Math.round(max),
+    ruleCoverage: { known: knownCount, total: totalCount },
+  };
 }
 
 export const BUY_SCORE_WEIGHTS = { expectedReturn: 30, unpriced: 25, surprise: 20, timing: 15, quality: 10 };
@@ -1123,6 +1152,17 @@ export function evaluationAxes(r) {
         growthAcceleration: r.growthAcceleration?.score ?? null,
         growthAnomalyCaution: r.growthAnomalyCaution?.level ?? null,
         deficitGrowth: r.deficitGrowth?.level ?? null,
+        // 第6優先改修: 利益成長率とキャッシュフローの整合性（新規）。
+        earningsCashFlowQuality: r.earningsCashFlowQuality?.level ?? null,
+        // 第6優先改修■3（ユーザー報告）: 「売上30%・利益5%」と「売上5%・
+        // 利益30%」を同じ「高成長」として扱わないよう、REVENUE_GROWTH/
+        // PROFIT_GROWTHは上の2フィールドで既に分離済み。ここにさらに
+        // MARGIN（利益率が改善しているか）を専用フィールドとして追加する
+        // （marginImproving()の再利用。新規計算・新規重みは無い）。
+        marginTrend: {
+          grossMarginImproving: typeof r.grossMarginImproving === 'boolean' ? r.grossMarginImproving : null,
+          opMarginImproving: typeof r.opMarginImproving === 'boolean' ? r.opMarginImproving : null,
+        },
         roe: r.roe ?? null,
         receivablesAnomaly: r.receivablesAnomaly?.level ?? null,
         dividendPotential: r.dividendPotential?.level ?? null,
@@ -1151,6 +1191,9 @@ export function evaluationAxes(r) {
         loanRatio: r.loanRatio ?? null,
         creditFloat: r.creditFloat?.level ?? null,
         squeeze: r.squeeze?.level ?? null,
+        // 第7優先改修: 「売りが少ない」（marginOverhang/squeeze）と「買いが
+        // 強い」は別変数として保持する（buyingDemandSignal、新規）。
+        buyingDemand: r.buyingDemand?.level ?? null,
         priceLevelPct: r.repricingLag?.priceLevelPct ?? null,
         return1m: r.repricingLag?.return1m ?? null,
         return3m: r.repricingLag?.return3m ?? null,
@@ -1172,6 +1215,158 @@ export function evaluationAxes(r) {
         earningsWarning: r.earningsWarning?.level ?? null,
         bucket: r.bucket ?? null,
       },
+    },
+  };
+}
+
+// ==================================================================
+// 財務品質のまとめ表示構造（第6優先改修■5、ユーザー報告）
+//
+// 売上・営業利益・営業CF・FCF・売掛金・在庫・利益率を同じまとまりで
+// 確認できるようにする、読み取り専用の集計レイヤー（evaluationAxesと
+// 同じ設計方針）。既存の各シグナルの判定・閾値は一切変更しない。
+// UI表示への反映は今回のスコープ外（内部データ構造のみ追加）。
+export function financialQualityBreakdown(r) {
+  return {
+    growth: {
+      revenueGrowthPct: r.revenueGrowthPct ?? null,
+      profitGrowthPct: r.profitGrowthPct ?? r.earningsTrend?.netIncomeGrowthPct ?? null,
+      // 第6優先改修①: 前期特別損益の反動等、理由別の内訳。
+      anomalyReasonCodes: r.growthAnomalyCaution?.reasonCodes ?? [],
+    },
+    margin: {
+      grossMarginImproving: typeof r.grossMarginImproving === 'boolean' ? r.grossMarginImproving : null,
+      opMarginImproving: typeof r.opMarginImproving === 'boolean' ? r.opMarginImproving : null,
+    },
+    cashFlow: {
+      operatingCf: r.operatingCf ?? null,
+      fcf: r.earningsCashFlowQuality?.fcf ?? null,
+      // 第6優先改修■4: 利益成長とキャッシュフローの整合性（good/warn/null）。
+      qualityLevel: r.earningsCashFlowQuality?.level ?? null,
+    },
+    workingCapital: {
+      // 「利益成長がある」という事実と「キャッシュ化の確認が必要」という
+      // 情報を同時に表示できる状態にする（既存の売掛金警戒ロジック自体は
+      // 変更しない）。
+      receivablesAnomaly: r.receivablesAnomaly?.level ?? null,
+    },
+    // 第6優先改修②: US株の税効果チェック（JP株はprofitGrowthPctが経常
+    // 利益＝税引前ベースのため対象外。usTaxEffectCautionSignal参照）。
+    taxEffect: {
+      level: r.taxEffectCaution?.level ?? null,
+      divergencePct: r.taxEffectCaution?.divergencePct ?? null,
+    },
+  };
+}
+
+// ==================================================================
+// 信用需給の意味の分離（第7優先改修、ユーザー報告）
+//
+// 「信用買いが少ない」「信用倍率が低い」ことは、「株価が上昇しやすい」
+// 「上昇余地が大きい」ことと同じではない。信用倍率が低いことは単に
+// 買い需要そのものが弱いだけの可能性がある。既存の各信号（
+// marginOverhangSignal/buyingDemandSignal/shortSqueezeSignal/
+// institutionalShortSignal/creditFloatSignal）の判定・閾値は一切変更
+// せず、意味の異なる4つの概念に分けて並べ直すだけの読み取り専用の
+// 集計レイヤーを追加する（evaluationAxes/clusterConfirmationと同じ
+// 設計方針。新しい閾値・重みは一切作らない）。
+//
+//  - SUPPLY_PRESSURE: 将来の売り圧力（信用買い残の重さ）。
+//    marginOverhangSignalそのもの。「信用倍率が低い＝売り圧力が小さい」
+//    という解釈だけをここに閉じ込め、「買い需要が強い」という別解釈
+//    （BUYING_DEMAND）とは混同しない。
+//  - BUYING_DEMAND: 買い需要そのものの強さ。buyingDemandSignalそのもの
+//    （信用買い残の減少だけでなく、株価・出来高との組み合わせで判定）。
+//  - SQUEEZE_POTENTIAL: 買い戻し余地（踏み上げ）。shortSqueezeSignal・
+//    institutionalShortSignalそのもの。「上昇要因の1つ」であり、
+//    独立した上昇期待そのものではないことをnoteに明記済み。
+//  - LIQUIDITY_QUALITY: 出来高・浮動株比率の厚み、および推定浮動株の
+//    データ品質。creditFloatSignalそのもの（lowPrecisionフラグ込み）。
+export function creditSupplyBreakdown(r) {
+  const empty = { level: null, label: null, note: null, checked: false };
+  return {
+    supplyPressure: r.marginOverhang ?? empty,
+    buyingDemand: r.buyingDemand ?? empty,
+    squeezePotential: {
+      retail: r.squeeze ?? empty,
+      institutional: r.institutionalShort ?? empty,
+    },
+    liquidityQuality: r.creditFloat ?? empty,
+  };
+}
+
+// ==================================================================
+// AMBUSHの時間軸とシグナルの分離（第8優先改修、ユーザー報告）
+//
+// 「決算まで7〜30日」というAMBUSHの時間軸区分は、現時点でバックテスト
+// によって検証された事実ではなく仮説として扱う。この関数は、その
+// 「区分そのもの」を変更・最適化するのではなく、時間軸（EARNINGS_
+// DISTANCE）・決算日の確度（EARNINGS_DATE_CONFIDENCE）・カタリスト
+// （CATALYST_SIGNAL）・株価反応（PRICE_REACTION）・未織り込み判定
+// （PRICING_STATUS）を、それぞれ独立した情報として並べ直すだけの
+// 読み取り専用の集計レイヤー（evaluationAxes/creditSupplyBreakdownと
+// 同じ設計方針）。screener.mjsのWINDOW/bucket判定・ambushVerdictの
+// 判定条件・閾値は一切変更しない。
+//
+// ■ earningsDateStatus（sbi.mjs）の意味
+//  'confirmed' = 東証の適時開示に基づく確定日（sbi_exchange）
+//  'estimated' = 前年同期の決算日をそのまま参考値として使った推定
+//                （sbi_previous_year_reference）。日付がズレうる。
+//  'unknown'   = 決算発表済みで次回日程が未収録、等で不明。
+// 大文字のCONFIRMED/ESTIMATED/UNKNOWNは、この既存値をそのまま
+// 大文字化するだけで新しい判定は加えない。
+function mapEarningsDateConfidence(status) {
+  if (status === 'confirmed') return 'CONFIRMED';
+  if (status === 'estimated') return 'ESTIMATED';
+  return 'UNKNOWN';
+}
+
+export function ambushTimingBreakdown(r) {
+  return {
+    // EARNINGS_DISTANCE: 決算まで何日か（生の事実）。bucketは既存の
+    // screener.mjs側の分類（NOW/WATCH/NEAR等）をそのまま表示用に持たせる
+    // だけで、ここでは再計算しない。isHypothesis:trueは「7/14/30/45/60
+    // という区切り値がバックテストで検証済みの最適値ではない」ことを
+    // 明示するための固定フラグ（今回、値そのものは変更していない）。
+    earningsDistance: {
+      days: Number.isFinite(r.daysLeft) ? r.daysLeft : null,
+      // 第8優先改修 CASE H対応: screener.mjsのdaysUntil()は単純な
+      // カレンダー日数差（86400000msで割るだけ）で、土日祝日を考慮した
+      // 営業日ベースではない。「7日」が実質何営業日分の値動きを指すかは
+      // 週末の位置によって変わりうるため、単位を明示する（計算方法自体は
+      // 変更しない）。
+      unit: 'calendar_days',
+      bucket: r.bucket ?? null,
+      isHypothesis: true,
+    },
+    // EARNINGS_DATE_CONFIDENCE: 決算日データの確度。CONFIRMEDと
+    // ESTIMATEDを同じ確度で扱わない。
+    earningsDateConfidence: {
+      status: mapEarningsDateConfidence(r.earningsDateStatus),
+      source: r.earningsDateSource ?? null,
+    },
+    // CATALYST_SIGNAL: 決算に向けた再評価材料があるか。時間軸とは
+    // 独立に判定されている値をそのまま集約するだけ（daysLeftを参照しない）。
+    catalystSignal: {
+      hasCatalyst: typeof r.hasCatalyst === 'boolean' ? r.hasCatalyst : null,
+      catalystScore100: Number.isFinite(r.catalystScore100) ? r.catalystScore100 : null,
+      catalystTier: r.catalystTier ?? null,
+    },
+    // PRICE_REACTION: 決算発表までの間に株価が既にどう反応しているか
+    // （生データ）。
+    priceReaction: {
+      kairi: Number.isFinite(r.kairi) ? r.kairi : null,
+      return1m: Number.isFinite(r.repricingLag?.return1m) ? r.repricingLag.return1m : null,
+      return3m: Number.isFinite(r.repricingLag?.return3m) ? r.repricingLag.return3m : null,
+    },
+    // PRICING_STATUS: 「未織り込み」判定そのもの。stage1の価格・出来高
+    // ベース判定とrepricingLag.zoneという、どちらもdaysLeftを一切
+    // 参照しない入力から算出された値をそのまま集約する（TIMINGとの
+    // 混同防止）。
+    pricingStatus: {
+      stage1Pass: [r.kairi, r.rsi, r.volZ].every(Number.isFinite)
+        ? stage1({ kairi: r.kairi, rsi: r.rsi, volZ: r.volZ }).pass : null,
+      repricingLagZone: r.repricingLag?.zone ?? null,
     },
   };
 }
@@ -1545,6 +1740,35 @@ export function hiddenGemSignal({ consensusProfit, netNet, lowPbr, dividendStrea
   };
 }
 
+// 第7優先改修（ユーザー報告）: 「信用買いが少ない」「信用倍率が低い」
+// ことを自動的に「買い需要が強い」「上昇余地が大きい」と解釈しない。
+// 信用買い残の減少には複数の解釈がありうる（①信用整理が進んだ
+// ②将来の戻り売り圧力が減った ③株価下落で投資家が撤退した ④そもそも
+// 人気がなくなった）。株価変化・出来高と組み合わせて、「需給改善」の
+// 可能性と「単なる低人気（LOW BUYING INTEREST）」の可能性を分離する。
+// marginOverhangSignal/creditFloatSignalとは別の、「買い需要そのものの
+// 強さ」を扱う独立した信号として新設する（既存の判定は変更しない）。
+export function buyingDemandSignal({ creditTrendPct, changePct, volRatio } = {}) {
+  if (!Number.isFinite(creditTrendPct)) return { level: null, label: null, note: null, checked: false };
+  if (creditTrendPct >= 0) return { level: null, label: null, note: null, checked: true };
+  const priceUp = Number.isFinite(changePct) ? changePct > 0 : null;
+  const volumeThin = Number.isFinite(volRatio) ? volRatio < 1 : null;
+  const volumeSurging = Number.isFinite(volRatio) ? volRatio >= FLOAT_SQUEEZE.minVolumeRatio : null;
+  if (priceUp === true && volumeSurging === true) {
+    return {
+      level: 'good', label: '信用買い減少・株価上昇（需給改善の可能性）', checked: true,
+      note: `信用買い残は減少傾向（${creditTrendPct}%）ですが、株価は上昇し出来高も20日平均の${volRatio}倍に増えています。単なる信用整理ではなく、新規の買い需要が入ってきている可能性があります`,
+    };
+  }
+  if (priceUp !== true && volumeThin === true) {
+    return {
+      level: 'caution', label: '信用買い減少・出来高細り（低人気の可能性）', checked: true,
+      note: `信用買い残は減少傾向（${creditTrendPct}%）ですが、株価は上昇しておらず出来高も少ない状態です。需給が改善しているとは限らず、単に市場参加者の関心が低い（LOW BUYING INTEREST）可能性があります`,
+    };
+  }
+  return { level: null, label: null, note: null, checked: true };
+}
+
 // ④ 踏み上げ狙い（信用残の解消）
 //
 //  信用買い残が減り（個人の投げ売りが進み）、逆に信用売り残（空売り）が
@@ -1578,7 +1802,7 @@ export function shortSqueezeSignal(weekly, { institutionalShort, volRatio } = {}
     ].filter(Boolean).join('・');
     return {
       level: 'good', label: `踏み上げ狙い${confirmCount >= 3 ? '（複合確認）' : ''}`, checked: true, confirmCount,
-      note: `信用買い残4週比${buyTrendPct}%・空売り(売り残)4週比+${sellTrendPct}%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です${extras ? `。さらに${extras}しており、複数の需給指標が一致しています` : ''}`,
+      note: `信用買い残4週比${buyTrendPct}%・空売り(売り残)4週比+${sellTrendPct}%。個人の投げが進み空売りが積み上がっており、戻りで買い戻し需要が出やすい状態です${extras ? `。さらに${extras}しており、複数の需給指標が一致しています` : ''}（第7優先改修: 踏み上げの可能性は株価上昇を後押ししうる要因の1つであり、株価が上がることを保証するものではありません。通常の買い需要とは別軸として扱ってください）`,
     };
   }
   return { level: null, label: null, note: null, checked: true };
@@ -1865,16 +2089,36 @@ export const GROWTH_ANOMALY = {
   minRevenueGrowthPct: 40, // TENBAGGER.minGrowthPctと同じ「高成長」の目安
   minProfitGrowthPct: 100, // 項目8の実例（利益+463%）のような「特に急な利益成長」の目安
   lowBaseMarginPct: 1, // 前期営業利益率がこれ未満（ほぼゼロ）なら「低いベース」とみなす
+  // 第6優先改修（ユーザー報告「構造改革費用の反動」）: 前期の特別損益
+  // （特別損失・減損中心）の絶対額が「一定額以上」かつ、当期がその
+  // priorOneTimeReversalMaxRatio倍以下（=大幅縮小/消失）まで減っていれば
+  // 「前期の一時的な特別損失が今期は無くなったことによる反動増益」の
+  // 疑いとして扱う。「一定額以上」の絶対基準は銘柄規模で意味が変わり
+  // すぎるため額そのものでは決めず、当期との比率だけで判定する
+  // （新しいスコアではなく、既存のhasOneTimeItemと同じ「有無の判定」を
+  // 前期側にも対称に適用しただけ）。
+  priorOneTimeReversalMaxRatio: 0.5,
 };
 
+// 第6優先改修（ユーザー報告CASE E）: 旧実装は「売上高成長率+40%以上
+// 『かつ』利益成長率+100%以上」の両方を満たさないとベース効果チェック
+// 自体が発動しない（checked:falseのまま）AND条件だった。しかし前期利益が
+// 極端に小さい（ほぼゼロ）銘柄は、売上高成長率が緩やか（+5%等）でも
+// 利益だけが数百%跳ねることが多い（利益率はわずかな絶対額の変化でも
+// 比率としては大きく動くため）。売上高側の異常成長は据え置きつつ、
+// 利益側は単独でも閾値を超えていればベース効果・一時要因のチェックを
+// 発動するようOR条件に緩和する（各チェック自体の閾値・判定式は不変）。
 export function growthAnomalyCautionSignal({
   revenueGrowthPct, profitGrowthPct,
   operatingIncomePrior, netSalesPrior,
   extraordinaryIncome, extraordinaryLoss, impairmentLoss,
+  // 第6優先改修（ユーザー報告「構造改革費用の反動」）追加分。
+  extraordinaryIncomePrior, extraordinaryLossPrior, impairmentLossPrior,
 } = {}) {
-  const isAnomalous = Number.isFinite(revenueGrowthPct) && Number.isFinite(profitGrowthPct)
-    && revenueGrowthPct >= GROWTH_ANOMALY.minRevenueGrowthPct && profitGrowthPct >= GROWTH_ANOMALY.minProfitGrowthPct;
-  if (!isAnomalous) return { level: null, label: null, note: null, checked: false };
+  const profitAnomalous = Number.isFinite(profitGrowthPct) && profitGrowthPct >= GROWTH_ANOMALY.minProfitGrowthPct;
+  const revenueAnomalous = Number.isFinite(revenueGrowthPct) && revenueGrowthPct >= GROWTH_ANOMALY.minRevenueGrowthPct;
+  const isAnomalous = profitAnomalous || revenueAnomalous;
+  if (!isAnomalous) return { level: null, label: null, note: null, checked: false, reasonCodes: [] };
 
   const priorOpMarginPct = Number.isFinite(operatingIncomePrior) && Number.isFinite(netSalesPrior) && netSalesPrior > 0
     ? round1((operatingIncomePrior / netSalesPrior) * 100) : null;
@@ -1882,27 +2126,119 @@ export function growthAnomalyCautionSignal({
   const oneTimeAmount = [extraordinaryIncome, extraordinaryLoss, impairmentLoss]
     .filter(Number.isFinite).reduce((sum, v) => sum + Math.abs(v), 0);
   const hasOneTimeItem = oneTimeAmount > 0;
+  // 「前期特別損失の剥落」判定: 前期の特別損益の絶対額(priorOneTimeAmount)
+  // が確認でき、かつ0より大きい場合だけ評価する（前期データが無ければ
+  // 「反動が無い」と決めつけずUNKNOWN寄りに倒す＝下のchecked:false分岐へ）。
+  const hasPriorOneTimeData = [extraordinaryIncomePrior, extraordinaryLossPrior, impairmentLossPrior].some(Number.isFinite);
+  const priorOneTimeAmount = [extraordinaryIncomePrior, extraordinaryLossPrior, impairmentLossPrior]
+    .filter(Number.isFinite).reduce((sum, v) => sum + Math.abs(v), 0);
+  const priorOneTimeReversal = hasPriorOneTimeData && priorOneTimeAmount > 0
+    && oneTimeAmount <= priorOneTimeAmount * GROWTH_ANOMALY.priorOneTimeReversalMaxRatio;
 
   const reasons = [];
-  if (lowPriorBase) reasons.push(`前期の営業利益率が${priorOpMarginPct}%とほぼゼロ水準で、そこからの伸び率は低い比較対象からの反動（ベース効果）の可能性があります`);
-  if (hasOneTimeItem) reasons.push(`特別損益・減損等の一時的な項目（合計${Math.round(oneTimeAmount).toLocaleString()}円）が計上されており、本業の成長とは別の要因が業績に影響している可能性があります`);
+  const reasonCodes = [];
+  if (lowPriorBase) {
+    reasons.push(`前期の営業利益率が${priorOpMarginPct}%とほぼゼロ水準で、そこからの伸び率は低い比較対象からの反動（ベース効果）の可能性があります`);
+    reasonCodes.push('LOW_BASE_EFFECT');
+  }
+  if (hasOneTimeItem) {
+    reasons.push(`特別損益・減損等の一時的な項目（合計${Math.round(oneTimeAmount).toLocaleString()}円）が計上されており、本業の成長とは別の要因が業績に影響している可能性があります`);
+    reasonCodes.push('ONE_TIME_ITEM_CURRENT');
+  }
+  if (priorOneTimeReversal) {
+    reasons.push(`前期に特別損益・減損等の一時的な項目（合計${Math.round(priorOneTimeAmount).toLocaleString()}円）が計上されていましたが、今期は大幅に縮小・消失しています。前期の一時的な費用が無くなったことによる反動増益の可能性があります`);
+    reasonCodes.push('PRIOR_ONE_TIME_ITEM_REVERSAL');
+  }
+
+  // revenueGrowthPct/profitGrowthPctのどちらか一方だけが閾値超えの場合
+  // （OR条件化、上記コメント参照）、もう一方はundefined/nullのことが
+  // あるため、確認できた方だけを文章に含める（"undefined%"を出さない）。
+  const growthParts = [
+    Number.isFinite(revenueGrowthPct) ? `売上高成長率+${revenueGrowthPct}%` : null,
+    Number.isFinite(profitGrowthPct) ? `利益成長率+${profitGrowthPct}%` : null,
+  ].filter(Boolean).join('・');
 
   if (reasons.length) {
     return {
-      level: 'warn', label: '異常成長・要確認', checked: true,
-      note: `売上高成長率+${revenueGrowthPct}%・利益成長率+${profitGrowthPct}%という高い伸びですが、${reasons.join('。')}。「異常値だから無条件で高評価」にはせず、決算内容の確認をおすすめします`,
+      level: 'warn', label: '異常成長・要確認', checked: true, reasonCodes,
+      note: `${growthParts}という高い伸びですが、${reasons.join('。')}。「異常値だから無条件で高評価」にはせず、決算内容の確認をおすすめします`,
     };
   }
-  // ベース効果・一時要因のいずれも確認できなかった判定材料が無い
-  // （両方ともデータ不足）場合は、good/badどちらとも言えないため
-  // checked:falseで区別する（推測でnull=異常無しと断定しない）。
-  if (priorOpMarginPct === null && !hasOneTimeItem
+  // ベース効果・一時要因（当期・前期とも）のいずれも確認できなかった
+  // 判定材料が無い（全てデータ不足）場合は、good/badどちらとも言えない
+  // ためchecked:falseで区別する（推測でnull=異常無しと断定しない）。
+  if (priorOpMarginPct === null && !hasOneTimeItem && !hasPriorOneTimeData
     && !Number.isFinite(extraordinaryIncome) && !Number.isFinite(extraordinaryLoss) && !Number.isFinite(impairmentLoss)) {
-    return { level: null, label: null, note: null, checked: false };
+    return { level: null, label: null, note: null, checked: false, reasonCodes: [] };
   }
   return {
-    level: 'good', label: '本物の成長（ベース効果なし）', checked: true,
-    note: `売上高成長率+${revenueGrowthPct}%・利益成長率+${profitGrowthPct}%という高い伸びですが、前期の水準・特別損益・減損のいずれにも異常は確認されず、本業の実力による成長とみられます`,
+    level: 'good', label: '本物の成長（ベース効果なし）', checked: true, reasonCodes: ['ORGANIC_GROWTH'],
+    note: `${growthParts}という高い伸びですが、前期の水準・特別損益・減損のいずれにも異常は確認されず、本業の実力による成長とみられます`,
+  };
+}
+
+// 第6優先改修（ユーザー報告）: 「利益成長率が高い」だけでは、その利益が
+// 実際の現金を伴っているかまでは分からない。既存のdeficitGrowthSignal
+// （赤字企業のみ対象、operatingIncome<0が前提）・receivablesAnomaly
+// Signal（売掛金の伸びが売上以上に異常な場合の文脈でのみ営業CFを参照）の
+// どちらにも当てはまらない、「黒字で利益は伸びているが、営業キャッシュ・
+// フローが伴っていない」ケースを検出する信号が無かったため新設する。
+//
+// ■ 検証したCASE（ユーザー指定）
+// CASE A: 利益+10%・営業CF+10% → 整合(good)
+// CASE B: 利益+100%・営業CFマイナス → 利益成長率だけで最高評価にしない(warn)
+// CASE C: 利益+50%・営業CF改善 → 整合的に評価できる(good)
+// CASE F: 営業利益増加・営業CF減少 → 「利益成長」と「キャッシュ面の注意」を両方保持(warn)
+//
+// operatingCf/operatingCfPrior/operatingCfGrowthPctは既にEDINETから
+// deficitGrowthSignal/receivablesAnomalySignal向けに取得済みのため、
+// この信号のために新規のデータ取得は発生しない。
+export function earningsCashFlowQualitySignal({
+  profitGrowthPct, operatingCf, operatingCfPrior, operatingCfGrowthPct,
+  // 第6優先改修■4（ユーザー報告）: 営業CF→FCFまで拡張する。ただしFCF
+  // 単独では判定せず「補助情報」として保持する（大型設備投資企業を
+  // 機械的に低評価しないため。level/labelの判定基準はOCFのみのまま
+  // 変更しない）。
+  capex, capexPrior,
+} = {}) {
+  // 利益が伸びていない（横ばい・減益）銘柄には、この注意喚起自体が
+  // 意味を持たない（deficitGrowthSignalと同じ「対象外はchecked:false」方針）。
+  if (!Number.isFinite(profitGrowthPct) || profitGrowthPct <= 0) {
+    return { level: null, label: null, note: null, checked: false };
+  }
+  const cfGrowth = Number.isFinite(operatingCfGrowthPct)
+    ? operatingCfGrowthPct
+    : (Number.isFinite(operatingCf) && Number.isFinite(operatingCfPrior) && operatingCfPrior !== 0
+      ? round1(((operatingCf - operatingCfPrior) / Math.abs(operatingCfPrior)) * 100)
+      : null);
+  const cfNegative = Number.isFinite(operatingCf) && operatingCf < 0;
+  if (cfGrowth === null && !cfNegative) return { level: null, label: null, note: null, checked: false };
+
+  // FCF = 営業CF + 設備投資（capexは既に負の値。deficitGrowthSignalと
+  // 同じ符号規約）。「FCFがマイナス＝悪い」と機械的に断定せず、補助
+  // 情報としてfcf/fcfPriorを常に返すだけにする（大型投資中の成長企業は
+  // FCFがマイナスでも正常なケースが多いため）。
+  const fcf = Number.isFinite(operatingCf) && Number.isFinite(capex) ? operatingCf + capex : null;
+  const fcfPrior = Number.isFinite(operatingCfPrior) && Number.isFinite(capexPrior) ? operatingCfPrior + capexPrior : null;
+  const fcfNote = fcf !== null && fcf < 0
+    ? '（参考: 設備投資を差し引いたFCFはマイナスです。大型投資中の可能性もあり、これ単独で悪材料とは判定していません）'
+    : '';
+
+  if (cfNegative) {
+    return {
+      level: 'warn', label: '利益成長・営業CFマイナス', checked: true, fcf, fcfPrior,
+      note: `利益成長率+${profitGrowthPct}%に対し、営業キャッシュ・フローはマイナスです。会計上の利益ほど実際の現金は増えていない可能性があり、利益成長率だけで評価しないようご注意ください`,
+    };
+  }
+  if (cfGrowth !== null && cfGrowth < 0) {
+    return {
+      level: 'warn', label: '利益成長・営業CF減少', checked: true, fcf, fcfPrior,
+      note: `利益成長率+${profitGrowthPct}%に対し、営業キャッシュ・フローは前期比${cfGrowth}%と減少しています。利益の伸びほどキャッシュは増えていない可能性があります`,
+    };
+  }
+  return {
+    level: 'good', label: '利益成長・営業CFも整合', checked: true, fcf, fcfPrior,
+    note: `利益成長率+${profitGrowthPct}%に対し、営業キャッシュ・フローも前期比+${cfGrowth}%と伴っており、利益成長がキャッシュの増加にも裏付けられています${fcfNote}`,
   };
 }
 
@@ -2485,6 +2821,15 @@ export function computeFloatRatio({ sharesOutstanding, top3PctNow } = {}) {
   return floatRatio > 0 ? floatRatio : null; // 上位株主データが異常（発行済株式数を超過）
 }
 
+// 第7優先改修（ユーザー報告）: 推定浮動株数(computeFloatRatio)は
+// 「発行済株式数×(1-上位3株主保有比率)」という近似値で、上位3株主の
+// 保有比率が高い銘柄ほど分母（浮動株数）が小さくなり、信用買い残が
+// 同じでも占有率(occupancy)の値が敏感に・不安定に動く（推定精度が
+// 落ちる）。何%以上なら不正確、という新しい閾値をバックテスト無しで
+// 作ることはしないが、「この占有率の推定精度は低い」という事実は
+// 隠さずnoteに明記する（top3PctNowが高い＝残りの浮動株の絶対数が
+// 少ないほど、推定誤差の影響が相対的に大きくなるため）。
+const FLOAT_ESTIMATE_LOW_PRECISION_TOP3PCT = 70; // 上位3株主保有比率がこれ以上なら注記を添える（既存のMAJOR_SHAREHOLDER.thinFloatPct=20とは別の目的の値のため、新設だが新たな加点/除外条件ではなく注記専用）
 export function creditFloatSignal({ creditBuyBalance, sharesOutstanding, top3PctNow, loanRatio } = {}) {
   if (!Number.isFinite(creditBuyBalance)) {
     return { level: null, label: null, note: null, checked: false };
@@ -2493,28 +2838,32 @@ export function creditFloatSignal({ creditBuyBalance, sharesOutstanding, top3Pct
   if (floatRatio === null) return { level: null, label: null, note: null, checked: false };
   const floatingShares = sharesOutstanding * floatRatio;
   const occupancy = round1((creditBuyBalance / floatingShares) * 100);
-  const basis = `信用買い残${Math.round(creditBuyBalance).toLocaleString()}株 ÷ 推定浮動株数${Math.round(floatingShares).toLocaleString()}株（発行済株式数から上位3株主の保有分${top3PctNow}%を控除した近似値）`;
+  const lowPrecision = Number.isFinite(top3PctNow) && top3PctNow >= FLOAT_ESTIMATE_LOW_PRECISION_TOP3PCT;
+  const precisionNote = lowPrecision
+    ? `（上位3株主保有比率${top3PctNow}%と高く、推定浮動株数の分母が小さいため、この占有率の推定精度は低めです）`
+    : '';
+  const basis = `信用買い残${Math.round(creditBuyBalance).toLocaleString()}株 ÷ 推定浮動株数${Math.round(floatingShares).toLocaleString()}株（発行済株式数から上位3株主の保有分${top3PctNow}%を控除した近似値）${precisionNote}`;
   // occupancyはlevelがgood/badに達しない中間域でもワンポイント表示
   // （precursorCardの需給バッジ）に使うため、level問わず常に返す。
   if (occupancy >= CREDIT_FLOAT.heavy) {
     return {
-      level: 'bad', label: '信用買い占有率が高い', checked: true, occupancy,
+      level: 'bad', label: '信用買い占有率が高い', checked: true, occupancy, lowPrecision,
       note: `${basis}＝${occupancy}%。浮動株に対して信用買いが積み上がっており、好材料が出ても上値が重く飛びにくい状態です`,
     };
   }
   if (occupancy <= CREDIT_FLOAT.light) {
     if (Number.isFinite(loanRatio) && loanRatio >= MARGIN_OVERHANG.heavy) {
       return {
-        level: 'warn', label: '需給判断に注意', checked: true, occupancy,
+        level: 'warn', label: '需給判断に注意', checked: true, occupancy, lowPrecision,
         note: `${basis}＝${occupancy}%と浮動株に対する信用買いの絶対量は少ないですが、信用倍率${loanRatio}倍と買い方に極端に偏っており、含み益確定売りの重さを考えると「需給が軽い」とは言い切れません`,
       };
     }
     return {
-      level: 'good', label: '需給が軽い', checked: true, occupancy,
+      level: 'good', label: '需給が軽い', checked: true, occupancy, lowPrecision,
       note: `${basis}＝${occupancy}%。浮動株に対して信用買いが少なく、好材料が出れば一気に動きやすい「軽い」需給です`,
     };
   }
-  return { level: null, label: null, note: null, checked: true, occupancy };
+  return { level: null, label: null, note: null, checked: true, occupancy, lowPrecision };
 }
 
 // 浮動株比率×出来高急増（ユーザー提案）。creditFloatSignalは信用買い残
@@ -2721,20 +3070,59 @@ export function usEarningsTrendSignal(quarterlyTrend, asOf = null) {
   // ままになるケースを許容する（推測で埋めない）。
   const hasRnd = Number.isFinite(latest.rnd) && Number.isFinite(yoy.rnd) && yoy.rnd > 0;
   const rndGrowthPct = hasRnd ? round1(((latest.rnd - yoy.rnd) / yoy.rnd) * 100) : null;
+  // 第6優先改修②（ユーザー報告「税効果」）: 税引前利益のYoY成長率。
+  // netIncomeGrowthPct（税引後）との乖離を見れば、税効果（税率変動・
+  // 繰延税金資産の評価性引当金取り崩し等）が純利益を押し上げているかを
+  // usTaxEffectCautionSignal側で判定できる。取得できない企業も多いため
+  // nullのままになるケースを許容する（推測で埋めない）。
+  const hasPretaxIncome = Number.isFinite(latest.pretaxIncome) && Number.isFinite(yoy.pretaxIncome) && yoy.pretaxIncome > 0;
+  const pretaxIncomeGrowthPct = hasPretaxIncome ? round1(((latest.pretaxIncome - yoy.pretaxIncome) / yoy.pretaxIncome) * 100) : null;
 
   if (revenueGrowthPct >= 15 && (netIncomeGrowthPct === null || netIncomeGrowthPct >= 15)) {
     return {
-      level: 'good', label: '増収増益が加速', checked: true, revenueGrowthPct, netIncomeGrowthPct, prevRevenueGrowthPct, rndGrowthPct,
+      level: 'good', label: '増収増益が加速', checked: true, revenueGrowthPct, netIncomeGrowthPct, prevRevenueGrowthPct, rndGrowthPct, pretaxIncomeGrowthPct,
       note: `直近四半期(${latest.end})の売上高は前年同期比+${revenueGrowthPct}%${niText}`,
     };
   }
   if (revenueGrowthPct <= -10 || (netIncomeGrowthPct !== null && netIncomeGrowthPct <= -20)) {
     return {
-      level: 'bad', label: '減収減益', checked: true, revenueGrowthPct, netIncomeGrowthPct, prevRevenueGrowthPct, rndGrowthPct,
+      level: 'bad', label: '減収減益', checked: true, revenueGrowthPct, netIncomeGrowthPct, prevRevenueGrowthPct, rndGrowthPct, pretaxIncomeGrowthPct,
       note: `直近四半期(${latest.end})の売上高は前年同期比${revenueGrowthPct}%${niText}`,
     };
   }
-  return { level: null, label: null, note: null, checked: true, revenueGrowthPct, netIncomeGrowthPct, prevRevenueGrowthPct, rndGrowthPct };
+  return { level: null, label: null, note: null, checked: true, revenueGrowthPct, netIncomeGrowthPct, prevRevenueGrowthPct, rndGrowthPct, pretaxIncomeGrowthPct };
+}
+
+// 第6優先改修②（ユーザー報告「税効果」）: US株のprofitGrowthPctは
+// usEarningsTrendSignal().netIncomeGrowthPct（GAAP当期純利益、税引後・
+// 特別項目込みの最終利益）で、税率変動・一時的な税効果（繰延税金資産の
+// 評価性引当金取り崩し等）が混入していても検知する仕組みが無かった。
+// 税引前利益（pretaxIncomeGrowthPct）と純利益（netIncomeGrowthPct）の
+// 成長率の乖離を見ることで、「事業成績（税引前）は伸びていないのに
+// 税金費用の減少で純利益だけ跳ねている」ようなケースに注意を促す。
+// 新しいSCOREは作らず、growthAnomalyCautionSignalと同じ{level,label,
+// note,checked}パターンの独立シグナルとして追加する。既存のprofitGrowthPct
+// （＝netIncomeGrowthPct）自体は変更しない。
+export const US_TAX_EFFECT = {
+  // 税引前・税引後の成長率の差がこれ以上なら「税効果の影響の疑い」とする。
+  // 実データでの閾値検証はしていないため、growthAnomalyCautionSignalの
+  // 閾値と同様、初期値として妥当な水準を暫定的に採用した値（今後の
+  // 実データ観測で調整する前提）。
+  minDivergencePct: 20,
+};
+
+export function usTaxEffectCautionSignal({ netIncomeGrowthPct, pretaxIncomeGrowthPct } = {}) {
+  if (!Number.isFinite(netIncomeGrowthPct) || !Number.isFinite(pretaxIncomeGrowthPct)) {
+    return { level: null, label: null, note: null, checked: false };
+  }
+  const divergencePct = round1(netIncomeGrowthPct - pretaxIncomeGrowthPct);
+  if (Math.abs(divergencePct) >= US_TAX_EFFECT.minDivergencePct) {
+    return {
+      level: 'warn', label: '税効果の影響の疑い', checked: true, divergencePct,
+      note: `税引前利益の成長率は+${pretaxIncomeGrowthPct}%ですが、純利益の成長率は+${netIncomeGrowthPct}%と${divergencePct > 0 ? '大きく上回って' : '下回って'}います（差${divergencePct > 0 ? '+' : ''}${divergencePct}pt）。税率変動や一時的な税効果（繰延税金資産の評価性引当金取り崩し等）が影響している可能性があり、純利益成長率だけで評価しないようご注意ください`,
+    };
+  }
+  return { level: null, label: null, note: null, checked: true, divergencePct };
 }
 
 // 売上高成長の「加速」（ユーザー提案: 前々期+10%→前期+15%→今期+30%の
