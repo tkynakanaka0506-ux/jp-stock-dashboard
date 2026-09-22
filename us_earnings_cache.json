@@ -1,6 +1,6 @@
 {
-  "date": "2026-09-21",
-  "fetchedAt": "2026-09-21T00:16:33.824Z",
+  "date": "2026-09-22",
+  "fetchedAt": "2026-09-22T06:38:59.036Z",
   "stocks": {
     "ASII": {
       "code": "ASII",
@@ -4993,13 +4993,6 @@
       "consensusEpsEstimate": -0.6069,
       "consensusRevenueEstimate": 550290
     },
-    "HZO": {
-      "code": "HZO",
-      "earningsDate": "2026-11-11",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0388,
-      "consensusRevenueEstimate": 546731058
-    },
     "ICCC": {
       "code": "ICCC",
       "earningsDate": "2026-11-11",
@@ -9281,8 +9274,8 @@
       "code": "IEHC",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.1938,
-      "consensusRevenueEstimate": 10098000
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
     },
     "IFRX": {
       "code": "IFRX",
@@ -9627,13 +9620,6 @@
       "consensusEpsEstimate": null,
       "consensusRevenueEstimate": null
     },
-    "MVIS": {
-      "code": "MVIS",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0306,
-      "consensusRevenueEstimate": 1925250
-    },
     "MVO": {
       "code": "MVO",
       "earningsDate": "2026-11-09",
@@ -9654,13 +9640,6 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.0783,
       "consensusRevenueEstimate": 11624494
-    },
-    "NBIS": {
-      "code": "NBIS",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.8976,
-      "consensusRevenueEstimate": 924039103
     },
     "NEWH": {
       "code": "NEWH",
@@ -10473,6 +10452,27 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.2091,
       "consensusRevenueEstimate": 10916550
+    },
+    "ZIM": {
+      "code": "ZIM",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 3.4071,
+      "consensusRevenueEstimate": 2238967394
+    },
+    "ZNTL": {
+      "code": "ZNTL",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -0.592,
+      "consensusRevenueEstimate": 0
+    },
+    "AMPL": {
+      "code": "AMPL",
+      "earningsDate": "2026-11-07",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.0304,
+      "consensusRevenueEstimate": 109126372
     }
   }
 }
