@@ -31,6 +31,7 @@ import { sectorTrendPct } from './sector_history.mjs';
 import { fetchDividendYieldHistory, fetchMajorShareholderTrend, fetchPbrHistory } from './irbank.mjs';
 import { fetchInstitutionalShortInterest } from './karauri.mjs';
 import { fetchBalanceSheetSnapshots } from './edinet.mjs';
+import { computeLogicFingerprint, isCacheFresh } from './logic_fingerprint.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const CACHE_FILE = path.join(__dirname, 'ambush_cache.json');
@@ -285,9 +286,13 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
   try {
     cache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf-8'));
   } catch { /* 初回 */ }
-  if (!force && cache.date === today && cache.results) {
+  const logicFingerprint = computeLogicFingerprint();
+  if (!force && isCacheFresh(cache, today, logicFingerprint)) {
     console.log(`💾 AMBUSHキャッシュ有効 (${today}) — ${cache.results.length}銘柄 / リクエスト0件`);
     return cache;
+  }
+  if (!force && cache.date === today && cache.results && cache.logicFingerprint !== logicFingerprint) {
+    console.log(`⚠️ AMBUSHキャッシュは当日分ですが判定ロジックが変更されているため再計算します (${today})`);
   }
 
   // --- ユニバース確定 ---------------------------------------------
@@ -311,7 +316,7 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
     // ユニバースが空でも、SECTION B のスコアリングに業種騰落が要る
     let sectorsOnly = {};
     try { sectorsOnly = await fetchSectorMomentum(); } catch { /* 失敗時はN/A */ }
-    const out = { date: today, universe: 0, passed: 0, results: [], stage1: STAGE1, sectors: sectorsOnly };
+    const out = { date: today, universe: 0, passed: 0, results: [], stage1: STAGE1, sectors: sectorsOnly, logicFingerprint };
     fs.writeFileSync(CACHE_FILE, JSON.stringify(out, null, 2));
     return out;
   }
@@ -762,6 +767,7 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
     stage1: STAGE1,
     sectors, // SECTION B のスコアリングでも使い回す（再取得しない）
     results,
+    logicFingerprint,
   };
   fs.writeFileSync(CACHE_FILE, JSON.stringify(out, null, 2));
   console.log(`✅ AMBUSH: NOW ${results.filter((r) => r.bucket === 'NOW').length} / WATCH ${results.filter((r) => r.bucket === 'WATCH').length} / 圏外 ${results.filter((r) => r.bucket === 'NEAR').length}（赤字・債務超過除外 ${s2excluded} / 時価総額上限超過除外 ${s2excludedCap} / 上場廃止・大規模希薄化除外 ${s2excludedRisk}）`);

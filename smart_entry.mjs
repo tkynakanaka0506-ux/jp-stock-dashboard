@@ -67,6 +67,7 @@ import { fetchMajorShareholderTrend, fetchDividendYieldHistory, fetchPbrHistory 
 import { buildDocumentIndex, fetchBalanceSheetSnapshot } from './edinet.mjs';
 import { fetchInstitutionalShortInterest } from './karauri.mjs';
 import { daysUntil } from './screener.mjs';
+import { computeLogicFingerprint, isCacheFresh } from './logic_fingerprint.mjs';
 import { MANUAL_WATCHLIST, TENBAGGER_WATCHLIST } from './watchlist.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
@@ -602,9 +603,13 @@ export async function runSmartEntryScreen({ today, tdNames, sbiStocks, sectors =
   try {
     cache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf-8'));
   } catch { /* 初回 */ }
-  if (!force && cache.date === today && cache.results) {
+  const logicFingerprint = computeLogicFingerprint();
+  if (!force && isCacheFresh(cache, today, logicFingerprint)) {
     console.log(`💾 スマート・エントリーキャッシュ有効 (${today}) — 該当${cache.results.length}銘柄 / リクエスト0件`);
     return cache;
+  }
+  if (!force && cache.date === today && cache.results && cache.logicFingerprint !== logicFingerprint) {
+    console.log(`⚠️ スマート・エントリーキャッシュは当日分ですが判定ロジックが変更されているため再計算します (${today})`);
   }
 
   const universe = buildUniverse({ tdNames, sbiStocks, jpxNames });
@@ -1078,6 +1083,7 @@ export async function runSmartEntryScreen({ today, tdNames, sbiStocks, sectors =
     tenbaggerCandidatesB,
     tenbaggerWatchlist,
     inflectionCandidates,
+    logicFingerprint,
   };
   fs.writeFileSync(CACHE_FILE, JSON.stringify(out, null, 2));
   return out;

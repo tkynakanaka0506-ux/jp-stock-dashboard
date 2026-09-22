@@ -25,6 +25,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { fetchDailyBars } from './us_yahoo.mjs';
 import { loadTickerCikMap, fetchCompanyFacts, extractQuarterlyTrend } from './us_edgar.mjs';
+import { computeLogicFingerprint, isCacheFresh } from './logic_fingerprint.mjs';
 import { fetchProfile, loadUsEarningsCalendar } from './us_finnhub.mjs';
 import {
   returnPct, priceLevelVsRange, usEarningsTrendSignal, usTaxEffectCautionSignal, volumeRatio,
@@ -75,9 +76,13 @@ export async function runUsTenbaggerScreen({ today, force = false } = {}) {
   try {
     cache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf-8'));
   } catch { /* 初回 */ }
-  if (!force && cache.date === today && cache.results) {
+  const logicFingerprint = computeLogicFingerprint();
+  if (!force && isCacheFresh(cache, today, logicFingerprint)) {
     console.log(`💾 米国株テンバガー候補キャッシュ有効 (${today}) — ${cache.results.length}銘柄 / リクエスト0件`);
     return cache;
+  }
+  if (!force && cache.date === today && cache.results && cache.logicFingerprint !== logicFingerprint) {
+    console.log(`⚠️ 米国株テンバガー候補キャッシュは当日分ですが判定ロジックが変更されているため再計算します (${today})`);
   }
 
   // AMBUSHと同じキャッシュを再利用（追加リクエスト無し）。イベント軸
@@ -212,7 +217,7 @@ export async function runUsTenbaggerScreen({ today, force = false } = {}) {
   }
   console.log(`   米国株テンバガー候補スキャン完了（取得失敗 ${err}） / 該当 ${results.length}銘柄`);
 
-  const out = { date: today, universe: US_TENBAGGER_WATCHLIST.length, results };
+  const out = { date: today, universe: US_TENBAGGER_WATCHLIST.length, results, logicFingerprint };
   fs.writeFileSync(CACHE_FILE, JSON.stringify(out, null, 2));
   return out;
 }

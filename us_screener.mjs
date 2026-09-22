@@ -21,6 +21,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { fetchDailyBars } from './us_yahoo.mjs';
 import { loadTickerCikMap, fetchCompanyFacts, extractBalanceSheetSnapshot, extractQuarterlyTrend } from './us_edgar.mjs';
+import { computeLogicFingerprint, isCacheFresh } from './logic_fingerprint.mjs';
 import { loadUsEarningsCalendar, fetchProfile } from './us_finnhub.mjs';
 import {
   kairi, rsi, volumeZScore, stage1, unpricedScore, STAGE1,
@@ -118,9 +119,13 @@ export async function runUsScreen({ today, force = false } = {}) {
   try {
     cache = JSON.parse(fs.readFileSync(CACHE_FILE, 'utf-8'));
   } catch { /* 初回 */ }
-  if (!force && cache.date === today && cache.results) {
+  const logicFingerprint = computeLogicFingerprint();
+  if (!force && isCacheFresh(cache, today, logicFingerprint)) {
     console.log(`💾 米国株AMBUSHキャッシュ有効 (${today}) — ${cache.results.length}銘柄 / リクエスト0件`);
     return cache;
+  }
+  if (!force && cache.date === today && cache.results && cache.logicFingerprint !== logicFingerprint) {
+    console.log(`⚠️ 米国株AMBUSHキャッシュは当日分ですが判定ロジックが変更されているため再計算します (${today})`);
   }
 
   const calendar = await loadUsEarningsCalendar({ today, horizonDays: 60, force });
@@ -134,7 +139,7 @@ export async function runUsScreen({ today, force = false } = {}) {
     .filter((s) => s.daysLeft !== null && s.daysLeft >= US_WINDOW.nowMin && s.daysLeft <= US_WINDOW.preMax);
   console.log(`🎯 米国株AMBUSHユニバース: ${universe.length}銘柄（決算まで${US_WINDOW.nowMin}〜${US_WINDOW.preMax}日）`);
   if (!universe.length) {
-    const out = { date: today, universe: 0, results: [] };
+    const out = { date: today, universe: 0, results: [], logicFingerprint };
     fs.writeFileSync(CACHE_FILE, JSON.stringify(out, null, 2));
     return out;
   }
@@ -292,7 +297,7 @@ export async function runUsScreen({ today, force = false } = {}) {
   console.log(`   Stage 2 完了（財務取得失敗 ${s2err} / 時価総額上限超過除外 ${s2excludedCap}） / 該当 ${results.length}銘柄`);
 
   results.sort((a, b) => b.score - a.score);
-  const out = { date: today, universe: universe.length, results };
+  const out = { date: today, universe: universe.length, results, logicFingerprint };
   fs.writeFileSync(CACHE_FILE, JSON.stringify(out, null, 2));
   return out;
 }
