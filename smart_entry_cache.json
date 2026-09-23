@@ -1,9 +1,9 @@
 {
-  "date": "2026-09-23",
-  "universe": 3018,
-  "stage2": 401,
-  "matched": 88,
-  "dropped": 64,
+  "date": "2026-09-24",
+  "universe": 2936,
+  "stage2": 399,
+  "matched": 87,
+  "dropped": 63,
   "results": [
     {
       "code": "9048",
@@ -80,7 +80,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0,
         "return3m": null,
-        "sectorReturn1m": -5.4,
+        "sectorReturn1m": -5.2,
         "priceLevelPct": 54.8,
         "revenueGrowthPct": 0.1,
         "profitGrowthPct": -15.8,
@@ -95,7 +95,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -6
+        "repricingGap": -5.9
       },
       "growthAcceleration": {
         "level": null,
@@ -327,7 +327,7 @@
         "alreadyMovedStrict": false,
         "return1m": 2.6,
         "return3m": null,
-        "sectorReturn1m": -4.4,
+        "sectorReturn1m": -1.7,
         "priceLevelPct": 63.8,
         "revenueGrowthPct": 4.4,
         "profitGrowthPct": 2.4,
@@ -342,7 +342,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -1.3
+        "repricingGap": -0.3
       },
       "growthAcceleration": {
         "level": "good",
@@ -467,7 +467,7 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 37,
+      "earningsDaysLeft": 36,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -483,7 +483,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+2.6%(1週間+2.4%) / 信用買い残4週比-4.9%(前週比0%) / 3ヶ月高値圏位置63.8% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+2.6%(1週間+2.4%) / 信用買い残4週比-4.9%(前週比0%) / 3ヶ月高値圏位置63.8% / 決算まで36日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 2,
       "sig1": {
@@ -577,7 +577,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0.9,
         "return3m": null,
-        "sectorReturn1m": -5,
+        "sectorReturn1m": -1.4,
         "priceLevelPct": 96.8,
         "revenueGrowthPct": null,
         "profitGrowthPct": 55.6,
@@ -592,7 +592,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.7
+        "repricingGap": 0.8
       },
       "growthAcceleration": {
         "level": null,
@@ -826,7 +826,7 @@
         "alreadyMovedStrict": false,
         "return1m": -3.2,
         "return3m": null,
-        "sectorReturn1m": -7.7,
+        "sectorReturn1m": -8,
         "priceLevelPct": 55.9,
         "revenueGrowthPct": 33.7,
         "profitGrowthPct": 58.5,
@@ -841,7 +841,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 18.3
+        "repricingGap": 18.2
       },
       "growthAcceleration": {
         "level": "good",
@@ -965,7 +965,7 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 37,
+      "earningsDaysLeft": 36,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -981,7 +981,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-3.2%(1週間-2.3%) / 信用買い残4週比-5.8%(前週比-7.6%) / 3ヶ月高値圏位置55.9% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-3.2%(1週間-2.3%) / 信用買い残4週比-5.8%(前週比-7.6%) / 3ヶ月高値圏位置55.9% / 決算まで36日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -1075,7 +1075,7 @@
         "alreadyMovedStrict": false,
         "return1m": -1.1,
         "return3m": null,
-        "sectorReturn1m": -0.8,
+        "sectorReturn1m": 4.8,
         "priceLevelPct": 77.3,
         "revenueGrowthPct": 4.5,
         "profitGrowthPct": 8.5,
@@ -1090,7 +1090,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 1.5
+        "repricingGap": 2.8
       },
       "growthAcceleration": {
         "level": null,
@@ -1199,7 +1199,7 @@
       "sectorRotation": {
         "level": "good",
         "label": "出遅れ修正待ち",
-        "note": "同業種は直近5営業日で+7.6%と既に反発トレンドに入っていますが、この銘柄はまだ値動きに反映されていません。業種全体に資金が向かえば遅れて買われる可能性があります"
+        "note": "同業種は直近5営業日で+9.9%と既に反発トレンドに入っていますが、この銘柄はまだ値動きに反映されていません。業種全体に資金が向かえば遅れて買われる可能性があります"
       },
       "marginOverhang": {
         "level": null,
@@ -1213,7 +1213,7 @@
         "checked": true,
         "note": "信用買い残は減少傾向（-2.6%）ですが、株価は上昇しておらず出来高も少ない状態です。需給が改善しているとは限らず、単に市場参加者の関心が低い（LOW BUYING INTEREST）可能性があります"
       },
-      "earningsDaysLeft": 9,
+      "earningsDaysLeft": 8,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -1229,7 +1229,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-1.1%(1週間+0.8%) / 信用買い残4週比-2.6%(前週比-1.8%) / 3ヶ月高値圏位置77.3% / 決算まで9日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-1.1%(1週間+0.8%) / 信用買い残4週比-2.6%(前週比-1.8%) / 3ヶ月高値圏位置77.3% / 決算まで8日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -1323,7 +1323,7 @@
         "alreadyMovedStrict": false,
         "return1m": 1.8,
         "return3m": null,
-        "sectorReturn1m": 6.3,
+        "sectorReturn1m": 8.9,
         "priceLevelPct": 81.8,
         "revenueGrowthPct": 4.9,
         "profitGrowthPct": 60.7,
@@ -1338,7 +1338,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 6.8
+        "repricingGap": 7.3
       },
       "growthAcceleration": {
         "level": null,
@@ -1573,7 +1573,7 @@
         "alreadyMovedStrict": false,
         "return1m": 1.5,
         "return3m": null,
-        "sectorReturn1m": -8.3,
+        "sectorReturn1m": -7.9,
         "priceLevelPct": 84.2,
         "revenueGrowthPct": 3.4,
         "profitGrowthPct": 8.8,
@@ -1588,7 +1588,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -0.6
+        "repricingGap": -0.5
       },
       "growthAcceleration": {
         "level": "good",
@@ -1713,7 +1713,7 @@
         "checked": true,
         "note": "信用買い残は減少傾向（-11.9%）ですが、株価は上昇し出来高も20日平均の2.18倍に増えています。単なる信用整理ではなく、新規の買い需要が入ってきている可能性があります"
       },
-      "earningsDaysLeft": 37,
+      "earningsDaysLeft": 36,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -1729,7 +1729,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+1.5%(1週間+4.4%) / 信用買い残4週比-11.9%(前週比-2.1%) / 3ヶ月高値圏位置84.2% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+1.5%(1週間+4.4%) / 信用買い残4週比-11.9%(前週比-2.1%) / 3ヶ月高値圏位置84.2% / 決算まで36日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -1750,7 +1750,7 @@
     },
     {
       "code": "9699",
-      "name": "ニシオＨＤ",
+      "name": "ニシオホールディングス",
       "price": 4715,
       "changePct": -0.32,
       "closes": [
@@ -1823,7 +1823,7 @@
         "alreadyMovedStrict": false,
         "return1m": 2.1,
         "return3m": null,
-        "sectorReturn1m": -5,
+        "sectorReturn1m": -1.4,
         "priceLevelPct": 95.4,
         "revenueGrowthPct": 8,
         "profitGrowthPct": -8.9,
@@ -1838,7 +1838,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -0.3
+        "repricingGap": -0.2
       },
       "growthAcceleration": {
         "level": "good",
@@ -2070,7 +2070,7 @@
         "alreadyMovedStrict": false,
         "return1m": 3.2,
         "return3m": null,
-        "sectorReturn1m": -6.5,
+        "sectorReturn1m": -4.8,
         "priceLevelPct": 98.3,
         "revenueGrowthPct": 2.5,
         "profitGrowthPct": 8.6,
@@ -2085,7 +2085,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -0.1
+        "repricingGap": 0
       },
       "growthAcceleration": {
         "level": null,
@@ -2320,7 +2320,7 @@
         "alreadyMovedStrict": false,
         "return1m": 5.5,
         "return3m": null,
-        "sectorReturn1m": -0.8,
+        "sectorReturn1m": 4.8,
         "priceLevelPct": 95.4,
         "revenueGrowthPct": 1,
         "profitGrowthPct": -31.6,
@@ -2335,7 +2335,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -1
+        "repricingGap": -0.7
       },
       "growthAcceleration": {
         "level": "good",
@@ -2457,7 +2457,7 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 37,
+      "earningsDaysLeft": 36,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -2473,7 +2473,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+5.5%(1週間+5.1%) / 信用買い残4週比+3.6%(前週比+2.6%) / 3ヶ月高値圏位置95.4% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+5.5%(1週間+5.1%) / 信用買い残4週比+3.6%(前週比+2.6%) / 3ヶ月高値圏位置95.4% / 決算まで36日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -2566,7 +2566,7 @@
         "alreadyMovedStrict": false,
         "return1m": -4.3,
         "return3m": null,
-        "sectorReturn1m": -8.3,
+        "sectorReturn1m": -7.9,
         "priceLevelPct": 62.5,
         "revenueGrowthPct": 52.4,
         "profitGrowthPct": 115.5,
@@ -2581,7 +2581,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 30
+        "repricingGap": 30.2
       },
       "growthAcceleration": {
         "level": "good",
@@ -2707,7 +2707,7 @@
         "checked": true,
         "note": "信用買い残は減少傾向（-29.7%）ですが、株価は上昇しておらず出来高も少ない状態です。需給が改善しているとは限らず、単に市場参加者の関心が低い（LOW BUYING INTEREST）可能性があります"
       },
-      "earningsDaysLeft": 16,
+      "earningsDaysLeft": 15,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -2723,7 +2723,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-4.3%(1週間+1.4%) / 信用買い残4週比-29.7%(前週比+1%) / 3ヶ月高値圏位置62.5% / 決算まで16日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-4.3%(1週間+1.4%) / 信用買い残4週比-29.7%(前週比+1%) / 3ヶ月高値圏位置62.5% / 決算まで15日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -2817,7 +2817,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.1,
         "return3m": null,
-        "sectorReturn1m": -5.4,
+        "sectorReturn1m": -5.2,
         "priceLevelPct": 69,
         "revenueGrowthPct": 0.5,
         "profitGrowthPct": 1.8,
@@ -2832,7 +2832,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -1.3
+        "repricingGap": -1.2
       },
       "growthAcceleration": {
         "level": null,
@@ -3067,7 +3067,7 @@
         "alreadyMovedStrict": false,
         "return1m": 1,
         "return3m": null,
-        "sectorReturn1m": -4.2,
+        "sectorReturn1m": -0.7,
         "priceLevelPct": 89.6,
         "revenueGrowthPct": -9.7,
         "profitGrowthPct": 0.7,
@@ -3082,7 +3082,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -1
+        "repricingGap": -0.6
       },
       "growthAcceleration": {
         "level": null,
@@ -3206,7 +3206,7 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 37,
+      "earningsDaysLeft": 36,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -3222,7 +3222,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+1%(1週間+2%) / 信用買い残4週比-2.8%(前週比-0.2%) / 3ヶ月高値圏位置89.6% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+1%(1週間+2%) / 信用買い残4週比-2.8%(前週比-0.2%) / 3ヶ月高値圏位置89.6% / 決算まで36日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -3316,7 +3316,7 @@
         "alreadyMovedStrict": false,
         "return1m": 6.2,
         "return3m": null,
-        "sectorReturn1m": -5,
+        "sectorReturn1m": -1.4,
         "priceLevelPct": 88,
         "revenueGrowthPct": 7.5,
         "profitGrowthPct": 39,
@@ -3331,7 +3331,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 1.5
+        "repricingGap": 1.9
       },
       "growthAcceleration": {
         "level": null,
@@ -3456,7 +3456,7 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 37,
+      "earningsDaysLeft": 36,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -3472,7 +3472,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+6.2%(1週間+8.3%) / 信用買い残4週比-35.9%(前週比+11.5%) / 3ヶ月高値圏位置88% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+6.2%(1週間+8.3%) / 信用買い残4週比-35.9%(前週比+11.5%) / 3ヶ月高値圏位置88% / 決算まで36日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -3566,7 +3566,7 @@
         "alreadyMovedStrict": false,
         "return1m": -3.7,
         "return3m": null,
-        "sectorReturn1m": -0.8,
+        "sectorReturn1m": 4.8,
         "priceLevelPct": 9.9,
         "revenueGrowthPct": 2.2,
         "profitGrowthPct": 17.4,
@@ -3582,7 +3582,7 @@
           "profitYoyPct": 17.4,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:39.6%→25.04-06:42%→26.04-06:48.8%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+17.4%）"
         },
-        "repricingGap": 11.4
+        "repricingGap": 16.5
       },
       "growthAcceleration": {
         "level": null,
@@ -3692,7 +3692,7 @@
       "sectorRotation": {
         "level": "good",
         "label": "出遅れ修正待ち",
-        "note": "同業種は直近5営業日で+7.6%と既に反発トレンドに入っていますが、この銘柄はまだ値動きに反映されていません。業種全体に資金が向かえば遅れて買われる可能性があります"
+        "note": "同業種は直近5営業日で+9.9%と既に反発トレンドに入っていますが、この銘柄はまだ値動きに反映されていません。業種全体に資金が向かえば遅れて買われる可能性があります"
       },
       "marginOverhang": {
         "level": "bad",
@@ -3706,7 +3706,7 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 37,
+      "earningsDaysLeft": 36,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -3722,7 +3722,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月-3.7%(1週間+1.7%) / 信用買い残4週比+13.4%(前週比+17.2%) / 3ヶ月高値圏位置9.9% / 決算まで37日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
+        "note": "1ヶ月-3.7%(1週間+1.7%) / 信用買い残4週比+13.4%(前週比+17.2%) / 3ヶ月高値圏位置9.9% / 決算まで36日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
       },
       "matched": 1,
       "sig1": {
@@ -3815,7 +3815,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.7,
         "return3m": null,
-        "sectorReturn1m": -7.8,
+        "sectorReturn1m": -5.4,
         "priceLevelPct": 92.9,
         "revenueGrowthPct": 1.2,
         "profitGrowthPct": 32.6,
@@ -3830,7 +3830,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.7
+        "repricingGap": 0.9
       },
       "growthAcceleration": {
         "level": null,
@@ -3955,7 +3955,7 @@
         "checked": true,
         "note": "信用買い残は減少傾向（-13.2%）ですが、株価は上昇し出来高も20日平均の2.04倍に増えています。単なる信用整理ではなく、新規の買い需要が入ってきている可能性があります"
       },
-      "earningsDaysLeft": 37,
+      "earningsDaysLeft": 36,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -3971,7 +3971,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-0.7%(1週間+0.4%) / 信用買い残4週比-13.2%(前週比+2.9%) / 3ヶ月高値圏位置92.9% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-0.7%(1週間+0.4%) / 信用買い残4週比-13.2%(前週比+2.9%) / 3ヶ月高値圏位置92.9% / 決算まで36日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -4064,7 +4064,7 @@
         "alreadyMovedStrict": false,
         "return1m": 6.8,
         "return3m": null,
-        "sectorReturn1m": -0.8,
+        "sectorReturn1m": 4.8,
         "priceLevelPct": 91.5,
         "revenueGrowthPct": 2.8,
         "profitGrowthPct": -68.4,
@@ -4079,7 +4079,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -3.4
+        "repricingGap": -3
       },
       "growthAcceleration": {
         "level": "good",
@@ -4187,7 +4187,7 @@
       "sectorRotation": {
         "level": "good",
         "label": "出遅れ修正待ち",
-        "note": "同業種は直近5営業日で+7.6%と既に反発トレンドに入っていますが、この銘柄はまだ値動きに反映されていません。業種全体に資金が向かえば遅れて買われる可能性があります"
+        "note": "同業種は直近5営業日で+9.9%と既に反発トレンドに入っていますが、この銘柄はまだ値動きに反映されていません。業種全体に資金が向かえば遅れて買われる可能性があります"
       },
       "marginOverhang": {
         "level": null,
@@ -4201,7 +4201,7 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 37,
+      "earningsDaysLeft": 36,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -4217,7 +4217,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+6.8%(1週間+1.4%) / 信用買い残4週比-33.2%(前週比-11.7%) / 3ヶ月高値圏位置91.5% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+6.8%(1週間+1.4%) / 信用買い残4週比-33.2%(前週比-11.7%) / 3ヶ月高値圏位置91.5% / 決算まで36日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -4311,7 +4311,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.9,
         "return3m": null,
-        "sectorReturn1m": -5,
+        "sectorReturn1m": -1.4,
         "priceLevelPct": 65.9,
         "revenueGrowthPct": -9.7,
         "profitGrowthPct": -56.5,
@@ -4326,7 +4326,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -12.7
+        "repricingGap": -11.5
       },
       "growthAcceleration": {
         "level": null,
@@ -4557,7 +4557,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0.7,
         "return3m": null,
-        "sectorReturn1m": -0.7,
+        "sectorReturn1m": 0.6,
         "priceLevelPct": 71.9,
         "revenueGrowthPct": null,
         "profitGrowthPct": -16.2,
@@ -4572,7 +4572,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -2.7
+        "repricingGap": -2.3
       },
       "growthAcceleration": {
         "level": null,
@@ -4694,7 +4694,7 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 37,
+      "earningsDaysLeft": 36,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -4710,7 +4710,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+0.7%(1週間+3%) / 信用買い残4週比+0.2%(前週比-0.9%) / 3ヶ月高値圏位置71.9% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+0.7%(1週間+3%) / 信用買い残4週比+0.2%(前週比-0.9%) / 3ヶ月高値圏位置71.9% / 決算まで36日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -4804,7 +4804,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0,
         "return3m": null,
-        "sectorReturn1m": 1.5,
+        "sectorReturn1m": 1.6,
         "priceLevelPct": 92.8,
         "revenueGrowthPct": null,
         "profitGrowthPct": 3.8,
@@ -4819,7 +4819,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.2
+        "repricingGap": 0.3
       },
       "growthAcceleration": {
         "level": null,
@@ -4944,7 +4944,7 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 15,
+      "earningsDaysLeft": 14,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -4960,7 +4960,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月0%(1週間+0.9%) / 信用買い残4週比-24.1%(前週比-1%) / 3ヶ月高値圏位置92.8% / 決算まで15日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月0%(1週間+0.9%) / 信用買い残4週比-24.1%(前週比-1%) / 3ヶ月高値圏位置92.8% / 決算まで14日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -5054,7 +5054,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.1,
         "return3m": null,
-        "sectorReturn1m": 1.5,
+        "sectorReturn1m": 1.6,
         "priceLevelPct": 89.7,
         "revenueGrowthPct": null,
         "profitGrowthPct": 1.8,
@@ -5194,7 +5194,7 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 37,
+      "earningsDaysLeft": 36,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -5210,7 +5210,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-0.1%(1週間+3.3%) / 信用買い残4週比-3.3%(前週比+3.4%) / 3ヶ月高値圏位置89.7% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-0.1%(1週間+3.3%) / 信用買い残4週比-3.3%(前週比+3.4%) / 3ヶ月高値圏位置89.7% / 決算まで36日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -5231,7 +5231,7 @@
     },
     {
       "code": "3371",
-      "name": "ソフトクリエＨＤ",
+      "name": "ソフトクリエイトホールディングス",
       "price": 2189,
       "changePct": 0.6,
       "closes": [
@@ -5304,7 +5304,7 @@
         "alreadyMovedStrict": false,
         "return1m": 2.5,
         "return3m": null,
-        "sectorReturn1m": 6.3,
+        "sectorReturn1m": 8.9,
         "priceLevelPct": 97.3,
         "revenueGrowthPct": null,
         "profitGrowthPct": -1.1,
@@ -5319,7 +5319,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.1
+        "repricingGap": 0.2
       },
       "growthAcceleration": {
         "level": null,
@@ -5551,7 +5551,7 @@
         "alreadyMovedStrict": false,
         "return1m": -5,
         "return3m": null,
-        "sectorReturn1m": -7.7,
+        "sectorReturn1m": -8,
         "priceLevelPct": 39.4,
         "revenueGrowthPct": 6.2,
         "profitGrowthPct": 14,
@@ -5566,7 +5566,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 4.5
+        "repricingGap": 4.3
       },
       "growthAcceleration": {
         "level": "good",
@@ -5690,7 +5690,7 @@
         "checked": true,
         "note": "信用買い残は減少傾向（-19.7%）ですが、株価は上昇しておらず出来高も少ない状態です。需給が改善しているとは限らず、単に市場参加者の関心が低い（LOW BUYING INTEREST）可能性があります"
       },
-      "earningsDaysLeft": 21,
+      "earningsDaysLeft": 20,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -5706,7 +5706,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-5%(1週間+1%) / 信用買い残4週比-19.7%(前週比+5.9%) / 3ヶ月高値圏位置39.4% / 決算まで21日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-5%(1週間+1%) / 信用買い残4週比-19.7%(前週比+5.9%) / 3ヶ月高値圏位置39.4% / 決算まで20日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -5774,8 +5774,8 @@
       "sectorDividendYield": 2.68,
       "marketCap": 242200,
       "roe": 10.37,
-      "balanceSheetSource": null,
-      "balanceSheetAsOf": null,
+      "balanceSheetSource": "edinet",
+      "balanceSheetAsOf": "2026-03-31",
       "revenueGrowthPct": -5.1,
       "profitGrowthPct": 25.6,
       "progressStreak": {
@@ -5799,7 +5799,7 @@
         "alreadyMovedStrict": false,
         "return1m": 3.4,
         "return3m": null,
-        "sectorReturn1m": -3.6,
+        "sectorReturn1m": -3.7,
         "priceLevelPct": 81.7,
         "revenueGrowthPct": -5.1,
         "profitGrowthPct": 25.6,
@@ -5821,7 +5821,7 @@
         "label": null,
         "note": null,
         "checked": true,
-        "score": 0
+        "score": 15
       },
       "themeMatch": {
         "level": null,
@@ -5843,13 +5843,15 @@
         "reasonCodes": []
       },
       "earningsCashFlowQuality": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": false
+        "level": "warn",
+        "label": "利益成長・営業CF減少",
+        "checked": true,
+        "fcf": null,
+        "fcfPrior": null,
+        "note": "利益成長率+25.6%に対し、営業キャッシュ・フローは前期比-8.8%と減少しています。利益の伸びほどキャッシュは増えていない可能性があります"
       },
       "grossMarginImproving": null,
-      "opMarginImproving": null,
+      "opMarginImproving": true,
       "climax": {
         "level": null,
         "label": null,
@@ -5859,7 +5861,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "lowPbr": {
         "level": "good",
@@ -5936,7 +5938,7 @@
         "note": null,
         "checked": true
       },
-      "earningsDaysLeft": 37,
+      "earningsDaysLeft": 36,
       "earningsWarning": {
         "level": null,
         "label": null,
@@ -5946,13 +5948,13 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "retailExpectation": {
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+3.4%(1週間+0.9%) / 信用買い残4週比-21.3%(前週比-11.1%) / 3ヶ月高値圏位置81.7% / 決算まで37日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+3.4%(1週間+0.9%) / 信用買い残4週比-21.3%(前週比-11.1%) / 3ヶ月高値圏位置81.7% / 決算まで36日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "matched": 1,
       "sig1": {
@@ -7026,9 +7028,9 @@
       "countermeasure": {
         "level": null,
         "label": null,
-        "checked": true,
-        "hits": [],
-        "note": "直近の適時開示タイトルからは対策（価格改定・合理化等）を確認できませんでした。決算短信・決算説明資料の本文までは確認していないため、対策が無いとは限りません"
+        "note": null,
+        "checked": false,
+        "hits": []
       },
       "fundamentalRisk": {
         "excluded": false,
@@ -7050,7 +7052,7 @@
         "alreadyMovedStrict": false,
         "return1m": 1,
         "return3m": null,
-        "sectorReturn1m": -7.7,
+        "sectorReturn1m": -8,
         "priceLevelPct": 84.8,
         "revenueGrowthPct": 0.8,
         "profitGrowthPct": 0.6,
@@ -7065,7 +7067,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -1.2
+        "repricingGap": -1.3
       },
       "themeMatch": {
         "level": null,
@@ -7269,7 +7271,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.3,
         "return3m": null,
-        "sectorReturn1m": -5.4,
+        "sectorReturn1m": -5.2,
         "priceLevelPct": 79.7,
         "revenueGrowthPct": null,
         "profitGrowthPct": 4,
@@ -7494,7 +7496,7 @@
         "alreadyMovedStrict": false,
         "return1m": -2.5,
         "return3m": null,
-        "sectorReturn1m": -5.4,
+        "sectorReturn1m": -5.2,
         "priceLevelPct": 13.9,
         "revenueGrowthPct": 4.1,
         "profitGrowthPct": 11,
@@ -7510,7 +7512,7 @@
           "profitYoyPct": 11,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:46.9%→25.04-06:48%→26.04-06:51.6%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+11%）"
         },
-        "repricingGap": 4
+        "repricingGap": 4.2
       },
       "themeMatch": {
         "level": null,
@@ -7714,7 +7716,7 @@
         "alreadyMovedStrict": false,
         "return1m": 8.8,
         "return3m": null,
-        "sectorReturn1m": -8.6,
+        "sectorReturn1m": -6.9,
         "priceLevelPct": 95.6,
         "revenueGrowthPct": -4.6,
         "profitGrowthPct": 28.4,
@@ -7934,7 +7936,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.7,
         "return3m": null,
-        "sectorReturn1m": -7.8,
+        "sectorReturn1m": -5.4,
         "priceLevelPct": 92.9,
         "revenueGrowthPct": 1.2,
         "profitGrowthPct": 32.6,
@@ -7949,7 +7951,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.7
+        "repricingGap": 0.9
       },
       "themeMatch": {
         "level": null,
@@ -8134,9 +8136,9 @@
       "countermeasure": {
         "level": null,
         "label": null,
-        "checked": true,
-        "hits": [],
-        "note": "直近の適時開示タイトルからは対策（価格改定・合理化等）を確認できませんでした。決算短信・決算説明資料の本文までは確認していないため、対策が無いとは限りません"
+        "note": null,
+        "checked": false,
+        "hits": []
       },
       "fundamentalRisk": {
         "excluded": false,
@@ -8158,7 +8160,7 @@
         "alreadyMovedStrict": false,
         "return1m": 1.2,
         "return3m": null,
-        "sectorReturn1m": -0.7,
+        "sectorReturn1m": 2.6,
         "priceLevelPct": 79.9,
         "revenueGrowthPct": 6,
         "profitGrowthPct": 60,
@@ -8173,7 +8175,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 6.3
+        "repricingGap": 6.9
       },
       "themeMatch": {
         "level": null,
@@ -8377,7 +8379,7 @@
         "alreadyMovedStrict": false,
         "return1m": -5.5,
         "return3m": null,
-        "sectorReturn1m": -7.8,
+        "sectorReturn1m": -5.4,
         "priceLevelPct": 8.1,
         "revenueGrowthPct": 0.9,
         "profitGrowthPct": 39.1,
@@ -8392,7 +8394,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 16.3
+        "repricingGap": 18.5
       },
       "themeMatch": {
         "level": null,
@@ -8582,9 +8584,9 @@
       "countermeasure": {
         "level": null,
         "label": null,
-        "checked": true,
-        "hits": [],
-        "note": "直近の適時開示タイトルからは対策（価格改定・合理化等）を確認できませんでした。決算短信・決算説明資料の本文までは確認していないため、対策が無いとは限りません"
+        "note": null,
+        "checked": false,
+        "hits": []
       },
       "fundamentalRisk": {
         "excluded": false,
@@ -8606,7 +8608,7 @@
         "alreadyMovedStrict": false,
         "return1m": 2.2,
         "return3m": null,
-        "sectorReturn1m": 1.9,
+        "sectorReturn1m": 2.7,
         "priceLevelPct": 48,
         "revenueGrowthPct": 6.4,
         "profitGrowthPct": 57.8,
@@ -8621,7 +8623,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 16.5
+        "repricingGap": 17
       },
       "themeMatch": {
         "level": null,
@@ -8824,7 +8826,7 @@
         "alreadyMovedStrict": false,
         "return1m": 2,
         "return3m": null,
-        "sectorReturn1m": -0.7,
+        "sectorReturn1m": 2.6,
         "priceLevelPct": 86.3,
         "revenueGrowthPct": -16.5,
         "profitGrowthPct": 616.1,
@@ -8839,7 +8841,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 12.2
+        "repricingGap": 12.7
       },
       "themeMatch": {
         "level": null,
@@ -9044,7 +9046,7 @@
         "alreadyMovedStrict": false,
         "return1m": -1.7,
         "return3m": null,
-        "sectorReturn1m": -4.4,
+        "sectorReturn1m": -1.7,
         "priceLevelPct": 15.7,
         "revenueGrowthPct": 5.3,
         "profitGrowthPct": 1.8,
@@ -9059,7 +9061,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.8
+        "repricingGap": 3
       },
       "themeMatch": {
         "level": "good",
@@ -9069,5 +9071,5 @@
       }
     }
   ],
-  "logicFingerprint": "444b567e36c4a919"
+  "logicFingerprint": "ce9b145a78c81186"
 }

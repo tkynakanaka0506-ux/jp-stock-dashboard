@@ -1,7 +1,7 @@
 {
-  "date": "2026-09-23",
+  "date": "2026-09-24",
   "universe": 400,
-  "passed": 62,
+  "passed": 61,
   "stage1": {
     "maxKairi": 5,
     "maxRsi": 60,
@@ -314,8 +314,8 @@
       "earningsDateRaw": "2026/10 上旬",
       "earningsDateStatus": "estimated",
       "earningsDateSource": "sbi_previous_year_reference",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 17,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 16,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -545,7 +545,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月-6.7%(1週間+0.8%) / 信用買い残4週比+56.5%(前週比-2.3%) / 3ヶ月高値圏位置30.8% / 決算まで17日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
+        "note": "1ヶ月-6.7%(1週間+0.8%) / 信用買い残4週比+56.5%(前週比-2.3%) / 3ヶ月高値圏位置30.8% / 決算まで16日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
       },
       "progressStreak": {
         "level": null,
@@ -590,11 +590,108 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_SUPPLY_IMPROVING",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 1018,
+            "buyBalance": 265000,
+            "buyChangePct": -1.5,
+            "sellBalance": 162500,
+            "sellChangePct": 17.6,
+            "creditRatio": 1.63
+          },
+          {
+            "date": "2026-08-14",
+            "close": 1032,
+            "buyBalance": 245700,
+            "buyChangePct": -7.3,
+            "sellBalance": 201300,
+            "sellChangePct": 23.9,
+            "creditRatio": 1.22
+          },
+          {
+            "date": "2026-08-21",
+            "close": 1062,
+            "buyBalance": 221600,
+            "buyChangePct": -9.8,
+            "sellBalance": 264700,
+            "sellChangePct": 31.5,
+            "creditRatio": 0.84
+          },
+          {
+            "date": "2026-08-28",
+            "close": 1014,
+            "buyBalance": 239700,
+            "buyChangePct": 8.2,
+            "sellBalance": 154000,
+            "sellChangePct": -41.8,
+            "creditRatio": 1.56
+          },
+          {
+            "date": "2026-09-04",
+            "close": 987,
+            "buyBalance": 393500,
+            "buyChangePct": 64.2,
+            "sellBalance": 158600,
+            "sellChangePct": 3,
+            "creditRatio": 2.48
+          },
+          {
+            "date": "2026-09-11",
+            "close": 983,
+            "buyBalance": 384500,
+            "buyChangePct": -2.3,
+            "sellBalance": 155000,
+            "sellChangePct": -2.3,
+            "creditRatio": 2.48
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "需給改善",
+          "信用買い重い"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -618,7 +715,7 @@
         "alreadyMovedStrict": false,
         "return1m": -6.7,
         "return3m": 4.2,
-        "sectorReturn1m": -8.3,
+        "sectorReturn1m": -7.9,
         "priceLevelPct": 30.8,
         "revenueGrowthPct": -11.4,
         "profitGrowthPct": -24.6,
@@ -626,14 +723,14 @@
         "sectorPer": 32.3,
         "psr": 0.4190373201273087,
         "hasCatalyst": false,
-        "daysToEarnings": 17,
+        "daysToEarnings": 16,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": true
         },
-        "repricingGap": -13.6
+        "repricingGap": -13.3
       },
       "buyScore": {
         "score": 70,
@@ -653,7 +750,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで17日"
+            "note": "決算まで16日"
           },
           "quality": {
             "value": 33,
@@ -668,6 +765,7 @@
           "total": 5
         }
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -677,8 +775,8 @@
       "earningsDateRaw": "2026/10/14",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 21,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 20,
       "quarter": "3Q",
       "q1Seasonality": {
         "years": [
@@ -897,7 +995,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+1.2%(1週間+7.2%) / 信用買い残4週比-7.8%(前週比-2.4%) / 3ヶ月高値圏位置82.5% / 決算まで21日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+1.2%(1週間+7.2%) / 信用買い残4週比-7.8%(前週比-2.4%) / 3ヶ月高値圏位置82.5% / 決算まで20日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "progressStreak": {
         "level": null,
@@ -942,11 +1040,108 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_SUPPLY_IMPROVING",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 805,
+            "buyBalance": 3102700,
+            "buyChangePct": -5.4,
+            "sellBalance": 247700,
+            "sellChangePct": -1.7,
+            "creditRatio": 12.53
+          },
+          {
+            "date": "2026-08-14",
+            "close": 860,
+            "buyBalance": 3064500,
+            "buyChangePct": -1.2,
+            "sellBalance": 251800,
+            "sellChangePct": 1.7,
+            "creditRatio": 12.17
+          },
+          {
+            "date": "2026-08-21",
+            "close": 853,
+            "buyBalance": 2794000,
+            "buyChangePct": -8.8,
+            "sellBalance": 253600,
+            "sellChangePct": 0.7,
+            "creditRatio": 11.02
+          },
+          {
+            "date": "2026-08-28",
+            "close": 924,
+            "buyBalance": 2740800,
+            "buyChangePct": -1.9,
+            "sellBalance": 254100,
+            "sellChangePct": 0.2,
+            "creditRatio": 10.79
+          },
+          {
+            "date": "2026-09-04",
+            "close": 808,
+            "buyBalance": 2894900,
+            "buyChangePct": 5.6,
+            "sellBalance": 253600,
+            "sellChangePct": -0.2,
+            "creditRatio": 11.42
+          },
+          {
+            "date": "2026-09-11",
+            "close": 805,
+            "buyBalance": 2825200,
+            "buyChangePct": -2.4,
+            "sellBalance": 253600,
+            "sellChangePct": 0,
+            "creditRatio": 11.14
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "需給改善",
+          "信用買い重い"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -970,7 +1165,7 @@
         "alreadyMovedStrict": true,
         "return1m": 1.2,
         "return3m": 46.3,
-        "sectorReturn1m": 6.3,
+        "sectorReturn1m": 8.9,
         "priceLevelPct": 82.5,
         "revenueGrowthPct": null,
         "profitGrowthPct": null,
@@ -978,7 +1173,7 @@
         "sectorPer": 24.2,
         "psr": null,
         "hasCatalyst": false,
-        "daysToEarnings": 21,
+        "daysToEarnings": 20,
         "progressStreak": {
           "level": null,
           "label": null,
@@ -1002,7 +1197,7 @@
           "surprise": null,
           "timing": {
             "value": 100,
-            "note": "決算まで21日"
+            "note": "決算まで20日"
           },
           "quality": {
             "value": 0,
@@ -1019,6 +1214,7 @@
         "rawScoreBeforeRisk": 52,
         "riskPenalty": 10
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -1028,8 +1224,8 @@
       "earningsDateRaw": "2026/10/15",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 22,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 21,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -1267,7 +1463,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月+4.4%(1週間+5.5%) / 信用買い残4週比+56.5%(前週比+11.5%) / 3ヶ月高値圏位置60.7% / 決算まで22日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
+        "note": "1ヶ月+4.4%(1週間+5.5%) / 信用買い残4週比+56.5%(前週比+11.5%) / 3ヶ月高値圏位置60.7% / 決算まで21日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
       },
       "progressStreak": {
         "level": null,
@@ -1312,11 +1508,108 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_LEVERAGED_RISE",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 1848,
+            "buyBalance": 2196200,
+            "buyChangePct": 0.2,
+            "sellBalance": 40700,
+            "sellChangePct": 10.6,
+            "creditRatio": 53.96
+          },
+          {
+            "date": "2026-08-14",
+            "close": 1849,
+            "buyBalance": 2237000,
+            "buyChangePct": 1.9,
+            "sellBalance": 25100,
+            "sellChangePct": -38.3,
+            "creditRatio": 89.12
+          },
+          {
+            "date": "2026-08-21",
+            "close": 1900,
+            "buyBalance": 2275400,
+            "buyChangePct": 1.7,
+            "sellBalance": 39100,
+            "sellChangePct": 55.8,
+            "creditRatio": 58.19
+          },
+          {
+            "date": "2026-08-28",
+            "close": 2047,
+            "buyBalance": 2608900,
+            "buyChangePct": 14.7,
+            "sellBalance": 59100,
+            "sellChangePct": 51.2,
+            "creditRatio": 44.14
+          },
+          {
+            "date": "2026-09-04",
+            "close": 2021,
+            "buyBalance": 3140500,
+            "buyChangePct": 20.4,
+            "sellBalance": 78300,
+            "sellChangePct": 32.5,
+            "creditRatio": 40.11
+          },
+          {
+            "date": "2026-09-11",
+            "close": 1880,
+            "buyBalance": 3500100,
+            "buyChangePct": 11.5,
+            "sellBalance": 63200,
+            "sellChangePct": -19.3,
+            "creditRatio": 55.38
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "信用買い重い",
+          "買残増加上昇"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -1340,7 +1633,7 @@
         "alreadyMovedStrict": true,
         "return1m": 4.4,
         "return3m": 25.4,
-        "sectorReturn1m": -5,
+        "sectorReturn1m": -1.4,
         "priceLevelPct": 60.7,
         "revenueGrowthPct": null,
         "profitGrowthPct": 89,
@@ -1348,14 +1641,14 @@
         "sectorPer": 22.5,
         "psr": null,
         "hasCatalyst": false,
-        "daysToEarnings": 22,
+        "daysToEarnings": 21,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": true
         },
-        "repricingGap": 13.8
+        "repricingGap": 15.2
       },
       "buyScore": {
         "score": 31,
@@ -1375,7 +1668,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで22日"
+            "note": "決算まで21日"
           },
           "quality": {
             "value": 0,
@@ -1392,377 +1685,7 @@
         "rawScoreBeforeRisk": 51,
         "riskPenalty": 20
       },
-      "bucket": "NEAR"
-    },
-    {
-      "code": "2975",
-      "name": "スター・マイカ・ホールディングス",
-      "earningsDate": "2026-09-30",
-      "earningsDateRaw": "2026/09/30",
-      "earningsDateStatus": "confirmed",
-      "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 7,
-      "quarter": "3Q",
-      "q1Seasonality": {
-        "years": [
-          {
-            "period": "25.06-08",
-            "q1Profit": 1819,
-            "annualProfit": 10106,
-            "sharePct": 18
-          },
-          {
-            "period": "24.06-08",
-            "q1Profit": 1647,
-            "annualProfit": 6670,
-            "sharePct": 24.7
-          }
-        ],
-        "avgSharePct": 21.4
-      },
-      "estimateProfit": 8771,
-      "consensusProfit": 10150,
-      "price": 1422,
-      "changePct": -0.63,
-      "kairi": -5.3,
-      "rsi": 41.3,
-      "volZ": -0.47,
-      "closes": [
-        1572,
-        1597,
-        1593,
-        1599,
-        1592,
-        1563,
-        1578,
-        1500,
-        1475,
-        1495,
-        1485,
-        1430,
-        1404,
-        1383,
-        1360,
-        1369,
-        1373,
-        1402,
-        1431,
-        1422
-      ],
-      "market": "東証Ｐ",
-      "sectorName": "不動産業",
-      "sectorChangePct": -1.47,
-      "loanRatio": 24.73,
-      "per": 8.9,
-      "progress": 72.5,
-      "progressBasis": 50,
-      "progressLabel": "対通期進捗率",
-      "progressSource": "kabutan",
-      "catalysts": [],
-      "catalystTier": null,
-      "catalystScore100": null,
-      "warnings": [],
-      "ambiguous": 0,
-      "hasMonthly": false,
-      "score": 75,
-      "coverageScore": 30,
-      "rank": "B",
-      "confidence": 40,
-      "confidenceRaw": 40,
-      "evidence": false,
-      "detail": {
-        "monthly": {
-          "value": null,
-          "note": "開示なし"
-        },
-        "pr": {
-          "value": null,
-          "note": "開示なし"
-        },
-        "progress": {
-          "value": 20,
-          "note": "基準50%に対し+22.5%"
-        },
-        "sector": {
-          "value": 0,
-          "note": "業種-1.47%"
-        },
-        "technical": {
-          "value": 10,
-          "note": "乖離-5.3%"
-        }
-      },
-      "dividendYield": 3.59,
-      "evEbitda": {
-        "ev": 139116173000,
-        "ebitda": 3365244000,
-        "ratio": 41.3,
-        "checked": true
-      },
-      "pbr": 1.6,
-      "marketCap": 54900,
-      "roe": 15.2,
-      "sectorPer": 12.7,
-      "sectorPbr": 1.85,
-      "sectorDividendYield": 3.76,
-      "balanceSheetSource": "edinet",
-      "balanceSheetAsOf": "2026-11-30",
-      "climax": {
-        "level": null,
-        "label": null,
-        "note": null
-      },
-      "netNet": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "lowPbr": {
-        "level": "warn",
-        "label": "業種平均並み",
-        "checked": true,
-        "note": "PBR1.6倍・業種平均1.85倍の86.5%"
-      },
-      "pbrHistoricalLow": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "pbrMin": 0.88,
-      "pbrMinPeriod": "2023年11月",
-      "dividendPeak": {
-        "level": "good",
-        "label": "配当利回り最高水準",
-        "note": "現在3.59%は過去5年の最高（2024年11月時点3.39%）に並ぶか上回る水準です"
-      },
-      "dividendMaxYield": 3.39,
-      "dividendMaxPeriod": "2024年11月",
-      "dividendYenHistory": [
-        {
-          "period": "2019年11月",
-          "amount": 8
-        },
-        {
-          "period": "2020年11月",
-          "amount": 16
-        },
-        {
-          "period": "2021年11月",
-          "amount": 16.5
-        },
-        {
-          "period": "2022年11月",
-          "amount": 19.5
-        },
-        {
-          "period": "2023年11月",
-          "amount": 20
-        },
-        {
-          "period": "2024年11月",
-          "amount": 23
-        },
-        {
-          "period": "2025年11月",
-          "amount": 37
-        }
-      ],
-      "dividendStreakYears": 6,
-      "dividendStreakDirection": "up",
-      "hiddenGem": {
-        "level": null,
-        "label": null,
-        "note": null
-      },
-      "divFloor": {
-        "level": "warn",
-        "label": "配当利回り上昇中",
-        "note": "配当利回り3.59%（3%超）。株価下落や増配で今後さらに上がる可能性がある水準というだけで、下値を保証するものではありません"
-      },
-      "squeeze": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "institutionalShort": {
-        "level": "good",
-        "label": "機関の空売り縮小",
-        "checked": true,
-        "note": "機関投資家の空売り残高0.53%（直近90日で-1.7pt減少）。大口の買い戻しが進んでおり、踏み上げ的な反発の余地があります"
-      },
-      "institutionalShortPct": 0.53,
-      "institutionalShortAsOf": "2026-08-05",
-      "majorShareholder": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "majorShareholderTop1Pct": 35.9,
-      "majorShareholderAsOf": "2026/05",
-      "sectorLag": {
-        "level": "warn",
-        "label": "中立",
-        "note": "業種-1.47%"
-      },
-      "sectorRotation": {
-        "level": null,
-        "label": null,
-        "note": null
-      },
-      "marginOverhang": {
-        "level": "bad",
-        "label": "信用過多",
-        "checked": true,
-        "note": "信用倍率24.73倍・買い方の含み益が積み上がっており、上昇時に利益確定売りに押されて上値が重くなりやすい状態です"
-      },
-      "buyingDemand": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "receivablesAnomaly": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": false
-      },
-      "retailExpectation": {
-        "level": "warn",
-        "label": "期待織り込みの兆し",
-        "checked": true,
-        "note": "1ヶ月-10.3%(1週間+4.6%) / 信用買い残4週比+49.5%(前週比+29.3%) / 3ヶ月高値圏位置23.8% / 決算まで7日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
-      },
-      "progressStreak": {
-        "level": "good",
-        "label": "進捗率が加速中",
-        "checked": true,
-        "profitYoyPct": 79.2,
-        "note": "同じ時期（対通期進捗率）の進捗率が2年連続で上昇しています（23.12-05:52.4%→24.12-05:57.7%→25.12-05:72.5%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+79.2%）"
-      },
-      "dividendPotential": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "hiddenAsset": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "creditFloat": {
-        "level": "warn",
-        "label": "需給判断に注意",
-        "checked": true,
-        "occupancy": 2.9,
-        "lowPrecision": false,
-        "note": "信用買い残504,500株 ÷ 推定浮動株数17,630,603株（発行済株式数から上位3株主の保有分54.3%を控除した近似値）＝2.9%と浮動株に対する信用買いの絶対量は少ないですが、信用倍率24.73倍と買い方に極端に偏っており、含み益確定売りの重さを考えると「需給が軽い」とは言い切れません"
-      },
-      "creditSupplyQuality": {
-        "level": null,
-        "pattern": "LEVERAGED_RISE",
-        "buyBalance": 504500,
-        "buyBalancePrior": 390300,
-        "buyChangePct": 29.3,
-        "sellBalance": 20400,
-        "sellBalancePrior": 34200,
-        "sellChangePct": -40.4,
-        "creditRatio": 24.73,
-        "buyPressureDays": 2.98,
-        "buyPressureValueDays": 2.9,
-        "priceChangePct": 4.6,
-        "avgVolumeRatio": 0.76,
-        "lowBreakBuyBuildUp": false,
-        "bounceQuality": "WEAK",
-        "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
-        "checked": true,
-        "reasonCodes": [
-          "CREDIT_PATTERN_LEVERAGED_RISE",
-          "BOUNCE_QUALITY_WEAK"
-        ]
-      },
-      "consensusTrap": {
-        "level": "bad",
-        "label": "期待過剰",
-        "checked": true,
-        "note": "会社予想がコンセンサス比-13.6%・上方修正しても予想に届かず暴落する危険地帯"
-      },
-      "repricingLag": {
-        "score": 64.1,
-        "zone": "pre_move",
-        "breakdown": {
-          "untapped": 19.1,
-          "improvement": 17.5,
-          "valuation": 10,
-          "growth": 7.5,
-          "catalyst": 0,
-          "event": 10
-        },
-        "checked": true,
-        "alreadyMovedStrict": false,
-        "return1m": -10.3,
-        "return3m": -6.8,
-        "sectorReturn1m": -10.2,
-        "priceLevelPct": 23.8,
-        "revenueGrowthPct": null,
-        "profitGrowthPct": 79.2,
-        "per": 8.9,
-        "sectorPer": 12.7,
-        "psr": null,
-        "hasCatalyst": false,
-        "daysToEarnings": 7,
-        "progressStreak": {
-          "level": "good",
-          "label": "進捗率が加速中",
-          "checked": true,
-          "profitYoyPct": 79.2,
-          "note": "同じ時期（対通期進捗率）の進捗率が2年連続で上昇しています（23.12-05:52.4%→24.12-05:57.7%→25.12-05:72.5%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+79.2%）"
-        },
-        "repricingGap": 30.3
-      },
-      "buyScore": {
-        "score": 27,
-        "confidence": 100,
-        "detail": {
-          "expectedReturn": {
-            "value": 75,
-            "note": "既存SCORE(素点)を流用"
-          },
-          "unpriced": {
-            "value": 64.1,
-            "note": "妙味スコア64.1/100（zone:pre_move）"
-          },
-          "surprise": {
-            "value": 10,
-            "note": "会社予想がコンセンサス比-13.6%・上方修正しても予想に届かず暴落する危険地帯"
-          },
-          "timing": {
-            "value": 40,
-            "note": "決算まで7日"
-          },
-          "quality": {
-            "value": 0,
-            "note": "下値・割安系シグナル0/3件該当"
-          }
-        },
-        "coverageScore": 47,
-        "signalScore": 47,
-        "dataCoverage": 100,
-        "ruleCoverage": {
-          "known": 5,
-          "total": 5
-        },
-        "rawScoreBeforeRisk": 47,
-        "riskPenalty": 20
-      },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -1772,8 +1695,8 @@
       "earningsDateRaw": "2026/10/09",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 16,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 15,
       "quarter": "3Q",
       "q1Seasonality": {
         "years": [
@@ -2031,7 +1954,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-11.2%(1週間+2%) / 信用買い残4週比-28%(前週比+0.2%) / 3ヶ月高値圏位置6.8% / 決算まで16日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-11.2%(1週間+2%) / 信用買い残4週比-28%(前週比+0.2%) / 3ヶ月高値圏位置6.8% / 決算まで15日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "progressStreak": {
         "level": "good",
@@ -2077,12 +2000,110 @@
         "lowBreakBuyBuildUp": true,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_LEVERAGED_RISE",
           "BOUNCE_QUALITY_WEAK",
           "LOW_BREAK_BUY_BUILDUP"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 4855,
+            "buyBalance": 591900,
+            "buyChangePct": -10.9,
+            "sellBalance": 25000,
+            "sellChangePct": -0.4,
+            "creditRatio": 23.68
+          },
+          {
+            "date": "2026-08-14",
+            "close": 4940,
+            "buyBalance": 644000,
+            "buyChangePct": 8.8,
+            "sellBalance": 30700,
+            "sellChangePct": 22.8,
+            "creditRatio": 20.98
+          },
+          {
+            "date": "2026-08-21",
+            "close": 4615,
+            "buyBalance": 637000,
+            "buyChangePct": -1.1,
+            "sellBalance": 28500,
+            "sellChangePct": -7.2,
+            "creditRatio": 22.35
+          },
+          {
+            "date": "2026-08-28",
+            "close": 4495,
+            "buyBalance": 641500,
+            "buyChangePct": 0.7,
+            "sellBalance": 18300,
+            "sellChangePct": -35.8,
+            "creditRatio": 35.05
+          },
+          {
+            "date": "2026-09-04",
+            "close": 4280,
+            "buyBalance": 462500,
+            "buyChangePct": -27.9,
+            "sellBalance": 24600,
+            "sellChangePct": 34.4,
+            "creditRatio": 18.8
+          },
+          {
+            "date": "2026-09-11",
+            "close": 4020,
+            "buyBalance": 463600,
+            "buyChangePct": 0.2,
+            "sellBalance": 4300,
+            "sellChangePct": -82.5,
+            "creditRatio": 107
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "信用買い重い",
+          "買残増加上昇",
+          "安値更新＋買残増"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -2106,7 +2127,7 @@
         "alreadyMovedStrict": false,
         "return1m": -11.2,
         "return3m": -28.1,
-        "sectorReturn1m": -7.8,
+        "sectorReturn1m": -5.4,
         "priceLevelPct": 6.8,
         "revenueGrowthPct": 10.9,
         "profitGrowthPct": 51.2,
@@ -2114,7 +2135,7 @@
         "sectorPer": 16.5,
         "psr": 2.534123810836895,
         "hasCatalyst": false,
-        "daysToEarnings": 16,
+        "daysToEarnings": 15,
         "progressStreak": {
           "level": "good",
           "label": "進捗率が加速中",
@@ -2122,7 +2143,7 @@
           "profitYoyPct": 51.2,
           "note": "同じ時期（対通期進捗率）の進捗率が2年連続で上昇しています（23.12-05:41.8%→24.12-05:46.4%→25.12-05:59.7%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+51.2%）"
         },
-        "repricingGap": 32.2
+        "repricingGap": 34.4
       },
       "buyScore": {
         "score": 38,
@@ -2142,7 +2163,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで16日"
+            "note": "決算まで15日"
           },
           "quality": {
             "value": 0,
@@ -2159,6 +2180,7 @@
         "rawScoreBeforeRisk": 58,
         "riskPenalty": 20
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -2168,8 +2190,8 @@
       "earningsDateRaw": "2026/10/13",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 20,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 19,
       "quarter": "1Q",
       "q1Seasonality": {
         "years": [
@@ -2406,7 +2428,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月-5.1%(1週間+5.1%) / 信用買い残4週比+37%(前週比-7%) / 3ヶ月高値圏位置44.9% / 決算まで20日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
+        "note": "1ヶ月-5.1%(1週間+5.1%) / 信用買い残4週比+37%(前週比-7%) / 3ヶ月高値圏位置44.9% / 決算まで19日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
       },
       "progressStreak": {
         "level": null,
@@ -2451,11 +2473,108 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_SUPPLY_IMPROVING",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 1796,
+            "buyBalance": 266800,
+            "buyChangePct": -19.3,
+            "sellBalance": 23300,
+            "sellChangePct": 11,
+            "creditRatio": 11.45
+          },
+          {
+            "date": "2026-08-14",
+            "close": 1986,
+            "buyBalance": 269400,
+            "buyChangePct": 1,
+            "sellBalance": 35400,
+            "sellChangePct": 51.9,
+            "creditRatio": 7.61
+          },
+          {
+            "date": "2026-08-21",
+            "close": 1875,
+            "buyBalance": 291700,
+            "buyChangePct": 8.3,
+            "sellBalance": 43900,
+            "sellChangePct": 24,
+            "creditRatio": 6.64
+          },
+          {
+            "date": "2026-08-28",
+            "close": 1828,
+            "buyBalance": 311500,
+            "buyChangePct": 6.8,
+            "sellBalance": 50000,
+            "sellChangePct": 13.9,
+            "creditRatio": 6.23
+          },
+          {
+            "date": "2026-09-04",
+            "close": 1740,
+            "buyBalance": 397100,
+            "buyChangePct": 27.5,
+            "sellBalance": 59300,
+            "sellChangePct": 18.6,
+            "creditRatio": 6.7
+          },
+          {
+            "date": "2026-09-11",
+            "close": 1692,
+            "buyBalance": 369200,
+            "buyChangePct": -7,
+            "sellBalance": 58200,
+            "sellChangePct": -1.9,
+            "creditRatio": 6.34
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "需給改善",
+          "信用買い重い"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -2479,7 +2598,7 @@
         "alreadyMovedStrict": false,
         "return1m": -5.1,
         "return3m": -3.1,
-        "sectorReturn1m": -11.7,
+        "sectorReturn1m": -9.3,
         "priceLevelPct": 44.9,
         "revenueGrowthPct": -27.7,
         "profitGrowthPct": null,
@@ -2487,14 +2606,14 @@
         "sectorPer": 30.8,
         "psr": 4.251347988386562,
         "hasCatalyst": true,
-        "daysToEarnings": 20,
+        "daysToEarnings": 19,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": false
         },
-        "repricingGap": -11.3
+        "repricingGap": -9.9
       },
       "buyScore": {
         "score": 56,
@@ -2514,7 +2633,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで20日"
+            "note": "決算まで19日"
           },
           "quality": {
             "value": 0,
@@ -2529,6 +2648,7 @@
           "total": 5
         }
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -2538,8 +2658,8 @@
       "earningsDateRaw": "2026/10/13",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 20,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 19,
       "quarter": "1Q",
       "q1Seasonality": {
         "years": [
@@ -2769,7 +2889,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+0.3%(1週間0%) / 信用買い残4週比-12.4%(前週比+0.3%) / 3ヶ月高値圏位置67.3% / 決算まで20日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+0.3%(1週間0%) / 信用買い残4週比-12.4%(前週比+0.3%) / 3ヶ月高値圏位置67.3% / 決算まで19日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "progressStreak": {
         "level": null,
@@ -2814,10 +2934,107 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": null,
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_LEVERAGED_RISE"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 4410,
+            "buyBalance": 125600,
+            "buyChangePct": 9.3,
+            "sellBalance": 27800,
+            "sellChangePct": -6.4,
+            "creditRatio": 4.52
+          },
+          {
+            "date": "2026-08-14",
+            "close": 4540,
+            "buyBalance": 122100,
+            "buyChangePct": -2.8,
+            "sellBalance": 25200,
+            "sellChangePct": -9.4,
+            "creditRatio": 4.85
+          },
+          {
+            "date": "2026-08-21",
+            "close": 4545,
+            "buyBalance": 109200,
+            "buyChangePct": -10.6,
+            "sellBalance": 13100,
+            "sellChangePct": -48,
+            "creditRatio": 8.34
+          },
+          {
+            "date": "2026-08-28",
+            "close": 4630,
+            "buyBalance": 107800,
+            "buyChangePct": -1.3,
+            "sellBalance": 12400,
+            "sellChangePct": -5.3,
+            "creditRatio": 8.69
+          },
+          {
+            "date": "2026-09-04",
+            "close": 4695,
+            "buyBalance": 106700,
+            "buyChangePct": -1,
+            "sellBalance": 25000,
+            "sellChangePct": 101.6,
+            "creditRatio": 4.27
+          },
+          {
+            "date": "2026-09-11",
+            "close": 4560,
+            "buyBalance": 107000,
+            "buyChangePct": 0.3,
+            "sellBalance": 15800,
+            "sellChangePct": -36.8,
+            "creditRatio": 6.77
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "信用買い重い",
+          "買残増加上昇"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -2841,7 +3058,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0.3,
         "return3m": 10.8,
-        "sectorReturn1m": -8.3,
+        "sectorReturn1m": -7.9,
         "priceLevelPct": 67.3,
         "revenueGrowthPct": 9,
         "profitGrowthPct": null,
@@ -2849,14 +3066,14 @@
         "sectorPer": 32.3,
         "psr": 0.20707501065136213,
         "hasCatalyst": false,
-        "daysToEarnings": 20,
+        "daysToEarnings": 19,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": false
         },
-        "repricingGap": -1.3
+        "repricingGap": -1.2
       },
       "buyScore": {
         "score": 60,
@@ -2876,7 +3093,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで20日"
+            "note": "決算まで19日"
           },
           "quality": {
             "value": 67,
@@ -2891,6 +3108,7 @@
           "total": 5
         }
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -2900,8 +3118,8 @@
       "earningsDateRaw": "2026/10/13",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 20,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 19,
       "quarter": "本決算",
       "q1Seasonality": {
         "years": [
@@ -3131,7 +3349,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-8.4%(1週間+2.5%) / 信用買い残4週比-9.4%(前週比+19.9%) / 3ヶ月高値圏位置17.3% / 決算まで20日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-8.4%(1週間+2.5%) / 信用買い残4週比-9.4%(前週比+19.9%) / 3ヶ月高値圏位置17.3% / 決算まで19日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "progressStreak": {
         "level": null,
@@ -3176,11 +3394,107 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_LEVERAGED_RISE",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 938,
+            "buyBalance": 260400,
+            "buyChangePct": 0.1,
+            "sellBalance": 1284000,
+            "sellChangePct": 63.7,
+            "creditRatio": 0.2
+          },
+          {
+            "date": "2026-08-14",
+            "close": 955,
+            "buyBalance": 244100,
+            "buyChangePct": -6.3,
+            "sellBalance": 1736400,
+            "sellChangePct": 35.2,
+            "creditRatio": 0.14
+          },
+          {
+            "date": "2026-08-21",
+            "close": 970,
+            "buyBalance": 250600,
+            "buyChangePct": 2.7,
+            "sellBalance": 2539600,
+            "sellChangePct": 46.3,
+            "creditRatio": 0.1
+          },
+          {
+            "date": "2026-08-28",
+            "close": 929,
+            "buyBalance": 209900,
+            "buyChangePct": -16.2,
+            "sellBalance": 364500,
+            "sellChangePct": -85.6,
+            "creditRatio": 0.58
+          },
+          {
+            "date": "2026-09-04",
+            "close": 920,
+            "buyBalance": 184500,
+            "buyChangePct": -12.1,
+            "sellBalance": 224800,
+            "sellChangePct": -38.3,
+            "creditRatio": 0.82
+          },
+          {
+            "date": "2026-09-11",
+            "close": 867,
+            "buyBalance": 221200,
+            "buyChangePct": 19.9,
+            "sellBalance": 196200,
+            "sellChangePct": -12.7,
+            "creditRatio": 1.13
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "買残増加上昇"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -3204,7 +3518,7 @@
         "alreadyMovedStrict": false,
         "return1m": -8.4,
         "return3m": -1.2,
-        "sectorReturn1m": -5,
+        "sectorReturn1m": -1.4,
         "priceLevelPct": 17.3,
         "revenueGrowthPct": null,
         "profitGrowthPct": 18.4,
@@ -3212,14 +3526,14 @@
         "sectorPer": 22.5,
         "psr": null,
         "hasCatalyst": false,
-        "daysToEarnings": 20,
+        "daysToEarnings": 19,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": true
         },
-        "repricingGap": 10.4
+        "repricingGap": 13.4
       },
       "buyScore": {
         "score": 60,
@@ -3239,7 +3553,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで20日"
+            "note": "決算まで19日"
           },
           "quality": {
             "value": 33,
@@ -3254,6 +3568,7 @@
           "total": 5
         }
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -3263,8 +3578,8 @@
       "earningsDateRaw": "2026/10/15",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 22,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 21,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -3494,7 +3809,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月+10.5%(1週間+7.3%) / 信用買い残4週比-20.6%(前週比-8.7%) / 3ヶ月高値圏位置76.4% / 決算まで22日。株価は上昇していますが信用買い残は伴っておらず、個人投資家主体の織り込みとは言い切れません（大口・機関投資家主導の値動きの可能性があります）"
+        "note": "1ヶ月+10.5%(1週間+7.3%) / 信用買い残4週比-20.6%(前週比-8.7%) / 3ヶ月高値圏位置76.4% / 決算まで21日。株価は上昇していますが信用買い残は伴っておらず、個人投資家主体の織り込みとは言い切れません（大口・機関投資家主導の値動きの可能性があります）"
       },
       "progressStreak": {
         "level": null,
@@ -3539,11 +3854,107 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_SUPPLY_IMPROVING",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 426,
+            "buyBalance": 772800,
+            "buyChangePct": -2.1,
+            "sellBalance": 0,
+            "sellChangePct": null,
+            "creditRatio": null
+          },
+          {
+            "date": "2026-08-14",
+            "close": 439,
+            "buyBalance": 757200,
+            "buyChangePct": -2,
+            "sellBalance": 0,
+            "sellChangePct": null,
+            "creditRatio": null
+          },
+          {
+            "date": "2026-08-21",
+            "close": 467,
+            "buyBalance": 874900,
+            "buyChangePct": 15.5,
+            "sellBalance": 0,
+            "sellChangePct": null,
+            "creditRatio": null
+          },
+          {
+            "date": "2026-08-28",
+            "close": 534,
+            "buyBalance": 707300,
+            "buyChangePct": -19.2,
+            "sellBalance": 0,
+            "sellChangePct": null,
+            "creditRatio": null
+          },
+          {
+            "date": "2026-09-04",
+            "close": 519,
+            "buyBalance": 658500,
+            "buyChangePct": -6.9,
+            "sellBalance": 0,
+            "sellChangePct": null,
+            "creditRatio": null
+          },
+          {
+            "date": "2026-09-11",
+            "close": 481,
+            "buyBalance": 601400,
+            "buyChangePct": -8.7,
+            "sellBalance": 0,
+            "sellChangePct": null,
+            "creditRatio": null
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "需給改善"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -3567,7 +3978,7 @@
         "alreadyMovedStrict": true,
         "return1m": 10.5,
         "return3m": 17.3,
-        "sectorReturn1m": -11.7,
+        "sectorReturn1m": -9.3,
         "priceLevelPct": 76.4,
         "revenueGrowthPct": null,
         "profitGrowthPct": null,
@@ -3575,7 +3986,7 @@
         "sectorPer": 30.8,
         "psr": null,
         "hasCatalyst": false,
-        "daysToEarnings": 22,
+        "daysToEarnings": 21,
         "progressStreak": {
           "level": null,
           "label": null,
@@ -3596,7 +4007,7 @@
           "surprise": null,
           "timing": {
             "value": 100,
-            "note": "決算まで22日"
+            "note": "決算まで21日"
           },
           "quality": {
             "value": 0,
@@ -3611,6 +4022,7 @@
           "total": 5
         }
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -3620,8 +4032,8 @@
       "earningsDateRaw": "2026/10/13",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 20,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 19,
       "quarter": "1Q",
       "q1Seasonality": {
         "years": [
@@ -3858,7 +4270,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月-6.1%(1週間+1.9%) / 信用買い残4週比+20.7%(前週比-1.8%) / 3ヶ月高値圏位置42.7% / 決算まで20日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
+        "note": "1ヶ月-6.1%(1週間+1.9%) / 信用買い残4週比+20.7%(前週比-1.8%) / 3ヶ月高値圏位置42.7% / 決算まで19日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
       },
       "progressStreak": {
         "level": null,
@@ -3903,11 +4315,108 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_SUPPLY_IMPROVING",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 2923,
+            "buyBalance": 178400,
+            "buyChangePct": 9.1,
+            "sellBalance": 952500,
+            "sellChangePct": -1.9,
+            "creditRatio": 0.19
+          },
+          {
+            "date": "2026-08-14",
+            "close": 2985,
+            "buyBalance": 172100,
+            "buyChangePct": -3.5,
+            "sellBalance": 1009500,
+            "sellChangePct": 6,
+            "creditRatio": 0.17
+          },
+          {
+            "date": "2026-08-21",
+            "close": 3095,
+            "buyBalance": 150800,
+            "buyChangePct": -12.4,
+            "sellBalance": 935100,
+            "sellChangePct": -7.4,
+            "creditRatio": 0.16
+          },
+          {
+            "date": "2026-08-28",
+            "close": 2988,
+            "buyBalance": 159900,
+            "buyChangePct": 6,
+            "sellBalance": 890500,
+            "sellChangePct": -4.8,
+            "creditRatio": 0.18
+          },
+          {
+            "date": "2026-09-04",
+            "close": 2863,
+            "buyBalance": 211600,
+            "buyChangePct": 32.3,
+            "sellBalance": 670400,
+            "sellChangePct": -24.7,
+            "creditRatio": 0.32
+          },
+          {
+            "date": "2026-09-11",
+            "close": 2852,
+            "buyBalance": 207700,
+            "buyChangePct": -1.8,
+            "sellBalance": 664700,
+            "sellChangePct": -0.9,
+            "creditRatio": 0.31
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "需給改善",
+          "信用買い重い"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -3931,7 +4440,7 @@
         "alreadyMovedStrict": false,
         "return1m": -6.1,
         "return3m": 3.9,
-        "sectorReturn1m": -5.2,
+        "sectorReturn1m": -3.9,
         "priceLevelPct": 42.7,
         "revenueGrowthPct": -1.5,
         "profitGrowthPct": null,
@@ -3939,14 +4448,14 @@
         "sectorPer": 13.2,
         "psr": 0.4328916759381005,
         "hasCatalyst": true,
-        "daysToEarnings": 20,
+        "daysToEarnings": 19,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": false
         },
-        "repricingGap": 0.1
+        "repricingGap": 0.8
       },
       "buyScore": {
         "score": 51,
@@ -3966,7 +4475,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで20日"
+            "note": "決算まで19日"
           },
           "quality": {
             "value": 0,
@@ -3981,6 +4490,7 @@
           "total": 5
         }
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -3990,8 +4500,8 @@
       "earningsDateRaw": "2026/10/14",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 21,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 20,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -4228,7 +4738,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月+24.2%(1週間-4.3%) / 信用買い残4週比+4.5%(前週比-0.6%) / 3ヶ月高値圏位置65.6% / 決算まで21日。株価は上昇していますが信用買い残は伴っておらず、個人投資家主体の織り込みとは言い切れません（大口・機関投資家主導の値動きの可能性があります）"
+        "note": "1ヶ月+24.2%(1週間-4.3%) / 信用買い残4週比+4.5%(前週比-0.6%) / 3ヶ月高値圏位置65.6% / 決算まで20日。株価は上昇していますが信用買い残は伴っておらず、個人投資家主体の織り込みとは言い切れません（大口・機関投資家主導の値動きの可能性があります）"
       },
       "progressStreak": {
         "level": null,
@@ -4273,10 +4783,107 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": null,
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_CLEANUP"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 979,
+            "buyBalance": 2926600,
+            "buyChangePct": -0.4,
+            "sellBalance": 0,
+            "sellChangePct": null,
+            "creditRatio": null
+          },
+          {
+            "date": "2026-08-14",
+            "close": 954,
+            "buyBalance": 2920900,
+            "buyChangePct": -0.2,
+            "sellBalance": 0,
+            "sellChangePct": null,
+            "creditRatio": null
+          },
+          {
+            "date": "2026-08-21",
+            "close": 958,
+            "buyBalance": 2920200,
+            "buyChangePct": 0,
+            "sellBalance": 0,
+            "sellChangePct": null,
+            "creditRatio": null
+          },
+          {
+            "date": "2026-08-28",
+            "close": 1101,
+            "buyBalance": 2945600,
+            "buyChangePct": 0.9,
+            "sellBalance": 0,
+            "sellChangePct": null,
+            "creditRatio": null
+          },
+          {
+            "date": "2026-09-04",
+            "close": 1247,
+            "buyBalance": 3071300,
+            "buyChangePct": 4.3,
+            "sellBalance": 700,
+            "sellChangePct": null,
+            "creditRatio": 4387
+          },
+          {
+            "date": "2026-09-11",
+            "close": 1244,
+            "buyBalance": 3053000,
+            "buyChangePct": -0.6,
+            "sellBalance": 0,
+            "sellChangePct": -100,
+            "creditRatio": null
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "買残整理",
+          "信用買い重い"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -4300,7 +4907,7 @@
         "alreadyMovedStrict": true,
         "return1m": 24.2,
         "return3m": 16.9,
-        "sectorReturn1m": -8.3,
+        "sectorReturn1m": -7.9,
         "priceLevelPct": 65.6,
         "revenueGrowthPct": null,
         "profitGrowthPct": null,
@@ -4308,7 +4915,7 @@
         "sectorPer": 32.3,
         "psr": null,
         "hasCatalyst": true,
-        "daysToEarnings": 21,
+        "daysToEarnings": 20,
         "progressStreak": {
           "level": null,
           "label": null,
@@ -4332,7 +4939,7 @@
           "surprise": null,
           "timing": {
             "value": 100,
-            "note": "決算まで21日"
+            "note": "決算まで20日"
           },
           "quality": {
             "value": 0,
@@ -4349,6 +4956,7 @@
         "rawScoreBeforeRisk": 46,
         "riskPenalty": 10
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -4358,8 +4966,8 @@
       "earningsDateRaw": "2026/10/09",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 16,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 15,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -4589,7 +5197,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-4.3%(1週間+1.4%) / 信用買い残4週比-29.7%(前週比+1%) / 3ヶ月高値圏位置62.5% / 決算まで16日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-4.3%(1週間+1.4%) / 信用買い残4週比-29.7%(前週比+1%) / 3ヶ月高値圏位置62.5% / 決算まで15日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "progressStreak": {
         "level": null,
@@ -4634,11 +5242,107 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_LEVERAGED_RISE",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 2055,
+            "buyBalance": 162100,
+            "buyChangePct": 1.4,
+            "sellBalance": 25900,
+            "sellChangePct": 16.1,
+            "creditRatio": 6.26
+          },
+          {
+            "date": "2026-08-14",
+            "close": 2118,
+            "buyBalance": 130700,
+            "buyChangePct": -19.4,
+            "sellBalance": 25900,
+            "sellChangePct": 0,
+            "creditRatio": 5.05
+          },
+          {
+            "date": "2026-08-21",
+            "close": 2179,
+            "buyBalance": 118200,
+            "buyChangePct": -9.6,
+            "sellBalance": 38800,
+            "sellChangePct": 49.8,
+            "creditRatio": 3.05
+          },
+          {
+            "date": "2026-08-28",
+            "close": 2131,
+            "buyBalance": 95900,
+            "buyChangePct": -18.9,
+            "sellBalance": 32700,
+            "sellChangePct": -15.7,
+            "creditRatio": 2.93
+          },
+          {
+            "date": "2026-09-04",
+            "close": 2122,
+            "buyBalance": 91000,
+            "buyChangePct": -5.1,
+            "sellBalance": 20900,
+            "sellChangePct": -36.1,
+            "creditRatio": 4.35
+          },
+          {
+            "date": "2026-09-11",
+            "close": 2058,
+            "buyBalance": 91900,
+            "buyChangePct": 1,
+            "sellBalance": 19400,
+            "sellChangePct": -7.2,
+            "creditRatio": 4.74
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "買残増加上昇"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -4662,7 +5366,7 @@
         "alreadyMovedStrict": false,
         "return1m": -4.3,
         "return3m": 9,
-        "sectorReturn1m": -8.3,
+        "sectorReturn1m": -7.9,
         "priceLevelPct": 62.5,
         "revenueGrowthPct": 52.4,
         "profitGrowthPct": 115.5,
@@ -4670,14 +5374,14 @@
         "sectorPer": 32.3,
         "psr": 0.7261084588776765,
         "hasCatalyst": false,
-        "daysToEarnings": 16,
+        "daysToEarnings": 15,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": true
         },
-        "repricingGap": 30
+        "repricingGap": 30.2
       },
       "buyScore": {
         "score": 44,
@@ -4697,7 +5401,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで16日"
+            "note": "決算まで15日"
           },
           "quality": {
             "value": 33,
@@ -4714,6 +5418,7 @@
         "rawScoreBeforeRisk": 54,
         "riskPenalty": 10
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -4723,8 +5428,8 @@
       "earningsDateRaw": "2026/10/15",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 22,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 21,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -4954,7 +5659,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-0.8%(1週間+3%) / 信用買い残4週比+1.3%(前週比-1.1%) / 3ヶ月高値圏位置69.1% / 決算まで22日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-0.8%(1週間+3%) / 信用買い残4週比+1.3%(前週比-1.1%) / 3ヶ月高値圏位置69.1% / 決算まで21日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "progressStreak": {
         "level": null,
@@ -4999,11 +5704,108 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_SUPPLY_IMPROVING",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 2218,
+            "buyBalance": 551100,
+            "buyChangePct": -4.1,
+            "sellBalance": 94500,
+            "sellChangePct": -2.4,
+            "creditRatio": 5.83
+          },
+          {
+            "date": "2026-08-14",
+            "close": 2424,
+            "buyBalance": 518400,
+            "buyChangePct": -5.9,
+            "sellBalance": 96700,
+            "sellChangePct": 2.3,
+            "creditRatio": 5.36
+          },
+          {
+            "date": "2026-08-21",
+            "close": 2347,
+            "buyBalance": 516200,
+            "buyChangePct": -0.4,
+            "sellBalance": 68600,
+            "sellChangePct": -29.1,
+            "creditRatio": 7.52
+          },
+          {
+            "date": "2026-08-28",
+            "close": 2399,
+            "buyBalance": 517300,
+            "buyChangePct": 0.2,
+            "sellBalance": 74400,
+            "sellChangePct": 8.5,
+            "creditRatio": 6.95
+          },
+          {
+            "date": "2026-09-04",
+            "close": 2474,
+            "buyBalance": 530700,
+            "buyChangePct": 2.6,
+            "sellBalance": 71700,
+            "sellChangePct": -3.6,
+            "creditRatio": 7.4
+          },
+          {
+            "date": "2026-09-11",
+            "close": 2261,
+            "buyBalance": 525100,
+            "buyChangePct": -1.1,
+            "sellBalance": 66500,
+            "sellChangePct": -7.3,
+            "creditRatio": 7.9
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "需給改善",
+          "信用買い重い"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -5027,7 +5829,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.8,
         "return3m": -4.5,
-        "sectorReturn1m": 6.3,
+        "sectorReturn1m": 8.9,
         "priceLevelPct": 69.1,
         "revenueGrowthPct": null,
         "profitGrowthPct": 7,
@@ -5035,14 +5837,14 @@
         "sectorPer": 24.2,
         "psr": null,
         "hasCatalyst": false,
-        "daysToEarnings": 22,
+        "daysToEarnings": 21,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": true
         },
-        "repricingGap": 3.3
+        "repricingGap": 4.1
       },
       "buyScore": {
         "score": 49,
@@ -5062,7 +5864,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで22日"
+            "note": "決算まで21日"
           },
           "quality": {
             "value": 0,
@@ -5077,6 +5879,7 @@
           "total": 5
         }
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -5086,8 +5889,8 @@
       "earningsDateRaw": "2026/10/09",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 16,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 15,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -5317,7 +6120,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-3.1%(1週間-1.2%) / 信用買い残4週比-58.1%(前週比-0.3%) / 3ヶ月高値圏位置48.6% / 決算まで16日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-3.1%(1週間-1.2%) / 信用買い残4週比-58.1%(前週比-0.3%) / 3ヶ月高値圏位置48.6% / 決算まで15日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "progressStreak": {
         "level": "good",
@@ -5363,10 +6166,106 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": null,
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_CLEANUP"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 2289,
+            "buyBalance": 59100,
+            "buyChangePct": 22.1,
+            "sellBalance": 1047200,
+            "sellChangePct": 1.3,
+            "creditRatio": 0.06
+          },
+          {
+            "date": "2026-08-14",
+            "close": 2290,
+            "buyBalance": 68200,
+            "buyChangePct": 15.4,
+            "sellBalance": 1109400,
+            "sellChangePct": 5.9,
+            "creditRatio": 0.06
+          },
+          {
+            "date": "2026-08-21",
+            "close": 2351,
+            "buyBalance": 53000,
+            "buyChangePct": -22.3,
+            "sellBalance": 1147700,
+            "sellChangePct": 3.5,
+            "creditRatio": 0.05
+          },
+          {
+            "date": "2026-08-28",
+            "close": 2307,
+            "buyBalance": 34300,
+            "buyChangePct": -35.3,
+            "sellBalance": 291500,
+            "sellChangePct": -74.6,
+            "creditRatio": 0.12
+          },
+          {
+            "date": "2026-09-04",
+            "close": 2360,
+            "buyBalance": 28700,
+            "buyChangePct": -16.3,
+            "sellBalance": 229200,
+            "sellChangePct": -21.4,
+            "creditRatio": 0.13
+          },
+          {
+            "date": "2026-09-11",
+            "close": 2307,
+            "buyBalance": 28600,
+            "buyChangePct": -0.3,
+            "sellBalance": 196000,
+            "sellChangePct": -14.5,
+            "creditRatio": 0.15
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "買残整理"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -5390,7 +6289,7 @@
         "alreadyMovedStrict": false,
         "return1m": -3.1,
         "return3m": 6.8,
-        "sectorReturn1m": -8.3,
+        "sectorReturn1m": -7.9,
         "priceLevelPct": 48.6,
         "revenueGrowthPct": 2.9,
         "profitGrowthPct": 15.1,
@@ -5398,7 +6297,7 @@
         "sectorPer": 32.3,
         "psr": 1.3175405908969924,
         "hasCatalyst": false,
-        "daysToEarnings": 16,
+        "daysToEarnings": 15,
         "progressStreak": {
           "level": "good",
           "label": "進捗率が加速中",
@@ -5406,7 +6305,7 @@
           "profitYoyPct": 15.1,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.03-05:51.1%→25.03-05:54.3%→26.03-05:64.3%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+15.1%）"
         },
-        "repricingGap": 2
+        "repricingGap": 2.2
       },
       "buyScore": {
         "score": 40,
@@ -5423,7 +6322,7 @@
           "surprise": null,
           "timing": {
             "value": 100,
-            "note": "決算まで16日"
+            "note": "決算まで15日"
           },
           "quality": {
             "value": 0,
@@ -5440,6 +6339,7 @@
         "rawScoreBeforeRisk": 50,
         "riskPenalty": 10
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -5449,8 +6349,8 @@
       "earningsDateRaw": "2026/10/14",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 21,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 20,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -5684,7 +6584,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月-10.6%(1週間+4.6%) / 信用買い残4週比+40%(前週比+12.7%) / 3ヶ月高値圏位置19.1% / 決算まで21日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
+        "note": "1ヶ月-10.6%(1週間+4.6%) / 信用買い残4週比+40%(前週比+12.7%) / 3ヶ月高値圏位置19.1% / 決算まで20日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
       },
       "progressStreak": {
         "level": "good",
@@ -5730,11 +6630,108 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_LEVERAGED_RISE",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 2025,
+            "buyBalance": 463400,
+            "buyChangePct": -0.7,
+            "sellBalance": 46300,
+            "sellChangePct": -29.3,
+            "creditRatio": 10.01
+          },
+          {
+            "date": "2026-08-14",
+            "close": 2112,
+            "buyBalance": 450300,
+            "buyChangePct": -2.8,
+            "sellBalance": 52600,
+            "sellChangePct": 13.6,
+            "creditRatio": 8.56
+          },
+          {
+            "date": "2026-08-21",
+            "close": 2147,
+            "buyBalance": 437100,
+            "buyChangePct": -2.9,
+            "sellBalance": 56700,
+            "sellChangePct": 7.8,
+            "creditRatio": 7.71
+          },
+          {
+            "date": "2026-08-28",
+            "close": 2063,
+            "buyBalance": 484200,
+            "buyChangePct": 10.8,
+            "sellBalance": 56600,
+            "sellChangePct": -0.2,
+            "creditRatio": 8.55
+          },
+          {
+            "date": "2026-09-04",
+            "close": 1880,
+            "buyBalance": 559500,
+            "buyChangePct": 15.6,
+            "sellBalance": 26400,
+            "sellChangePct": -53.4,
+            "creditRatio": 21.19
+          },
+          {
+            "date": "2026-09-11",
+            "close": 1836,
+            "buyBalance": 630600,
+            "buyChangePct": 12.7,
+            "sellBalance": 29100,
+            "sellChangePct": 10.2,
+            "creditRatio": 21.67
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "信用買い重い",
+          "買残増加上昇"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -5758,7 +6755,7 @@
         "alreadyMovedStrict": false,
         "return1m": -10.6,
         "return3m": -2,
-        "sectorReturn1m": -8.3,
+        "sectorReturn1m": -7.9,
         "priceLevelPct": 19.1,
         "revenueGrowthPct": null,
         "profitGrowthPct": 20.9,
@@ -5766,7 +6763,7 @@
         "sectorPer": 32.3,
         "psr": null,
         "hasCatalyst": false,
-        "daysToEarnings": 21,
+        "daysToEarnings": 20,
         "progressStreak": {
           "level": "good",
           "label": "進捗率が加速中",
@@ -5774,7 +6771,7 @@
           "profitYoyPct": 20.9,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.03-05:77.6%→25.03-05:78.3%→26.03-05:86%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+20.9%）"
         },
-        "repricingGap": 10.3
+        "repricingGap": 10.6
       },
       "buyScore": {
         "score": 44,
@@ -5794,7 +6791,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで21日"
+            "note": "決算まで20日"
           },
           "quality": {
             "value": 0,
@@ -5811,6 +6808,7 @@
         "rawScoreBeforeRisk": 54,
         "riskPenalty": 10
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -5820,8 +6818,8 @@
       "earningsDateRaw": "2026/10/06",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 13,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 12,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -6051,7 +7049,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月-22.8%(1週間+4.2%) / 信用買い残4週比+532.9%(前週比+80.6%) / 3ヶ月高値圏位置12.3% / 決算まで13日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
+        "note": "1ヶ月-22.8%(1週間+4.2%) / 信用買い残4週比+532.9%(前週比+80.6%) / 3ヶ月高値圏位置12.3% / 決算まで12日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
       },
       "progressStreak": {
         "level": null,
@@ -6096,11 +7094,108 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_LEVERAGED_RISE",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 1706,
+            "buyBalance": 28000,
+            "buyChangePct": 10.7,
+            "sellBalance": 87200,
+            "sellChangePct": -4.6,
+            "creditRatio": 0.32
+          },
+          {
+            "date": "2026-08-14",
+            "close": 1759,
+            "buyBalance": 38000,
+            "buyChangePct": 35.7,
+            "sellBalance": 92100,
+            "sellChangePct": 5.6,
+            "creditRatio": 0.41
+          },
+          {
+            "date": "2026-08-21",
+            "close": 1773,
+            "buyBalance": 26500,
+            "buyChangePct": -30.3,
+            "sellBalance": 99500,
+            "sellChangePct": 8,
+            "creditRatio": 0.27
+          },
+          {
+            "date": "2026-08-28",
+            "close": 1688,
+            "buyBalance": 77400,
+            "buyChangePct": 192.1,
+            "sellBalance": 263600,
+            "sellChangePct": 164.9,
+            "creditRatio": 0.29
+          },
+          {
+            "date": "2026-09-04",
+            "close": 1429,
+            "buyBalance": 133200,
+            "buyChangePct": 72.1,
+            "sellBalance": 262300,
+            "sellChangePct": -0.5,
+            "creditRatio": 0.51
+          },
+          {
+            "date": "2026-09-11",
+            "close": 1313,
+            "buyBalance": 240500,
+            "buyChangePct": 80.6,
+            "sellBalance": 334200,
+            "sellChangePct": 27.4,
+            "creditRatio": 0.72
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "信用買い重い",
+          "買残増加上昇"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -6124,7 +7219,7 @@
         "alreadyMovedStrict": false,
         "return1m": -22.8,
         "return3m": 7.8,
-        "sectorReturn1m": -8.6,
+        "sectorReturn1m": -6.9,
         "priceLevelPct": 12.3,
         "revenueGrowthPct": -3.4,
         "profitGrowthPct": null,
@@ -6132,14 +7227,14 @@
         "sectorPer": 19.4,
         "psr": 0.7151656173008486,
         "hasCatalyst": false,
-        "daysToEarnings": 13,
+        "daysToEarnings": 12,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": true
         },
-        "repricingGap": 11
+        "repricingGap": 12.5
       },
       "buyScore": {
         "score": 38,
@@ -6156,7 +7251,7 @@
           "surprise": null,
           "timing": {
             "value": 40,
-            "note": "決算まで13日"
+            "note": "決算まで12日"
           },
           "quality": {
             "value": 0,
@@ -6171,6 +7266,7 @@
           "total": 5
         }
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -6180,8 +7276,8 @@
       "earningsDateRaw": "2026/10/09",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 16,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 15,
       "quarter": "本決算",
       "q1Seasonality": null,
       "estimateProfit": 3900,
@@ -6395,7 +7491,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月-10.4%(1週間+1.3%) / 信用買い残4週比+24.9%(前週比-2.3%) / 3ヶ月高値圏位置8.4% / 決算まで16日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
+        "note": "1ヶ月-10.4%(1週間+1.3%) / 信用買い残4週比+24.9%(前週比-2.3%) / 3ヶ月高値圏位置8.4% / 決算まで15日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
       },
       "progressStreak": {
         "level": null,
@@ -6440,11 +7536,108 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_SUPPLY_IMPROVING",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 2036,
+            "buyBalance": 1461900,
+            "buyChangePct": -3.5,
+            "sellBalance": 49700,
+            "sellChangePct": -2.2,
+            "creditRatio": 29.41
+          },
+          {
+            "date": "2026-08-14",
+            "close": 2147,
+            "buyBalance": 1390600,
+            "buyChangePct": -4.9,
+            "sellBalance": 50700,
+            "sellChangePct": 2,
+            "creditRatio": 27.43
+          },
+          {
+            "date": "2026-08-21",
+            "close": 2045,
+            "buyBalance": 1461700,
+            "buyChangePct": 5.1,
+            "sellBalance": 50600,
+            "sellChangePct": -0.2,
+            "creditRatio": 28.89
+          },
+          {
+            "date": "2026-08-28",
+            "close": 2052,
+            "buyBalance": 1677300,
+            "buyChangePct": 14.7,
+            "sellBalance": 196600,
+            "sellChangePct": 288.5,
+            "creditRatio": 8.53
+          },
+          {
+            "date": "2026-09-04",
+            "close": 1927,
+            "buyBalance": 1776600,
+            "buyChangePct": 5.9,
+            "sellBalance": 43200,
+            "sellChangePct": -78,
+            "creditRatio": 41.12
+          },
+          {
+            "date": "2026-09-11",
+            "close": 1810,
+            "buyBalance": 1736200,
+            "buyChangePct": -2.3,
+            "sellBalance": 41700,
+            "sellChangePct": -3.5,
+            "creditRatio": 41.64
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "需給改善",
+          "信用買い重い"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -6468,7 +7661,7 @@
         "alreadyMovedStrict": false,
         "return1m": -10.4,
         "return3m": -33.5,
-        "sectorReturn1m": -0.7,
+        "sectorReturn1m": 2.6,
         "priceLevelPct": 8.4,
         "revenueGrowthPct": null,
         "profitGrowthPct": 85.7,
@@ -6476,14 +7669,14 @@
         "sectorPer": 17.1,
         "psr": null,
         "hasCatalyst": false,
-        "daysToEarnings": 16,
+        "daysToEarnings": 15,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": true
         },
-        "repricingGap": 48.1
+        "repricingGap": 51.2
       },
       "buyScore": {
         "score": 42,
@@ -6500,7 +7693,7 @@
           "surprise": null,
           "timing": {
             "value": 100,
-            "note": "決算まで16日"
+            "note": "決算まで15日"
           },
           "quality": {
             "value": 0,
@@ -6517,369 +7710,7 @@
         "rawScoreBeforeRisk": 52,
         "riskPenalty": 10
       },
-      "bucket": "NEAR"
-    },
-    {
-      "code": "2354",
-      "name": "ＹＥ ＤＩＧＩＴＡＬ",
-      "earningsDate": "2026-09-30",
-      "earningsDateRaw": "2026/09/30",
-      "earningsDateStatus": "confirmed",
-      "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 7,
-      "quarter": "中間 決算",
-      "q1Seasonality": {
-        "years": [
-          {
-            "period": "25.06-08",
-            "q1Profit": 328,
-            "annualProfit": 1644,
-            "sharePct": 20
-          },
-          {
-            "period": "24.06-08",
-            "q1Profit": 471,
-            "annualProfit": 1397,
-            "sharePct": 33.7
-          }
-        ],
-        "avgSharePct": 26.9
-      },
-      "estimateProfit": 2300,
-      "consensusProfit": null,
-      "price": 1352,
-      "changePct": 1.73,
-      "kairi": -1.2,
-      "rsi": 51.2,
-      "volZ": -0.64,
-      "closes": [
-        1379,
-        1382,
-        1428,
-        1469,
-        1499,
-        1529,
-        1407,
-        1336,
-        1321,
-        1443,
-        1424,
-        1448,
-        1387,
-        1372,
-        1329,
-        1294,
-        1303,
-        1282,
-        1329,
-        1352
-      ],
-      "market": "東証Ｓ",
-      "sectorName": "情報・通信業",
-      "sectorChangePct": -0.38,
-      "loanRatio": null,
-      "per": 15.2,
-      "progress": 52.2,
-      "progressBasis": 50,
-      "progressLabel": "対上期進捗率",
-      "progressSource": "kabutan",
-      "catalysts": [],
-      "catalystTier": "C",
-      "catalystScore100": 0,
-      "warnings": [],
-      "ambiguous": 1,
-      "hasMonthly": false,
-      "score": 36,
-      "coverageScore": 25,
-      "rank": "D",
-      "confidence": 40,
-      "confidenceRaw": 70,
-      "evidence": false,
-      "detail": {
-        "monthly": {
-          "value": null,
-          "note": "月次開示なし"
-        },
-        "pr": {
-          "value": 0,
-          "note": "中立"
-        },
-        "progress": {
-          "value": 12,
-          "note": "基準50%に対し+2.2%"
-        },
-        "sector": {
-          "value": 3,
-          "note": "業種-0.38%"
-        },
-        "technical": {
-          "value": 10,
-          "note": "乖離-1.2%"
-        }
-      },
-      "dividendYield": 2.22,
-      "evEbitda": {
-        "ev": 21694943000,
-        "ebitda": 614485000,
-        "ratio": 35.3,
-        "checked": true
-      },
-      "pbr": 3.19,
-      "marketCap": 25100,
-      "roe": 17.88,
-      "sectorPer": 24.2,
-      "sectorPbr": 3.01,
-      "sectorDividendYield": 2.83,
-      "balanceSheetSource": "edinet",
-      "balanceSheetAsOf": "2026-02-28",
-      "climax": {
-        "level": null,
-        "label": null,
-        "note": null
-      },
-      "netNet": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "lowPbr": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "pbrHistoricalLow": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "pbrMin": 1.06,
-      "pbrMinPeriod": "2012年3月",
-      "dividendPeak": {
-        "level": null,
-        "label": null,
-        "note": null
-      },
-      "dividendMaxYield": 3.37,
-      "dividendMaxPeriod": "2025年2月",
-      "dividendYenHistory": [
-        {
-          "period": "2021年2月",
-          "amount": 8
-        },
-        {
-          "period": "2022年2月",
-          "amount": 10
-        },
-        {
-          "period": "2023年2月",
-          "amount": 10
-        },
-        {
-          "period": "2024年2月",
-          "amount": 12
-        },
-        {
-          "period": "2025年2月",
-          "amount": 20
-        },
-        {
-          "period": "2026年2月",
-          "amount": 20
-        }
-      ],
-      "dividendStreakYears": 0,
-      "dividendStreakDirection": null,
-      "hiddenGem": {
-        "level": null,
-        "label": null,
-        "note": null
-      },
-      "divFloor": {
-        "level": null,
-        "label": null,
-        "note": null
-      },
-      "squeeze": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "institutionalShort": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "institutionalShortPct": 3.74,
-      "institutionalShortAsOf": "2026-09-16",
-      "majorShareholder": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "majorShareholderTop1Pct": 38.93,
-      "majorShareholderAsOf": "2026/02",
-      "sectorLag": {
-        "level": "warn",
-        "label": "中立",
-        "note": "業種-0.38%"
-      },
-      "sectorRotation": {
-        "level": null,
-        "label": null,
-        "note": null
-      },
-      "marginOverhang": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": false
-      },
-      "buyingDemand": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "receivablesAnomaly": {
-        "level": "warn",
-        "label": "売掛金急増（営業CF改善）",
-        "checked": true,
-        "note": "売上高+1.6%に対し売上債権+44%（売上の27.5倍のペース）。回収サイクルの長期化や押し込み販売の懸念があります。一方で営業キャッシュ・フローは前期比+10.6%と改善しており、季節性・大型案件・M&A等による一時的な運転資本の増加や、需要の裏付けがある可能性があり、必ずしも粉飾等の悪材料とは限りません。"
-      },
-      "retailExpectation": {
-        "level": "warn",
-        "label": "期待織り込みの兆し",
-        "checked": true,
-        "note": "1ヶ月+2%(1週間+1.7%) / 信用買い残4週比+29.4%(前週比+3.6%) / 3ヶ月高値圏位置70% / 決算まで7日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
-      },
-      "progressStreak": {
-        "level": "warn",
-        "label": "進捗率は加速も利益は前年割れ",
-        "checked": true,
-        "profitYoyPct": -11.3,
-        "note": "同じ時期（対上期進捗率）の進捗率は2年連続で上昇しています（24.03-05:37.5%→25.03-05:49.9%→26.03-05:52.2%）が、経常利益は前年同期比-11.3%と減益です。今期の会社予想自体が前年実績より低く設定されている可能性があり、進捗率の見た目ほど強気の材料ではないかもしれません"
-      },
-      "dividendPotential": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "hiddenAsset": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "creditFloat": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true,
-        "occupancy": 15.1,
-        "lowPrecision": false
-      },
-      "creditSupplyQuality": {
-        "level": "warn",
-        "pattern": "LEVERAGED_RISE",
-        "buyBalance": 1451800,
-        "buyBalancePrior": 1401200,
-        "buyChangePct": 3.6,
-        "sellBalance": 0,
-        "sellBalancePrior": 1800,
-        "sellChangePct": -100,
-        "creditRatio": null,
-        "buyPressureDays": 1.95,
-        "buyPressureValueDays": 1.86,
-        "priceChangePct": 1.7,
-        "avgVolumeRatio": 0.61,
-        "lowBreakBuyBuildUp": true,
-        "bounceQuality": "WEAK",
-        "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
-        "checked": true,
-        "reasonCodes": [
-          "CREDIT_PATTERN_LEVERAGED_RISE",
-          "BOUNCE_QUALITY_WEAK",
-          "LOW_BREAK_BUY_BUILDUP"
-        ]
-      },
-      "consensusTrap": {
-        "level": null,
-        "label": "N/A",
-        "note": "コンセンサスN/A",
-        "checked": false
-      },
-      "repricingLag": {
-        "score": 18,
-        "zone": "priced_in",
-        "breakdown": {
-          "untapped": 7.5,
-          "improvement": 4,
-          "valuation": 15,
-          "growth": 0,
-          "catalyst": 0,
-          "event": 10
-        },
-        "checked": true,
-        "alreadyMovedStrict": true,
-        "return1m": 2,
-        "return3m": 49.7,
-        "sectorReturn1m": 6.3,
-        "priceLevelPct": 70,
-        "revenueGrowthPct": 1.6,
-        "profitGrowthPct": -11.3,
-        "per": 15.2,
-        "sectorPer": 24.2,
-        "psr": 1.2387109509944234,
-        "hasCatalyst": false,
-        "daysToEarnings": 7,
-        "progressStreak": {
-          "level": "warn",
-          "label": "進捗率は加速も利益は前年割れ",
-          "checked": true,
-          "profitYoyPct": -11.3,
-          "note": "同じ時期（対上期進捗率）の進捗率は2年連続で上昇しています（24.03-05:37.5%→25.03-05:49.9%→26.03-05:52.2%）が、経常利益は前年同期比-11.3%と減益です。今期の会社予想自体が前年実績より低く設定されている可能性があり、進捗率の見た目ほど強気の材料ではないかもしれません"
-        },
-        "repricingGap": -0.2
-      },
-      "buyScore": {
-        "score": 27,
-        "confidence": 80,
-        "detail": {
-          "expectedReturn": {
-            "value": 36,
-            "note": "既存SCORE(素点)を流用"
-          },
-          "unpriced": {
-            "value": 18,
-            "note": "妙味スコア18/100（zone:priced_in）"
-          },
-          "surprise": null,
-          "timing": {
-            "value": 40,
-            "note": "決算まで7日"
-          },
-          "quality": {
-            "value": 0,
-            "note": "下値・割安系シグナル0/3件該当"
-          }
-        },
-        "coverageScore": 21,
-        "signalScore": 21,
-        "dataCoverage": 80,
-        "ruleCoverage": {
-          "known": 4,
-          "total": 5
-        }
-      },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -6889,8 +7720,8 @@
       "earningsDateRaw": "2026/10/13",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 20,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 19,
       "quarter": "1Q",
       "q1Seasonality": {
         "years": [
@@ -7120,7 +7951,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月-7.5%(1週間+2.7%) / 信用買い残4週比+26.1%(前週比+5.4%) / 3ヶ月高値圏位置68.7% / 決算まで20日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
+        "note": "1ヶ月-7.5%(1週間+2.7%) / 信用買い残4週比+26.1%(前週比+5.4%) / 3ヶ月高値圏位置68.7% / 決算まで19日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
       },
       "progressStreak": {
         "level": null,
@@ -7165,12 +7996,109 @@
         "lowBreakBuyBuildUp": true,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_LEVERAGED_RISE",
           "BOUNCE_QUALITY_WEAK",
           "LOW_BREAK_BUY_BUILDUP"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 2959,
+            "buyBalance": 61700,
+            "buyChangePct": 11.8,
+            "sellBalance": 194200,
+            "sellChangePct": 7.2,
+            "creditRatio": 0.32
+          },
+          {
+            "date": "2026-08-14",
+            "close": 2926,
+            "buyBalance": 56000,
+            "buyChangePct": -9.2,
+            "sellBalance": 191200,
+            "sellChangePct": -1.5,
+            "creditRatio": 0.29
+          },
+          {
+            "date": "2026-08-21",
+            "close": 2955,
+            "buyBalance": 60800,
+            "buyChangePct": 8.6,
+            "sellBalance": 208500,
+            "sellChangePct": 9,
+            "creditRatio": 0.29
+          },
+          {
+            "date": "2026-08-28",
+            "close": 3100,
+            "buyBalance": 56800,
+            "buyChangePct": -6.6,
+            "sellBalance": 224400,
+            "sellChangePct": 7.6,
+            "creditRatio": 0.25
+          },
+          {
+            "date": "2026-09-04",
+            "close": 2966,
+            "buyBalance": 67000,
+            "buyChangePct": 18,
+            "sellBalance": 203900,
+            "sellChangePct": -9.1,
+            "creditRatio": 0.33
+          },
+          {
+            "date": "2026-09-11",
+            "close": 2659,
+            "buyBalance": 70600,
+            "buyChangePct": 5.4,
+            "sellBalance": 165200,
+            "sellChangePct": -19,
+            "creditRatio": 0.43
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "買残増加上昇",
+          "安値更新＋買残増"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -7194,7 +8122,7 @@
         "alreadyMovedStrict": true,
         "return1m": -7.5,
         "return3m": 42.8,
-        "sectorReturn1m": -8.3,
+        "sectorReturn1m": -7.9,
         "priceLevelPct": 68.7,
         "revenueGrowthPct": 9.2,
         "profitGrowthPct": null,
@@ -7202,14 +8130,14 @@
         "sectorPer": 32.3,
         "psr": 0.43113054571443943,
         "hasCatalyst": false,
-        "daysToEarnings": 20,
+        "daysToEarnings": 19,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": false
         },
-        "repricingGap": 1.2
+        "repricingGap": 1.3
       },
       "buyScore": {
         "score": 40,
@@ -7229,7 +8157,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで20日"
+            "note": "決算まで19日"
           },
           "quality": {
             "value": 0,
@@ -7244,6 +8172,7 @@
           "total": 5
         }
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -7253,8 +8182,8 @@
       "earningsDateRaw": "2026/10/14",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 21,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 20,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -7520,7 +8449,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-5%(1週間+1%) / 信用買い残4週比-19.7%(前週比+5.9%) / 3ヶ月高値圏位置39.4% / 決算まで21日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-5%(1週間+1%) / 信用買い残4週比-19.7%(前週比+5.9%) / 3ヶ月高値圏位置39.4% / 決算まで20日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "progressStreak": {
         "level": null,
@@ -7565,11 +8494,107 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_LEVERAGED_RISE",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 2728,
+            "buyBalance": 81900,
+            "buyChangePct": 15.2,
+            "sellBalance": 193500,
+            "sellChangePct": 117.9,
+            "creditRatio": 0.42
+          },
+          {
+            "date": "2026-08-14",
+            "close": 2785,
+            "buyBalance": 84800,
+            "buyChangePct": 3.5,
+            "sellBalance": 392500,
+            "sellChangePct": 102.8,
+            "creditRatio": 0.22
+          },
+          {
+            "date": "2026-08-21",
+            "close": 2888,
+            "buyBalance": 81600,
+            "buyChangePct": -3.8,
+            "sellBalance": 854600,
+            "sellChangePct": 117.7,
+            "creditRatio": 0.1
+          },
+          {
+            "date": "2026-08-28",
+            "close": 2867,
+            "buyBalance": 65100,
+            "buyChangePct": -20.2,
+            "sellBalance": 54200,
+            "sellChangePct": -93.7,
+            "creditRatio": 1.2
+          },
+          {
+            "date": "2026-09-04",
+            "close": 2801,
+            "buyBalance": 64300,
+            "buyChangePct": -1.2,
+            "sellBalance": 15700,
+            "sellChangePct": -71,
+            "creditRatio": 4.1
+          },
+          {
+            "date": "2026-09-11",
+            "close": 2717,
+            "buyBalance": 68100,
+            "buyChangePct": 5.9,
+            "sellBalance": 6100,
+            "sellChangePct": -61.1,
+            "creditRatio": 11.16
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "買残増加上昇"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -7593,7 +8618,7 @@
         "alreadyMovedStrict": false,
         "return1m": -5,
         "return3m": 4.5,
-        "sectorReturn1m": -7.7,
+        "sectorReturn1m": -8,
         "priceLevelPct": 39.4,
         "revenueGrowthPct": 6.2,
         "profitGrowthPct": 14,
@@ -7601,14 +8626,14 @@
         "sectorPer": 21.5,
         "psr": 0.18737614119480345,
         "hasCatalyst": false,
-        "daysToEarnings": 21,
+        "daysToEarnings": 20,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": true
         },
-        "repricingGap": 4.5
+        "repricingGap": 4.3
       },
       "buyScore": {
         "score": 28,
@@ -7628,7 +8653,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで21日"
+            "note": "決算まで20日"
           },
           "quality": {
             "value": 67,
@@ -7645,6 +8670,7 @@
         "rawScoreBeforeRisk": 48,
         "riskPenalty": 20
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -7654,8 +8680,8 @@
       "earningsDateRaw": "2026/10/09",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 16,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 15,
       "quarter": "本決算",
       "q1Seasonality": {
         "years": [
@@ -7885,7 +8911,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-4.9%(1週間+2.7%) / 信用買い残4週比-23.7%(前週比+14.4%) / 3ヶ月高値圏位置46.9% / 決算まで16日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-4.9%(1週間+2.7%) / 信用買い残4週比-23.7%(前週比+14.4%) / 3ヶ月高値圏位置46.9% / 決算まで15日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "progressStreak": {
         "level": null,
@@ -7930,11 +8956,107 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_LEVERAGED_RISE",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 1025,
+            "buyBalance": 1304000,
+            "buyChangePct": 3.2,
+            "sellBalance": 2760300,
+            "sellChangePct": 65.4,
+            "creditRatio": 0.47
+          },
+          {
+            "date": "2026-08-14",
+            "close": 1037,
+            "buyBalance": 1282500,
+            "buyChangePct": -1.6,
+            "sellBalance": 3289800,
+            "sellChangePct": 19.2,
+            "creditRatio": 0.39
+          },
+          {
+            "date": "2026-08-21",
+            "close": 1055,
+            "buyBalance": 1194400,
+            "buyChangePct": -6.9,
+            "sellBalance": 3454900,
+            "sellChangePct": 5,
+            "creditRatio": 0.35
+          },
+          {
+            "date": "2026-08-28",
+            "close": 1016,
+            "buyBalance": 1128600,
+            "buyChangePct": -5.5,
+            "sellBalance": 158700,
+            "sellChangePct": -95.4,
+            "creditRatio": 7.11
+          },
+          {
+            "date": "2026-09-04",
+            "close": 1027,
+            "buyBalance": 854900,
+            "buyChangePct": -24.3,
+            "sellBalance": 50100,
+            "sellChangePct": -68.4,
+            "creditRatio": 17.06
+          },
+          {
+            "date": "2026-09-11",
+            "close": 977,
+            "buyBalance": 978100,
+            "buyChangePct": 14.4,
+            "sellBalance": 43500,
+            "sellChangePct": -13.2,
+            "creditRatio": 22.49
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "買残増加上昇"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -7958,7 +9080,7 @@
         "alreadyMovedStrict": false,
         "return1m": -4.9,
         "return3m": 9.1,
-        "sectorReturn1m": -5,
+        "sectorReturn1m": -1.4,
         "priceLevelPct": 46.9,
         "revenueGrowthPct": null,
         "profitGrowthPct": -9.8,
@@ -7966,14 +9088,14 @@
         "sectorPer": 22.5,
         "psr": null,
         "hasCatalyst": false,
-        "daysToEarnings": 16,
+        "daysToEarnings": 15,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": true
         },
-        "repricingGap": -2.7
+        "repricingGap": -0.7
       },
       "buyScore": {
         "score": 42,
@@ -7993,7 +9115,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで16日"
+            "note": "決算まで15日"
           },
           "quality": {
             "value": 0,
@@ -8010,6 +9132,7 @@
         "rawScoreBeforeRisk": 52,
         "riskPenalty": 10
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -8019,8 +9142,8 @@
       "earningsDateRaw": "2026/10/15",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 22,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 21,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -8250,7 +9373,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-0.7%(1週間+2.5%) / 信用買い残4週比-66.9%(前週比-8.7%) / 3ヶ月高値圏位置66.7% / 決算まで22日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-0.7%(1週間+2.5%) / 信用買い残4週比-66.9%(前週比-8.7%) / 3ヶ月高値圏位置66.7% / 決算まで21日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "progressStreak": {
         "level": null,
@@ -8295,11 +9418,107 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_SUPPLY_IMPROVING",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 1389,
+            "buyBalance": 25000,
+            "buyChangePct": 18.5,
+            "sellBalance": 402700,
+            "sellChangePct": 122.4,
+            "creditRatio": 0.06
+          },
+          {
+            "date": "2026-08-14",
+            "close": 1448,
+            "buyBalance": 34700,
+            "buyChangePct": 38.8,
+            "sellBalance": 803400,
+            "sellChangePct": 99.5,
+            "creditRatio": 0.04
+          },
+          {
+            "date": "2026-08-21",
+            "close": 1435,
+            "buyBalance": 48800,
+            "buyChangePct": 40.6,
+            "sellBalance": 1390300,
+            "sellChangePct": 73.1,
+            "creditRatio": 0.04
+          },
+          {
+            "date": "2026-08-28",
+            "close": 1418,
+            "buyBalance": 14700,
+            "buyChangePct": -69.9,
+            "sellBalance": 84200,
+            "sellChangePct": -93.9,
+            "creditRatio": 0.17
+          },
+          {
+            "date": "2026-09-04",
+            "close": 1396,
+            "buyBalance": 12600,
+            "buyChangePct": -14.3,
+            "sellBalance": 42900,
+            "sellChangePct": -49,
+            "creditRatio": 0.29
+          },
+          {
+            "date": "2026-09-11",
+            "close": 1390,
+            "buyBalance": 11500,
+            "buyChangePct": -8.7,
+            "sellBalance": 42200,
+            "sellChangePct": -1.6,
+            "creditRatio": 0.27
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "需給改善"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -8323,7 +9542,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.7,
         "return3m": 7.7,
-        "sectorReturn1m": -8.3,
+        "sectorReturn1m": -7.9,
         "priceLevelPct": 66.7,
         "revenueGrowthPct": 4.3,
         "profitGrowthPct": -21.9,
@@ -8331,14 +9550,14 @@
         "sectorPer": 32.3,
         "psr": 0.23903924197600981,
         "hasCatalyst": false,
-        "daysToEarnings": 22,
+        "daysToEarnings": 21,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": true
         },
-        "repricingGap": -5.5
+        "repricingGap": -5.3
       },
       "buyScore": {
         "score": 46,
@@ -8355,7 +9574,7 @@
           "surprise": null,
           "timing": {
             "value": 100,
-            "note": "決算まで22日"
+            "note": "決算まで21日"
           },
           "quality": {
             "value": 33,
@@ -8370,6 +9589,7 @@
           "total": 5
         }
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -8379,8 +9599,8 @@
       "earningsDateRaw": "2026/10/13",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 20,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 19,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -8610,7 +9830,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月-5.9%(1週間+0.7%) / 信用買い残4週比+34.3%(前週比+38.1%) / 3ヶ月高値圏位置60.7% / 決算まで20日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
+        "note": "1ヶ月-5.9%(1週間+0.7%) / 信用買い残4週比+34.3%(前週比+38.1%) / 3ヶ月高値圏位置60.7% / 決算まで19日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
       },
       "progressStreak": {
         "level": null,
@@ -8655,12 +9875,110 @@
         "lowBreakBuyBuildUp": true,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_LEVERAGED_RISE",
           "BOUNCE_QUALITY_WEAK",
           "LOW_BREAK_BUY_BUILDUP"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 2780,
+            "buyBalance": 112500,
+            "buyChangePct": 52.4,
+            "sellBalance": 372500,
+            "sellChangePct": 27.8,
+            "creditRatio": 0.3
+          },
+          {
+            "date": "2026-08-14",
+            "close": 2843,
+            "buyBalance": 81300,
+            "buyChangePct": -27.7,
+            "sellBalance": 398000,
+            "sellChangePct": 6.8,
+            "creditRatio": 0.2
+          },
+          {
+            "date": "2026-08-21",
+            "close": 2905,
+            "buyBalance": 59800,
+            "buyChangePct": -26.4,
+            "sellBalance": 443900,
+            "sellChangePct": 11.5,
+            "creditRatio": 0.13
+          },
+          {
+            "date": "2026-08-28",
+            "close": 2840,
+            "buyBalance": 64600,
+            "buyChangePct": 8,
+            "sellBalance": 133500,
+            "sellChangePct": -69.9,
+            "creditRatio": 0.48
+          },
+          {
+            "date": "2026-09-04",
+            "close": 2883,
+            "buyBalance": 79100,
+            "buyChangePct": 22.4,
+            "sellBalance": 109500,
+            "sellChangePct": -18,
+            "creditRatio": 0.72
+          },
+          {
+            "date": "2026-09-11",
+            "close": 2713,
+            "buyBalance": 109200,
+            "buyChangePct": 38.1,
+            "sellBalance": 87400,
+            "sellChangePct": -20.2,
+            "creditRatio": 1.25
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "信用買い重い",
+          "買残増加上昇",
+          "安値更新＋買残増"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -8684,7 +10002,7 @@
         "alreadyMovedStrict": false,
         "return1m": -5.9,
         "return3m": 11,
-        "sectorReturn1m": -5,
+        "sectorReturn1m": -1.4,
         "priceLevelPct": 60.7,
         "revenueGrowthPct": null,
         "profitGrowthPct": -16.4,
@@ -8692,14 +10010,14 @@
         "sectorPer": 22.5,
         "psr": null,
         "hasCatalyst": false,
-        "daysToEarnings": 20,
+        "daysToEarnings": 19,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": true
         },
-        "repricingGap": -2.9
+        "repricingGap": -1.5
       },
       "buyScore": {
         "score": 22,
@@ -8719,7 +10037,7 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで20日"
+            "note": "決算まで19日"
           },
           "quality": {
             "value": 0,
@@ -8736,6 +10054,7 @@
         "rawScoreBeforeRisk": 32,
         "riskPenalty": 10
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -8745,8 +10064,8 @@
       "earningsDateRaw": "2026/10/08",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 15,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 14,
       "quarter": "1Q",
       "q1Seasonality": {
         "years": [
@@ -8976,7 +10295,7 @@
         "level": "warn",
         "label": "期待織り込みの兆し",
         "checked": true,
-        "note": "1ヶ月-2.3%(1週間+2.6%) / 信用買い残4週比+21%(前週比+6.7%) / 3ヶ月高値圏位置52.1% / 決算まで15日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
+        "note": "1ヶ月-2.3%(1週間+2.6%) / 信用買い残4週比+21%(前週比+6.7%) / 3ヶ月高値圏位置52.1% / 決算まで14日。信用買い残は増加していますが株価は大きく動いておらず、様子見の域です"
       },
       "progressStreak": {
         "level": null,
@@ -9021,11 +10340,108 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_LEVERAGED_RISE",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 1962,
+            "buyBalance": 281400,
+            "buyChangePct": 14.7,
+            "sellBalance": 55400,
+            "sellChangePct": 4.3,
+            "creditRatio": 5.08
+          },
+          {
+            "date": "2026-08-14",
+            "close": 2029,
+            "buyBalance": 319100,
+            "buyChangePct": 13.4,
+            "sellBalance": 60900,
+            "sellChangePct": 9.9,
+            "creditRatio": 5.24
+          },
+          {
+            "date": "2026-08-21",
+            "close": 2076,
+            "buyBalance": 322000,
+            "buyChangePct": 0.9,
+            "sellBalance": 64100,
+            "sellChangePct": 5.3,
+            "creditRatio": 5.02
+          },
+          {
+            "date": "2026-08-28",
+            "close": 2144,
+            "buyBalance": 351000,
+            "buyChangePct": 9,
+            "sellBalance": 71600,
+            "sellChangePct": 11.7,
+            "creditRatio": 4.9
+          },
+          {
+            "date": "2026-09-04",
+            "close": 2049,
+            "buyBalance": 361700,
+            "buyChangePct": 3,
+            "sellBalance": 83300,
+            "sellChangePct": 16.3,
+            "creditRatio": 4.34
+          },
+          {
+            "date": "2026-09-11",
+            "close": 1978,
+            "buyBalance": 386000,
+            "buyChangePct": 6.7,
+            "sellBalance": 66100,
+            "sellChangePct": -20.6,
+            "creditRatio": 5.84
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "信用買い重い",
+          "買残増加上昇"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -9035,7 +10451,7 @@
         "note": "コンセンサス比-4.3%"
       },
       "repricingLag": {
-        "score": 33,
+        "score": 36,
         "zone": "early_move",
         "breakdown": {
           "untapped": 12,
@@ -9043,13 +10459,13 @@
           "valuation": 10,
           "growth": 0,
           "catalyst": 0,
-          "event": 7
+          "event": 10
         },
         "checked": true,
         "alreadyMovedStrict": false,
         "return1m": -2.3,
         "return3m": 3,
-        "sectorReturn1m": 6.3,
+        "sectorReturn1m": 8.9,
         "priceLevelPct": 52.1,
         "revenueGrowthPct": 4.1,
         "profitGrowthPct": null,
@@ -9057,17 +10473,17 @@
         "sectorPer": 24.2,
         "psr": 3.925813962988684,
         "hasCatalyst": false,
-        "daysToEarnings": 15,
+        "daysToEarnings": 14,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": false
         },
-        "repricingGap": 5.1
+        "repricingGap": 6.3
       },
       "buyScore": {
-        "score": 31,
+        "score": 32,
         "confidence": 100,
         "detail": {
           "expectedReturn": {
@@ -9075,8 +10491,8 @@
             "note": "既存SCORE(素点)を流用"
           },
           "unpriced": {
-            "value": 33,
-            "note": "妙味スコア33/100（zone:early_move）"
+            "value": 36,
+            "note": "妙味スコア36/100（zone:early_move）"
           },
           "surprise": {
             "value": 50,
@@ -9084,23 +10500,24 @@
           },
           "timing": {
             "value": 100,
-            "note": "決算まで15日"
+            "note": "決算まで14日"
           },
           "quality": {
             "value": 0,
             "note": "下値・割安系シグナル0/3件該当"
           }
         },
-        "coverageScore": 41,
-        "signalScore": 41,
+        "coverageScore": 42,
+        "signalScore": 42,
         "dataCoverage": 100,
         "ruleCoverage": {
           "known": 5,
           "total": 5
         },
-        "rawScoreBeforeRisk": 41,
+        "rawScoreBeforeRisk": 42,
         "riskPenalty": 10
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -9110,8 +10527,8 @@
       "earningsDateRaw": "2026/10/15",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 22,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 21,
       "quarter": "1Q",
       "q1Seasonality": {
         "years": [
@@ -9341,7 +10758,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月+0.4%(1週間+1.3%) / 信用買い残4週比+0.6%(前週比-5.8%) / 3ヶ月高値圏位置91.1% / 決算まで22日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月+0.4%(1週間+1.3%) / 信用買い残4週比+0.6%(前週比-5.8%) / 3ヶ月高値圏位置91.1% / 決算まで21日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "progressStreak": {
         "level": null,
@@ -9386,11 +10803,108 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": "WEAK",
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_SUPPLY_IMPROVING",
           "BOUNCE_QUALITY_WEAK"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 524,
+            "buyBalance": 1024800,
+            "buyChangePct": -1.5,
+            "sellBalance": 47000,
+            "sellChangePct": 4.9,
+            "creditRatio": 21.8
+          },
+          {
+            "date": "2026-08-14",
+            "close": 534,
+            "buyBalance": 962700,
+            "buyChangePct": -6.1,
+            "sellBalance": 53000,
+            "sellChangePct": 12.8,
+            "creditRatio": 18.16
+          },
+          {
+            "date": "2026-08-21",
+            "close": 548,
+            "buyBalance": 965500,
+            "buyChangePct": 0.3,
+            "sellBalance": 77600,
+            "sellChangePct": 46.4,
+            "creditRatio": 12.44
+          },
+          {
+            "date": "2026-08-28",
+            "close": 550,
+            "buyBalance": 965600,
+            "buyChangePct": 0,
+            "sellBalance": 64500,
+            "sellChangePct": -16.9,
+            "creditRatio": 14.97
+          },
+          {
+            "date": "2026-09-04",
+            "close": 551,
+            "buyBalance": 1028500,
+            "buyChangePct": 6.5,
+            "sellBalance": 115000,
+            "sellChangePct": 78.3,
+            "creditRatio": 8.94
+          },
+          {
+            "date": "2026-09-11",
+            "close": 543,
+            "buyBalance": 968700,
+            "buyChangePct": -5.8,
+            "sellBalance": 26400,
+            "sellChangePct": -77,
+            "creditRatio": 36.69
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "需給改善",
+          "信用買い重い"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -9414,7 +10928,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0.4,
         "return3m": 6.8,
-        "sectorReturn1m": -5.2,
+        "sectorReturn1m": -3.9,
         "priceLevelPct": 91.1,
         "revenueGrowthPct": 9.6,
         "profitGrowthPct": null,
@@ -9422,14 +10936,14 @@
         "sectorPer": 13.2,
         "psr": 0.36314687849001903,
         "hasCatalyst": false,
-        "daysToEarnings": 22,
+        "daysToEarnings": 21,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": false
         },
-        "repricingGap": -0.1
+        "repricingGap": 0
       },
       "buyScore": {
         "score": 35,
@@ -9446,7 +10960,7 @@
           "surprise": null,
           "timing": {
             "value": 100,
-            "note": "決算まで22日"
+            "note": "決算まで21日"
           },
           "quality": {
             "value": 67,
@@ -9463,6 +10977,7 @@
         "rawScoreBeforeRisk": 45,
         "riskPenalty": 10
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     },
     {
@@ -9472,8 +10987,8 @@
       "earningsDateRaw": "2026/10/07",
       "earningsDateStatus": "confirmed",
       "earningsDateSource": "sbi_exchange",
-      "earningsDateRetrievedAt": "2026-09-22T22:00:13.080Z",
-      "daysLeft": 14,
+      "earningsDateRetrievedAt": "2026-09-23T22:00:12.630Z",
+      "daysLeft": 13,
       "quarter": "中間 決算",
       "q1Seasonality": {
         "years": [
@@ -9703,7 +11218,7 @@
         "level": null,
         "label": "未織り込み",
         "checked": true,
-        "note": "1ヶ月-5.4%(1週間-0.1%) / 信用買い残4週比-0.8%(前週比-2.6%) / 3ヶ月高値圏位置49.2% / 決算まで14日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
+        "note": "1ヶ月-5.4%(1週間-0.1%) / 信用買い残4週比-0.8%(前週比-2.6%) / 3ヶ月高値圏位置49.2% / 決算まで13日。株価・信用買い残ともに大きな動きが無く、好材料への期待はまだ株価に織り込まれていません"
       },
       "progressStreak": {
         "level": null,
@@ -9748,10 +11263,107 @@
         "lowBreakBuyBuildUp": false,
         "bounceQuality": null,
         "creditAsOf": "26/09/11",
-        "creditDataAgeDays": 12,
+        "creditDataAgeDays": 13,
+        "isStale": true,
+        "expectedIntervalDays": 7,
         "checked": true,
         "reasonCodes": [
           "CREDIT_PATTERN_CLEANUP"
+        ]
+      },
+      "creditSupplyTimeline": {
+        "checked": true,
+        "points": [
+          {
+            "date": "2026-08-07",
+            "close": 2769,
+            "buyBalance": 164800,
+            "buyChangePct": 6.7,
+            "sellBalance": 11100,
+            "sellChangePct": -2.6,
+            "creditRatio": 14.85
+          },
+          {
+            "date": "2026-08-14",
+            "close": 2835,
+            "buyBalance": 153900,
+            "buyChangePct": -6.6,
+            "sellBalance": 11300,
+            "sellChangePct": 1.8,
+            "creditRatio": 13.62
+          },
+          {
+            "date": "2026-08-21",
+            "close": 2871,
+            "buyBalance": 150800,
+            "buyChangePct": -2,
+            "sellBalance": 13400,
+            "sellChangePct": 18.6,
+            "creditRatio": 11.25
+          },
+          {
+            "date": "2026-08-28",
+            "close": 2808,
+            "buyBalance": 162000,
+            "buyChangePct": 7.4,
+            "sellBalance": 9500,
+            "sellChangePct": -29.1,
+            "creditRatio": 17.05
+          },
+          {
+            "date": "2026-09-04",
+            "close": 2789,
+            "buyBalance": 156600,
+            "buyChangePct": -3.3,
+            "sellBalance": 8000,
+            "sellChangePct": -15.8,
+            "creditRatio": 19.57
+          },
+          {
+            "date": "2026-09-11",
+            "close": 2719,
+            "buyBalance": 152600,
+            "buyChangePct": -2.6,
+            "sellBalance": 7700,
+            "sellChangePct": -3.7,
+            "creditRatio": 19.82
+          }
+        ],
+        "latestDate": "2026-09-11",
+        "pending": true,
+        "tags": [
+          "買残整理",
+          "信用買い重い"
+        ],
+        "sourceDates": [
+          "2026-09-11",
+          "2026-09-04",
+          "2026-08-28",
+          "2026-08-21",
+          "2026-08-14",
+          "2026-08-07",
+          "2026-07-31",
+          "2026-07-24",
+          "2026-07-17",
+          "2026-07-10",
+          "2026-07-03",
+          "2026-06-26",
+          "2026-06-19",
+          "2026-06-12",
+          "2026-06-05",
+          "2026-05-29",
+          "2026-05-22",
+          "2026-05-15",
+          "2026-05-01",
+          "2026-04-24",
+          "2026-04-17",
+          "2026-04-10",
+          "2026-04-03",
+          "2026-03-27",
+          "2026-03-19",
+          "2026-03-13",
+          "2026-03-06",
+          "2026-02-27"
         ]
       },
       "consensusTrap": {
@@ -9775,7 +11387,7 @@
         "alreadyMovedStrict": false,
         "return1m": -5.4,
         "return3m": 6.5,
-        "sectorReturn1m": -7.7,
+        "sectorReturn1m": -8,
         "priceLevelPct": 49.2,
         "revenueGrowthPct": 5.1,
         "profitGrowthPct": -22.1,
@@ -9783,17 +11395,17 @@
         "sectorPer": 21.5,
         "psr": 0.2048470489622936,
         "hasCatalyst": false,
-        "daysToEarnings": 14,
+        "daysToEarnings": 13,
         "progressStreak": {
           "level": null,
           "label": null,
           "note": null,
           "checked": true
         },
-        "repricingGap": -5.5
+        "repricingGap": -5.6
       },
       "buyScore": {
-        "score": 19,
+        "score": 10,
         "confidence": 100,
         "detail": {
           "expectedReturn": {
@@ -9809,26 +11421,27 @@
             "note": "会社予想がコンセンサス比-6.7%・上方修正しても予想に届かず暴落する危険地帯"
           },
           "timing": {
-            "value": 100,
-            "note": "決算まで14日"
+            "value": 40,
+            "note": "決算まで13日"
           },
           "quality": {
             "value": 33,
             "note": "下値・割安系シグナル1/3件該当"
           }
         },
-        "coverageScore": 39,
-        "signalScore": 39,
+        "coverageScore": 30,
+        "signalScore": 30,
         "dataCoverage": 100,
         "ruleCoverage": {
           "known": 5,
           "total": 5
         },
-        "rawScoreBeforeRisk": 39,
+        "rawScoreBeforeRisk": 30,
         "riskPenalty": 20
       },
+      "scoreInvariantOk": true,
       "bucket": "NEAR"
     }
   ],
-  "logicFingerprint": "444b567e36c4a919"
+  "logicFingerprint": "ce9b145a78c81186"
 }

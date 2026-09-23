@@ -1,0 +1,48 @@
+{
+  "status": "ERROR",
+  "generatedAt": "2026-09-23T23:49:15.703Z",
+  "gitSha": "de99bb3",
+  "logicFingerprint": "ce9b145a78c81186",
+  "stocksChecked": 24,
+  "creditQualityChecked": 24,
+  "timelineChecked": 24,
+  "timelineMissing": 0,
+  "pendingCount": 0,
+  "closeMissingCount": 0,
+  "invalidDateCount": 0,
+  "tagCounts": {
+    "需給改善": 9,
+    "買残整理": 3,
+    "買残積み上がり": 0,
+    "信用買い重い": 16,
+    "買残増加上昇": 12,
+    "安値更新＋買残増": 3
+  },
+  "coverage": {
+    "stocksChecked": 24,
+    "creditQualityChecked": 24,
+    "timelineChecked": 24,
+    "timelineMissing": 0,
+    "pendingCount": 0,
+    "closeMissingCount": 0,
+    "tagCounts": {
+      "需給改善": 9,
+      "買残整理": 3,
+      "買残積み上がり": 0,
+      "信用買い重い": 16,
+      "買残増加上昇": 12,
+      "安値更新＋買残増": 3
+    }
+  },
+  "scoreInvariantFailures": 0,
+  "tagConsistencyFailures": 0,
+  "errors": [
+    {
+      "code": "broken_svg",
+      "message": "需給タイムラインのブロックが完全に閉じていない可能性があります（見出し11件・フッター/空表示10件）",
+      "affected": []
+    }
+  ],
+  "warnings": [],
+  "info": []
+}
