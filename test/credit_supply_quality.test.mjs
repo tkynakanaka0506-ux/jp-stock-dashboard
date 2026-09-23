@@ -7,6 +7,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { creditBuyPressureDays, creditTrend, shortTrend, CREDIT_BUY_PRESSURE, creditPatternSignal, bounceQualitySignal, lowBreakBuyBuildupSignal, LOW_BREAK_BUY_BUILDUP, CHIP_SIGNAL_FIELDS, creditSupplyQualitySignal, clusterConfirmation } from '../indicators.mjs';
+import { creditSupplyQualityBlock, creditSupplyTags, CREDIT_SUPPLY_TAGS, creditFilterBar } from '../scraper.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -298,4 +299,150 @@ test('clusterConfirmation: creditSupplyQuality.level===goodのときだけSUPPLY
 
   const withWarn = clusterConfirmation({ ...base, creditSupplyQuality: { level: 'warn' } });
   assert.ok(!withWarn.clusters.SUPPLY_CREDIT.includes('creditSupplyQuality'), 'level:warnはヒットに数えない（goodのときだけ）');
+});
+
+// ==================================================================
+// Phase6: カード表示（ユーザー提案）。creditSupplyQualityBlockは
+// scraper.mjs側でcreditSupplyQualitySignalの結果をそのまま表示する
+// だけで、新しい判定ロジックは持たない。
+// ==================================================================
+
+const fullCreditSupplyQuality = {
+  checked: true,
+  pattern: 'SUPPLY_IMPROVING',
+  bounceQuality: 'IMPROVING',
+  buyBalance: 1_240_000, buyBalancePrior: 1_516_136, buyChangePct: -18.2,
+  sellBalance: 62_000, sellBalancePrior: 65_300, sellChangePct: -5.1,
+  creditRatio: 20.0,
+  buyPressureDays: 0.45, buyPressureValueDays: 0.52,
+  avgVolumeRatio: 1.34,
+  lowBreakBuyBuildUp: false,
+  creditAsOf: '26/09/18', creditDataAgeDays: 4,
+  reasonCodes: ['CREDIT_PATTERN_SUPPLY_IMPROVING', 'BOUNCE_QUALITY_IMPROVING'],
+};
+
+test('creditSupplyQualityBlock: checked:falseまたはデータ無しなら空文字（カードに何も表示しない）', () => {
+  assert.equal(creditSupplyQualityBlock({}), '');
+  assert.equal(creditSupplyQualityBlock({ creditSupplyQuality: { checked: false } }), '');
+});
+
+test('creditSupplyQualityBlock: 買残・売残・信用倍率・買残負担・最終信用残を表示する', () => {
+  const html = creditSupplyQualityBlock({ creditSupplyQuality: fullCreditSupplyQuality });
+  assert.ok(html.includes('信用需給'));
+  assert.ok(html.includes('1,240,000株'));
+  assert.ok(html.includes('▼18.2%'));
+  assert.ok(html.includes('62,000株'));
+  assert.ok(html.includes('20倍'));
+  assert.ok(html.includes('0.45日'));
+  assert.ok(html.includes('軽い')); // buyPressureDays<0.5 の帯ラベル
+  assert.ok(html.includes('9/18')); // creditAsOfの短縮表示（26/09/18→9/18）
+});
+
+test('creditSupplyQualityBlock: 需給変化（4パターン）を矢印付きで表示する', () => {
+  const html = creditSupplyQualityBlock({ creditSupplyQuality: fullCreditSupplyQuality });
+  assert.ok(html.includes('需給変化'));
+  assert.ok(html.includes('株価 ↑ × 買残 ↓'));
+  assert.ok(html.includes('→ 需給改善'));
+});
+
+test('creditSupplyQualityBlock: 反発品質（IMPROVING）を出来高倍率付きで表示する', () => {
+  const html = creditSupplyQualityBlock({ creditSupplyQuality: fullCreditSupplyQuality });
+  assert.ok(html.includes('反発品質'));
+  assert.ok(html.includes('出来高 1.34×'));
+});
+
+test('creditSupplyQualityBlock: bounceQuality:PENDINGは「信用データ未反映（確認中）」と表示する（実際に信用整理が進んだと誤解させない）', () => {
+  const html = creditSupplyQualityBlock({ creditSupplyQuality: { ...fullCreditSupplyQuality, bounceQuality: 'PENDING' } });
+  assert.ok(html.includes('信用データ未反映'));
+});
+
+test('buyPressureBandLabel相当: 0.45日→軽い/0.99日→やや重い/1.77日→重い（ユーザー提示の3例、SCORE閾値ではなく表示用の帯）', () => {
+  const at = (days) => creditSupplyQualityBlock({ creditSupplyQuality: { ...fullCreditSupplyQuality, buyPressureDays: days } });
+  assert.ok(at(0.45).includes('軽い'));
+  assert.ok(at(0.99).includes('やや重い'));
+  assert.ok(at(1.77).includes('重い') && !at(1.77).includes('やや重い'));
+});
+
+test('card()（AMBUSHカード）にcreditSupplyQualityBlockが配線されている', () => {
+  const src = fs.readFileSync(path.join(root, 'scraper.mjs'), 'utf-8');
+  const cardFnStart = src.indexOf('function card(r, i, opts = {}) {');
+  const cardFnEnd = src.indexOf('\nfunction ', cardFnStart + 1);
+  const cardFn = src.slice(cardFnStart, cardFnEnd === -1 ? cardFnStart + 3000 : cardFnEnd);
+  assert.ok(cardFn.includes('creditSupplyQualityBlock(r)'), 'card()にcreditSupplyQualityBlockが配線されていません');
+});
+
+// ==================================================================
+// Phase6続き: 信用需給タグのワンタップ絞り込み（ユーザー提案）。
+// creditSupplyTagsは既存のcreditSupplyQualitySignalの結果をラベル化
+// するだけで、新しい判定基準は作らない。
+// ==================================================================
+
+test('CREDIT_SUPPLY_TAGSは6種類（需給改善/買残整理/買残積み上がり/信用買い重い/買残増加上昇/安値更新＋買残増）', () => {
+  assert.deepEqual(CREDIT_SUPPLY_TAGS, ['需給改善', '買残整理', '買残積み上がり', '信用買い重い', '買残増加上昇', '安値更新＋買残増']);
+});
+
+test('creditSupplyTags: データ無しなら空配列', () => {
+  assert.deepEqual(creditSupplyTags({}), []);
+  assert.deepEqual(creditSupplyTags({ creditSupplyQuality: { checked: false } }), []);
+});
+
+test('creditSupplyTags: pattern:SUPPLY_IMPROVING ＝「需給改善」', () => {
+  const tags = creditSupplyTags({ creditSupplyQuality: { checked: true, pattern: 'SUPPLY_IMPROVING', buyPressureDays: 0.3 } });
+  assert.deepEqual(tags, ['需給改善']);
+});
+
+test('creditSupplyTags: bounceQuality:IMPROVINGだけでも「需給改善」がつく（patternがLEVERAGED_RISEでも）', () => {
+  const tags = creditSupplyTags({ creditSupplyQuality: { checked: true, pattern: 'LEVERAGED_RISE', bounceQuality: 'IMPROVING', buyPressureDays: 0.3 } });
+  assert.ok(tags.includes('需給改善'));
+  assert.ok(tags.includes('買残増加上昇'));
+});
+
+test('creditSupplyTags: pattern:CLEANUP ＝「買残整理」、OVERHANG_BUILDUP ＝「買残積み上がり」', () => {
+  assert.deepEqual(creditSupplyTags({ creditSupplyQuality: { checked: true, pattern: 'CLEANUP', buyPressureDays: 0.3 } }), ['買残整理']);
+  assert.deepEqual(creditSupplyTags({ creditSupplyQuality: { checked: true, pattern: 'OVERHANG_BUILDUP', buyPressureDays: 0.3 } }), ['買残積み上がり']);
+});
+
+test('creditSupplyTags: buyPressureDays>1.0（帯:重い）＝「信用買い重い」が独立して付く（pattern問わず併存しうる）', () => {
+  const tags = creditSupplyTags({ creditSupplyQuality: { checked: true, pattern: 'CLEANUP', buyPressureDays: 1.77 } });
+  assert.deepEqual(tags.sort(), ['信用買い重い', '買残整理'].sort());
+});
+
+test('creditSupplyTags: lowBreakBuyBuildUp:true ＝「安値更新＋買残増」が独立して付く', () => {
+  const tags = creditSupplyTags({ creditSupplyQuality: { checked: true, pattern: 'OVERHANG_BUILDUP', lowBreakBuyBuildUp: true, buyPressureDays: 0.3 } });
+  assert.ok(tags.includes('安値更新＋買残増'));
+  assert.ok(tags.includes('買残積み上がり'));
+});
+
+test('creditFilterBar: 6タグ全部をボタンとして出力し、toggleCreditFilterに接続している', () => {
+  const html = creditFilterBar();
+  for (const t of CREDIT_SUPPLY_TAGS) {
+    assert.ok(html.includes(`toggleCreditFilter('${t}')`), `タグ「${t}」のボタンが見つかりません`);
+  }
+  assert.ok(html.includes('clearCreditFilter()'));
+});
+
+test('card(): data-credit-tags属性にcreditSupplyTags(r)の結果を埋め込んでいる（JSフィルタが参照する属性）', () => {
+  const src = fs.readFileSync(path.join(root, 'scraper.mjs'), 'utf-8');
+  assert.ok(src.includes('data-credit-tags="${esc(creditTags.join(\',\'))}"'), 'card()にdata-credit-tags属性が見つかりません');
+  const cardFnStart = src.indexOf('export function card(r, i, opts = {}) {');
+  const cardFnEnd = src.indexOf('\nfunction ', cardFnStart + 1);
+  const cardFn = src.slice(cardFnStart, cardFnEnd);
+  assert.ok(cardFn.includes('creditSupplyTags(r)'), 'card()がcreditSupplyTags(r)を呼んでいません');
+});
+
+test('main()テンプレートにcreditFilterBar()が配線されている（絞り込みバーがページに表示される）', () => {
+  const src = fs.readFileSync(path.join(root, 'scraper.mjs'), 'utf-8');
+  assert.ok(src.includes('${creditFilterBar()}'), 'creditFilterBar()がページテンプレートに配線されていません');
+});
+
+test('JS: toggleCreditFilter/clearCreditFilterがwindowに公開され、#desktop-view .cardの表示/非表示を切り替える', () => {
+  const src = fs.readFileSync(path.join(root, 'scraper.mjs'), 'utf-8');
+  const scriptStart = src.indexOf('<script>\n// 第9優先改修 Phase6');
+  assert.ok(scriptStart !== -1, '信用需給フィルタ用のJSブロックが見つかりません');
+  const scriptEnd = src.indexOf('</script>', scriptStart);
+  const js = src.slice(scriptStart, scriptEnd);
+  assert.ok(js.includes('window.toggleCreditFilter'));
+  assert.ok(js.includes('window.clearCreditFilter'));
+  assert.ok(js.includes("querySelectorAll('#desktop-view .card')"));
+  assert.ok(js.includes('card.dataset.creditTags'), 'JS側がdata-credit-tags属性（DOMではdataset.creditTags）を参照していません');
 });

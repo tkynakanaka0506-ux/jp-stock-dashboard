@@ -47,7 +47,7 @@ import {
   OVERHEAT_KAIRI, hasPrecursor, PRECURSOR_GOOD_FIELDS, PRECURSOR_CAUTION_FIELDS, VERDICT_SEVERITY,
   buildScoreParts, buyScore, buyScoreRiskPenalty, expectationScore, earningsSurpriseScore, confidenceTier, effectiveScore, badChipSignals,
   entryPriorityScore, tenbaggerDifficultyLabel, riskLevel, riskCoverage, repricingGapBreakdown, REPRICING_GAP, evaluationAxes,
-  clusterConfirmation, creditSupplyBreakdown, ambushTimingBreakdown, financialQualityBreakdown,
+  clusterConfirmation, creditSupplyBreakdown, ambushTimingBreakdown, financialQualityBreakdown, CREDIT_PATTERN,
 } from './indicators.mjs';
 import { loadEarningsCalendar } from './sbi.mjs';
 import { loadHolidays, isMarketHoliday } from './holidays.mjs';
@@ -949,6 +949,110 @@ export function consensusEvidenceBlock(r) {
       </div>`;
 }
 
+// 第9優先改修 Phase6（ユーザー提案）: creditSupplyQualitySignal
+// （indicators.mjs）の表示。信用買残の重さ（日数）は、SCOREでは固定
+// 閾値化していないが、表示用の帯としてなら0.5日/1日を境に「軽い/
+// やや重い/重い」を出す（ユーザー提案どおり。銘柄ごとの流動性差が
+// 大きいため、SCORE側の閾値としては使わない）。
+function buyPressureBandLabel(days) {
+  if (!Number.isFinite(days)) return null;
+  if (days < 0.5) return '軽い';
+  if (days <= 1.0) return 'やや重い';
+  return '重い';
+}
+
+// creditAsOf（"26/09/18"のような2桁年/ゼロ埋め月日）をカード表示用に
+// "9/18"へ短縮する（年は当年表示が前提の週次テーブルのため省略）。
+function formatCreditAsOf(dateStr) {
+  const m = /^\d{2}\/(\d{2})\/(\d{2})$/.exec(dateStr ?? '');
+  if (!m) return dateStr ?? '—';
+  return `${Number(m[1])}/${Number(m[2])}`;
+}
+
+const CREDIT_PATTERN_ARROWS = {
+  CLEANUP: '株価 ↓ × 買残 ↓',
+  OVERHANG_BUILDUP: '株価 ↓ × 買残 ↑',
+  SUPPLY_IMPROVING: '株価 ↑ × 買残 ↓',
+  LEVERAGED_RISE: '株価 ↑ × 買残 ↑',
+};
+
+const BOUNCE_QUALITY_TEXT = {
+  IMPROVING: { arrow: '株価 ↑ × 買残 ↓', label: '需給改善' },
+  WEAK: { arrow: '株価 ↑', label: '信用整理を伴わない反発' },
+  PENDING: { arrow: '株価 ↑ × 出来高 ↑', label: '信用データ未反映（確認中）' },
+};
+
+export function creditSupplyQualityBlock(r) {
+  const cs = r.creditSupplyQuality;
+  if (!cs || !cs.checked) return '';
+  const signed = (v) => (Number.isFinite(v) ? `${v >= 0 ? '▲' : '▼'}${Math.abs(v)}%` : '—');
+
+  const pressureLabel = buyPressureBandLabel(cs.buyPressureDays);
+  const pressureRow = Number.isFinite(cs.buyPressureDays)
+    ? `<div class="csq-row"><span class="csq-k">買残負担</span><span class="csq-v">${cs.buyPressureDays}日</span><span class="csq-tag">${esc(pressureLabel)}</span></div>`
+    : '';
+
+  const patternArrow = cs.pattern ? CREDIT_PATTERN_ARROWS[cs.pattern] : null;
+  const patternLabel = cs.pattern ? CREDIT_PATTERN[cs.pattern]?.label : null;
+  const patternBlock = patternArrow
+    ? `<div class="csq-sub"><div class="csq-sub-head">需給変化</div><div class="csq-sub-arrow">${esc(patternArrow)}</div><div class="csq-sub-result">→ ${esc(patternLabel)}</div></div>`
+    : '';
+
+  const bq = cs.bounceQuality ? BOUNCE_QUALITY_TEXT[cs.bounceQuality] : null;
+  const bounceBlock = bq
+    ? `<div class="csq-sub"><div class="csq-sub-head">反発品質</div><div class="csq-sub-arrow">${esc(bq.arrow)}${Number.isFinite(cs.avgVolumeRatio) ? `<br>出来高 ${cs.avgVolumeRatio}×` : ''}</div><div class="csq-sub-result">→ ${esc(bq.label)}</div></div>`
+    : '';
+
+  return `<div class="credit-supply">
+        <div class="csq-head">信用需給</div>
+        <div class="csq-row"><span class="csq-k">買残</span><span class="csq-v">${Number.isFinite(cs.buyBalance) ? cs.buyBalance.toLocaleString() : '—'}株</span><span class="csq-chg ${cs.buyChangePct >= 0 ? 'up' : 'down'}">${signed(cs.buyChangePct)}</span></div>
+        <div class="csq-row"><span class="csq-k">売残</span><span class="csq-v">${Number.isFinite(cs.sellBalance) ? cs.sellBalance.toLocaleString() : '—'}株</span><span class="csq-chg ${cs.sellChangePct >= 0 ? 'up' : 'down'}">${signed(cs.sellChangePct)}</span></div>
+        <div class="csq-row"><span class="csq-k">信用倍率</span><span class="csq-v">${fmt(cs.creditRatio, '倍')}</span></div>
+        ${pressureRow}
+        ${patternBlock}
+        ${bounceBlock}
+        <div class="csq-foot">最終信用残 ${esc(formatCreditAsOf(cs.creditAsOf))}${Number.isFinite(cs.creditDataAgeDays) && cs.creditDataAgeDays > 0 ? `（${cs.creditDataAgeDays}日前）` : ''}</div>
+      </div>`;
+}
+
+// 第9優先改修 Phase6（ユーザー提案）: 信用需給タグでのワンタップ絞り込み。
+// 「下がったけど需給整理が進んでいる銘柄」と「下がったところを信用買いが
+// 拾い続けている銘柄」を区別したい、というユーザー要望への対応。
+// 既存の判定（creditSupplyQualitySignal）をそのまま流用してラベル化する
+// だけで、新しい判定基準は作らない。1銘柄が複数タグに該当することがある
+// （例: SUPPLY_IMPROVINGかつ信用買い重い）。
+export const CREDIT_SUPPLY_TAGS = ['需給改善', '買残整理', '買残積み上がり', '信用買い重い', '買残増加上昇', '安値更新＋買残増'];
+
+export function creditSupplyTags(r) {
+  const cs = r.creditSupplyQuality;
+  if (!cs || !cs.checked) return [];
+  const tags = [];
+  if (cs.pattern === 'SUPPLY_IMPROVING' || cs.bounceQuality === 'IMPROVING') tags.push('需給改善');
+  if (cs.pattern === 'CLEANUP') tags.push('買残整理');
+  if (cs.pattern === 'OVERHANG_BUILDUP') tags.push('買残積み上がり');
+  if (buyPressureBandLabel(cs.buyPressureDays) === '重い') tags.push('信用買い重い');
+  if (cs.pattern === 'LEVERAGED_RISE') tags.push('買残増加上昇');
+  if (cs.lowBreakBuyBuildUp === true) tags.push('安値更新＋買残増');
+  return tags;
+}
+
+// 複数タグを選んだ場合はAND（絞り込みが進むほど対象が狭まる）にする。
+// タグはほぼ排他的なcreditPattern由来（同時に複数該当しない）のため、
+// 2つ選ぶと「その組み合わせに完全一致する銘柄だけ」になる想定（例:
+// 「需給改善」×「信用買い重い」＝需給は改善しつつまだ買い残の絶対量は
+// 重い銘柄、のような絞り込み）。クリックしたタグ名をdata-tagとして
+// button要素に持たせ、JS側（toggleCreditFilter）でトグルする。
+export function creditFilterBar() {
+  const chips = CREDIT_SUPPLY_TAGS
+    .map((t) => `<button type="button" class="credit-filter-chip" data-tag="${esc(t)}" onclick="toggleCreditFilter('${esc(t)}')">${esc(t)}</button>`)
+    .join('');
+  return `<div class="credit-filter-bar" id="credit-filter-bar">
+    <span class="credit-filter-label">信用需給で絞り込み</span>
+    ${chips}
+    <button type="button" class="credit-filter-clear" onclick="clearCreditFilter()">クリア</button>
+  </div>`;
+}
+
 // 配当金推移（円/株・実績）と増配/減配履歴を表示する。IR Bankの
 // dividendページを既に取得済み（dividendPeak算出のため）なので、
 // 追加リクエストなしで表示できる。
@@ -1292,7 +1396,7 @@ export function policyThemeComparisonSection(comparisons) {
   </details>`;
 }
 
-function card(r, i, opts = {}) {
+export function card(r, i, opts = {}) {
   const rankCls = r.rank === 'S' ? 's-rank' : r.rank === 'A' ? 'a-rank' : '';
   const verdict = ambushVerdict(r);
   const overheat = overheatSignal(r.kairi);
@@ -1309,9 +1413,10 @@ function card(r, i, opts = {}) {
     .map((c) => `<span class="chip mint" title="${esc(c.date)} ${esc(c.title)}">${esc(c.label)}</span>`).join('');
   const warnChips = (r.warnings ?? []).slice(0, 2)
     .map((c) => `<span class="chip red" title="${esc(c.date)} ${esc(c.title)}">${esc(c.label)}</span>`).join('');
+  const creditTags = creditSupplyTags(r);
 
   return `
-      <article class="card ${rankCls}" id="card-${esc(r.code)}" style="--i:${i}">
+      <article class="card ${rankCls}" id="card-${esc(r.code)}" style="--i:${i}" data-credit-tags="${esc(creditTags.join(','))}">
         <span class="br tl"></span><span class="br tr"></span><span class="br bl"></span><span class="br br2"></span>
         <header class="c-head">
           <div class="ident">
@@ -1358,6 +1463,7 @@ function card(r, i, opts = {}) {
         ${peerComparisonBlock(r)}
         ${dividendTrendBlock(r)}
         ${repricingLagBlock(r, { isUs: false })}
+        ${creditSupplyQualityBlock(r)}
 
         <footer class="c-foot">
           ${marketChip(r.market)}
@@ -3492,6 +3598,34 @@ async function main() {
   .repricing-caveat{margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);
                      font:500 12px/1.5 var(--mono);color:var(--amber);letter-spacing:.01em}
 
+  /* ── 第9優先改修 Phase6: 信用需給（creditSupplyQualitySignal） ── */
+  .credit-supply{margin-top:13px;padding:9px 12px;border:1px solid var(--line);border-radius:9px;
+                  background:rgba(9,14,24,.72);font:500 13px/1.5 var(--mono)}
+  .csq-head{color:var(--dim);letter-spacing:.06em;font-size:11.5px;margin-bottom:6px}
+  .csq-row{display:flex;align-items:baseline;gap:8px;margin-bottom:3px}
+  .csq-k{color:var(--dim);min-width:5.2em}
+  .csq-v{color:var(--txt);font-weight:700}
+  .csq-chg{margin-left:auto}
+  .csq-tag{color:var(--amber);font-size:11.5px}
+  .csq-sub{margin-top:7px;padding-top:7px;border-top:1px dashed var(--line)}
+  .csq-sub-head{color:var(--dim);letter-spacing:.04em;font-size:11.5px;margin-bottom:3px}
+  .csq-sub-arrow{color:var(--txt)}
+  .csq-sub-result{color:var(--mint);font-weight:700;margin-top:2px}
+  .csq-foot{margin-top:7px;padding-top:6px;border-top:1px dashed var(--line);
+             color:var(--dim);font-size:11.5px}
+
+  /* ── 第9優先改修 Phase6: 信用需給タグの絞り込みバー ── */
+  .credit-filter-bar{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:10px 0}
+  .credit-filter-label{color:var(--dim);font:500 12px/1 var(--mono);letter-spacing:.04em}
+  .credit-filter-chip{font:600 12px/1 var(--mono);color:var(--dim);letter-spacing:.02em;
+                       background:rgba(9,14,24,.72);border:1px solid var(--line);border-radius:999px;
+                       padding:6px 12px;cursor:pointer;transition:all .15s}
+  .credit-filter-chip:hover{border-color:var(--mint)}
+  .credit-filter-chip.is-active{color:#04140f;background:var(--mint);border-color:var(--mint);font-weight:700}
+  .credit-filter-clear{font:500 12px/1 var(--mono);color:var(--dim);background:transparent;
+                        border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+  .credit-filter-clear:hover{color:var(--txt);border-color:var(--txt)}
+
   .meta{display:flex;flex-wrap:wrap;gap:11px;margin-top:11px;
         font:500 13px/1 var(--mono);color:var(--dim);letter-spacing:.08em}
   .meta b{font-weight:600}
@@ -3817,6 +3951,8 @@ ${buildMobileApp({ now, later, smart, tenbaggerCandidates, macro, amb })}
     ${readout('LAST SYNC', new Date().toLocaleTimeString('ja-JP', { timeZone: 'Asia/Tokyo', hour: '2-digit', minute: '2-digit' }), ' JST')}
   </div>
 
+  ${creditFilterBar()}
+
   ${beginnerGuide()}
 
   ${section('a', '🔥', 'AMBUSH NOW',
@@ -3908,6 +4044,35 @@ ${buildMobileApp({ now, later, smart, tenbaggerCandidates, macro, amb })}
 </div>
 </div><!-- /#desktop-view -->
 <script>
+// 第9優先改修 Phase6（ユーザー提案）: 信用需給タグのワンタップ絞り込み。
+// card()側で各カードのarticleにdata-credit-tags（カンマ区切り）を
+// 埋め込み済み（creditSupplyTags(r)、scraper.mjs参照）。ここではその
+// 属性を見てカードの表示/非表示を切り替えるだけで、新しい判定は行わない。
+// 複数タグ選択時はAND（絞り込みが進むほど対象が狭まる）。
+(function () {
+  var active = new Set();
+  window.toggleCreditFilter = function (tag) {
+    if (active.has(tag)) active.delete(tag); else active.add(tag);
+    applyCreditFilter();
+  };
+  window.clearCreditFilter = function () {
+    active.clear();
+    applyCreditFilter();
+  };
+  function applyCreditFilter() {
+    document.querySelectorAll('.credit-filter-chip').forEach(function (btn) {
+      btn.classList.toggle('is-active', active.has(btn.dataset.tag));
+    });
+    var activeList = Array.from(active);
+    document.querySelectorAll('#desktop-view .card').forEach(function (card) {
+      if (!activeList.length) { card.style.display = ''; return; }
+      var tags = (card.dataset.creditTags || '').split(',').filter(Boolean);
+      var matches = activeList.every(function (t) { return tags.indexOf(t) !== -1; });
+      card.style.display = matches ? '' : 'none';
+    });
+  }
+})();
+
 // 初心者ガイドの開閉状態を覚えておく。60秒ごとの自動リロードのたびに
 // サーバー側では常にopen属性付きで生成しているため、これが無いと
 // 一度読んで畳んだユーザーでも1分後に強制的に再展開されてしまう。
