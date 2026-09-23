@@ -582,3 +582,75 @@ test('CASE J: creditSupplyTimeline.tagsは既存creditSupplyTags(r)の結果と�
   const tl = creditSupplyTimeline({ weekly: timelineWeekly, creditSupplyQuality: cs });
   assert.deepEqual(tl.tags, creditSupplyTags({ creditSupplyQuality: cs }));
 });
+
+// ==================================================================
+// 棚卸し（ユーザー指摘）で発覚した3件の未対応の再発防止テスト。
+// 項目3・4・7（ホバー詳細）、項目9（安値更新＋買残増マーカー）、
+// 項目6（日付ラベルは表示点数ではなく画面幅で切り替える）。
+// ==================================================================
+
+test('項目3・4・7 再発防止: 買残バー・売残線・株価線のいずれにも各観測点の詳細（日付・株価・買残・買残前回比・売残・売残前回比・信用倍率）がSVG<title>として埋め込まれている', () => {
+  const tl = creditSupplyTimeline({ weekly: timelineWeekly });
+  const html = creditSupplyTimelineBlock({ creditSupplyTimeline: tl });
+  const titles = [...html.matchAll(/<title>([\s\S]*?)<\/title>/g)].map((m) => m[1]);
+  assert.ok(titles.length > 0, 'SVGに<title>（ホバー詳細）が1つも見つかりません');
+  // 最新点（2026-09-18、買残1,240,000株、前回比-6.1%、信用倍率20倍）の詳細が
+  // 少なくとも1つのtitleに含まれていること（買残バー由来のtitleで確認できる）。
+  const latestTitle = titles.find((t) => t.includes('2026/09/18'));
+  assert.ok(latestTitle, '最新点(2026/09/18)のtitleが見つかりません');
+  assert.ok(latestTitle.includes('買残 1,240,000株'));
+  assert.ok(latestTitle.includes('前回比-6.1%'));
+  // 売残線・株価線側のtitleには売残・信用倍率も含まれる（項目4「買残/売残/
+  // 信用倍率を同時表示」・項目7「株価含む全項目」）。
+  const detailedTitle = titles.find((t) => t.includes('2026/09/18') && t.includes('売残') && t.includes('信用倍率'));
+  assert.ok(detailedTitle, '売残・信用倍率を含む詳細titleが見つかりません（項目4・7）');
+  assert.ok(detailedTitle.includes('株価 ¥3,420'));
+});
+
+test('項目9 再発防止: lowBreakBuyBuildUpが最新点で該当していれば、株価線の該当点に視覚的なマーカー(ctl-marker)が描かれる', () => {
+  // 最新週で20日安値更新×買残増加が成立する状況を作る（単調下落の日次終値
+  // ＋最新週の信用買い残が前週比プラス）。
+  const decliningCloses = Array.from({ length: 20 }, (_, i) => 1100 - i);
+  const weekly = [
+    { date: '26/09/18', buy: 1_600_000, sell: 74_000, loanRatio: 21.5, close: decliningCloses.at(-1) },
+    { date: '26/09/11', buy: 1_500_000, sell: 72_000, loanRatio: 21.2, close: decliningCloses.at(-1) + 10 },
+  ];
+  const cs = creditSupplyQualitySignal({
+    weekly, closes: decliningCloses, volumes: Array.from({ length: 20 }, () => 100_000),
+    price: decliningCloses.at(-1), today: '2026-09-18',
+  });
+  assert.equal(cs.lowBreakBuyBuildUp, true); // 前提の確認
+  const tl = creditSupplyTimeline({ weekly, creditSupplyQuality: cs });
+  assert.ok(tl.tags.includes('安値更新＋買残増'));
+  const html = creditSupplyTimelineBlock({ creditSupplyTimeline: tl });
+  assert.ok(html.includes('ctl-marker'), '安値更新＋買残増が該当しているのに株価線にマーカーが描かれていません');
+});
+
+test('項目9 再発防止: lowBreakBuyBuildUpが該当していなければマーカーは描かない（過去分への遡及マーカーを作らない、という制約の裏返しの確認）', () => {
+  const tl = creditSupplyTimeline({ weekly: timelineWeekly }); // creditSupplyQualityを渡さない＝tags:[]
+  const html = creditSupplyTimelineBlock({ creditSupplyTimeline: tl });
+  assert.ok(!html.includes('ctl-marker'));
+});
+
+test('項目6 再発防止: 日付ラベルは表示点数に関わらず全点をDOMに出力する（画面幅はCSSのmedia queryで切り替える。表示点数で始点・終点だけに絞らない）', () => {
+  const tl = creditSupplyTimeline({ weekly: timelineWeekly }); // 6点
+  const html = creditSupplyTimelineBlock({ creditSupplyTimeline: tl });
+  for (const p of tl.points) {
+    assert.ok(html.includes(formatDateForAssert(p.date)), `日付ラベル${p.date}がDOMに出力されていません`);
+  }
+  // 先頭・末尾はctl-date-edge、中間はctl-date-midクラスが付いている
+  const edgeCount = [...html.matchAll(/ctl-date-edge/g)].length;
+  const midCount = [...html.matchAll(/ctl-date-mid/g)].length;
+  assert.equal(edgeCount, 2);
+  assert.equal(midCount, tl.points.length - 2);
+});
+
+test('項目6 再発防止: .ctl-date-midを狭い画面（max-width:420px）でだけ隠すCSSが存在する', () => {
+  const src = fs.readFileSync(path.join(root, 'scraper.mjs'), 'utf-8');
+  assert.ok(/@media\(max-width:420px\)\{\.ctl-date-mid\{display:none\}\}/.test(src), '.ctl-date-midを狭い画面で隠すmedia queryが見つかりません');
+});
+
+function formatDateForAssert(iso) {
+  const m = /^\d{4}-(\d{2})-(\d{2})$/.exec(iso ?? '');
+  return m ? `${m[1]}/${m[2]}` : iso;
+}

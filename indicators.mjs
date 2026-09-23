@@ -3161,6 +3161,11 @@ export function buyPressureBandLabel(days) {
 // 両方から使うため、rendering層ではなくここに置く。
 export const CREDIT_SUPPLY_TAGS = ['需給改善', '買残整理', '買残積み上がり', '信用買い重い', '買残増加上昇', '安値更新＋買残増'];
 
+// 第9優先改修 Phase7（ユーザー提案）: SCORE Shadow Checkが「取り除く」
+// フィールド名の単一情報源。screener.mjs/scraper.mjsの両方から同じ
+// リストを参照する（別々に持つと片方だけ更新し忘れるリスクがある）。
+export const SUPPLY_QUALITY_SHADOW_KEYS = ['creditSupplyQuality', 'creditSupplyTimeline', 'creditPattern', 'bounceQuality', 'lowBreakBuyBuildup'];
+
 export function creditSupplyTags(r) {
   const cs = r.creditSupplyQuality;
   if (!cs || !cs.checked) return [];

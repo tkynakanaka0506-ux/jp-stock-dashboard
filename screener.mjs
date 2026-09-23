@@ -23,7 +23,7 @@ import {
   sectorRotationSignal, SECTOR_ROTATION, marginOverhangSignal, buyingDemandSignal, receivablesAnomalySignal, dividendYieldPeakSignal,
   institutionalShortSignal, majorShareholderSignal, pbrHistoricalLowSignal, hiddenGemSignal,
   retailExpectationSignal, returnPct, priceLevelVsRange, volumeRatio, creditTrend,
-  progressStreakSignal, dividendPotentialSignal, hiddenAssetSignal, creditFloatSignal, creditSupplyQualitySignal, creditSupplyTimeline, consensusTrapSignal,
+  progressStreakSignal, dividendPotentialSignal, hiddenAssetSignal, creditFloatSignal, creditSupplyQualitySignal, creditSupplyTimeline, SUPPLY_QUALITY_SHADOW_KEYS, consensusTrapSignal,
   latestProfitYoyPct, repricingLagScore, repricingGapScore, evEbitda, buildScoreParts, buyScore, buyScoreRiskPenalty,
 } from './indicators.mjs';
 import { evaluate } from './tdnet.mjs';
@@ -670,6 +670,24 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
       progressStreak, hasMonthly: ev.hasMonthly,
     }).buy, buyScoreRiskPenalty(riskPenaltyInputs));
 
+    // 第9優先改修 Phase7（ユーザー提案）: SCORE Shadow Check。信用需給関連の
+    // フィールドが将来誤ってriskPenaltyInputs/buildScorePartsへ混入した場合、
+    // health_check.mjsが本番データから自動検知できるようにする。同じ入力から
+    // 対象キーだけ除いた複製でもう一度スコアを計算するだけで、追加の
+    // ネットワークリクエスト・スキャン時間の増加は発生しない（実際の判定に
+    // 使うのは上のbuyScoreForBucketのみ。shadow側はチェック専用で表示にも
+    // SCOREにも使わない）。
+    const shadowRiskPenaltyInputs = { ...riskPenaltyInputs };
+    const shadowScoreParts = {
+      score, repricingLag, consensusTrap, daysLeft: s.daysLeft,
+      netNet, lowPbr, hiddenGem, pbrHistoricalLow,
+      sectorChangePct: sec?.changePct ?? null,
+      progressStreak, hasMonthly: ev.hasMonthly,
+    };
+    for (const k of SUPPLY_QUALITY_SHADOW_KEYS) { delete shadowRiskPenaltyInputs[k]; delete shadowScoreParts[k]; }
+    const buyScoreShadow = buyScore(buildScoreParts(shadowScoreParts).buy, buyScoreRiskPenalty(shadowRiskPenaltyInputs));
+    const scoreInvariantOk = buyScoreForBucket.score === buyScoreShadow.score;
+
     results.push({
       code: s.code,
       name: s.name,
@@ -762,6 +780,7 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
       consensusTrap,
       repricingLag,
       buyScore: buyScoreForBucket, // v7.3改修 項目5: NOWのゲートに使う。scraper.mjs側のattachScoresが表示用に再計算して上書きする
+      scoreInvariantOk, // 第9優先改修 Phase7: health_check.mjsが集計するチェック専用フィールド（表示・SCOREには使わない）
       // v7.3改修 項目5: AMBUSHを3段階化（PRE-AMBUSH/WATCH/NOW）。
       // NOW条件の「BUY SCORE 70以上」は指示書上、新設のBUY SCORE
       // （100点）を指す。以前は旧SCORE（composite()の素点）で判定して

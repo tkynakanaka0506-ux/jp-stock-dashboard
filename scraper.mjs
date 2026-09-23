@@ -48,7 +48,7 @@ import {
   buildScoreParts, buyScore, buyScoreRiskPenalty, expectationScore, earningsSurpriseScore, confidenceTier, effectiveScore, badChipSignals,
   entryPriorityScore, tenbaggerDifficultyLabel, riskLevel, riskCoverage, repricingGapBreakdown, REPRICING_GAP, evaluationAxes,
   clusterConfirmation, creditSupplyBreakdown, ambushTimingBreakdown, financialQualityBreakdown, CREDIT_PATTERN,
-  CREDIT_SUPPLY_TAGS, creditSupplyTags, buyPressureBandLabel, creditSupplyTimeline,
+  CREDIT_SUPPLY_TAGS, creditSupplyTags, buyPressureBandLabel, creditSupplyTimeline, SUPPLY_QUALITY_SHADOW_KEYS,
 } from './indicators.mjs';
 import { loadEarningsCalendar } from './sbi.mjs';
 import { loadHolidays, isMarketHoliday } from './holidays.mjs';
@@ -63,6 +63,9 @@ import { loadListedIssues } from './jpx.mjs';
 import { loadPolicyCatalystByCode } from './policy_catalyst.mjs';
 import { computePolicyCatalystScore } from './policy_catalyst_score.mjs';
 import { recordPolicyCatalystSnapshot, policyCatalystBacktestStatus } from './policy_catalyst_backtest.mjs';
+import { computeLogicFingerprint } from './logic_fingerprint.mjs';
+import { computeHealthCheck, HEALTH_STATUS } from './health_check.mjs';
+import { latestPriorHealth, recordHealthSnapshot } from './health_history.mjs';
 import { recordAmbushTimingSnapshot, ambushTimingBacktestStatus } from './ambush_timing_backtest.mjs';
 import { groupPolicyCatalystByTheme, AXIS_LABEL } from './policy_catalyst_compare.mjs';
 import { loadAiCapexCatalystByCode } from './ai_capex_catalyst.mjs';
@@ -1038,9 +1041,26 @@ function formatTimelineDate(iso) {
   return m ? `${m[1]}/${m[2]}` : (iso ?? '—');
 }
 
+// 再発防止（棚卸しで発覚した抜け: 項目3・4・7で要求していた「ホバーで
+// 日付・買残・前回比」「買残/売残/信用倍率の同時表示」を、SVGを描く
+// ことに気を取られて実装し忘れていた）。各観測点の詳細を1箇所にまとめ、
+// SVG<title>（ネイティブのブラウザツールチップ、追加JS不要）として
+// 全ての行（買残バー・売残線・株価線）から共有する。
+function timelinePointTooltip(p) {
+  const dateSlash = (p.date ?? '').replaceAll('-', '/');
+  const fmtPct = (v) => (Number.isFinite(v) ? `${v >= 0 ? '+' : ''}${v}%` : '不明');
+  const lines = [dateSlash];
+  if (Number.isFinite(p.close)) lines.push(`株価 ¥${p.close.toLocaleString()}`);
+  if (Number.isFinite(p.buyBalance)) lines.push(`買残 ${p.buyBalance.toLocaleString()}株（前回比${fmtPct(p.buyChangePct)}）`);
+  if (Number.isFinite(p.sellBalance)) lines.push(`売残 ${p.sellBalance.toLocaleString()}株（前回比${fmtPct(p.sellChangePct)}）`);
+  if (Number.isFinite(p.creditRatio)) lines.push(`信用倍率 ${p.creditRatio}倍`);
+  return lines.join('\n');
+}
+
 // 信用買残バー（横棒グラフ）。最大値を基準に正規化（＝同一銘柄内の
 // 時系列比較が目的。銘柄間比較のための絶対値スケールではない、という
-// ユーザー方針どおり）。
+// ユーザー方針どおり）。各バーに<title>で日付・買残・前回比を付ける
+// （項目3）。
 function timelineBuyBars(points, w, h) {
   const vals = points.map((p) => p.buyBalance);
   const finite = vals.filter(Number.isFinite);
@@ -1048,12 +1068,13 @@ function timelineBuyBars(points, w, h) {
   const n = vals.length || 1;
   const gap = w / n;
   const barW = Math.max(gap * 0.55, 2);
-  const bars = vals.map((v, i) => {
+  const bars = points.map((p, i) => {
+    const v = p.buyBalance;
     if (!Number.isFinite(v) || max <= 0) return '';
     const barH = Math.max((v / max) * (h - 3), 1);
     const x = i * gap + (gap - barW) / 2;
     const y = h - barH;
-    return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${barH.toFixed(1)}" rx="1.5" fill="#22ffc4" fill-opacity="0.85"/>`;
+    return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${barH.toFixed(1)}" rx="1.5" fill="#22ffc4" fill-opacity="0.85"><title>${esc(timelinePointTooltip(p))}</title></rect>`;
   }).join('');
   return `<svg class="ctl-svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${bars}</svg>`;
 }
@@ -1061,8 +1082,12 @@ function timelineBuyBars(points, w, h) {
 // 売残・株価用の細線。null（データ欠損）をまたぐ区間は補間せず線を切る
 // （ユーザー方針「推測値による補完は禁止」）ため、null点で複数の
 // <polyline>に分割する。1〜2点しか有効値が無い場合は線を引かず終値点
-// だけ打つ（折れ線として意味を持たないため）。
-function timelineLine(values, w, h, color, { pad = 2, dot = false } = {}) {
+// だけ打つ（折れ線として意味を持たないため）。各有効点に透明な当たり
+// 判定円＋<title>を重ね、ホバーで買残/売残/信用倍率を同時表示する
+// （項目4・7）。markLastIndexが立っている点（安値更新＋買残増が該当
+// した最新観測点。過去分は判定データが無いため付けない、事前確認済み）
+// には目立つマーカーを重ねる（項目9）。
+function timelineLine(points, values, w, h, color, { pad = 2, dot = false, markLastIndex = false } = {}) {
   const finite = values.filter(Number.isFinite);
   if (!finite.length) return `<svg class="ctl-svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"></svg>`;
   const min = Math.min(...finite), max = Math.max(...finite);
@@ -1082,8 +1107,17 @@ function timelineLine(values, w, h, color, { pad = 2, dot = false } = {}) {
     const pts = seg.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
     return `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>`;
   }).join('');
-  const dots = dot ? xy.filter(Boolean).map(([x, y]) => `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.6" fill="${color}"/>`).join('') : '';
-  return `<svg class="ctl-svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${polylines}${dots}</svg>`;
+  const dots = dot ? xy.map((p) => (p ? `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="1.6" fill="${color}"/>` : '')).join('') : '';
+  // ホバー用の当たり判定円（見た目には出さず<title>だけ持たせる。半径を
+  // 実際の点より大きくして指/カーソルで当てやすくする）。
+  const hitTargets = xy.map((p, i) => (p
+    ? `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="6" fill="transparent"><title>${esc(timelinePointTooltip(points[i]))}</title></circle>`
+    : '')).join('');
+  const lastXy = xy.at(-1);
+  const marker = (markLastIndex && lastXy)
+    ? `<circle class="ctl-marker" cx="${lastXy[0].toFixed(1)}" cy="${lastXy[1].toFixed(1)}" r="4" fill="none" stroke="var(--amber,#ffb43d)" stroke-width="1.6"/>`
+    : '';
+  return `<svg class="ctl-svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${polylines}${dots}${marker}${hitTargets}</svg>`;
 }
 
 const CTL_W = 160, CTL_BAR_H = 26, CTL_LINE_H = 16;
@@ -1099,14 +1133,21 @@ export function creditSupplyTimelineBlock(r) {
   const pts = tl.points;
   const n = pts.length;
   const priceUp = Number.isFinite(pts.at(-1)?.close) && Number.isFinite(pts[0]?.close) && pts.at(-1).close >= pts[0].close;
+  const lowBreakOnLatest = tl.tags.includes('安値更新＋買残増');
 
   const buyBars = timelineBuyBars(pts, CTL_W, CTL_BAR_H);
-  const sellLine = timelineLine(pts.map((p) => p.sellBalance), CTL_W, CTL_LINE_H, '#8aa0c0');
-  const priceLine = timelineLine(pts.map((p) => p.close), CTL_W, CTL_LINE_H, priceUp ? '#22ffc4' : '#ff3d71', { dot: true });
+  const sellLine = timelineLine(pts, pts.map((p) => p.sellBalance), CTL_W, CTL_LINE_H, '#8aa0c0');
+  const priceLine = timelineLine(pts, pts.map((p) => p.close), CTL_W, CTL_LINE_H, priceUp ? '#22ffc4' : '#ff3d71', { dot: true, markLastIndex: lowBreakOnLatest });
 
-  const dateLabels = n <= 4
-    ? `<div class="ctl-dates">${pts.map((p) => `<span>${esc(formatTimelineDate(p.date))}</span>`).join('')}</div>`
-    : `<div class="ctl-dates ctl-dates-endpoints"><span>${esc(formatTimelineDate(pts[0].date))}</span><span class="ctl-date-arrow">→</span><span>${esc(formatTimelineDate(pts.at(-1).date))}</span></div>`;
+  // 再発防止（棚卸しで発覚した抜け: 項目6は「画面幅が狭ければ始点・
+  // 終点中心」という表示幅に応じた切り替えだったが、表示点数を基準に
+  // 常に始点・終点だけへ倒していた）。常に全ラベルをDOMには出し、
+  // 中間ラベル（.ctl-date-mid）だけを狭い画面でCSS側（@media）で隠す
+  // ことで、広い画面（デスクトップ）では6点全部が見える。
+  const dateLabels = `<div class="ctl-dates">${pts.map((p, i) => {
+    const isEdge = i === 0 || i === n - 1;
+    return `<span class="${isEdge ? 'ctl-date-edge' : 'ctl-date-mid'}">${esc(formatTimelineDate(p.date))}</span>`;
+  }).join('')}</div>`;
 
   const tagsLine = tl.tags.length
     ? `<div class="ctl-tags">${tl.tags.map((t) => `<span class="ctl-tag">✓ ${esc(t)}</span>`).join('')}</div>`
@@ -2929,9 +2970,22 @@ async function main() {
     const riskPenalty = buyScoreRiskPenalty(r);
     const buy = buyScore(parts.buy, riskPenalty);
     const priority = entryPriorityScore(parts.entryPriority, riskPenalty);
+    // 第9優先改修 Phase7（ユーザー提案）: SCORE Shadow Check。buildScoreParts/
+    // buyScoreRiskPenaltyはrをまるごと受け取る設計のため、ここが
+    // creditSupplyQuality/creditSupplyTimeline等が将来誤ってスコアに
+    // 読まれてしまう実際のリスク箇所（screener.mjs側は限定した入力
+    // オブジェクトを渡す設計なので、ここが本命のチェック地点）。対象
+    // キーを取り除いた複製で同じ計算をもう一度行い、一致するかを
+    // health_check.mjsが読む形でrに記録するだけ（表示にはbuyをそのまま
+    // 使う。shadow側はチェック専用でSCOREには一切影響しない）。
+    const shadowR = { ...r };
+    for (const k of SUPPLY_QUALITY_SHADOW_KEYS) delete shadowR[k];
+    const shadowBuy = buyScore(buildScoreParts(shadowR).buy, buyScoreRiskPenalty(shadowR));
+    const scoreInvariantOk = (r.scoreInvariantOk ?? true) && buy.score === shadowBuy.score;
     return {
       ...r,
       buyScore: buy,
+      scoreInvariantOk,
       expectationScore: expectationScore(parts.expectation),
       earningsSurpriseScore: earningsSurpriseScore(parts.surprise),
       confidenceTier: confidenceTier(buy.confidence),
@@ -3711,8 +3765,11 @@ async function main() {
   .ctl-svg{display:block;flex:1}
   .ctl-dates{display:flex;justify-content:space-between;margin-top:4px;padding-left:2.6em;
              color:var(--dim);font:500 10px/1 var(--mono);letter-spacing:.01em}
-  .ctl-dates-endpoints{justify-content:space-between}
-  .ctl-date-arrow{color:var(--dim);opacity:.6}
+  .ctl-date-edge{color:var(--dim)}
+  /* 項目6再発防止: 表示点数ではなく画面幅で切り替える。広い画面では
+     中間の日付ラベル（.ctl-date-mid）も見せ、狭いスマホ幅では始点・
+     終点（.ctl-date-edge）だけに絞る。 */
+  @media(max-width:420px){.ctl-date-mid{display:none}}
   .ctl-tags{margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);
             display:flex;flex-wrap:wrap;gap:4px 10px}
   .ctl-tag{color:var(--mint);font:600 11px/1.4 var(--mono)}
@@ -4358,6 +4415,45 @@ ${buildMobileApp({ now, later, smart, tenbaggerCandidates, macro, amb })}
 </html>`;
 
   auditGeneratedHtml(html);
+
+  // 第9優先改修 Phase7（ユーザー提案）: Production Health Check。「次回
+  // スキャンを見に行く」のではなく、スキャン自身に自己検査させる。対象は
+  // AMBUSH結果（信用需給関連フィールドを持つのはscreener.mjs側のみ）。
+  // ERROR（SCORE不変条件の破壊・日付不整合・未知のtag・未来日付・
+  // NaN/Infinity・0件化）ならindex.htmlを書き込まず、非ゼロで終了する
+  // （sync_and_push.shの既存の「SCRAPER_EXIT -ne 0ならpushをスキップ」
+  // ゲートがそのまま効く。ワークフロー側の変更は不要）。WARNING/PASSは
+  // 通常どおり書き込みを続ける。GitHub Issue自動作成等の通知連携は
+  // 次段（ユーザー方針で意図的に今回は含めない）。
+  let health = null;
+  try {
+    const gitSha = execFileSync('git', ['rev-parse', '--short', 'HEAD'], { encoding: 'utf-8', cwd: __dirname }).trim();
+    const logicFingerprint = computeLogicFingerprint(__dirname);
+    const generatedAt = new Date().toISOString();
+    health = computeHealthCheck({
+      results: amb.results ?? [],
+      previousHealth: latestPriorHealth(today),
+      logicFingerprint, gitSha, generatedAt, todayIso: today,
+    });
+    recordHealthSnapshot(today, health);
+    if (health.status === HEALTH_STATUS.ERROR) {
+      console.error(`🚨 Production Health Check FAILED（${health.errors.length}件のERROR）`);
+      for (const e of health.errors) console.error(`   - [${e.code}] ${e.message}（対象: ${e.affected.slice(0, 10).join(', ')}${e.affected.length > 10 ? ` 他${e.affected.length - 10}件` : ''}）`);
+    } else if (health.status === HEALTH_STATUS.WARNING) {
+      console.warn(`⚠️ Production Health Check: WARNING ${health.warnings.length}件`);
+      for (const w of health.warnings) console.warn(`   - [${w.code}] ${w.message}`);
+    } else {
+      console.log(`✅ Production Health Check PASS（credit ${health.coverage.creditQualityChecked}件・timeline ${health.coverage.timelineChecked}件・PENDING ${health.coverage.pendingCount}件）`);
+    }
+  } catch (e) {
+    // 健康チェック自体の実行時エラーでサイト生成全体を止めない
+    // （既存のPOLICY CATALYST検証ログ等の記録処理と同じ方針）。
+    console.error(`⚠️ Production Health Checkの実行に失敗しました(${e?.message ?? e})。サイト生成は続行します。`);
+  }
+  if (health?.status === HEALTH_STATUS.ERROR) {
+    process.exit(1);
+  }
+
   fs.writeFileSync(OUT_FILE, html);
   publishToICloud(html);
   if (!NO_OPEN) exec(`open ${JSON.stringify(OUT_FILE)}`);
