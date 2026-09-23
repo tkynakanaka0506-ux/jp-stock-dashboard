@@ -40,12 +40,22 @@ function pushIssue(list, code, message, affectedCode) {
   list.push({ code, message, affected: affectedCode ? [affectedCode] : [] });
 }
 
-// creditSupplyQuality: 未来日付・NaN/Infinity・PENDINGとisStaleの矛盾を検査。
+// creditAsOfのような生の日付文字列が「非空だが正規化に失敗した」ケースを
+// 「未来日付」とは別の異常として検出する（棚卸しで発覚した抜け: future_date
+// チェックはisFutureIsoがnullを渡されると静かにfalseを返すため、壊れた
+// 日付形式そのものを見逃していた）。
+function checkDateFormat(errors, rawDate, code, message) {
+  if (rawDate === null || rawDate === undefined || rawDate === '') return; // 未取得はそもそも対象外（推測しない）
+  if (creditDateToIso(rawDate) === null) pushIssue(errors, 'invalid_date', message, code);
+}
+
+// creditSupplyQuality: 日付形式・未来日付・NaN/Infinity・PENDINGとisStaleの矛盾を検査。
 function checkCreditSupplyIntegrity(results, todayIso) {
   const errors = [];
   for (const r of results) {
     const cs = r.creditSupplyQuality;
     if (!cs || !cs.checked) continue;
+    checkDateFormat(errors, cs.creditAsOf, r.code, 'creditSupplyQuality.creditAsOfの日付形式が不正です');
     const asOfIso = creditDateToIso(cs.creditAsOf);
     if (isFutureIso(asOfIso, todayIso)) pushIssue(errors, 'future_date', '信用残の最終発表日が未来日付になっています', r.code);
     const numericFields = ['buyBalance', 'sellBalance', 'creditRatio', 'buyPressureDays', 'buyPressureValueDays', 'priceChangePct', 'avgVolumeRatio', 'creditDataAgeDays'];
@@ -62,13 +72,18 @@ function checkCreditSupplyIntegrity(results, todayIso) {
   return errors;
 }
 
-// creditSupplyTimeline: 点数上限・日付順序/重複・未来日付・NaN/Infinity。
+// creditSupplyTimeline: 点数上限・日付形式/順序/重複・未来日付・
+// NaN/Infinity・sourceDatesとの突き合わせ（棚卸しで発覚した抜け:
+// 「timeline pointsとweeklyの日付が完全一致するか」を検証する材料が
+// 無かったため、creditSupplyTimeline()側にsourceDates（weekly全体の
+// 日付一覧、indicators.mjs参照）を追加公開し、ここで突き合わせる）。
 function checkTimelineIntegrity(results, todayIso) {
   const errors = [];
   for (const r of results) {
     const tl = r.creditSupplyTimeline;
     if (!tl || !tl.checked) continue;
     if (tl.points.length > 6) pushIssue(errors, 'timeline_too_many_points', 'creditSupplyTimeline.pointsが6件を超えています', r.code);
+    if (tl.points.some((p) => p.date === null)) pushIssue(errors, 'invalid_date', 'creditSupplyTimeline.pointsに日付形式が不正な観測点があります', r.code);
     const dates = tl.points.map((p) => p.date).filter(Boolean);
     if (new Set(dates).size !== dates.length) pushIssue(errors, 'timeline_duplicate_dates', 'creditSupplyTimeline.pointsに同じ日付が重複しています', r.code);
     for (let i = 1; i < dates.length; i++) {
@@ -76,6 +91,12 @@ function checkTimelineIntegrity(results, todayIso) {
     }
     for (const d of dates) {
       if (isFutureIso(d, todayIso)) pushIssue(errors, 'future_date', 'creditSupplyTimelineの観測点が未来日付になっています', r.code);
+    }
+    if (Array.isArray(tl.sourceDates)) {
+      const sourceSet = new Set(tl.sourceDates);
+      if (dates.some((d) => !sourceSet.has(d))) {
+        pushIssue(errors, 'timeline_source_mismatch', 'creditSupplyTimeline.pointsの日付が元のweekly（sourceDates）に存在しません', r.code);
+      }
     }
     for (const p of tl.points) {
       for (const k of ['close', 'buyBalance', 'buyChangePct', 'sellBalance', 'sellChangePct', 'creditRatio']) {
@@ -85,6 +106,32 @@ function checkTimelineIntegrity(results, todayIso) {
         }
       }
     }
+  }
+  return errors;
+}
+
+// UI: 生成後のHTML文字列に埋め込まれたcredit-supply/credit-timelineブロック
+// のSVGタグが壊れていないか（開始/終了タグの数が一致するか）を検査する
+// （棚卸しで発覚した抜け: 項目1「UI」チェックが原文の途中欠落で未実装
+// のままだった）。html文字列を直接読むだけの構造チェックで、レンダリング
+// 関数を呼び直さない（scraper.mjsとの循環importを避けるため。既存の
+// auditGeneratedHtml（scraper.mjs）と同じ「生成済みHTML文字列を正規表現で
+// 監査する」方式を踏襲する）。
+function checkHtmlIntegrity(html) {
+  const errors = [];
+  if (typeof html !== 'string' || !html) return errors;
+  // 需給タイムライン/信用需給ブロック専用のクラス（ctl-svg）だけを対象に、
+  // 開始/終了タグの数が一致するかを見る（ページ全体の<svg>は他機能
+  // （スパークライン等）にも使われているため対象を絞る）。
+  const ctlSvgOpens = (html.match(/<svg class="ctl-svg"/g) ?? []).length;
+  const ctlSvgCloses = ctlSvgOpens > 0 ? (html.match(/<svg class="ctl-svg"[^>]*>[\s\S]*?<\/svg>/g) ?? []).length : 0;
+  if (ctlSvgOpens !== ctlSvgCloses) {
+    pushIssue(errors, 'broken_svg', `需給タイムラインのSVGタグが壊れています（開始${ctlSvgOpens}件・正しく閉じているのは${ctlSvgCloses}件）`);
+  }
+  const timelineHead = (html.match(/需給タイムライン/g) ?? []).length;
+  const timelineFoot = (html.match(/class="ctl-foot"/g) ?? []).length + (html.match(/class="ctl-empty"/g) ?? []).length;
+  if (timelineHead > 0 && timelineHead !== timelineFoot) {
+    pushIssue(errors, 'broken_svg', `需給タイムラインのブロックが完全に閉じていない可能性があります（見出し${timelineHead}件・フッター/空表示${timelineFoot}件）`);
   }
   return errors;
 }
@@ -181,8 +228,12 @@ function compareWithPrevious(coverage, previousHealth) {
 }
 
 // results: AMBUSH結果配列（amb.results）。previousHealth: 直前の
-// health_history_cache.jsonエントリ（無ければ比較をスキップ）。
-export function computeHealthCheck({ results, previousHealth, logicFingerprint, gitSha, generatedAt, todayIso } = {}) {
+// health_history_cache.jsonエントリ（無ければ比較をスキップ）。html:
+// 生成済みのindex.html文字列（省略可。渡さなければUIチェックはスキップ
+// する。渡す場合はauditGeneratedHtmlと同じ「文字列を正規表現で監査する」
+// 方式で、レンダリング関数を呼び直さない＝scraper.mjsとの循環import
+// にならない）。
+export function computeHealthCheck({ results, previousHealth, logicFingerprint, gitSha, generatedAt, todayIso, html } = {}) {
   const list = results ?? [];
   const errors = [];
   const warnings = [];
@@ -192,6 +243,7 @@ export function computeHealthCheck({ results, previousHealth, logicFingerprint, 
   for (const e of checkTimelineIntegrity(list, todayIso)) errors.push(e);
   for (const e of checkTagConsistency(list)) errors.push(e);
   for (const e of checkScoreInvariant(list)) errors.push(e);
+  for (const e of checkHtmlIntegrity(html)) errors.push(e);
 
   const coverage = computeCoverage(list);
   const cmp = compareWithPrevious(coverage, previousHealth);
@@ -204,13 +256,24 @@ export function computeHealthCheck({ results, previousHealth, logicFingerprint, 
   }
 
   const status = errors.length ? HEALTH_STATUS.ERROR : (warnings.length ? HEALTH_STATUS.WARNING : HEALTH_STATUS.PASS);
+  const invalidDateCount = errors.filter((e) => e.code === 'invalid_date').reduce((n, e) => n + e.affected.length, 0);
 
   return {
     status,
     generatedAt: generatedAt ?? null,
     gitSha: gitSha ?? null,
     logicFingerprint: logicFingerprint ?? null,
-    coverage,
+    // ユーザー提示例（項目3）に合わせ、件数系フィールドはトップレベルに
+    // フラットに置く（tagCountsのみ性質上オブジェクトのまま）。
+    stocksChecked: coverage.stocksChecked,
+    creditQualityChecked: coverage.creditQualityChecked,
+    timelineChecked: coverage.timelineChecked,
+    timelineMissing: coverage.timelineMissing,
+    pendingCount: coverage.pendingCount,
+    closeMissingCount: coverage.closeMissingCount,
+    invalidDateCount,
+    tagCounts: coverage.tagCounts,
+    coverage, // 前回比較(compareWithPrevious)がそのまま読める形も維持する
     scoreInvariantFailures: errors.filter((e) => e.code === 'score_invariant_failed').reduce((n, e) => n + e.affected.length, 0),
     tagConsistencyFailures: errors.filter((e) => e.code === 'tag_mismatch' || e.code === 'unknown_tag').reduce((n, e) => n + e.affected.length, 0),
     errors, warnings, info,

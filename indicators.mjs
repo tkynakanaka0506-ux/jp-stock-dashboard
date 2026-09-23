@@ -3219,6 +3219,13 @@ export function creditSupplyTimeline({ weekly, creditSupplyQuality } = {}) {
     latestDate: points.at(-1)?.date ?? null,
     pending: creditSupplyQuality?.isStale === true,
     tags: creditSupplyQuality ? creditSupplyTags({ creditSupplyQuality }) : [],
+    // 棚卸しで発覚した抜け（項目1「timeline pointsとweeklyの日付が完全
+    // 一致するか」）の再発防止用。weekly全体（表示している6件より多い
+    // 場合がある）の日付だけを軽量な配列として公開する（buy/sell/close等
+    // の実データは含めず、health_check.mjsが「pointsの各日付が本当に
+    // weekly由来か」を独立して検証できるようにするだけ。ペイロードを
+    // 太らせないよう日付文字列の配列に絞る）。
+    sourceDates: weekly.map((w) => creditDateToIso(w.date)).filter(Boolean),
   };
 }
 

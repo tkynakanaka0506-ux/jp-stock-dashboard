@@ -4434,6 +4434,7 @@ ${buildMobileApp({ now, later, smart, tenbaggerCandidates, macro, amb })}
       results: amb.results ?? [],
       previousHealth: latestPriorHealth(today),
       logicFingerprint, gitSha, generatedAt, todayIso: today,
+      html, // 棚卸しで発覚した抜け（UIチェック）への対応。生成済みHTML文字列を渡す
     });
     recordHealthSnapshot(today, health);
     if (health.status === HEALTH_STATUS.ERROR) {

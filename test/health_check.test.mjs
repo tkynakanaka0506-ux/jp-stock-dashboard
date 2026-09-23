@@ -29,6 +29,7 @@ function healthyResult(overrides = {}) {
         { date: '2026-09-11', close: 3350, buyBalance: 1_240_000, buyChangePct: -11.4, sellBalance: 62_000, sellChangePct: -8.8, creditRatio: 20 },
       ],
       latestDate: '2026-09-11', pending: false, tags,
+      sourceDates: ['2026-09-04', '2026-09-11'],
       ...overrides.creditSupplyTimeline,
     },
     ...overrides.top,
@@ -166,6 +167,87 @@ test('checked:false/データ無しの銘柄は検査対象から除外される
   assert.equal(h.status, HEALTH_STATUS.PASS);
   assert.equal(h.coverage.creditQualityChecked, 0);
   assert.equal(h.coverage.timelineChecked, 0);
+});
+
+// ==================================================================
+// 棚卸し（ユーザー指摘）で発覚した4件の追加対応。
+// ①UIチェック(SVG破損検出) ②日付形式そのものの不正 ③timeline points
+// とweekly(sourceDates)の突き合わせ ④健康状態JSONのフラット構造。
+// ==================================================================
+
+test('①再発防止: 需給タイムラインのSVGタグ数が開始・終了で一致しなければERROR（broken_svg）', () => {
+  const html = '<article><div class="credit-timeline"><div class="ctl-head">需給タイムライン</div><svg class="ctl-svg" width="1" height="1"></article>'; // </svg>が無い
+  const h = computeHealthCheck({ results: [healthyResult()], todayIso: '2026-09-11', html });
+  assert.equal(h.status, HEALTH_STATUS.ERROR);
+  assert.ok(h.errors.some((e) => e.code === 'broken_svg'));
+});
+
+test('①再発防止: SVGが正しく閉じていればhtmlを渡してもERRORにならない', () => {
+  const html = '<article><div class="credit-timeline"><div class="ctl-head">需給タイムライン</div><svg class="ctl-svg" width="1" height="1"></svg><div class="ctl-foot">最終信用残 9/11</div></div></article>';
+  const h = computeHealthCheck({ results: [healthyResult()], todayIso: '2026-09-11', html });
+  assert.equal(h.status, HEALTH_STATUS.PASS);
+});
+
+test('①再発防止: htmlを渡さなければUIチェックはスキップされる（省略可能な後方互換）', () => {
+  const h = computeHealthCheck({ results: [healthyResult()], todayIso: '2026-09-11' });
+  assert.equal(h.status, HEALTH_STATUS.PASS);
+});
+
+test('②再発防止: creditAsOfの日付形式そのものが不正ならERROR（invalid_date。future_dateチェックはnullを渡されると静かに素通りしていた）', () => {
+  const r = healthyResult({ creditSupplyQuality: { creditAsOf: '2026年9月11日' } }); // "26/09/18"形式ではない
+  const h = computeHealthCheck({ results: [r], todayIso: '2026-09-11' });
+  assert.equal(h.status, HEALTH_STATUS.ERROR);
+  assert.ok(h.errors.some((e) => e.code === 'invalid_date'));
+  assert.equal(h.invalidDateCount, 1);
+});
+
+test('②再発防止: creditSupplyTimeline.points[].dateがnull（元の日付形式が不正）ならERROR', () => {
+  const r = healthyResult({ creditSupplyTimeline: { points: [{ date: null, close: 100, buyBalance: 100, buyChangePct: 0, sellBalance: 50, sellChangePct: 0, creditRatio: 2 }] } });
+  const h = computeHealthCheck({ results: [r], todayIso: '2026-09-11' });
+  assert.ok(h.errors.some((e) => e.code === 'invalid_date'));
+});
+
+test('③再発防止: creditSupplyTimeline.pointsの日付がsourceDates（元のweekly）に存在しなければERROR（timeline_source_mismatch）', () => {
+  const r = healthyResult({
+    creditSupplyTimeline: {
+      points: [{ date: '2026-01-01', close: 100, buyBalance: 100, buyChangePct: 0, sellBalance: 50, sellChangePct: 0, creditRatio: 2 }],
+      sourceDates: ['2026-09-04', '2026-09-11'], // 2026-01-01を含まない
+    },
+  });
+  const h = computeHealthCheck({ results: [r], todayIso: '2026-09-11' });
+  assert.equal(h.status, HEALTH_STATUS.ERROR);
+  assert.ok(h.errors.some((e) => e.code === 'timeline_source_mismatch'));
+});
+
+test('③再発防止: sourceDatesが省略されていれば突き合わせチェックはスキップされる（後方互換）', () => {
+  const r = healthyResult({ creditSupplyTimeline: { sourceDates: undefined } });
+  const h = computeHealthCheck({ results: [r], todayIso: '2026-09-11' });
+  assert.equal(h.status, HEALTH_STATUS.PASS);
+});
+
+test('④再発防止: 健康状態JSONのカバレッジ系フィールドがトップレベルにフラットに出る（ユーザー提示例と同じ構造）', () => {
+  const h = computeHealthCheck({ results: [healthyResult()], todayIso: '2026-09-11' });
+  assert.equal(h.stocksChecked, 1);
+  assert.equal(h.creditQualityChecked, 1);
+  assert.equal(h.timelineChecked, 1);
+  assert.equal(h.timelineMissing, 0);
+  assert.equal(h.pendingCount, 0);
+  assert.equal(h.invalidDateCount, 0);
+  assert.equal(typeof h.tagCounts, 'object');
+});
+
+// indicators.mjs: creditSupplyTimeline()が実際にsourceDatesを公開しているか
+// （③の突き合わせチェックが機能するための前提）。
+test('③前提確認: creditSupplyTimeline()はweekly全体の日付をsourceDatesとして公開する', async () => {
+  const { creditSupplyTimeline } = await import('../indicators.mjs');
+  const weekly = [
+    { date: '26/09/18', buy: 100, sell: 50, loanRatio: 2, close: 100 },
+    { date: '26/09/11', buy: 90, sell: 45, loanRatio: 2, close: 95 },
+    { date: '26/07/03', buy: 80, sell: 40, loanRatio: 2, close: 90 }, // 表示6件には入らない古い週
+  ];
+  const tl = creditSupplyTimeline({ weekly });
+  assert.ok(tl.sourceDates.includes('2026-07-03'), '表示件数(6件)より古い週の日付もsourceDatesには含まれているべき');
+  assert.ok(tl.sourceDates.includes('2026-09-18'));
 });
 
 // health_history.mjs（日次履歴の保存・読み込み）。一時ディレクトリで
