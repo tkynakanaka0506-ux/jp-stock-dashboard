@@ -293,17 +293,23 @@ export async function fetchSectorMomentum() {
 //  kabuka ページのヘッダにある「週次信用残」リンク先（実測: &ashi=shin）。
 //  配列は新しい週が先頭（ページ表示順のまま）。
 // ------------------------------------------------------------------
+// 終値（実測: 同じテーブルに「日付/終値/前週比率/売買単価/売買高(株)/
+// 売り残(株)/買い残(株)/信用倍率」の順で列がある）は、第9優先改修
+// Phase6の需給タイムライン（indicators.mjs: creditSupplyTimeline）が
+// 「信用残の観測日と完全に同じ日付の株価」を得るために追加した。日次
+// closes配列と日付を突き合わせる（＝日付を持たない配列との近似マッチ）
+// 必要が無くなる。
 export function parseWeeklyCredit(html) {
   const tables = parseTables(html);
   const t = findTable(tables, ['買い残', '信用倍率']);
   if (!t) throw new Error('週次信用残テーブルが見つかりません');
   const header = t.rows[t.hIdx];
   const col = (name) => header.findIndex((c) => c.includes(name));
-  const cDate = col('日付'), cBuy = col('買い残'), cSell = col('売り残'), cRatio = col('信用倍率');
+  const cDate = col('日付'), cBuy = col('買い残'), cSell = col('売り残'), cRatio = col('信用倍率'), cClose = col('終値');
   return t.rows
     .slice(t.hIdx + 1)
     .filter((r) => r.length === header.length)
-    .map((r) => ({ date: r[cDate], buy: toNum(r[cBuy]), sell: toNum(r[cSell]), loanRatio: toNum(r[cRatio]) }))
+    .map((r) => ({ date: r[cDate], buy: toNum(r[cBuy]), sell: toNum(r[cSell]), loanRatio: toNum(r[cRatio]), close: cClose === -1 ? null : toNum(r[cClose]) }))
     .filter((r) => r.buy !== null);
 }
 

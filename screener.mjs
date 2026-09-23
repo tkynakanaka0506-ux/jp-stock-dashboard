@@ -23,7 +23,7 @@ import {
   sectorRotationSignal, SECTOR_ROTATION, marginOverhangSignal, buyingDemandSignal, receivablesAnomalySignal, dividendYieldPeakSignal,
   institutionalShortSignal, majorShareholderSignal, pbrHistoricalLowSignal, hiddenGemSignal,
   retailExpectationSignal, returnPct, priceLevelVsRange, volumeRatio, creditTrend,
-  progressStreakSignal, dividendPotentialSignal, hiddenAssetSignal, creditFloatSignal, creditSupplyQualitySignal, consensusTrapSignal,
+  progressStreakSignal, dividendPotentialSignal, hiddenAssetSignal, creditFloatSignal, creditSupplyQualitySignal, creditSupplyTimeline, consensusTrapSignal,
   latestProfitYoyPct, repricingLagScore, repricingGapScore, evEbitda, buildScoreParts, buyScore, buyScoreRiskPenalty,
 } from './indicators.mjs';
 import { evaluate } from './tdnet.mjs';
@@ -597,6 +597,11 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
       weekly, closes: ivFresh?.closes, volumes: ivFresh?.volumes,
       price: s.tech.price, loanRatio: main.loanRatio ?? null, today,
     });
+    // 第9優先改修 Phase6 ④（ユーザー提案）: 需給タイムライン用の整形。
+    // creditSupplyQualitySignalに新しいロジックを足さず、既に計算済みの
+    // weekly/creditSupplyQualityをそのまま渡すだけ（新規リクエスト無し・
+    // 新しい判定無し）。表示専用でSCOREには一切渡さない。
+    const creditSupplyTimelineData = creditSupplyTimeline({ weekly, creditSupplyQuality });
     // 期待値のワナ（過去にWATCHLIST時代の「エントリー健康診断」カードで
     // 使われていたが、SMART ENTRY化の際に呼び出し側だけ削除され関数定義
     // だけがデッドコード化していたのを発掘・復活。s.estimateProfit/
@@ -753,6 +758,7 @@ export async function runScreen({ today, sbiStocks, disclosures, sectorHistory =
       hiddenAsset,
       creditFloat,
       creditSupplyQuality,
+      creditSupplyTimeline: creditSupplyTimelineData,
       consensusTrap,
       repricingLag,
       buyScore: buyScoreForBucket, // v7.3改修 項目5: NOWのゲートに使う。scraper.mjs側のattachScoresが表示用に再計算して上書きする

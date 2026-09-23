@@ -3125,8 +3125,95 @@ export function creditSupplyQualitySignal({ weekly, closes, volumes, price, loan
     bounceQuality,
     creditAsOf: weekly?.[0]?.date ?? null,
     creditDataAgeDays,
+    // isStale/expectedIntervalDays: 第9優先改修 Phase6（需給タイムライン）
+    // がPENDING表示に使う追加公開フィールド（ユーザー方針「UI側で新しい
+    // 日数計算をしない」への対応）。上のbounceQuality:'PENDING'判定は
+    // 「データが古い」かつ「株価・出来高が反発中」の両方を要求するが、
+    // タイムラインのPENDINGバナーは「反発の有無に関わらずデータが古い
+    // こと自体」を示したいため、isStale単体を別フィールドとして公開する
+    // （計算式はisStaleそのものを再利用するだけで、新しい判定は追加しない）。
+    isStale,
+    expectedIntervalDays: typicalGapDays,
     checked: patternResult.checked || pressure.checked || lowBreakResult.checked,
     reasonCodes,
+  };
+}
+
+// 第9優先改修 Phase6（ユーザー提案）: 信用買残の重さ（日数）の表示用の帯。
+// SCOREでは固定閾値化していないが、表示用の帯としてなら0.5日/1日を境に
+// 「軽い/やや重い/重い」を出す（ユーザー提案どおり。銘柄ごとの流動性差が
+// 大きいため、SCORE側の閾値としては使わない）。creditSupplyTags/
+// scraper.mjs: creditSupplyQualityBlockの両方から使うためここに置く。
+export function buyPressureBandLabel(days) {
+  if (!Number.isFinite(days)) return null;
+  if (days < 0.5) return '軽い';
+  if (days <= 1.0) return 'やや重い';
+  return '重い';
+}
+
+// 信用需給タグでのワンタップ絞り込み（ユーザー提案）。「下がったけど
+// 需給整理が進んでいる銘柄」と「下がったところを信用買いが拾い続けて
+// いる銘柄」を区別したい、というユーザー要望への対応。既存の判定
+// （creditSupplyQualitySignal）をそのまま流用してラベル化するだけで、
+// 新しい判定基準は作らない。1銘柄が複数タグに該当することがある
+// （例: SUPPLY_IMPROVINGかつ信用買い重い）。scraper.mjs（カードのタグ
+// 絞り込みバー）とcreditSupplyTimeline（需給タイムラインのtags）の
+// 両方から使うため、rendering層ではなくここに置く。
+export const CREDIT_SUPPLY_TAGS = ['需給改善', '買残整理', '買残積み上がり', '信用買い重い', '買残増加上昇', '安値更新＋買残増'];
+
+export function creditSupplyTags(r) {
+  const cs = r.creditSupplyQuality;
+  if (!cs || !cs.checked) return [];
+  const tags = [];
+  if (cs.pattern === 'SUPPLY_IMPROVING' || cs.bounceQuality === 'IMPROVING') tags.push('需給改善');
+  if (cs.pattern === 'CLEANUP') tags.push('買残整理');
+  if (cs.pattern === 'OVERHANG_BUILDUP') tags.push('買残積み上がり');
+  if (buyPressureBandLabel(cs.buyPressureDays) === '重い') tags.push('信用買い重い');
+  if (cs.pattern === 'LEVERAGED_RISE') tags.push('買残増加上昇');
+  if (cs.lowBreakBuyBuildUp === true) tags.push('安値更新＋買残増');
+  return tags;
+}
+
+// 第9優先改修 Phase6 ④需給タイムライン（ユーザー提案、項目12「データ設計」）。
+// creditSupplyQualitySignal（および内部のPhase1〜4）に新しいロジックを
+// 足さず、UI表示用に整形するだけの純粋関数。weekly（新しい週が先頭）の
+// 最新6件を古い→新しいの順に並べ替え、各点の買残/売残の前回比は既存の
+// creditTrend/shortTrend（週次%変化、lookback=1）を、その点を先頭とみなした
+// 部分配列に適用するだけで計算する（新しい閾値・新しい判定式を作らない）。
+// pending/tagsは呼び出し側が既に計算済みのcreditSupplyQualitySignalの
+// 結果をそのまま読むだけ（ここで再計算しない）。
+// 株価（close）はkabutan.mjs: parseWeeklyCreditが同じ行から取得した終値
+// をそのまま使う（日次closes配列と日付を突き合わせる近似は行わない）。
+// 取得できない週はnull（前後の値で補完しない。ユーザー方針「推測値による
+// 補完は禁止」）。
+const CREDIT_SUPPLY_TIMELINE_MAX_POINTS = 6;
+
+export function creditSupplyTimeline({ weekly, creditSupplyQuality } = {}) {
+  if (!Array.isArray(weekly) || !weekly.length) {
+    return { checked: false, points: [], latestDate: null, pending: false, tags: [] };
+  }
+  const recent = weekly.slice(0, CREDIT_SUPPLY_TIMELINE_MAX_POINTS); // 新しい週が先頭
+  const points = recent
+    .map((w, idx) => {
+      const rest = weekly.slice(idx); // w自身を[0]とみなした部分配列（creditTrend/shortTrendの「今週」基準に合わせる）
+      return {
+        date: creditDateToIso(w.date),
+        close: Number.isFinite(w.close) ? w.close : null,
+        buyBalance: Number.isFinite(w.buy) ? w.buy : null,
+        buyChangePct: creditTrend(rest, 1),
+        sellBalance: Number.isFinite(w.sell) ? w.sell : null,
+        sellChangePct: shortTrend(rest, 1),
+        creditRatio: Number.isFinite(w.loanRatio) ? w.loanRatio : null,
+      };
+    })
+    .reverse(); // 古い→新しい（左→右）に並べ替え
+
+  return {
+    checked: true,
+    points,
+    latestDate: points.at(-1)?.date ?? null,
+    pending: creditSupplyQuality?.isStale === true,
+    tags: creditSupplyQuality ? creditSupplyTags({ creditSupplyQuality }) : [],
   };
 }
 

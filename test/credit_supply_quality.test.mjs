@@ -6,8 +6,8 @@
 // 関数は追加しない（indicators.mjs参照）。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { creditBuyPressureDays, creditTrend, shortTrend, CREDIT_BUY_PRESSURE, creditPatternSignal, bounceQualitySignal, lowBreakBuyBuildupSignal, LOW_BREAK_BUY_BUILDUP, CHIP_SIGNAL_FIELDS, creditSupplyQualitySignal, clusterConfirmation } from '../indicators.mjs';
-import { creditSupplyQualityBlock, creditSupplyTags, CREDIT_SUPPLY_TAGS, creditFilterBar } from '../scraper.mjs';
+import { creditBuyPressureDays, creditTrend, shortTrend, CREDIT_BUY_PRESSURE, creditPatternSignal, bounceQualitySignal, lowBreakBuyBuildupSignal, LOW_BREAK_BUY_BUILDUP, CHIP_SIGNAL_FIELDS, creditSupplyQualitySignal, clusterConfirmation, creditSupplyTags, CREDIT_SUPPLY_TAGS, buyPressureBandLabel, creditSupplyTimeline } from '../indicators.mjs';
+import { creditSupplyQualityBlock, creditFilterBar, creditSupplyTimelineBlock } from '../scraper.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -445,4 +445,140 @@ test('JS: toggleCreditFilter/clearCreditFilterがwindowに公開され、#deskto
   assert.ok(js.includes('window.clearCreditFilter'));
   assert.ok(js.includes("querySelectorAll('#desktop-view .card')"));
   assert.ok(js.includes('card.dataset.creditTags'), 'JS側がdata-credit-tags属性（DOMではdataset.creditTags）を参照していません');
+});
+
+// ==================================================================
+// Phase6 ④: 需給タイムライン（ユーザー提案、項目1〜14）。
+// creditSupplyTimelineはcreditSupplyQualitySignalに新しいロジックを
+// 足さず、UI表示用に整形するだけの純粋関数（項目12）。必須テスト
+// CASE A〜J（項目14）をそのまま実装する。
+// ==================================================================
+
+// 6件+古い方の前回比算出用に1件多い、実測に近い週次信用残フィクスチャ
+// （新しい週が先頭。買残は古→新で単調減少＝需給改善、株価もおおむね
+// 上昇。26/08/28は終値欠損＝CASE C用）。
+const timelineWeekly = [
+  { date: '26/09/18', buy: 1_240_000, sell: 62_000, loanRatio: 20.0, close: 3420 },
+  { date: '26/09/11', buy: 1_320_000, sell: 65_000, loanRatio: 20.3, close: 3350 },
+  { date: '26/09/04', buy: 1_400_000, sell: 68_000, loanRatio: 20.6, close: 3280 },
+  { date: '26/08/28', buy: 1_460_000, sell: 70_000, loanRatio: 20.9, close: null },
+  { date: '26/08/21', buy: 1_500_000, sell: 72_000, loanRatio: 21.2, close: 3150 },
+  { date: '26/08/07', buy: 1_550_000, sell: 74_000, loanRatio: 21.5, close: 3050 },
+  { date: '26/07/31', buy: 1_600_000, sell: 76_000, loanRatio: 21.8, close: 2990 },
+];
+
+test('CASE A: weeklyが6件以上あれば6点を古い→新しいの順で返す（最新点はweekly[0]と一致）', () => {
+  const tl = creditSupplyTimeline({ weekly: timelineWeekly });
+  assert.equal(tl.checked, true);
+  assert.equal(tl.points.length, 6);
+  assert.equal(tl.points[0].date, '2026-08-07'); // 最も古い
+  assert.equal(tl.points.at(-1).date, '2026-09-18'); // 最新
+  assert.equal(tl.points.at(-1).buyBalance, 1_240_000);
+  assert.equal(tl.latestDate, '2026-09-18');
+});
+
+test('CASE B: weeklyが4件しかなければ4点だけ表示する（推測で埋めない）', () => {
+  const tl = creditSupplyTimeline({ weekly: timelineWeekly.slice(0, 4) });
+  assert.equal(tl.points.length, 4);
+  assert.equal(tl.points[0].date, '2026-08-28'); // 4件しかないので最も古いのはこれ
+  assert.equal(tl.points.at(-1).date, '2026-09-18');
+});
+
+test('CASE C: 株価データが欠損している週はclose:null（前後の値で補完しない）', () => {
+  const tl = creditSupplyTimeline({ weekly: timelineWeekly });
+  const missing = tl.points.find((p) => p.date === '2026-08-28');
+  assert.equal(missing.close, null);
+  // 前後の値(3150/3280)を使って補間していないことも明示的に確認
+  assert.notEqual(missing.close, 3150);
+  assert.notEqual(missing.close, 3280);
+});
+
+test('CASE D: 買残の増減がバーの高さに正しく反映される（買残が多い週ほどバーが高い）', () => {
+  const html = creditSupplyTimelineBlock({ creditSupplyTimeline: creditSupplyTimeline({ weekly: timelineWeekly }) });
+  const heights = [...html.matchAll(/<rect x="[\d.]+" y="[\d.]+" width="[\d.]+" height="([\d.]+)"/g)].map((m) => Number(m[1]));
+  assert.equal(heights.length, 6);
+  // buyBalanceは古い→新しいで単調減少なので、バーの高さも単調減少するはず
+  for (let i = 1; i < heights.length; i++) {
+    assert.ok(heights[i] <= heights[i - 1], `バーの高さが単調減少になっていません（${heights.join(',')}）`);
+  }
+  // 最大値(1,550,000、最古点)は正規化の基準なので最大高さになるはず
+  assert.equal(heights[0], Math.max(...heights));
+});
+
+test('CASE E: 株価↓・買残↑（直近週）なら既存OVERHANG_BUILDUPの表示と矛盾しない', () => {
+  const weekly = [
+    { date: '26/09/18', buy: 1_600_000, sell: 74_000, loanRatio: 21.5, close: 2990 },
+    { date: '26/09/11', buy: 1_500_000, sell: 72_000, loanRatio: 21.2, close: 3150 },
+    { date: '26/09/04', buy: 1_400_000, sell: 68_000, loanRatio: 20.6, close: 3280 },
+  ];
+  const closes = Array.from({ length: 20 }, (_, i) => 3280 - i); // 20日平均出来高計算用（下落トレンド）
+  const volumes = Array.from({ length: 20 }, () => 100_000);
+  const cs = creditSupplyQualitySignal({ weekly, closes, volumes, price: 2990, today: '2026-09-18' });
+  assert.equal(cs.pattern, 'OVERHANG_BUILDUP');
+  const tl = creditSupplyTimeline({ weekly, creditSupplyQuality: cs });
+  assert.ok(tl.tags.includes('買残積み上がり'));
+  // タイムライン側の直近点の生データも同じ方向（買残↑）を示している
+  const latest = tl.points.at(-1);
+  assert.ok(latest.buyChangePct > 0);
+});
+
+test('CASE F: 株価↑・買残↓（直近週）なら既存SUPPLY_IMPROVINGと整合する', () => {
+  const cs = creditSupplyQualitySignal({
+    weekly: timelineWeekly, closes: Array.from({ length: 20 }, (_, i) => 3200 + i), volumes: Array.from({ length: 20 }, () => 100_000),
+    price: 3420, today: '2026-09-18',
+  });
+  assert.equal(cs.pattern, 'SUPPLY_IMPROVING');
+  const tl = creditSupplyTimeline({ weekly: timelineWeekly, creditSupplyQuality: cs });
+  assert.ok(tl.tags.includes('需給改善'));
+  const latest = tl.points.at(-1);
+  assert.ok(latest.buyChangePct < 0);
+});
+
+test('CASE G: データが古い(PENDING)場合はタイムラインを表示したままPENDINGも示す（データ不足扱いにしない）', () => {
+  const volumes = [...Array.from({ length: 20 }, () => 100_000), 300_000];
+  const closes = Array.from({ length: 21 }, (_, i) => 3000 + i * 10);
+  const cs = creditSupplyQualitySignal({
+    weekly: timelineWeekly, closes, volumes, price: closes.at(-1), today: '2026-09-30', // 26/09/18から12日後、発表間隔7日を超過
+  });
+  assert.equal(cs.bounceQuality, 'PENDING');
+  assert.equal(cs.isStale, true);
+  const tl = creditSupplyTimeline({ weekly: timelineWeekly, creditSupplyQuality: cs });
+  assert.equal(tl.checked, true);
+  assert.equal(tl.pending, true);
+  const html = creditSupplyTimelineBlock({ creditSupplyTimeline: tl });
+  assert.ok(html.includes('PENDING'));
+  assert.ok(html.includes('ctl-svg')); // チャート自体は表示され続ける
+  assert.ok(!html.includes('データ不足'));
+});
+
+test('CASE H: checked:falseならチャートを生成せず「データ不足」だけ表示する', () => {
+  const tl = creditSupplyTimeline({ weekly: [] });
+  assert.equal(tl.checked, false);
+  const html = creditSupplyTimelineBlock({ creditSupplyTimeline: tl });
+  assert.ok(html.includes('データ不足'));
+  assert.ok(!html.includes('ctl-svg'));
+  assert.ok(!html.includes('<rect'));
+});
+
+test('CASE H(補足): creditSupplyTimeline自体が無い（r.creditSupplyTimeline未定義）場合も同様に「データ不足」', () => {
+  const html = creditSupplyTimelineBlock({});
+  assert.ok(html.includes('データ不足'));
+});
+
+test('CASE I: 需給タイムラインを追加してもSCOREは1点も変わらない（creditSupplyTimelineがSCORE計算経路に一切登場しない）', () => {
+  const src = fs.readFileSync(path.join(root, 'screener.mjs'), 'utf-8');
+  const riskInputsMatch = src.match(/const riskPenaltyInputs = \{[\s\S]*?\};/);
+  const buildScoreMatch = src.match(/buildScoreParts\(\{[\s\S]*?\}\)/);
+  assert.ok(!riskInputsMatch[0].includes('creditSupplyTimeline'), 'creditSupplyTimelineがriskPenaltyInputsに紛れ込んでいます');
+  assert.ok(!buildScoreMatch[0].includes('creditSupplyTimeline'), 'creditSupplyTimelineがbuildScorePartsに紛れ込んでいます');
+  assert.equal(CHIP_SIGNAL_FIELDS.includes('creditSupplyTimeline'), false);
+});
+
+test('CASE J: creditSupplyTimeline.tagsは既存creditSupplyTags(r)の結果と完全に一致する（タイムライン独自のタグ判定を作らない）', () => {
+  const cs = creditSupplyQualitySignal({
+    weekly: timelineWeekly, closes: Array.from({ length: 20 }, (_, i) => 3200 + i), volumes: Array.from({ length: 20 }, () => 100_000),
+    price: 3420, today: '2026-09-18',
+  });
+  const tl = creditSupplyTimeline({ weekly: timelineWeekly, creditSupplyQuality: cs });
+  assert.deepEqual(tl.tags, creditSupplyTags({ creditSupplyQuality: cs }));
 });

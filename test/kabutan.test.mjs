@@ -9,7 +9,7 @@
 // pickLatestActual()に統合してこの種の「1箇所だけ書き忘れる」再発を防いだ。
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { parseTables, pickLatestActual, extractThemeStockCodes } from '../kabutan.mjs';
+import { parseTables, pickLatestActual, extractThemeStockCodes, parseWeeklyCredit } from '../kabutan.mjs';
 
 // 実際のkabutan決算期テーブルを模した最小HTML（決算期/売上高/営業益/
 // 売上営業利益率/ROE/ROA/総資産回転率/修正1株益、発表日列なし）。
@@ -77,4 +77,49 @@ test('extractThemeStockCodes: テーマ株一覧ページから銘柄コード�
 
 test('extractThemeStockCodes: 該当テーブルが見つからなければ空配列（404ページ等）', () => {
   assert.deepEqual(extractThemeStockCodes(parseTables('<table><thead><tr><th>foo</th></tr></thead></table>')), []);
+});
+
+// 第9優先改修 Phase6（需給タイムライン）向け: parseWeeklyCreditの終値
+// 抽出。実測（トヨタ7203、https://kabutan.jp/stock/kabuka?code=7203&ashi=shin）
+// のテーブル構造をそのまま模す（日付/終値/前週比率/売買単価/売買高(株)/
+// 売り残(株)/買い残(株)/信用倍率）。
+const WEEKLY_CREDIT_HTML = `
+<table class="stock_kabuka_dwm">
+<thead><tr>
+<th class="w90">日付</th><th class="w70">終値</th><th class="w80">前週比率</th>
+<th class="w70">売買単価</th><th class="w100">売買高(株)</th><th class="w100">売り残(株)</th>
+<th class="w120">買い残(株)</th><th class="w80">信用倍率</th>
+</tr></thead>
+<tbody>
+<tr><th scope="row"><time datetime="2026-09-11">26/09/11</time></th><td>3,031.0</td><td><span class="down">-1.62</span></td><td>3,001</td><td>114,275,600</td><td>2,625,400</td><td>17,239,000</td><td>6.57</td></tr>
+<tr><th scope="row"><time datetime="2026-09-04">26/09/04</time></th><td>3,081.0</td><td><span class="down">-1.12</span></td><td>3,159</td><td>133,114,700</td><td>2,491,000</td><td>16,378,100</td><td>6.57</td></tr>
+<tr><th scope="row"><time datetime="2026-08-28">26/08/28</time></th><td>-</td><td><span class="down">-0.51</span></td><td>3,099</td><td>99,584,500</td><td>2,343,700</td><td>16,853,200</td><td>7.19</td></tr>
+</tbody>
+</table>`;
+
+test('parseWeeklyCredit: 終値(close)を実データの表構造から抽出する（信用残の観測日と完全に同じ日付の株価を得るため）', () => {
+  const rows = parseWeeklyCredit(WEEKLY_CREDIT_HTML);
+  assert.equal(rows.length, 3);
+  assert.equal(rows[0].date, '26/09/11');
+  assert.equal(rows[0].close, 3031.0);
+  assert.equal(rows[0].buy, 17_239_000);
+  assert.equal(rows[0].sell, 2_625_400);
+  assert.equal(rows[0].loanRatio, 6.57);
+});
+
+test('parseWeeklyCredit: 終値セルが「-」等で数値化できない週はclose:null（前後の値で埋めない）', () => {
+  const rows = parseWeeklyCredit(WEEKLY_CREDIT_HTML);
+  assert.equal(rows[2].close, null);
+  assert.equal(rows[2].buy, 16_853_200); // 終値が無くても他の列は取れる
+});
+
+test('parseWeeklyCredit: 終値列が無い旧形式のテーブルでもclose:nullで例外にならない（後方互換）', () => {
+  const html = `<table><thead><tr>
+    <th>日付</th><th>売り残</th><th>買い残</th><th>信用倍率</th>
+  </tr></thead><tbody>
+    <tr><td>26/09/11</td><td>2,625,400</td><td>17,239,000</td><td>6.57</td></tr>
+  </tbody></table>`;
+  const rows = parseWeeklyCredit(html);
+  assert.equal(rows[0].close, null);
+  assert.equal(rows[0].buy, 17_239_000);
 });

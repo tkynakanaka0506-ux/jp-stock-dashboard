@@ -48,6 +48,7 @@ import {
   buildScoreParts, buyScore, buyScoreRiskPenalty, expectationScore, earningsSurpriseScore, confidenceTier, effectiveScore, badChipSignals,
   entryPriorityScore, tenbaggerDifficultyLabel, riskLevel, riskCoverage, repricingGapBreakdown, REPRICING_GAP, evaluationAxes,
   clusterConfirmation, creditSupplyBreakdown, ambushTimingBreakdown, financialQualityBreakdown, CREDIT_PATTERN,
+  CREDIT_SUPPLY_TAGS, creditSupplyTags, buyPressureBandLabel, creditSupplyTimeline,
 } from './indicators.mjs';
 import { loadEarningsCalendar } from './sbi.mjs';
 import { loadHolidays, isMarketHoliday } from './holidays.mjs';
@@ -949,18 +950,6 @@ export function consensusEvidenceBlock(r) {
       </div>`;
 }
 
-// 第9優先改修 Phase6（ユーザー提案）: creditSupplyQualitySignal
-// （indicators.mjs）の表示。信用買残の重さ（日数）は、SCOREでは固定
-// 閾値化していないが、表示用の帯としてなら0.5日/1日を境に「軽い/
-// やや重い/重い」を出す（ユーザー提案どおり。銘柄ごとの流動性差が
-// 大きいため、SCORE側の閾値としては使わない）。
-function buyPressureBandLabel(days) {
-  if (!Number.isFinite(days)) return null;
-  if (days < 0.5) return '軽い';
-  if (days <= 1.0) return 'やや重い';
-  return '重い';
-}
-
 // creditAsOf（"26/09/18"のような2桁年/ゼロ埋め月日）をカード表示用に
 // "9/18"へ短縮する（年は当年表示が前提の週次テーブルのため省略）。
 function formatCreditAsOf(dateStr) {
@@ -1016,26 +1005,10 @@ export function creditSupplyQualityBlock(r) {
 }
 
 // 第9優先改修 Phase6（ユーザー提案）: 信用需給タグでのワンタップ絞り込み。
-// 「下がったけど需給整理が進んでいる銘柄」と「下がったところを信用買いが
-// 拾い続けている銘柄」を区別したい、というユーザー要望への対応。
-// 既存の判定（creditSupplyQualitySignal）をそのまま流用してラベル化する
-// だけで、新しい判定基準は作らない。1銘柄が複数タグに該当することがある
-// （例: SUPPLY_IMPROVINGかつ信用買い重い）。
-export const CREDIT_SUPPLY_TAGS = ['需給改善', '買残整理', '買残積み上がり', '信用買い重い', '買残増加上昇', '安値更新＋買残増'];
-
-export function creditSupplyTags(r) {
-  const cs = r.creditSupplyQuality;
-  if (!cs || !cs.checked) return [];
-  const tags = [];
-  if (cs.pattern === 'SUPPLY_IMPROVING' || cs.bounceQuality === 'IMPROVING') tags.push('需給改善');
-  if (cs.pattern === 'CLEANUP') tags.push('買残整理');
-  if (cs.pattern === 'OVERHANG_BUILDUP') tags.push('買残積み上がり');
-  if (buyPressureBandLabel(cs.buyPressureDays) === '重い') tags.push('信用買い重い');
-  if (cs.pattern === 'LEVERAGED_RISE') tags.push('買残増加上昇');
-  if (cs.lowBreakBuyBuildUp === true) tags.push('安値更新＋買残増');
-  return tags;
-}
-
+// CREDIT_SUPPLY_TAGS/creditSupplyTags自体はindicators.mjsに定義（純粋な
+// ラベル化ロジックのため、需給タイムライン（creditSupplyTimeline）とも
+// 共有する）。ここではUIの組み立てのみ行う。
+//
 // 複数タグを選んだ場合はAND（絞り込みが進むほど対象が狭まる）にする。
 // タグはほぼ排他的なcreditPattern由来（同時に複数該当しない）のため、
 // 2つ選ぶと「その組み合わせに完全一致する銘柄だけ」になる想定（例:
@@ -1051,6 +1024,103 @@ export function creditFilterBar() {
     ${chips}
     <button type="button" class="credit-filter-clear" onclick="clearCreditFilter()">クリア</button>
   </div>`;
+}
+
+// 第9優先改修 Phase6 ④（ユーザー提案）: 需給タイムライン。
+// creditSupplyTimeline（indicators.mjs）が整形済みのデータをSVGで
+// 描くだけで、ここでも新しい判定は行わない。カードを開かずに見える
+// 大きさに収める（「チャートを見るためにカードを開く」のではなく、
+// カードを見た瞬間に需給の流れが分かるサイズ、というユーザー要望）。
+
+// ISO日付("2026-08-07")をラベル用に"08/07"へ短縮する。
+function formatTimelineDate(iso) {
+  const m = /^\d{4}-(\d{2})-(\d{2})$/.exec(iso ?? '');
+  return m ? `${m[1]}/${m[2]}` : (iso ?? '—');
+}
+
+// 信用買残バー（横棒グラフ）。最大値を基準に正規化（＝同一銘柄内の
+// 時系列比較が目的。銘柄間比較のための絶対値スケールではない、という
+// ユーザー方針どおり）。
+function timelineBuyBars(points, w, h) {
+  const vals = points.map((p) => p.buyBalance);
+  const finite = vals.filter(Number.isFinite);
+  const max = finite.length ? Math.max(...finite) : 0;
+  const n = vals.length || 1;
+  const gap = w / n;
+  const barW = Math.max(gap * 0.55, 2);
+  const bars = vals.map((v, i) => {
+    if (!Number.isFinite(v) || max <= 0) return '';
+    const barH = Math.max((v / max) * (h - 3), 1);
+    const x = i * gap + (gap - barW) / 2;
+    const y = h - barH;
+    return `<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${barW.toFixed(1)}" height="${barH.toFixed(1)}" rx="1.5" fill="#22ffc4" fill-opacity="0.85"/>`;
+  }).join('');
+  return `<svg class="ctl-svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${bars}</svg>`;
+}
+
+// 売残・株価用の細線。null（データ欠損）をまたぐ区間は補間せず線を切る
+// （ユーザー方針「推測値による補完は禁止」）ため、null点で複数の
+// <polyline>に分割する。1〜2点しか有効値が無い場合は線を引かず終値点
+// だけ打つ（折れ線として意味を持たないため）。
+function timelineLine(values, w, h, color, { pad = 2, dot = false } = {}) {
+  const finite = values.filter(Number.isFinite);
+  if (!finite.length) return `<svg class="ctl-svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"></svg>`;
+  const min = Math.min(...finite), max = Math.max(...finite);
+  const range = max - min || 1;
+  const n = values.length;
+  const xy = values.map((v, i) => (Number.isFinite(v)
+    ? [n > 1 ? (i / (n - 1)) * w : w / 2, h - ((v - min) / range) * (h - pad * 2) - pad]
+    : null));
+  const segments = [];
+  let current = [];
+  for (const p of xy) {
+    if (p === null) { if (current.length >= 2) segments.push(current); current = []; }
+    else current.push(p);
+  }
+  if (current.length >= 2) segments.push(current);
+  const polylines = segments.map((seg) => {
+    const pts = seg.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(' ');
+    return `<polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>`;
+  }).join('');
+  const dots = dot ? xy.filter(Boolean).map(([x, y]) => `<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="1.6" fill="${color}"/>`).join('') : '';
+  return `<svg class="ctl-svg" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">${polylines}${dots}</svg>`;
+}
+
+const CTL_W = 160, CTL_BAR_H = 26, CTL_LINE_H = 16;
+
+export function creditSupplyTimelineBlock(r) {
+  const tl = r.creditSupplyTimeline;
+  if (!tl || !tl.checked || !tl.points.length) {
+    return `<div class="credit-timeline is-empty">
+        <div class="ctl-head">需給タイムライン</div>
+        <div class="ctl-empty">データ不足</div>
+      </div>`;
+  }
+  const pts = tl.points;
+  const n = pts.length;
+  const priceUp = Number.isFinite(pts.at(-1)?.close) && Number.isFinite(pts[0]?.close) && pts.at(-1).close >= pts[0].close;
+
+  const buyBars = timelineBuyBars(pts, CTL_W, CTL_BAR_H);
+  const sellLine = timelineLine(pts.map((p) => p.sellBalance), CTL_W, CTL_LINE_H, '#8aa0c0');
+  const priceLine = timelineLine(pts.map((p) => p.close), CTL_W, CTL_LINE_H, priceUp ? '#22ffc4' : '#ff3d71', { dot: true });
+
+  const dateLabels = n <= 4
+    ? `<div class="ctl-dates">${pts.map((p) => `<span>${esc(formatTimelineDate(p.date))}</span>`).join('')}</div>`
+    : `<div class="ctl-dates ctl-dates-endpoints"><span>${esc(formatTimelineDate(pts[0].date))}</span><span class="ctl-date-arrow">→</span><span>${esc(formatTimelineDate(pts.at(-1).date))}</span></div>`;
+
+  const tagsLine = tl.tags.length
+    ? `<div class="ctl-tags">${tl.tags.map((t) => `<span class="ctl-tag">✓ ${esc(t)}</span>`).join('')}</div>`
+    : '';
+
+  return `<div class="credit-timeline">
+        <div class="ctl-head">需給タイムライン${tl.pending ? '<span class="ctl-pending">PENDING</span>' : ''}</div>
+        <div class="ctl-row"><span class="ctl-label">買残</span>${buyBars}</div>
+        <div class="ctl-row"><span class="ctl-label">売残</span>${sellLine}</div>
+        <div class="ctl-row"><span class="ctl-label">株価</span>${priceLine}</div>
+        ${dateLabels}
+        ${tagsLine}
+        <div class="ctl-foot">最終信用残 ${esc(formatTimelineDate(tl.latestDate))}</div>
+      </div>`;
 }
 
 // 配当金推移（円/株・実績）と増配/減配履歴を表示する。IR Bankの
@@ -1464,6 +1534,7 @@ export function card(r, i, opts = {}) {
         ${dividendTrendBlock(r)}
         ${repricingLagBlock(r, { isUs: false })}
         ${creditSupplyQualityBlock(r)}
+        ${creditSupplyTimelineBlock(r)}
 
         <footer class="c-foot">
           ${marketChip(r.market)}
@@ -3625,6 +3696,28 @@ async function main() {
   .credit-filter-clear{font:500 12px/1 var(--mono);color:var(--dim);background:transparent;
                         border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
   .credit-filter-clear:hover{color:var(--txt);border-color:var(--txt)}
+
+  /* ── 第9優先改修 Phase6 ④: 需給タイムライン ── */
+  .credit-timeline{margin-top:13px;padding:9px 12px;border:1px solid var(--line);border-radius:9px;
+                    background:rgba(9,14,24,.72)}
+  .credit-timeline.is-empty{padding:9px 12px}
+  .ctl-head{display:flex;align-items:center;justify-content:space-between;
+             color:var(--dim);letter-spacing:.06em;font:700 11.5px/1 var(--mono);margin-bottom:6px}
+  .ctl-empty{color:var(--dim);font:500 12.5px/1.4 var(--mono)}
+  .ctl-pending{color:#04140f;background:var(--amber);border-radius:999px;
+               font:700 10px/1 var(--mono);padding:3px 8px;letter-spacing:.04em}
+  .ctl-row{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+  .ctl-label{color:var(--dim);font:600 11px/1 var(--mono);min-width:2.6em;letter-spacing:.02em}
+  .ctl-svg{display:block;flex:1}
+  .ctl-dates{display:flex;justify-content:space-between;margin-top:4px;padding-left:2.6em;
+             color:var(--dim);font:500 10px/1 var(--mono);letter-spacing:.01em}
+  .ctl-dates-endpoints{justify-content:space-between}
+  .ctl-date-arrow{color:var(--dim);opacity:.6}
+  .ctl-tags{margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);
+            display:flex;flex-wrap:wrap;gap:4px 10px}
+  .ctl-tag{color:var(--mint);font:600 11px/1.4 var(--mono)}
+  .ctl-foot{margin-top:6px;padding-top:6px;border-top:1px dashed var(--line);
+            color:var(--dim);font-size:11px}
 
   .meta{display:flex;flex-wrap:wrap;gap:11px;margin-top:11px;
         font:500 13px/1 var(--mono);color:var(--dim);letter-spacing:.08em}
