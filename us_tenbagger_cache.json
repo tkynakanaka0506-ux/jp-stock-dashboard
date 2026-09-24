@@ -1,5 +1,5 @@
 {
-  "date": "2026-09-24",
+  "date": "2026-09-25",
   "universe": 2,
   "results": [
     {
@@ -7,11 +7,10 @@
       "name": "IONQ Inc",
       "theme": "量子コンピュータ",
       "industry": "Technology",
-      "marketCap": 16505.325186311034,
-      "price": 42.54,
-      "changePct": 4.4,
+      "marketCap": 17234.57514572901,
+      "price": 44.98,
+      "changePct": 5.7,
       "closes": [
-        40.029998779296875,
         42.459999084472656,
         39.20000076293945,
         39.310001373291016,
@@ -30,7 +29,8 @@
         39.130001068115234,
         40.5099983215332,
         40.7400016784668,
-        42.540000915527344
+        42.540000915527344,
+        44.97999954223633
       ],
       "fiftyTwoWeekHigh": 84.64,
       "tier": "C",
@@ -38,7 +38,7 @@
         "level": "good",
         "label": "大型超成長株(Tier C)",
         "checked": true,
-        "note": "時価総額16,505百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+286.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額17,235百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+286.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "earningsTrend": {
         "level": "good",
@@ -58,10 +58,10 @@
         "checked": false
       },
       "repricingLag": {
-        "score": 32.6,
-        "zone": "early_move",
+        "score": 23,
+        "zone": "re_rating",
         "breakdown": {
-          "untapped": 12.6,
+          "untapped": 8.3,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -69,8 +69,8 @@
           "event": 0
         },
         "checked": true,
-        "alreadyMovedStrict": false,
-        "repricingGap": 49.8
+        "alreadyMovedStrict": true,
+        "repricingGap": 29
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -98,7 +98,7 @@
         "checked": true,
         "note": "手動で選定したテーマページ一覧（量子コンピュータ）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
       },
-      "realizability": 17,
+      "realizability": 14,
       "growthPotential": 100,
       "floatSqueeze": {
         "level": null,
@@ -112,11 +112,10 @@
       "name": "Aurora Innovation Inc",
       "theme": "自動運転（トラック）",
       "industry": "Technology",
-      "marketCap": 12946.784378568358,
-      "price": 6.32,
-      "changePct": -2.2,
+      "marketCap": 12666.203541795667,
+      "price": 6.06,
+      "changePct": -4.1,
       "closes": [
-        5.760000228881836,
         5.690000057220459,
         5.829999923706055,
         5.630000114440918,
@@ -135,7 +134,8 @@
         6.309999942779541,
         6.510000228881836,
         6.460000038146973,
-        6.320000171661377
+        6.320000171661377,
+        6.059999942779541
       ],
       "fiftyTwoWeekHigh": 8.565,
       "tier": "C",
@@ -143,7 +143,7 @@
         "level": "good",
         "label": "大型超成長株(Tier C)",
         "checked": true,
-        "note": "時価総額12,947百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+100%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額12,666百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+100%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "earningsTrend": {
         "level": "good",
@@ -163,10 +163,10 @@
         "checked": false
       },
       "repricingLag": {
-        "score": 32.9,
+        "score": 36.5,
         "zone": "early_move",
         "breakdown": {
-          "untapped": 12.9,
+          "untapped": 16.5,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -175,7 +175,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "repricingGap": 20.8
+        "repricingGap": 29.6
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -203,7 +203,7 @@
         "checked": true,
         "note": "手動で選定したテーマページ一覧（自動運転（トラック））に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
       },
-      "realizability": 35,
+      "realizability": 37,
       "growthPotential": 100,
       "floatSqueeze": {
         "level": null,

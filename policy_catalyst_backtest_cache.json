@@ -1,0 +1,29 @@
+{
+  "2026-09-25": {
+    "7267|semi_regulation-20260922-01": {
+      "date": "2026-09-25",
+      "eventId": "semi_regulation-20260922-01",
+      "code": "7267",
+      "name": "本田技研工業",
+      "theme": "レアアース・重要鉱物の輸出規制",
+      "direction": "negative",
+      "price": 1733,
+      "policyImpactScore": 44,
+      "buyScore": 17,
+      "buyConfidence": 35,
+      "expectationScore": 11,
+      "earningsSurpriseScore": 50,
+      "unpriced": 10.6,
+      "timing": null,
+      "risk": "LOW",
+      "policyCatalystScore": 30,
+      "policyCatalystConfidence": 70,
+      "policyCatalystParts": {
+        "policy": 44,
+        "unpriced": 10.6,
+        "timing": null,
+        "exposure": null
+      }
+    }
+  }
+}
