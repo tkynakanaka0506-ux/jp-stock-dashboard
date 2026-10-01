@@ -1,7 +1,210 @@
 {
-  "date": "2026-09-30",
-  "fetchedAt": "2026-09-29T23:36:23.003Z",
+  "date": "2026-10-01",
+  "fetchedAt": "2026-10-01T00:46:54.588Z",
   "stocks": {
+    "AEO": {
+      "code": "AEO",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.5001,
+      "consensusRevenueEstimate": 1466171802
+    },
+    "ASAN": {
+      "code": "ASAN",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.0824,
+      "consensusRevenueEstimate": 222500607
+    },
+    "BOSC": {
+      "code": "BOSC",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.0643,
+      "consensusRevenueEstimate": 11598420
+    },
+    "BOX": {
+      "code": "BOX",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.394,
+      "consensusRevenueEstimate": 332447186
+    },
+    "CANG": {
+      "code": "CANG",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -0.408,
+      "consensusRevenueEstimate": 37846080
+    },
+    "CNBX": {
+      "code": "CNBX",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
+    "CRDO": {
+      "code": "CRDO",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 1.3123,
+      "consensusRevenueEstimate": 542221351
+    },
+    "CRWD": {
+      "code": "CRWD",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.3174,
+      "consensusRevenueEstimate": 1558353939
+    },
+    "CTRN": {
+      "code": "CTRN",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -0.3366,
+      "consensusRevenueEstimate": 230172180
+    },
+    "ELLO": {
+      "code": "ELLO",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
+    "FEDU": {
+      "code": "FEDU",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
+    "FRO": {
+      "code": "FRO",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 2.1644,
+      "consensusRevenueEstimate": 701276663
+    },
+    "GORO": {
+      "code": "GORO",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
+    "HERE": {
+      "code": "HERE",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
+    "JCTC": {
+      "code": "JCTC",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
+    "LESL": {
+      "code": "LESL",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 2.4786,
+      "consensusRevenueEstimate": 328696020
+    },
+    "LVRLF": {
+      "code": "LVRLF",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
+    "MDB": {
+      "code": "MDB",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 1.628,
+      "consensusRevenueEstimate": 770216465
+    },
+    "MRVL": {
+      "code": "MRVL",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 1.1124,
+      "consensusRevenueEstimate": 3216380728
+    },
+    "NIPG": {
+      "code": "NIPG",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
+    "OKTA": {
+      "code": "OKTA",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.9525,
+      "consensusRevenueEstimate": 833961873
+    },
+    "SIG": {
+      "code": "SIG",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.8897,
+      "consensusRevenueEstimate": 1413441268
+    },
+    "SLP": {
+      "code": "SLP",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.0404,
+      "consensusRevenueEstimate": 17614400
+    },
+    "TRX": {
+      "code": "TRX",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.0202,
+      "consensusRevenueEstimate": 36830326
+    },
+    "UNFI": {
+      "code": "UNFI",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.6987,
+      "consensusRevenueEstimate": 7954066528
+    },
+    "USA": {
+      "code": "USA",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
+    "VLGEA": {
+      "code": "VLGEA",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
+    "VSTS": {
+      "code": "VSTS",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.1712,
+      "consensusRevenueEstimate": 679219193
+    },
+    "XFLT": {
+      "code": "XFLT",
+      "earningsDate": "2026-11-30",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
     "CNXX": {
       "code": "CNXX",
       "earningsDate": "2026-11-27",
@@ -27,8 +230,8 @@
       "code": "FLNG",
       "earningsDate": "2026-11-27",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.6554,
-      "consensusRevenueEstimate": 96346650
+      "consensusEpsEstimate": 0.6324,
+      "consensusRevenueEstimate": 96375720
     },
     "AWF": {
       "code": "AWF",
@@ -98,7 +301,7 @@
       "earningsDate": "2026-11-25",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 4.1827,
-      "consensusRevenueEstimate": 10676519311
+      "consensusRevenueEstimate": 10676499649
     },
     "DIDIY": {
       "code": "DIDIY",
@@ -140,7 +343,7 @@
       "earningsDate": "2026-11-24",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.5953,
-      "consensusRevenueEstimate": 558426540
+      "consensusRevenueEstimate": 558108636
     },
     "CLGN": {
       "code": "CLGN",
@@ -181,7 +384,7 @@
       "code": "GLMD",
       "earningsDate": "2026-11-24",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -3.1824,
+      "consensusEpsEstimate": -3.1212,
       "consensusRevenueEstimate": 0
     },
     "GOTU": {
@@ -238,7 +441,7 @@
       "earningsDate": "2026-11-24",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.1382,
-      "consensusRevenueEstimate": 25472460
+      "consensusRevenueEstimate": 25450162
     },
     "PSIG": {
       "code": "PSIG",
@@ -328,8 +531,8 @@
       "code": "ARWR",
       "earningsDate": "2026-11-23",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -1.674,
-      "consensusRevenueEstimate": 54010020
+      "consensusEpsEstimate": -1.6606,
+      "consensusRevenueEstimate": 54291876
     },
     "ATAT": {
       "code": "ATAT",
@@ -349,7 +552,7 @@
       "code": "BABA",
       "earningsDate": "2026-11-23",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 11.3957,
+      "consensusEpsEstimate": 11.267,
       "consensusRevenueEstimate": 276459425213
     },
     "BBY": {
@@ -384,7 +587,7 @@
       "code": "BURL",
       "earningsDate": "2026-11-23",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 1.7783,
+      "consensusEpsEstimate": 1.7781,
       "consensusRevenueEstimate": 3061560916
     },
     "BZUN": {
@@ -412,22 +615,22 @@
       "code": "CLSK",
       "earningsDate": "2026-11-23",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2432,
-      "consensusRevenueEstimate": 138936923
+      "consensusEpsEstimate": -0.247,
+      "consensusRevenueEstimate": 138010080
     },
     "DELL": {
       "code": "DELL",
       "earningsDate": "2026-11-23",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 6.6457,
+      "consensusEpsEstimate": 6.682,
       "consensusRevenueEstimate": 50148620473
     },
     "DKS": {
       "code": "DKS",
       "earningsDate": "2026-11-23",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 1.4204,
-      "consensusRevenueEstimate": 5129368193
+      "consensusEpsEstimate": 1.4214,
+      "consensusRevenueEstimate": 5131090506
     },
     "DSNY": {
       "code": "DSNY",
@@ -475,8 +678,8 @@
       "code": "FLNC",
       "earningsDate": "2026-11-23",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.319,
-      "consensusRevenueEstimate": 1365539575
+      "consensusEpsEstimate": -0.0287,
+      "consensusRevenueEstimate": 1211436955
     },
     "FLX": {
       "code": "FLX",
@@ -531,8 +734,8 @@
       "code": "JACK",
       "earningsDate": "2026-11-23",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.4744,
-      "consensusRevenueEstimate": 259750068
+      "consensusEpsEstimate": 0.4428,
+      "consensusRevenueEstimate": 258663921
     },
     "JFIN": {
       "code": "JFIN",
@@ -552,8 +755,8 @@
       "code": "KSS",
       "earningsDate": "2026-11-23",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0138,
-      "consensusRevenueEstimate": 3440691250
+      "consensusEpsEstimate": 0.0045,
+      "consensusRevenueEstimate": 3442332500
     },
     "LOT": {
       "code": "LOT",
@@ -685,14 +888,21 @@
       "code": "URBN",
       "earningsDate": "2026-11-23",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 1.5668,
+      "consensusEpsEstimate": 1.5694,
       "consensusRevenueEstimate": 1699568604
+    },
+    "WALD": {
+      "code": "WALD",
+      "earningsDate": "2026-11-23",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -0.1734,
+      "consensusRevenueEstimate": 75677880
     },
     "WDAY": {
       "code": "WDAY",
       "earningsDate": "2026-11-23",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 2.7946,
+      "consensusEpsEstimate": 2.7937,
       "consensusRevenueEstimate": 2752824297
     },
     "WEBC": {
@@ -727,7 +937,7 @@
       "code": "WWD",
       "earningsDate": "2026-11-23",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 2.5776,
+      "consensusEpsEstimate": 2.5825,
       "consensusRevenueEstimate": 1149170849
     },
     "YRD": {
@@ -762,22 +972,22 @@
       "code": "ZIM",
       "earningsDate": "2026-11-20",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 3.4071,
-      "consensusRevenueEstimate": 2310273394
+      "consensusEpsEstimate": 3.8456,
+      "consensusRevenueEstimate": 2518898994
     },
     "AZTA": {
       "code": "AZTA",
       "earningsDate": "2026-11-19",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.1696,
+      "consensusEpsEstimate": 0.1459,
       "consensusRevenueEstimate": 163523003
     },
     "BJ": {
       "code": "BJ",
       "earningsDate": "2026-11-19",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 1.2769,
-      "consensusRevenueEstimate": 6096315404
+      "consensusEpsEstimate": 1.278,
+      "consensusRevenueEstimate": 6097527168
     },
     "BKE": {
       "code": "BKE",
@@ -806,6 +1016,13 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 2.5041,
       "consensusRevenueEstimate": 1170960000
+    },
+    "MOG.A": {
+      "code": "MOG.A",
+      "earningsDate": "2026-11-19",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 2.7728,
+      "consensusRevenueEstimate": 1152994360
     },
     "NFE": {
       "code": "NFE",
@@ -860,7 +1077,7 @@
       "code": "WMT",
       "earningsDate": "2026-11-19",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.6432,
+      "consensusEpsEstimate": 0.6419,
       "consensusRevenueEstimate": 189202143186
     },
     "AGTX": {
@@ -916,7 +1133,7 @@
       "code": "BORR",
       "earningsDate": "2026-11-18",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0541,
+      "consensusEpsEstimate": -0.0719,
       "consensusRevenueEstimate": 271331730
     },
     "CATO": {
@@ -931,7 +1148,7 @@
       "earningsDate": "2026-11-18",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.1173,
-      "consensusRevenueEstimate": 0
+      "consensusRevenueEstimate": null
     },
     "CPRT": {
       "code": "CPRT",
@@ -986,8 +1203,8 @@
       "code": "EVGN",
       "earningsDate": "2026-11-18",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2754,
-      "consensusRevenueEstimate": 408000
+      "consensusEpsEstimate": -0.1938,
+      "consensusRevenueEstimate": 372300
     },
     "GAP": {
       "code": "GAP",
@@ -1007,15 +1224,15 @@
       "code": "INTU",
       "earningsDate": "2026-11-18",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 2.7658,
-      "consensusRevenueEstimate": 4409852220
+      "consensusEpsEstimate": 2.6997,
+      "consensusRevenueEstimate": 4391457102
     },
     "J": {
       "code": "J",
       "earningsDate": "2026-11-18",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 2.1712,
-      "consensusRevenueEstimate": 2601744477
+      "consensusEpsEstimate": 2.1722,
+      "consensusRevenueEstimate": 2604788616
     },
     "KAYS": {
       "code": "KAYS",
@@ -1028,8 +1245,8 @@
       "code": "LOW",
       "earningsDate": "2026-11-18",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 2.9052,
-      "consensusRevenueEstimate": 22648271269
+      "consensusEpsEstimate": 2.9046,
+      "consensusRevenueEstimate": 22636474429
     },
     "LQDT": {
       "code": "LQDT",
@@ -1049,7 +1266,7 @@
       "code": "MATW",
       "earningsDate": "2026-11-18",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.3502,
+      "consensusEpsEstimate": 0.2278,
       "consensusRevenueEstimate": 257784263
     },
     "MDBH": {
@@ -1119,8 +1336,8 @@
       "code": "P",
       "earningsDate": "2026-11-18",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.7799,
-      "consensusRevenueEstimate": 1345834501
+      "consensusEpsEstimate": 0.7842,
+      "consensusRevenueEstimate": 1357058704
     },
     "PHYTF": {
       "code": "PHYTF",
@@ -1140,8 +1357,8 @@
       "code": "PXS",
       "earningsDate": "2026-11-18",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.2828,
-      "consensusRevenueEstimate": 12322000
+      "consensusEpsEstimate": 0.2394,
+      "consensusRevenueEstimate": 12382600
     },
     "RDCT": {
       "code": "RDCT",
@@ -1161,7 +1378,7 @@
       "code": "ROAD",
       "earningsDate": "2026-11-18",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 1.426,
+      "consensusEpsEstimate": 1.4586,
       "consensusRevenueEstimate": 1111044690
     },
     "ROST": {
@@ -1234,6 +1451,13 @@
       "consensusEpsEstimate": 1.9407,
       "consensusRevenueEstimate": 237723700
     },
+    "TGT": {
+      "code": "TGT",
+      "earningsDate": "2026-11-18",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 2.0672,
+      "consensusRevenueEstimate": 26706177024
+    },
     "TJX": {
       "code": "TJX",
       "earningsDate": "2026-11-18",
@@ -1245,7 +1469,7 @@
       "code": "UGI",
       "earningsDate": "2026-11-18",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.3707,
+      "consensusEpsEstimate": -0.3724,
       "consensusRevenueEstimate": 1355925000
     },
     "VEEV": {
@@ -1259,8 +1483,8 @@
       "code": "VIPS",
       "earningsDate": "2026-11-18",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 2.7805,
-      "consensusRevenueEstimate": 20975845212
+      "consensusEpsEstimate": 2.8234,
+      "consensusRevenueEstimate": 20921206362
     },
     "VNET": {
       "code": "VNET",
@@ -1351,7 +1575,7 @@
       "earningsDate": "2026-11-17",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.1073,
-      "consensusRevenueEstimate": 85266594
+      "consensusRevenueEstimate": 84933268
     },
     "BNKK": {
       "code": "BNKK",
@@ -1392,8 +1616,8 @@
       "code": "CPA",
       "earningsDate": "2026-11-17",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 4.2401,
-      "consensusRevenueEstimate": 1182996335
+      "consensusEpsEstimate": 4.1638,
+      "consensusRevenueEstimate": 1185841171
     },
     "CPMV": {
       "code": "CPMV",
@@ -1519,7 +1743,7 @@
       "earningsDate": "2026-11-17",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 3.956,
-      "consensusRevenueEstimate": 44084158321
+      "consensusRevenueEstimate": 44055282734
     },
     "HGYN": {
       "code": "HGYN",
@@ -1609,14 +1833,14 @@
       "code": "LUXE",
       "earningsDate": "2026-11-17",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1275,
-      "consensusRevenueEstimate": 608294003
+      "consensusEpsEstimate": -0.153,
+      "consensusRevenueEstimate": 615927000
     },
     "MAGN": {
       "code": "MAGN",
       "earningsDate": "2026-11-17",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.2907,
+      "consensusEpsEstimate": 0.3958,
       "consensusRevenueEstimate": 916961640
     },
     "MDIA": {
@@ -1638,7 +1862,7 @@
       "earningsDate": "2026-11-17",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.1313,
-      "consensusRevenueEstimate": 342087000
+      "consensusRevenueEstimate": 343677750
     },
     "NNDM": {
       "code": "NNDM",
@@ -1658,8 +1882,8 @@
       "code": "NVDA",
       "earningsDate": "2026-11-17",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 2.5231,
-      "consensusRevenueEstimate": 111283858317
+      "consensusEpsEstimate": 2.5253,
+      "consensusRevenueEstimate": 111317945942
     },
     "NYC": {
       "code": "NYC",
@@ -1679,7 +1903,7 @@
       "code": "ODD",
       "earningsDate": "2026-11-17",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.2724,
+      "consensusEpsEstimate": 0.3027,
       "consensusRevenueEstimate": 140069931
     },
     "OPGN": {
@@ -1700,8 +1924,8 @@
       "code": "PACS",
       "earningsDate": "2026-11-17",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.5848,
-      "consensusRevenueEstimate": 1487944043
+      "consensusEpsEstimate": 0.6095,
+      "consensusRevenueEstimate": 1486754040
     },
     "PANW": {
       "code": "PANW",
@@ -1756,8 +1980,8 @@
       "code": "RGCO",
       "earningsDate": "2026-11-17",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.2448,
-      "consensusRevenueEstimate": 24021000
+      "consensusEpsEstimate": 0.2499,
+      "consensusRevenueEstimate": 24123000
     },
     "RIME": {
       "code": "RIME",
@@ -1821,13 +2045,6 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -1.7007,
       "consensusRevenueEstimate": 27873705240
-    },
-    "TGT": {
-      "code": "TGT",
-      "earningsDate": "2026-11-17",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 2.0672,
-      "consensusRevenueEstimate": 26706177024
     },
     "TVA": {
       "code": "TVA",
@@ -2057,8 +2274,8 @@
       "code": "BIDU",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 8.1694,
-      "consensusRevenueEstimate": 30764615056
+      "consensusEpsEstimate": 8.1993,
+      "consensusRevenueEstimate": 30799616550
     },
     "BRC": {
       "code": "BRC",
@@ -2072,7 +2289,7 @@
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.0612,
-      "consensusRevenueEstimate": 222791970
+      "consensusRevenueEstimate": 222740970
     },
     "BZ": {
       "code": "BZ",
@@ -2092,8 +2309,8 @@
       "code": "CAN",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0606,
-      "consensusRevenueEstimate": 14039757
+      "consensusEpsEstimate": -0.0455,
+      "consensusRevenueEstimate": 14241606
     },
     "CCIF": {
       "code": "CCIF",
@@ -2127,8 +2344,8 @@
       "code": "CNCK",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0194,
-      "consensusRevenueEstimate": 692919119
+      "consensusEpsEstimate": -0.0304,
+      "consensusRevenueEstimate": 448884180
     },
     "CNGO": {
       "code": "CNGO",
@@ -2184,7 +2401,7 @@
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.0153,
-      "consensusRevenueEstimate": 37485000
+      "consensusRevenueEstimate": 8670000
     },
     "ELTK": {
       "code": "ELTK",
@@ -2218,8 +2435,8 @@
       "code": "ESEA",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 4.5237,
-      "consensusRevenueEstimate": 57405263
+      "consensusEpsEstimate": 4.5526,
+      "consensusRevenueEstimate": 58098945
     },
     "ESGH": {
       "code": "ESGH",
@@ -2232,7 +2449,7 @@
       "code": "ESTC",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.8256,
+      "consensusEpsEstimate": 0.8258,
       "consensusRevenueEstimate": 496285947
     },
     "FOTB": {
@@ -2261,7 +2478,7 @@
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.3337,
-      "consensusRevenueEstimate": 191487252
+      "consensusRevenueEstimate": 191379713
     },
     "GELS": {
       "code": "GELS",
@@ -2281,14 +2498,14 @@
       "code": "GRRR",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.5814,
-      "consensusRevenueEstimate": 50114385
+      "consensusEpsEstimate": -0.5202,
+      "consensusRevenueEstimate": 49989588
     },
     "GRSD": {
       "code": "GRSD",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0551,
+      "consensusEpsEstimate": 0.0434,
       "consensusRevenueEstimate": 42061627
     },
     "GTCH": {
@@ -2330,7 +2547,7 @@
       "code": "IBTA",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.104,
+      "consensusEpsEstimate": -0.0714,
       "consensusRevenueEstimate": 90453600
     },
     "IIIV": {
@@ -2387,7 +2604,7 @@
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -2.04,
-      "consensusRevenueEstimate": 1122000
+      "consensusRevenueEstimate": null
     },
     "KANP": {
       "code": "KANP",
@@ -2457,7 +2674,7 @@
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 1.3441,
-      "consensusRevenueEstimate": 9579913529
+      "consensusRevenueEstimate": 9580171079
     },
     "MGIC": {
       "code": "MGIC",
@@ -2520,7 +2737,7 @@
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.0143,
-      "consensusRevenueEstimate": 17607750
+      "consensusRevenueEstimate": 17582250
     },
     "NTIC": {
       "code": "NTIC",
@@ -2576,7 +2793,14 @@
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 1.5893,
-      "consensusRevenueEstimate": 343639703
+      "consensusRevenueEstimate": 341813046
+    },
+    "POWW": {
+      "code": "POWW",
+      "earningsDate": "2026-11-16",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.0051,
+      "consensusRevenueEstimate": 13149330
     },
     "PRPO": {
       "code": "PRPO",
@@ -2610,7 +2834,7 @@
       "code": "SGMT",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2686,
+      "consensusEpsEstimate": -0.2675,
       "consensusRevenueEstimate": 0
     },
     "SOAR": {
@@ -2638,8 +2862,8 @@
       "code": "TLSI",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1265,
-      "consensusRevenueEstimate": 14607828
+      "consensusEpsEstimate": -0.1306,
+      "consensusRevenueEstimate": 14304072
     },
     "TRSO": {
       "code": "TRSO",
@@ -2647,6 +2871,13 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": null,
       "consensusRevenueEstimate": null
+    },
+    "TSN": {
+      "code": "TSN",
+      "earningsDate": "2026-11-16",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.7579,
+      "consensusRevenueEstimate": 14516298730
     },
     "ULBI": {
       "code": "ULBI",
@@ -2673,8 +2904,8 @@
       "code": "VIK",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 1.2935,
-      "consensusRevenueEstimate": 2233492719
+      "consensusEpsEstimate": 1.284,
+      "consensusRevenueEstimate": 2227878533
     },
     "VISL": {
       "code": "VISL",
@@ -2701,7 +2932,7 @@
       "code": "WAVE",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.255,
+      "consensusEpsEstimate": -0.2448,
       "consensusRevenueEstimate": 89250
     },
     "WILC": {
@@ -2720,13 +2951,6 @@
     },
     "XONI": {
       "code": "XONI",
-      "earningsDate": "2026-11-16",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "YDDL": {
-      "code": "YDDL",
       "earningsDate": "2026-11-16",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": null,
@@ -2757,7 +2981,7 @@
       "code": "ALLR",
       "earningsDate": "2026-11-14",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.255,
+      "consensusEpsEstimate": -0.2142,
       "consensusRevenueEstimate": 0
     },
     "GMEX": {
@@ -2827,8 +3051,8 @@
       "code": "KEEL",
       "earningsDate": "2026-11-13",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0816,
-      "consensusRevenueEstimate": 23856698
+      "consensusEpsEstimate": -0.0861,
+      "consensusRevenueEstimate": 22912912
     },
     "KFII": {
       "code": "KFII",
@@ -2918,8 +3142,8 @@
       "code": "ABTC",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0238,
-      "consensusRevenueEstimate": 76635996
+      "consensusEpsEstimate": -0.0782,
+      "consensusRevenueEstimate": 72759996
     },
     "ACCR": {
       "code": "ACCR",
@@ -2946,8 +3170,8 @@
       "code": "AGPU",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
+      "consensusEpsEstimate": -0.2958,
+      "consensusRevenueEstimate": 9486000
     },
     "AIDG": {
       "code": "AIDG",
@@ -3016,15 +3240,15 @@
       "code": "ASNS",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0714,
+      "consensusEpsEstimate": -0.0612,
       "consensusRevenueEstimate": 1530000
     },
     "ASST": {
       "code": "ASST",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2856,
-      "consensusRevenueEstimate": 3068160
+      "consensusEpsEstimate": -0.4284,
+      "consensusRevenueEstimate": 3114315
     },
     "ATNM": {
       "code": "ATNM",
@@ -3198,7 +3422,7 @@
       "code": "BNTC",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2856,
+      "consensusEpsEstimate": -0.2795,
       "consensusRevenueEstimate": 0
     },
     "BRGX": {
@@ -3256,13 +3480,6 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.3605,
       "consensusRevenueEstimate": 0
-    },
-    "CBC": {
-      "code": "CBC",
-      "earningsDate": "2026-11-12",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.4913,
-      "consensusRevenueEstimate": 291837813
     },
     "CBRRF": {
       "code": "CBRRF",
@@ -3395,7 +3612,7 @@
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.2754,
-      "consensusRevenueEstimate": 0
+      "consensusRevenueEstimate": null
     },
     "CNVS": {
       "code": "CNVS",
@@ -3569,7 +3786,7 @@
       "code": "ENTX",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0816,
+      "consensusEpsEstimate": -0.0663,
       "consensusRevenueEstimate": 0
     },
     "ENVB": {
@@ -3709,7 +3926,7 @@
       "code": "FTH",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.7974,
+      "consensusEpsEstimate": -0.7902,
       "consensusRevenueEstimate": 0
     },
     "GALT": {
@@ -3765,7 +3982,7 @@
       "code": "GRI",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.9898,
+      "consensusEpsEstimate": -0.8484,
       "consensusRevenueEstimate": 0
     },
     "GTBP": {
@@ -3842,14 +4059,14 @@
       "code": "IKT",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1128,
+      "consensusEpsEstimate": -0.1196,
       "consensusRevenueEstimate": 0
     },
     "IMSR": {
       "code": "IMSR",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.5304,
+      "consensusEpsEstimate": -0.4114,
       "consensusRevenueEstimate": 0
     },
     "INBX": {
@@ -3898,8 +4115,8 @@
       "code": "IQMX",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
+      "consensusEpsEstimate": -0.1428,
+      "consensusRevenueEstimate": 10710000
     },
     "ITRMF": {
       "code": "ITRMF",
@@ -3926,8 +4143,8 @@
       "code": "IXHL",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.5212,
-      "consensusRevenueEstimate": null
+      "consensusEpsEstimate": -0.4968,
+      "consensusRevenueEstimate": 0
     },
     "JAGX": {
       "code": "JAGX",
@@ -4087,8 +4304,8 @@
       "code": "MDXH",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1122,
-      "consensusRevenueEstimate": 29314800
+      "consensusEpsEstimate": -0.0938,
+      "consensusRevenueEstimate": 29322960
     },
     "MGRX": {
       "code": "MGRX",
@@ -4199,7 +4416,7 @@
       "code": "NTHI",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2278,
+      "consensusEpsEstimate": -0.2576,
       "consensusRevenueEstimate": 0
     },
     "NTWO": {
@@ -4214,7 +4431,7 @@
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.2327,
-      "consensusRevenueEstimate": 5847566676
+      "consensusRevenueEstimate": 5848137914
     },
     "NUMD": {
       "code": "NUMD",
@@ -4248,8 +4465,8 @@
       "code": "OCTV",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.2907,
-      "consensusRevenueEstimate": 410176170
+      "consensusEpsEstimate": 0.2897,
+      "consensusRevenueEstimate": 409978800
     },
     "OLB": {
       "code": "OLB",
@@ -4361,7 +4578,7 @@
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.0954,
-      "consensusRevenueEstimate": 116331000
+      "consensusRevenueEstimate": 107406000
     },
     "PVL": {
       "code": "PVL",
@@ -4424,7 +4641,7 @@
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.049,
-      "consensusRevenueEstimate": 7570266
+      "consensusRevenueEstimate": 7689270
     },
     "RBCN": {
       "code": "RBCN",
@@ -4564,7 +4781,7 @@
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.2283,
-      "consensusRevenueEstimate": 17966106
+      "consensusRevenueEstimate": 17973246
     },
     "SGLY": {
       "code": "SGLY",
@@ -4634,7 +4851,7 @@
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.8561,
-      "consensusRevenueEstimate": 21858
+      "consensusRevenueEstimate": 18941
     },
     "STCB": {
       "code": "STCB",
@@ -4711,7 +4928,7 @@
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.1006,
-      "consensusRevenueEstimate": 287198329
+      "consensusRevenueEstimate": 289791087
     },
     "TGL": {
       "code": "TGL",
@@ -4752,8 +4969,8 @@
       "code": "TRT",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
+      "consensusEpsEstimate": 0.0202,
+      "consensusRevenueEstimate": 16822560
     },
     "TVAI": {
       "code": "TVAI",
@@ -4773,8 +4990,8 @@
       "code": "TWST",
       "earningsDate": "2026-11-12",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.3814,
-      "consensusRevenueEstimate": 124912168
+      "consensusEpsEstimate": -0.3804,
+      "consensusRevenueEstimate": 124967523
     },
     "UAVS": {
       "code": "UAVS",
@@ -4976,7 +5193,7 @@
       "code": "ACRV",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.469,
+      "consensusEpsEstimate": -0.453,
       "consensusRevenueEstimate": 0
     },
     "ADIL": {
@@ -5005,7 +5222,7 @@
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.0748,
-      "consensusRevenueEstimate": 255000
+      "consensusRevenueEstimate": 170003
     },
     "AIRO": {
       "code": "AIRO",
@@ -5033,7 +5250,7 @@
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.7619,
-      "consensusRevenueEstimate": 1722667
+      "consensusRevenueEstimate": 1938000
     },
     "ALVO": {
       "code": "ALVO",
@@ -5060,7 +5277,7 @@
       "code": "ANGX",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0782,
+      "consensusEpsEstimate": -0.0714,
       "consensusRevenueEstimate": 140962133
     },
     "APTO": {
@@ -5116,8 +5333,8 @@
       "code": "AYTU",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
+      "consensusEpsEstimate": -0.3417,
+      "consensusRevenueEstimate": 12910140
     },
     "AZ": {
       "code": "AZ",
@@ -5354,8 +5571,8 @@
       "code": "CRWV",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -1.1885,
-      "consensusRevenueEstimate": 3608109913
+      "consensusEpsEstimate": -1.1794,
+      "consensusRevenueEstimate": 3610553598
     },
     "CSAI": {
       "code": "CSAI",
@@ -5417,8 +5634,8 @@
       "code": "DIS",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 1.6857,
-      "consensusRevenueEstimate": 25390695191
+      "consensusEpsEstimate": 1.6972,
+      "consensusRevenueEstimate": 25451699989
     },
     "DMNIF": {
       "code": "DMNIF",
@@ -5473,8 +5690,8 @@
       "code": "EDRY",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 2.0026,
-      "consensusRevenueEstimate": 19386456
+      "consensusEpsEstimate": 2.142,
+      "consensusRevenueEstimate": 19872660
     },
     "EIC": {
       "code": "EIC",
@@ -5494,7 +5711,7 @@
       "code": "ELTX",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.4893,
+      "consensusEpsEstimate": -0.4383,
       "consensusRevenueEstimate": 0
     },
     "EMYB": {
@@ -5543,8 +5760,15 @@
       "code": "EZPW",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.424,
-      "consensusRevenueEstimate": 434198404
+      "consensusEpsEstimate": 0.4233,
+      "consensusRevenueEstimate": 435708810
+    },
+    "FATE": {
+      "code": "FATE",
+      "earningsDate": "2026-11-11",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -0.2755,
+      "consensusRevenueEstimate": 1163820
     },
     "FDCT": {
       "code": "FDCT",
@@ -5578,8 +5802,8 @@
       "code": "FLNT",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1564,
-      "consensusRevenueEstimate": 50840880
+      "consensusEpsEstimate": -0.1556,
+      "consensusRevenueEstimate": 51082365
     },
     "FLUX": {
       "code": "FLUX",
@@ -5683,7 +5907,7 @@
       "code": "GRTX",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.561,
+      "consensusEpsEstimate": -0.5253,
       "consensusRevenueEstimate": 0
     },
     "GTHP": {
@@ -5746,8 +5970,15 @@
       "code": "HYPD",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 1.5759,
+      "consensusEpsEstimate": 1.8462,
       "consensusRevenueEstimate": 661470
+    },
+    "HZO": {
+      "code": "HZO",
+      "earningsDate": "2026-11-11",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.0388,
+      "consensusRevenueEstimate": 546731058
     },
     "ICCC": {
       "code": "ICCC",
@@ -5788,7 +6019,7 @@
       "code": "IMUX",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.9851,
+      "consensusEpsEstimate": -0.9647,
       "consensusRevenueEstimate": 0
     },
     "INTI": {
@@ -5809,7 +6040,7 @@
       "code": "IPSC",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1156,
+      "consensusEpsEstimate": -0.1224,
       "consensusRevenueEstimate": 0
     },
     "IPWR": {
@@ -5872,7 +6103,7 @@
       "code": "KOD",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -1.0241,
+      "consensusEpsEstimate": -1.0723,
       "consensusRevenueEstimate": 0
     },
     "KTTA": {
@@ -5971,14 +6202,14 @@
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.5059,
-      "consensusRevenueEstimate": 7208850
+      "consensusRevenueEstimate": 7092498
     },
     "MIRA": {
       "code": "MIRA",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
+      "consensusEpsEstimate": -0.0306,
+      "consensusRevenueEstimate": 0
     },
     "MITI": {
       "code": "MITI",
@@ -6075,8 +6306,8 @@
       "code": "NESR",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.5253,
-      "consensusRevenueEstimate": 547311600
+      "consensusEpsEstimate": 0.4473,
+      "consensusRevenueEstimate": 529584000
     },
     "NGNE": {
       "code": "NGNE",
@@ -6194,8 +6425,8 @@
       "code": "OMER",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0238,
-      "consensusRevenueEstimate": 37434000
+      "consensusEpsEstimate": 0.0306,
+      "consensusRevenueEstimate": 38025600
     },
     "ONCO": {
       "code": "ONCO",
@@ -6208,7 +6439,7 @@
       "code": "ONDS",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1088,
+      "consensusEpsEstimate": -0.1428,
       "consensusRevenueEstimate": 151300455
     },
     "ONEW": {
@@ -6243,7 +6474,7 @@
       "code": "ORIC",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.3879,
+      "consensusEpsEstimate": -0.3908,
       "consensusRevenueEstimate": 0
     },
     "ORMP": {
@@ -6258,7 +6489,7 @@
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.0255,
-      "consensusRevenueEstimate": 30559608
+      "consensusRevenueEstimate": 30561240
     },
     "PAAI": {
       "code": "PAAI",
@@ -6292,8 +6523,8 @@
       "code": "PGEN",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0816,
-      "consensusRevenueEstimate": 70594536
+      "consensusEpsEstimate": 0.0842,
+      "consensusRevenueEstimate": 73753905
     },
     "PHIO": {
       "code": "PHIO",
@@ -6397,7 +6628,7 @@
       "code": "QTTB",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.3386,
+      "consensusEpsEstimate": -0.3417,
       "consensusRevenueEstimate": 0
     },
     "QURT": {
@@ -6503,7 +6734,7 @@
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.8959,
-      "consensusRevenueEstimate": 53493900
+      "consensusRevenueEstimate": 53692290
     },
     "SHMN": {
       "code": "SHMN",
@@ -6586,8 +6817,8 @@
       "code": "SOC",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0278,
-      "consensusRevenueEstimate": 186559796
+      "consensusEpsEstimate": -0.0967,
+      "consensusRevenueEstimate": 172823796
     },
     "SOCA": {
       "code": "SOCA",
@@ -6628,7 +6859,7 @@
       "code": "SPMC",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.3009,
+      "consensusEpsEstimate": 0.3057,
       "consensusRevenueEstimate": 15137310
     },
     "SPNS": {
@@ -6677,14 +6908,14 @@
       "code": "STRR",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0204,
-      "consensusRevenueEstimate": 59670000
+      "consensusEpsEstimate": -0.0476,
+      "consensusRevenueEstimate": 60335723
     },
     "STUB": {
       "code": "STUB",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.1224,
+      "consensusEpsEstimate": 0.1156,
       "consensusRevenueEstimate": 529500992
     },
     "SUIG": {
@@ -6726,8 +6957,8 @@
       "code": "TELA",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1616,
-      "consensusRevenueEstimate": 20435904
+      "consensusEpsEstimate": -0.1584,
+      "consensusRevenueEstimate": 20429916
     },
     "TIL": {
       "code": "TIL",
@@ -6747,7 +6978,7 @@
       "code": "TNON",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -6.426,
+      "consensusEpsEstimate": -5.3652,
       "consensusRevenueEstimate": 1685550
     },
     "TONT": {
@@ -6768,8 +6999,8 @@
       "code": "TRAK",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.102,
-      "consensusRevenueEstimate": 6120000
+      "consensusEpsEstimate": 0.0816,
+      "consensusRevenueEstimate": 5100000
     },
     "TRAW": {
       "code": "TRAW",
@@ -6782,7 +7013,7 @@
       "code": "TRVI",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1365,
+      "consensusEpsEstimate": -0.1374,
       "consensusRevenueEstimate": 0
     },
     "TSSI": {
@@ -6810,7 +7041,7 @@
       "code": "TVRD",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.5535,
+      "consensusEpsEstimate": -0.5566,
       "consensusRevenueEstimate": 0
     },
     "TWAV": {
@@ -6873,7 +7104,7 @@
       "code": "VNRX",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.4361,
+      "consensusEpsEstimate": -0.357,
       "consensusRevenueEstimate": 720630
     },
     "VOR": {
@@ -6904,6 +7135,13 @@
       "consensusEpsEstimate": -0.0816,
       "consensusRevenueEstimate": 1328040
     },
+    "VXRT": {
+      "code": "VXRT",
+      "earningsDate": "2026-11-11",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -0.1882,
+      "consensusRevenueEstimate": 14856300
+    },
     "WFCF": {
       "code": "WFCF",
       "earningsDate": "2026-11-11",
@@ -6915,8 +7153,8 @@
       "code": "WKSP",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1683,
-      "consensusRevenueEstimate": 11770290
+      "consensusEpsEstimate": -0.1836,
+      "consensusRevenueEstimate": 12750000
     },
     "WNDW": {
       "code": "WNDW",
@@ -6937,7 +7175,7 @@
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.3672,
-      "consensusRevenueEstimate": 31906436
+      "consensusRevenueEstimate": 31398068
     },
     "WYY": {
       "code": "WYY",
@@ -6957,7 +7195,7 @@
       "code": "XOS",
       "earningsDate": "2026-11-11",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.5202,
+      "consensusEpsEstimate": -0.4545,
       "consensusRevenueEstimate": 14847000
     },
     "YHGJ": {
@@ -7097,7 +7335,7 @@
       "code": "AIRG",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0442,
+      "consensusEpsEstimate": 0.0434,
       "consensusRevenueEstimate": 15542250
     },
     "AIRT": {
@@ -7139,7 +7377,7 @@
       "code": "ANTA",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0689,
+      "consensusEpsEstimate": 0.1224,
       "consensusRevenueEstimate": 11679000
     },
     "ANTX": {
@@ -7189,7 +7427,7 @@
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.2207,
-      "consensusRevenueEstimate": 1635315448
+      "consensusRevenueEstimate": 1635111204
     },
     "ARMP": {
       "code": "ARMP",
@@ -7225,6 +7463,13 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.9639,
       "consensusRevenueEstimate": 0
+    },
+    "ATRA": {
+      "code": "ATRA",
+      "earningsDate": "2026-11-10",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -0.1431,
+      "consensusRevenueEstimate": 680003
     },
     "ATXS": {
       "code": "ATXS",
@@ -7412,8 +7657,8 @@
       "code": "CELC",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -1.4272,
-      "consensusRevenueEstimate": 3047392
+      "consensusEpsEstimate": -1.4336,
+      "consensusRevenueEstimate": 2842128
     },
     "CENN": {
       "code": "CENN",
@@ -7440,8 +7685,8 @@
       "code": "CNTB",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2792,
-      "consensusRevenueEstimate": 663000
+      "consensusEpsEstimate": -0.2754,
+      "consensusRevenueEstimate": 688500
     },
     "CNTN": {
       "code": "CNTN",
@@ -7469,7 +7714,7 @@
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.373,
-      "consensusRevenueEstimate": 800419357
+      "consensusRevenueEstimate": 792244781
     },
     "CREX": {
       "code": "CREX",
@@ -7482,8 +7727,8 @@
       "code": "CRMD",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.103,
-      "consensusRevenueEstimate": 54335604
+      "consensusEpsEstimate": -0.1063,
+      "consensusRevenueEstimate": 54291366
     },
     "CRVW": {
       "code": "CRVW",
@@ -7545,8 +7790,8 @@
       "code": "CYCN",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.986,
-      "consensusRevenueEstimate": null
+      "consensusEpsEstimate": -0.9333,
+      "consensusRevenueEstimate": 0
     },
     "CYPH": {
       "code": "CYPH",
@@ -7629,7 +7874,7 @@
       "code": "EGAN",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0646,
+      "consensusEpsEstimate": 0.0612,
       "consensusRevenueEstimate": 21514176
     },
     "ELMD": {
@@ -7671,8 +7916,8 @@
       "code": "ESP",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.8585,
-      "consensusRevenueEstimate": 12928000
+      "consensusEpsEstimate": 0.8888,
+      "consensusRevenueEstimate": 13029000
     },
     "EUBG": {
       "code": "EUBG",
@@ -7727,15 +7972,15 @@
       "code": "FLUT",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.361,
+      "consensusEpsEstimate": 0.3559,
       "consensusRevenueEstimate": 4127073000
     },
     "FTCI": {
       "code": "FTCI",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2455,
-      "consensusRevenueEstimate": 38012085
+      "consensusEpsEstimate": -0.3679,
+      "consensusRevenueEstimate": 33855585
     },
     "FUFU": {
       "code": "FUFU",
@@ -7748,7 +7993,7 @@
       "code": "FVR",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0051,
+      "consensusEpsEstimate": -0.0101,
       "consensusRevenueEstimate": 18912391
     },
     "GANX": {
@@ -7785,13 +8030,6 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": null,
       "consensusRevenueEstimate": null
-    },
-    "GFS": {
-      "code": "GFS",
-      "earningsDate": "2026-11-10",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.507,
-      "consensusRevenueEstimate": 1907403311
     },
     "GILT": {
       "code": "GILT",
@@ -8022,7 +8260,7 @@
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.2411,
-      "consensusRevenueEstimate": 2494952
+      "consensusRevenueEstimate": 2497356
     },
     "KLC": {
       "code": "KLC",
@@ -8042,8 +8280,8 @@
       "code": "KOPN",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0044,
-      "consensusRevenueEstimate": 16334575
+      "consensusEpsEstimate": -0.0051,
+      "consensusRevenueEstimate": 16278618
     },
     "KORE": {
       "code": "KORE",
@@ -8098,8 +8336,8 @@
       "code": "LEGN",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0143,
-      "consensusRevenueEstimate": 366574872
+      "consensusEpsEstimate": 0.0082,
+      "consensusRevenueEstimate": 365320527
     },
     "LFT": {
       "code": "LFT",
@@ -8211,13 +8449,13 @@
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.0758,
-      "consensusRevenueEstimate": 41958935
+      "consensusRevenueEstimate": 41807435
     },
     "MIST": {
       "code": "MIST",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2227,
+      "consensusEpsEstimate": -0.2215,
       "consensusRevenueEstimate": 1165717
     },
     "MNDO": {
@@ -8322,8 +8560,8 @@
       "code": "ONON",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.3928,
-      "consensusRevenueEstimate": 944207370
+      "consensusEpsEstimate": 0.3942,
+      "consensusRevenueEstimate": 946897518
     },
     "OPHC": {
       "code": "OPHC",
@@ -8364,8 +8602,8 @@
       "code": "PAGS",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 2.1368,
-      "consensusRevenueEstimate": 5326452240
+      "consensusEpsEstimate": 2.1623,
+      "consensusRevenueEstimate": 5288877480
     },
     "PAVM": {
       "code": "PAVM",
@@ -8539,7 +8777,7 @@
       "code": "QNCX",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -1.3314,
+      "consensusEpsEstimate": -3.6661,
       "consensusRevenueEstimate": 0
     },
     "RBOT": {
@@ -8568,7 +8806,7 @@
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.6868,
-      "consensusRevenueEstimate": 56274170
+      "consensusRevenueEstimate": 56981170
     },
     "RKTO": {
       "code": "RKTO",
@@ -8602,8 +8840,8 @@
       "code": "SBET",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0068,
-      "consensusRevenueEstimate": 11012256
+      "consensusEpsEstimate": 0.0026,
+      "consensusRevenueEstimate": 10528695
     },
     "SBXD": {
       "code": "SBXD",
@@ -8722,7 +8960,7 @@
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.1675,
-      "consensusRevenueEstimate": 25531446
+      "consensusRevenueEstimate": 25523123
     },
     "STRS": {
       "code": "STRS",
@@ -8742,7 +8980,7 @@
       "code": "SURG",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0816,
+      "consensusEpsEstimate": -0.0714,
       "consensusRevenueEstimate": 16830000
     },
     "SVCO": {
@@ -8784,8 +9022,8 @@
       "code": "TATT",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.4029,
-      "consensusRevenueEstimate": 54286440
+      "consensusEpsEstimate": 0.4041,
+      "consensusRevenueEstimate": 53806703
     },
     "TAVI": {
       "code": "TAVI",
@@ -8805,8 +9043,8 @@
       "code": "TDG",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 12.4081,
-      "consensusRevenueEstimate": 2972181651
+      "consensusEpsEstimate": 12.403,
+      "consensusRevenueEstimate": 2971567793
     },
     "TENX": {
       "code": "TENX",
@@ -8826,7 +9064,7 @@
       "code": "TIC",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0067,
+      "consensusEpsEstimate": 0.0101,
       "consensusRevenueEstimate": 618494841
     },
     "TISI": {
@@ -8910,7 +9148,7 @@
       "code": "UAMY",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0102,
+      "consensusEpsEstimate": 0.0068,
       "consensusRevenueEstimate": 15835500
     },
     "UCL": {
@@ -8924,7 +9162,7 @@
       "code": "UNCY",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.3206,
+      "consensusEpsEstimate": -0.3191,
       "consensusRevenueEstimate": 0
     },
     "USIO": {
@@ -8936,6 +9174,13 @@
     },
     "VATE": {
       "code": "VATE",
+      "earningsDate": "2026-11-10",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": null,
+      "consensusRevenueEstimate": null
+    },
+    "VGZ": {
+      "code": "VGZ",
       "earningsDate": "2026-11-10",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": null,
@@ -9046,6 +9291,13 @@
       "consensusEpsEstimate": null,
       "consensusRevenueEstimate": null
     },
+    "ACCS": {
+      "code": "ACCS",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.1122,
+      "consensusRevenueEstimate": 5876730
+    },
     "ACDC": {
       "code": "ACDC",
       "earningsDate": "2026-11-09",
@@ -9071,7 +9323,7 @@
       "code": "AGEN",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2652,
+      "consensusEpsEstimate": -0.2482,
       "consensusRevenueEstimate": 28797996
     },
     "AGIG": {
@@ -9116,6 +9368,20 @@
       "consensusEpsEstimate": null,
       "consensusRevenueEstimate": null
     },
+    "AKBA": {
+      "code": "AKBA",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -0.0374,
+      "consensusRevenueEstimate": 47879483
+    },
+    "AMNF": {
+      "code": "AMNF",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.153,
+      "consensusRevenueEstimate": 21590850
+    },
     "ANNX": {
       "code": "ANNX",
       "earningsDate": "2026-11-09",
@@ -9135,7 +9401,7 @@
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.6923,
-      "consensusRevenueEstimate": 8160081
+      "consensusRevenueEstimate": 8157960
     },
     "AREB": {
       "code": "AREB",
@@ -9155,8 +9421,8 @@
       "code": "ASND",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.9412,
-      "consensusRevenueEstimate": 371796823
+      "consensusEpsEstimate": 0.9462,
+      "consensusRevenueEstimate": 372529948
     },
     "ASRT": {
       "code": "ASRT",
@@ -9176,8 +9442,8 @@
       "code": "ASTS",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.4352,
-      "consensusRevenueEstimate": 46239150
+      "consensusEpsEstimate": -0.4227,
+      "consensusRevenueEstimate": 47667150
     },
     "ATLC": {
       "code": "ATLC",
@@ -9190,7 +9456,7 @@
       "code": "AVBP",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -1.092,
+      "consensusEpsEstimate": -1.0901,
       "consensusRevenueEstimate": 0
     },
     "AVD": {
@@ -9199,6 +9465,13 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.0101,
       "consensusRevenueEstimate": 131300000
+    },
+    "BALY": {
+      "code": "BALY",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -1.467,
+      "consensusRevenueEstimate": 820632585
     },
     "BAP": {
       "code": "BAP",
@@ -9211,7 +9484,7 @@
       "code": "BARK",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.5304,
+      "consensusEpsEstimate": -0.4335,
       "consensusRevenueEstimate": 89167890
     },
     "BBAI": {
@@ -9239,7 +9512,7 @@
       "code": "BCAX",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.842,
+      "consensusEpsEstimate": -0.8432,
       "consensusRevenueEstimate": 0
     },
     "BCSF": {
@@ -9282,7 +9555,7 @@
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.5936,
-      "consensusRevenueEstimate": 416624323
+      "consensusRevenueEstimate": 406736090
     },
     "BLTE": {
       "code": "BLTE",
@@ -9295,36 +9568,36 @@
       "code": "BOBS",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.2746,
-      "consensusRevenueEstimate": 679266501
+      "consensusEpsEstimate": 0.2715,
+      "consensusRevenueEstimate": 679658181
     },
     "BODI": {
       "code": "BODI",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2729,
-      "consensusRevenueEstimate": 49710924
+      "consensusEpsEstimate": -0.187,
+      "consensusRevenueEstimate": 47182956
     },
     "BTDR": {
       "code": "BTDR",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.3457,
-      "consensusRevenueEstimate": 258706986
+      "consensusEpsEstimate": -0.3611,
+      "consensusRevenueEstimate": 256886347
     },
     "BW": {
       "code": "BW",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0206,
+      "consensusEpsEstimate": 0.0275,
       "consensusRevenueEstimate": 233243500
     },
     "BXSL": {
       "code": "BXSL",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.6834,
-      "consensusRevenueEstimate": 330115860
+      "consensusEpsEstimate": 0.6814,
+      "consensusRevenueEstimate": 330132588
     },
     "BYND": {
       "code": "BYND",
@@ -9351,15 +9624,15 @@
       "code": "CAPR",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.4357,
-      "consensusRevenueEstimate": 42781717
+      "consensusEpsEstimate": -0.442,
+      "consensusRevenueEstimate": 42548575
     },
     "CART": {
       "code": "CART",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.6389,
-      "consensusRevenueEstimate": 1090403500
+      "consensusRevenueEstimate": 1090925271
     },
     "CBAT": {
       "code": "CBAT",
@@ -9505,8 +9778,8 @@
       "code": "CVGI",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0272,
-      "consensusRevenueEstimate": 188525916
+      "consensusEpsEstimate": 0.0306,
+      "consensusRevenueEstimate": 198798000
     },
     "CVKD": {
       "code": "CVKD",
@@ -9547,22 +9820,22 @@
       "code": "DCGO",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0775,
+      "consensusEpsEstimate": -0.0938,
       "consensusRevenueEstimate": 78738288
     },
     "DDI": {
       "code": "DDI",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.604,
-      "consensusRevenueEstimate": 92963935
+      "consensusEpsEstimate": 0.61,
+      "consensusRevenueEstimate": 93597710
     },
     "DDS": {
       "code": "DDS",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 8.245,
-      "consensusRevenueEstimate": 1496934463
+      "consensusEpsEstimate": 8.1642,
+      "consensusRevenueEstimate": 1493567800
     },
     "DFDV": {
       "code": "DFDV",
@@ -9583,7 +9856,7 @@
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.0539,
-      "consensusRevenueEstimate": 31254783
+      "consensusRevenueEstimate": 31437260
     },
     "DOLE": {
       "code": "DOLE",
@@ -9652,8 +9925,8 @@
       "code": "EPM",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.002,
-      "consensusRevenueEstimate": 22462400
+      "consensusEpsEstimate": 0.0007,
+      "consensusRevenueEstimate": 22952250
     },
     "ETON": {
       "code": "ETON",
@@ -9687,8 +9960,8 @@
       "code": "EXOD",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.3284,
-      "consensusRevenueEstimate": 32446200
+      "consensusEpsEstimate": -0.4573,
+      "consensusRevenueEstimate": 31458503
     },
     "EXOZ": {
       "code": "EXOZ",
@@ -9708,7 +9981,7 @@
       "code": "FDMT",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -1.071,
+      "consensusEpsEstimate": -1.0659,
       "consensusRevenueEstimate": 2491717
     },
     "FDSB": {
@@ -9717,6 +9990,13 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": null,
       "consensusRevenueEstimate": null
+    },
+    "FERG": {
+      "code": "FERG",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 3.37,
+      "consensusRevenueEstimate": 8882746306
     },
     "FF": {
       "code": "FF",
@@ -9736,8 +10016,8 @@
       "code": "FLD",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1246,
-      "consensusRevenueEstimate": 7715056
+      "consensusEpsEstimate": -0.1111,
+      "consensusRevenueEstimate": 7806290
     },
     "FOXO": {
       "code": "FOXO",
@@ -9785,15 +10065,15 @@
       "code": "GEMI",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.5949,
-      "consensusRevenueEstimate": 42361038
+      "consensusEpsEstimate": -0.5739,
+      "consensusRevenueEstimate": 42318912
     },
     "GETY": {
       "code": "GETY",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.025,
-      "consensusRevenueEstimate": 251218860
+      "consensusEpsEstimate": 0.0408,
+      "consensusRevenueEstimate": null
     },
     "GEVO": {
       "code": "GEVO",
@@ -9841,8 +10121,8 @@
       "code": "GRDN",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.3121,
-      "consensusRevenueEstimate": 371137883
+      "consensusEpsEstimate": 0.306,
+      "consensusRevenueEstimate": 371347615
     },
     "GSL": {
       "code": "GSL",
@@ -9869,8 +10149,8 @@
       "code": "HCAT",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0547,
-      "consensusRevenueEstimate": 56553563
+      "consensusEpsEstimate": -0.0485,
+      "consensusRevenueEstimate": 56498208
     },
     "HFBL": {
       "code": "HFBL",
@@ -9890,7 +10170,7 @@
       "code": "HHH",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 1.4443,
+      "consensusEpsEstimate": 1.3736,
       "consensusRevenueEstimate": 631250000
     },
     "HHS": {
@@ -9939,8 +10219,8 @@
       "code": "HYLN",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0796,
-      "consensusRevenueEstimate": 3825000
+      "consensusEpsEstimate": -0.0775,
+      "consensusRevenueEstimate": 4113996
     },
     "HYSR": {
       "code": "HYSR",
@@ -9967,8 +10247,8 @@
       "code": "IEHC",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
+      "consensusEpsEstimate": 0.1938,
+      "consensusRevenueEstimate": 10098000
     },
     "IFRX": {
       "code": "IFRX",
@@ -9984,12 +10264,26 @@
       "consensusEpsEstimate": 1.4648,
       "consensusRevenueEstimate": 466620000
     },
+    "IHRT": {
+      "code": "IHRT",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -0.0714,
+      "consensusRevenueEstimate": 1074069435
+    },
     "IMDX": {
       "code": "IMDX",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.2407,
       "consensusRevenueEstimate": 249084
+    },
+    "IMVT": {
+      "code": "IMVT",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -0.7469,
+      "consensusRevenueEstimate": 0
     },
     "IMXI": {
       "code": "IMXI",
@@ -10016,15 +10310,15 @@
       "code": "INR",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.8221,
-      "consensusRevenueEstimate": 173759521
+      "consensusEpsEstimate": 0.8164,
+      "consensusRevenueEstimate": 175406558
     },
     "INTZ": {
       "code": "INTZ",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.0867,
-      "consensusRevenueEstimate": 2167500
+      "consensusRevenueEstimate": 2142000
     },
     "INVE": {
       "code": "INVE",
@@ -10039,6 +10333,13 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.0408,
       "consensusRevenueEstimate": 12897900
+    },
+    "IRWD": {
+      "code": "IRWD",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 0.3298,
+      "consensusRevenueEstimate": 123998003
     },
     "JBS": {
       "code": "JBS",
@@ -10061,6 +10362,13 @@
       "consensusEpsEstimate": -0.2921,
       "consensusRevenueEstimate": 3060000
     },
+    "KKR": {
+      "code": "KKR",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": 1.6303,
+      "consensusRevenueEstimate": 2669752947
+    },
     "KLAR": {
       "code": "KLAR",
       "earningsDate": "2026-11-09",
@@ -10079,8 +10387,8 @@
       "code": "KMDA",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.1352,
-      "consensusRevenueEstimate": 53811120
+      "consensusEpsEstimate": 0.1301,
+      "consensusRevenueEstimate": 53556120
     },
     "KSPI": {
       "code": "KSPI",
@@ -10107,22 +10415,22 @@
       "code": "LGCY",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.1902,
-      "consensusRevenueEstimate": 22463796
+      "consensusEpsEstimate": 0.1499,
+      "consensusRevenueEstimate": 21263940
     },
     "LIF": {
       "code": "LIF",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.0635,
-      "consensusRevenueEstimate": 173179508
+      "consensusRevenueEstimate": 173663823
     },
     "LIFE": {
       "code": "LIFE",
       "earningsDate": "2026-11-09",
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.3087,
-      "consensusRevenueEstimate": 166642051
+      "consensusRevenueEstimate": 169116112
     },
     "LINC": {
       "code": "LINC",
@@ -10165,314 +10473,6 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": -0.3355,
       "consensusRevenueEstimate": 0
-    },
-    "LYEL": {
-      "code": "LYEL",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -2.1182,
-      "consensusRevenueEstimate": 2376
-    },
-    "MAMO": {
-      "code": "MAMO",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "MASS": {
-      "code": "MASS",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1811,
-      "consensusRevenueEstimate": 18666000
-    },
-    "MCDIF": {
-      "code": "MCDIF",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "MCIC": {
-      "code": "MCIC",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "MDAI": {
-      "code": "MDAI",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1377,
-      "consensusRevenueEstimate": 5431500
-    },
-    "MDCX": {
-      "code": "MDCX",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1352,
-      "consensusRevenueEstimate": 0
-    },
-    "MGX": {
-      "code": "MGX",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.646,
-      "consensusRevenueEstimate": 2080600
-    },
-    "MHGU": {
-      "code": "MHGU",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "MKTW": {
-      "code": "MKTW",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.3927,
-      "consensusRevenueEstimate": 79458000
-    },
-    "MLP": {
-      "code": "MLP",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "MLYS": {
-      "code": "MLYS",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.5421,
-      "consensusRevenueEstimate": 0
-    },
-    "MNDY": {
-      "code": "MNDY",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 1.3864,
-      "consensusRevenueEstimate": 376624616
-    },
-    "MPAA": {
-      "code": "MPAA",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.4998,
-      "consensusRevenueEstimate": 208539000
-    },
-    "MREO": {
-      "code": "MREO",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0102,
-      "consensusRevenueEstimate": 0
-    },
-    "MSC": {
-      "code": "MSC",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "MTNB": {
-      "code": "MTNB",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "MVO": {
-      "code": "MVO",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "MVST": {
-      "code": "MVST",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0204,
-      "consensusRevenueEstimate": 81841740
-    },
-    "MYO": {
-      "code": "MYO",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0788,
-      "consensusRevenueEstimate": 11624494
-    },
-    "NEWH": {
-      "code": "NEWH",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "NGS": {
-      "code": "NGS",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.4478,
-      "consensusRevenueEstimate": 57825782
-    },
-    "NKTX": {
-      "code": "NKTX",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.4284,
-      "consensusRevenueEstimate": 0
-    },
-    "NLCP": {
-      "code": "NLCP",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.2924,
-      "consensusRevenueEstimate": 12480036
-    },
-    "NRBT": {
-      "code": "NRBT",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "NRGV": {
-      "code": "NRGV",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.1795,
-      "consensusRevenueEstimate": 18757116
-    },
-    "NXGL": {
-      "code": "NXGL",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2448,
-      "consensusRevenueEstimate": 4273800
-    },
-    "OBIO": {
-      "code": "OBIO",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.4095,
-      "consensusRevenueEstimate": 110160
-    },
-    "OFRM": {
-      "code": "OFRM",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0592,
-      "consensusRevenueEstimate": 90075180
-    },
-    "OGN": {
-      "code": "OGN",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.9364,
-      "consensusRevenueEstimate": 1584066325
-    },
-    "OKLO": {
-      "code": "OKLO",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.2232,
-      "consensusRevenueEstimate": 601800
-    },
-    "OLMA": {
-      "code": "OLMA",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.6348,
-      "consensusRevenueEstimate": 0
-    },
-    "OLVI": {
-      "code": "OLVI",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "OM": {
-      "code": "OM",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.7141,
-      "consensusRevenueEstimate": 32342000
-    },
-    "ONTF": {
-      "code": "ONTF",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0377,
-      "consensusRevenueEstimate": 34302345
-    },
-    "ORBT": {
-      "code": "ORBT",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "OSG": {
-      "code": "OSG",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.049,
-      "consensusRevenueEstimate": 74790500
-    },
-    "OTGA": {
-      "code": "OTGA",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "OXY": {
-      "code": "OXY",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 1.3229,
-      "consensusRevenueEstimate": 6501552426
-    },
-    "OZVN": {
-      "code": "OZVN",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
-    },
-    "PAL": {
-      "code": "PAL",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.0707,
-      "consensusRevenueEstimate": 146980250
-    },
-    "PALI": {
-      "code": "PALI",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -0.0612,
-      "consensusRevenueEstimate": 0
-    },
-    "PASG": {
-      "code": "PASG",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": -2.7472,
-      "consensusRevenueEstimate": 0
-    },
-    "PGAC": {
-      "code": "PGAC",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": null,
-      "consensusRevenueEstimate": null
     }
   }
 }

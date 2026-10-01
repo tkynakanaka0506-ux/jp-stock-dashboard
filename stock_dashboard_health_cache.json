@@ -1,37 +1,37 @@
 {
   "status": "ERROR",
-  "generatedAt": "2026-09-30T06:50:36.054Z",
-  "gitSha": "cd7228e",
+  "generatedAt": "2026-10-01T06:49:51.233Z",
+  "gitSha": "9afad1b",
   "logicFingerprint": "ce9b145a78c81186",
-  "stocksChecked": 39,
-  "creditQualityChecked": 39,
-  "timelineChecked": 39,
+  "stocksChecked": 38,
+  "creditQualityChecked": 38,
+  "timelineChecked": 38,
   "timelineMissing": 0,
   "pendingCount": 0,
   "closeMissingCount": 0,
   "invalidDateCount": 0,
   "tagCounts": {
-    "需給改善": 5,
-    "買残整理": 9,
-    "買残積み上がり": 17,
-    "信用買い重い": 32,
+    "需給改善": 7,
+    "買残整理": 8,
+    "買残積み上がり": 15,
+    "信用買い重い": 30,
     "買残増加上昇": 8,
-    "安値更新＋買残増": 8
+    "安値更新＋買残増": 6
   },
   "coverage": {
-    "stocksChecked": 39,
-    "creditQualityChecked": 39,
-    "timelineChecked": 39,
+    "stocksChecked": 38,
+    "creditQualityChecked": 38,
+    "timelineChecked": 38,
     "timelineMissing": 0,
     "pendingCount": 0,
     "closeMissingCount": 0,
     "tagCounts": {
-      "需給改善": 5,
-      "買残整理": 9,
-      "買残積み上がり": 17,
-      "信用買い重い": 32,
+      "需給改善": 7,
+      "買残整理": 8,
+      "買残積み上がり": 15,
+      "信用買い重い": 30,
       "買残増加上昇": 8,
-      "安値更新＋買残増": 8
+      "安値更新＋買残増": 6
     }
   },
   "scoreInvariantFailures": 0,
@@ -43,6 +43,17 @@
       "affected": []
     }
   ],
-  "warnings": [],
+  "warnings": [
+    {
+      "code": "credit_quality_checked_decreased",
+      "message": "creditSupplyQuality.checkedの件数が前回(39)から今回(38)へ減少しました",
+      "affected": []
+    },
+    {
+      "code": "timeline_checked_decreased",
+      "message": "creditSupplyTimeline.checkedの件数が前回(39)から今回(38)へ減少しました",
+      "affected": []
+    }
+  ],
   "info": []
 }
