@@ -1,37 +1,37 @@
 {
   "status": "ERROR",
-  "generatedAt": "2026-10-01T06:49:51.233Z",
-  "gitSha": "9afad1b",
+  "generatedAt": "2026-10-02T06:47:29.097Z",
+  "gitSha": "f938517",
   "logicFingerprint": "ce9b145a78c81186",
-  "stocksChecked": 38,
-  "creditQualityChecked": 38,
-  "timelineChecked": 38,
-  "timelineMissing": 0,
+  "stocksChecked": 33,
+  "creditQualityChecked": 0,
+  "timelineChecked": 0,
+  "timelineMissing": 33,
   "pendingCount": 0,
   "closeMissingCount": 0,
   "invalidDateCount": 0,
   "tagCounts": {
-    "需給改善": 7,
-    "買残整理": 8,
-    "買残積み上がり": 15,
-    "信用買い重い": 30,
-    "買残増加上昇": 8,
-    "安値更新＋買残増": 6
+    "需給改善": 0,
+    "買残整理": 0,
+    "買残積み上がり": 0,
+    "信用買い重い": 0,
+    "買残増加上昇": 0,
+    "安値更新＋買残増": 0
   },
   "coverage": {
-    "stocksChecked": 38,
-    "creditQualityChecked": 38,
-    "timelineChecked": 38,
-    "timelineMissing": 0,
+    "stocksChecked": 33,
+    "creditQualityChecked": 0,
+    "timelineChecked": 0,
+    "timelineMissing": 33,
     "pendingCount": 0,
     "closeMissingCount": 0,
     "tagCounts": {
-      "需給改善": 7,
-      "買残整理": 8,
-      "買残積み上がり": 15,
-      "信用買い重い": 30,
-      "買残増加上昇": 8,
-      "安値更新＋買残増": 6
+      "需給改善": 0,
+      "買残整理": 0,
+      "買残積み上がり": 0,
+      "信用買い重い": 0,
+      "買残増加上昇": 0,
+      "安値更新＋買残増": 0
     }
   },
   "scoreInvariantFailures": 0,
@@ -41,19 +41,18 @@
       "code": "broken_svg",
       "message": "需給タイムラインのブロックが完全に閉じていない可能性があります（見出し11件・フッター/空表示10件）",
       "affected": []
-    }
-  ],
-  "warnings": [
+    },
     {
-      "code": "credit_quality_checked_decreased",
-      "message": "creditSupplyQuality.checkedの件数が前回(39)から今回(38)へ減少しました",
+      "code": "credit_quality_checked_zero",
+      "message": "creditSupplyQuality.checkedの件数が前回から0件になりました（データ取得経路が死んでいる可能性）",
       "affected": []
     },
     {
-      "code": "timeline_checked_decreased",
-      "message": "creditSupplyTimeline.checkedの件数が前回(39)から今回(38)へ減少しました",
+      "code": "timeline_checked_zero",
+      "message": "creditSupplyTimeline.checkedの件数が前回から0件になりました（データ取得経路が死んでいる可能性）",
       "affected": []
     }
   ],
+  "warnings": [],
   "info": []
 }
