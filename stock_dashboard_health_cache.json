@@ -1,12 +1,12 @@
 {
   "status": "ERROR",
-  "generatedAt": "2026-10-02T06:47:29.097Z",
-  "gitSha": "f938517",
+  "generatedAt": "2026-10-05T06:46:31.152Z",
+  "gitSha": "50ec817",
   "logicFingerprint": "ce9b145a78c81186",
-  "stocksChecked": 33,
+  "stocksChecked": 29,
   "creditQualityChecked": 0,
   "timelineChecked": 0,
-  "timelineMissing": 33,
+  "timelineMissing": 29,
   "pendingCount": 0,
   "closeMissingCount": 0,
   "invalidDateCount": 0,
@@ -19,10 +19,10 @@
     "安値更新＋買残増": 0
   },
   "coverage": {
-    "stocksChecked": 33,
+    "stocksChecked": 29,
     "creditQualityChecked": 0,
     "timelineChecked": 0,
-    "timelineMissing": 33,
+    "timelineMissing": 29,
     "pendingCount": 0,
     "closeMissingCount": 0,
     "tagCounts": {
@@ -40,16 +40,6 @@
     {
       "code": "broken_svg",
       "message": "需給タイムラインのブロックが完全に閉じていない可能性があります（見出し11件・フッター/空表示10件）",
-      "affected": []
-    },
-    {
-      "code": "credit_quality_checked_zero",
-      "message": "creditSupplyQuality.checkedの件数が前回から0件になりました（データ取得経路が死んでいる可能性）",
-      "affected": []
-    },
-    {
-      "code": "timeline_checked_zero",
-      "message": "creditSupplyTimeline.checkedの件数が前回から0件になりました（データ取得経路が死んでいる可能性）",
       "affected": []
     }
   ],

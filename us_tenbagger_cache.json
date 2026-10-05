@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-02",
+  "date": "2026-10-05",
   "universe": 2,
   "results": [
     {
@@ -7,12 +7,10 @@
       "name": "IONQ Inc",
       "theme": "量子コンピュータ",
       "industry": "Technology",
-      "marketCap": 17822.024916697676,
-      "price": 43.99,
-      "changePct": 0.2,
+      "marketCap": 17732.894965349624,
+      "price": 43.77,
+      "changePct": -0.5,
       "closes": [
-        37.63999938964844,
-        39.02000045776367,
         39.52000045776367,
         40.470001220703125,
         38.13999938964844,
@@ -30,7 +28,9 @@
         45.47999954223633,
         44.58000183105469,
         43.90999984741211,
-        43.86000061035156
+        43.86000061035156,
+        43.9900016784668,
+        43.77000045776367
       ],
       "fiftyTwoWeekHigh": 84.64,
       "tier": "C",
@@ -38,7 +38,7 @@
         "level": "good",
         "label": "大型超成長株(Tier C)",
         "checked": true,
-        "note": "時価総額17,822百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+286.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額17,733百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+286.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "earningsTrend": {
         "level": "good",
@@ -59,9 +59,9 @@
       },
       "repricingLag": {
         "score": 20,
-        "zone": "overheated",
+        "zone": "re_rating",
         "breakdown": {
-          "untapped": 5,
+          "untapped": 5.2,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -70,7 +70,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": true,
-        "repricingGap": 16.9
+        "repricingGap": 18.2
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -112,12 +112,10 @@
       "name": "Aurora Innovation Inc",
       "theme": "自動運転（トラック）",
       "industry": "Technology",
-      "marketCap": 11062.886495913359,
-      "price": 5.52,
-      "changePct": 2.4,
+      "marketCap": 11363.508450684782,
+      "price": 5.67,
+      "changePct": 2.7,
       "closes": [
-        5.849999904632568,
-        6.320000171661377,
         6.340000152587891,
         6.510000228881836,
         6.5,
@@ -135,7 +133,9 @@
         6.039999961853027,
         5.289999961853027,
         5.389999866485596,
-        5.539999961853027
+        5.539999961853027,
+        5.519999980926514,
+        5.670000076293945
       ],
       "fiftyTwoWeekHigh": 8.565,
       "tier": "C",
@@ -143,7 +143,7 @@
         "level": "good",
         "label": "大型超成長株(Tier C)",
         "checked": true,
-        "note": "時価総額11,063百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+100%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額11,364百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+100%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "earningsTrend": {
         "level": "good",
@@ -163,10 +163,10 @@
         "checked": false
       },
       "repricingLag": {
-        "score": 41.8,
+        "score": 40.1,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 21.8,
+          "untapped": 20.1,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -175,7 +175,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "repricingGap": 42.2
+        "repricingGap": 48.5
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -203,7 +203,7 @@
         "checked": true,
         "note": "手動で選定したテーマページ一覧（自動運転（トラック））に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
       },
-      "realizability": 45,
+      "realizability": 43,
       "growthPotential": 100,
       "floatSqueeze": {
         "level": null,
