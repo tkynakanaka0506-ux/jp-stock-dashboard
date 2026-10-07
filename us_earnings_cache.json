@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-06",
-  "fetchedAt": "2026-10-06T00:41:58.347Z",
+  "date": "2026-10-07",
+  "fetchedAt": "2026-10-07T00:40:48.596Z",
   "stocks": {
     "BBW": {
       "code": "BBW",
@@ -3137,13 +3137,6 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.2978,
       "consensusRevenueEstimate": 173910000
-    },
-    "MH": {
-      "code": "MH",
-      "earningsDate": "2026-11-16",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.7323,
-      "consensusRevenueEstimate": 648190608
     },
     "MLCI": {
       "code": "MLCI",
@@ -9501,13 +9494,6 @@
       "consensusEpsEstimate": 0.0418,
       "consensusRevenueEstimate": 677496240
     },
-    "AHR": {
-      "code": "AHR",
-      "earningsDate": "2026-11-09",
-      "earningsDateStatus": "confirmed",
-      "consensusEpsEstimate": 0.1549,
-      "consensusRevenueEstimate": 713038618
-    },
     "AIOT": {
       "code": "AIOT",
       "earningsDate": "2026-11-09",
@@ -10473,6 +10459,20 @@
       "earningsDateStatus": "confirmed",
       "consensusEpsEstimate": 0.0202,
       "consensusRevenueEstimate": 45633486
+    },
+    "LXEO": {
+      "code": "LXEO",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -0.3355,
+      "consensusRevenueEstimate": 0
+    },
+    "LYEL": {
+      "code": "LYEL",
+      "earningsDate": "2026-11-09",
+      "earningsDateStatus": "confirmed",
+      "consensusEpsEstimate": -2.1148,
+      "consensusRevenueEstimate": 2376
     }
   }
 }

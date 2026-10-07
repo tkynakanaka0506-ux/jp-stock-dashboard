@@ -1,7 +1,7 @@
 {
-  "date": "2026-10-06",
-  "universe": 3999,
-  "stage2": 1016,
+  "date": "2026-10-07",
+  "universe": 3965,
+  "stage2": 1000,
   "matched": 0,
   "dropped": 0,
   "results": [],
@@ -9,10 +9,9 @@
     {
       "code": "4394",
       "name": "Ｇ－エクスモーション",
-      "price": 728,
-      "changePct": -9,
+      "price": 717,
+      "changePct": -1.51,
       "closes": [
-        727,
         686,
         664,
         629,
@@ -31,10 +30,11 @@
         769,
         827,
         800,
-        728
+        728,
+        717
       ],
       "market": "東証Ｇ",
-      "marketCap": 4410,
+      "marketCap": 4340,
       "progressStreak": {
         "level": "good",
         "label": "進捗率が加速中",
@@ -85,40 +85,39 @@
       "opMarginImproving": null
     },
     {
-      "code": "5136",
-      "name": "Ｇ－ｔｒｉｐｌａ",
-      "price": 2465,
-      "changePct": 2.97,
+      "code": "4418",
+      "name": "Ｇ－ＪＤＳＣ",
+      "price": 1119,
+      "changePct": -0.09,
       "closes": [
-        1972,
-        1997,
-        1998,
-        2001,
-        1944,
-        1967,
-        2025,
-        2013,
-        2290,
-        2315,
-        2275,
-        2336,
-        2325,
-        2410,
-        2390,
-        2445,
-        2510,
-        2514,
-        2394,
-        2465
+        1144,
+        1078,
+        1095,
+        1053,
+        1045,
+        1030,
+        1050,
+        1090,
+        1079,
+        1139,
+        1181,
+        1198,
+        1129,
+        1104,
+        1082,
+        1114,
+        1131,
+        1125,
+        1120,
+        1119
       ],
       "market": "東証Ｇ",
-      "marketCap": 14600,
+      "marketCap": 18100,
       "progressStreak": {
-        "level": "good",
-        "label": "進捗率が加速中",
-        "checked": true,
-        "profitYoyPct": 139.5,
-        "note": "同じ時期（対通期進捗率）の進捗率が2年連続で上昇しています（23.11-07:35.7%→24.11-07:62.6%→25.11-07:74.6%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+139.5%）"
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false
       },
       "dividendPotential": {
         "level": null,
@@ -130,39 +129,37 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "receivablesAnomaly": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": false
+        "level": "bad",
+        "label": "売掛金急増",
+        "checked": true,
+        "note": "売上高-1%に対し売上債権+24.7%。売上が伸びていないのに売掛金だけ膨らんでおり、回収遅延の懸念があります。"
       },
-      "revenueGrowthPct": null,
+      "revenueGrowthPct": -1,
       "growthAcceleration": {
         "level": null,
         "label": null,
         "note": null,
-        "checked": false,
-        "score": null
+        "checked": true,
+        "score": 30
       },
       "themeMatch": {
+        "level": "good",
+        "label": "テーマ性あり（AIエージェント・フィジカルAI）",
+        "checked": true,
+        "note": "手動で選定したテーマページ一覧（AIエージェント・フィジカルAI）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
+      },
+      "growthAnomalyCaution": {
         "level": null,
         "label": null,
         "note": null,
-        "checked": true
+        "checked": false,
+        "reasonCodes": []
       },
-      "growthAnomalyCaution": {
-        "level": "warn",
-        "label": "異常成長・要確認",
-        "checked": true,
-        "reasonCodes": [
-          "ONE_TIME_ITEM_CURRENT"
-        ],
-        "note": "利益成長率+139.5%という高い伸びですが、特別損益・減損等の一時的な項目（合計2,933,000円）が計上されており、本業の成長とは別の要因が業績に影響している可能性があります。「異常値だから無条件で高評価」にはせず、決算内容の確認をおすすめします"
-      },
-      "grossMarginImproving": null,
-      "opMarginImproving": null
+      "grossMarginImproving": true,
+      "opMarginImproving": true
     },
     {
       "code": "7133",
@@ -170,7 +167,6 @@
       "price": 2104,
       "changePct": 0,
       "closes": [
-        1311,
         1308,
         1309,
         1310,
@@ -188,6 +184,7 @@
         2041,
         2103,
         2103,
+        2104,
         2104,
         2104
       ],
@@ -247,10 +244,9 @@
     {
       "code": "9251",
       "name": "Ｇ－ＡＢ＆Ｃ",
-      "price": 1524,
-      "changePct": 1.06,
+      "price": 1532,
+      "changePct": 0.52,
       "closes": [
-        1569,
         1567,
         1537,
         1543,
@@ -269,10 +265,11 @@
         1571,
         1554,
         1508,
-        1524
+        1524,
+        1532
       ],
       "market": "東証Ｇ",
-      "marketCap": 23200,
+      "marketCap": 23400,
       "progressStreak": {
         "level": "good",
         "label": "進捗率が加速中",
@@ -325,10 +322,9 @@
     {
       "code": "141A",
       "name": "Ｇ－トライアル",
-      "price": 3865,
-      "changePct": 3.07,
+      "price": 3935,
+      "changePct": 1.81,
       "closes": [
-        4045,
         4155,
         4040,
         4230,
@@ -347,10 +343,11 @@
         3775,
         3815,
         3750,
-        3865
+        3865,
+        3935
       ],
       "market": "東証Ｇ",
-      "marketCap": 474900,
+      "marketCap": 483500,
       "progressStreak": {
         "level": null,
         "label": null,
@@ -404,12 +401,128 @@
   ],
   "tenbaggerCandidatesA": [
     {
+      "code": "402A",
+      "name": "Ｇ－アクセルスペース",
+      "price": 320,
+      "changePct": 5.61,
+      "closes": [
+        522,
+        553,
+        552,
+        537,
+        530,
+        511,
+        511,
+        520,
+        517,
+        538,
+        535,
+        550,
+        549,
+        540,
+        521,
+        421,
+        341,
+        321,
+        303,
+        320
+      ],
+      "market": "東証Ｇ",
+      "marketCap": 21300,
+      "revenueGrowthPct": 58.1,
+      "tier": "A",
+      "tenbagger": {
+        "level": "good",
+        "label": "テンバガー候補",
+        "checked": true,
+        "note": "時価総額が21,300百万円（上限30,000百万円以下）と小さく、売上高成長率が前年同期比+58.1%と高水準です。小型のうちに成長を捉えられれば大きなリターンが狙えますが、その分値動きも荒く、成長の失速リスクも大きい点に注意してください"
+      },
+      "repricingLag": {
+        "score": 43.3,
+        "zone": "pre_move",
+        "breakdown": {
+          "untapped": 23.3,
+          "improvement": 12.5,
+          "valuation": 0,
+          "growth": 7.5,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "repricingGap": 63
+      },
+      "hasCatalyst": false,
+      "growthAcceleration": {
+        "level": "good",
+        "label": "成長が加速",
+        "checked": true,
+        "score": 100,
+        "note": "売上高成長率が前期の-24.8%から今期は+58.1%に加速しています。粗利率・営業利益率も改善しており、成長の質も伴っています"
+      },
+      "breakoutVolume": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "floatSqueeze": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "aggressiveInvestment": {
+        "level": "good",
+        "label": "攻めの投資（研究開発費が売上を上回る伸び）",
+        "checked": true,
+        "note": "研究開発費が前年（同期）比+99.8%と、売上高成長率+58.1%を上回るペースで増加しています。目先の利益より成長投資を優先しているフェーズと考えられます（研究開発費を開示している銘柄のみ判定できます）"
+      },
+      "themeMatch": {
+        "level": "good",
+        "label": "テーマ性あり（防衛・宇宙開発関連・衛星運営・スマート農業）",
+        "checked": true,
+        "note": "手動で選定したテーマページ一覧（防衛・宇宙開発関連・衛星運営・スマート農業）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
+      },
+      "diamond": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "realizability": 29,
+      "growthPotential": 100,
+      "deficitGrowth": {
+        "level": "bad",
+        "label": "赤字成長・高リスク",
+        "checked": true,
+        "note": "売上高成長率+58.1%に対し販管費成長率+77.5%と売上以上に膨らみ、営業損益は-2,495,052,000円→-3,822,923,000円と赤字が拡大しています。「高成長」ではありますが、ユニットエコノミクスの改善は確認できません"
+      },
+      "operatingCf": -5123804000,
+      "cash": 5815658000,
+      "interestBearingDebt": 3262306000,
+      "majorShareholder": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "growthAnomalyCaution": {
+        "level": "warn",
+        "label": "異常成長・要確認",
+        "checked": true,
+        "reasonCodes": [
+          "ONE_TIME_ITEM_CURRENT"
+        ],
+        "note": "売上高成長率+58.1%という高い伸びですが、特別損益・減損等の一時的な項目（合計629,927,000円）が計上されており、本業の成長とは別の要因が業績に影響している可能性があります。「異常値だから無条件で高評価」にはせず、決算内容の確認をおすすめします"
+      }
+    },
+    {
       "code": "556A",
       "name": "Ｇ－犬猫生活",
-      "price": 2966,
-      "changePct": -0.7,
+      "price": 2915,
+      "changePct": -1.72,
       "closes": [
-        2219,
         2328,
         2334,
         2249,
@@ -428,23 +541,24 @@
         2925,
         3010,
         2987,
-        2966
+        2966,
+        2915
       ],
       "market": "東証Ｇ",
-      "marketCap": 8130,
+      "marketCap": 7990.000000000001,
       "revenueGrowthPct": 54.9,
       "tier": "A",
       "tenbagger": {
         "level": "good",
         "label": "テンバガー候補",
         "checked": true,
-        "note": "時価総額が8,130百万円（上限30,000百万円以下）と小さく、売上高成長率が前年同期比+54.9%と高水準です。小型のうちに成長を捉えられれば大きなリターンが狙えますが、その分値動きも荒く、成長の失速リスクも大きい点に注意してください"
+        "note": "時価総額が7,990百万円（上限30,000百万円以下）と小さく、売上高成長率が前年同期比+54.9%と高水準です。小型のうちに成長を捉えられれば大きなリターンが狙えますが、その分値動きも荒く、成長の失速リスクも大きい点に注意してください"
       },
       "repricingLag": {
-        "score": 15,
+        "score": 16,
         "zone": "priced_in",
         "breakdown": {
-          "untapped": 0.9,
+          "untapped": 2.1,
           "improvement": 12.5,
           "valuation": 10,
           "growth": 7.5,
@@ -523,8 +637,8 @@
     {
       "code": "625A",
       "name": "Ｇ－Ｓｋｙｆａｌｌ",
-      "price": 1775,
-      "changePct": 3.74,
+      "price": 1710,
+      "changePct": -3.66,
       "closes": [
         1523,
         1555,
@@ -535,17 +649,18 @@
         1900,
         1805,
         1711,
-        1775
+        1775,
+        1710
       ],
       "market": "東証Ｇ",
-      "marketCap": 13000,
+      "marketCap": 12500,
       "revenueGrowthPct": 26,
       "tier": "A",
       "tenbagger": {
         "level": "good",
         "label": "テンバガー候補",
         "checked": true,
-        "note": "時価総額が13,000百万円（上限30,000百万円以下）と小さく、売上高成長率が前年同期比+26%と高水準です。小型のうちに成長を捉えられれば大きなリターンが狙えますが、その分値動きも荒く、成長の失速リスクも大きい点に注意してください"
+        "note": "時価総額が12,500百万円（上限30,000百万円以下）と小さく、売上高成長率が前年同期比+26%と高水準です。小型のうちに成長を捉えられれば大きなリターンが狙えますが、その分値動きも荒く、成長の失速リスクも大きい点に注意してください"
       },
       "repricingLag": {
         "score": 32.5,
@@ -600,7 +715,7 @@
         "note": null,
         "checked": true
       },
-      "realizability": 57,
+      "realizability": 58,
       "growthPotential": 52,
       "deficitGrowth": {
         "level": null,
@@ -626,129 +741,11 @@
       }
     },
     {
-      "code": "402A",
-      "name": "Ｇ－アクセルスペース",
-      "price": 303,
-      "changePct": -5.61,
-      "closes": [
-        521,
-        522,
-        553,
-        552,
-        537,
-        530,
-        511,
-        511,
-        520,
-        517,
-        538,
-        535,
-        550,
-        549,
-        540,
-        521,
-        421,
-        341,
-        321,
-        303
-      ],
-      "market": "東証Ｇ",
-      "marketCap": 20200,
-      "revenueGrowthPct": 58.1,
-      "tier": "A",
-      "tenbagger": {
-        "level": "good",
-        "label": "テンバガー候補",
-        "checked": true,
-        "note": "時価総額が20,200百万円（上限30,000百万円以下）と小さく、売上高成長率が前年同期比+58.1%と高水準です。小型のうちに成長を捉えられれば大きなリターンが狙えますが、その分値動きも荒く、成長の失速リスクも大きい点に注意してください"
-      },
-      "repricingLag": {
-        "score": 45,
-        "zone": "pre_move",
-        "breakdown": {
-          "untapped": 25,
-          "improvement": 12.5,
-          "valuation": 0,
-          "growth": 7.5,
-          "catalyst": 0,
-          "event": 0
-        },
-        "checked": true,
-        "alreadyMovedStrict": false,
-        "repricingGap": 69.7
-      },
-      "hasCatalyst": false,
-      "growthAcceleration": {
-        "level": "good",
-        "label": "成長が加速",
-        "checked": true,
-        "score": 100,
-        "note": "売上高成長率が前期の-24.8%から今期は+58.1%に加速しています。粗利率・営業利益率も改善しており、成長の質も伴っています"
-      },
-      "breakoutVolume": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "floatSqueeze": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "aggressiveInvestment": {
-        "level": "good",
-        "label": "攻めの投資（研究開発費が売上を上回る伸び）",
-        "checked": true,
-        "note": "研究開発費が前年（同期）比+99.8%と、売上高成長率+58.1%を上回るペースで増加しています。目先の利益より成長投資を優先しているフェーズと考えられます（研究開発費を開示している銘柄のみ判定できます）"
-      },
-      "themeMatch": {
-        "level": "good",
-        "label": "テーマ性あり（防衛・宇宙開発関連・衛星運営・スマート農業）",
-        "checked": true,
-        "note": "手動で選定したテーマページ一覧（防衛・宇宙開発関連・衛星運営・スマート農業）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
-      },
-      "diamond": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "realizability": 33,
-      "growthPotential": 100,
-      "deficitGrowth": {
-        "level": "bad",
-        "label": "赤字成長・高リスク",
-        "checked": true,
-        "note": "売上高成長率+58.1%に対し販管費成長率+77.5%と売上以上に膨らみ、営業損益は-2,495,052,000円→-3,822,923,000円と赤字が拡大しています。「高成長」ではありますが、ユニットエコノミクスの改善は確認できません"
-      },
-      "operatingCf": -5123804000,
-      "cash": 5815658000,
-      "interestBearingDebt": 3262306000,
-      "majorShareholder": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": true
-      },
-      "growthAnomalyCaution": {
-        "level": "warn",
-        "label": "異常成長・要確認",
-        "checked": true,
-        "reasonCodes": [
-          "ONE_TIME_ITEM_CURRENT"
-        ],
-        "note": "売上高成長率+58.1%という高い伸びですが、特別損益・減損等の一時的な項目（合計629,927,000円）が計上されており、本業の成長とは別の要因が業績に影響している可能性があります。「異常値だから無条件で高評価」にはせず、決算内容の確認をおすすめします"
-      }
-    },
-    {
       "code": "584A",
       "name": "Ｇ－ＬｉＮＫＸ",
-      "price": 2433,
-      "changePct": 0.04,
+      "price": 2463,
+      "changePct": 1.23,
       "closes": [
-        2620,
         2828,
         2697,
         2728,
@@ -767,23 +764,24 @@
         2350,
         2360,
         2432,
-        2433
+        2433,
+        2463
       ],
       "market": "東証Ｇ",
-      "marketCap": 17100,
+      "marketCap": 17300,
       "revenueGrowthPct": 39,
       "tier": "A",
       "tenbagger": {
         "level": "good",
         "label": "テンバガー候補",
         "checked": true,
-        "note": "時価総額が17,100百万円（上限30,000百万円以下）と小さく、売上高成長率が前年同期比+39%と高水準です。小型のうちに成長を捉えられれば大きなリターンが狙えますが、その分値動きも荒く、成長の失速リスクも大きい点に注意してください"
+        "note": "時価総額が17,300百万円（上限30,000百万円以下）と小さく、売上高成長率が前年同期比+39%と高水準です。小型のうちに成長を捉えられれば大きなリターンが狙えますが、その分値動きも荒く、成長の失速リスクも大きい点に注意してください"
       },
       "repricingLag": {
-        "score": 40.5,
+        "score": 40.1,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 20.5,
+          "untapped": 20.1,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -792,7 +790,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "repricingGap": 22.7
+        "repricingGap": 20.5
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -832,7 +830,7 @@
         "note": null,
         "checked": true
       },
-      "realizability": 43,
+      "realizability": 42,
       "growthPotential": 78,
       "deficitGrowth": {
         "level": null,
@@ -860,8 +858,8 @@
     {
       "code": "621A",
       "name": "Ｇ－オーディオＳ",
-      "price": 1400,
-      "changePct": -4.11,
+      "price": 1355,
+      "changePct": -3.21,
       "closes": [
         1954,
         1554,
@@ -873,17 +871,18 @@
         1525,
         1437,
         1460,
-        1400
+        1400,
+        1355
       ],
       "market": "東証Ｇ",
-      "marketCap": 5820,
+      "marketCap": 5640,
       "revenueGrowthPct": 69.9,
       "tier": "A",
       "tenbagger": {
         "level": "good",
         "label": "テンバガー候補",
         "checked": true,
-        "note": "時価総額が5,820百万円（上限30,000百万円以下）と小さく、売上高成長率が前年同期比+69.9%と高水準です。小型のうちに成長を捉えられれば大きなリターンが狙えますが、その分値動きも荒く、成長の失速リスクも大きい点に注意してください"
+        "note": "時価総額が5,640百万円（上限30,000百万円以下）と小さく、売上高成長率が前年同期比+69.9%と高水準です。小型のうちに成長を捉えられれば大きなリターンが狙えますが、その分値動きも荒く、成長の失速リスクも大きい点に注意してください"
       },
       "repricingLag": {
         "score": 25,
@@ -966,10 +965,9 @@
     {
       "code": "338A",
       "name": "ＺｅｎｍｕＴｅｃｈ",
-      "price": 4285,
-      "changePct": 5.54,
+      "price": 4985,
+      "changePct": 16.34,
       "closes": [
-        2517,
         2696,
         2620,
         2390,
@@ -988,17 +986,18 @@
         3310,
         4010,
         4060,
-        4285
+        4285,
+        4985
       ],
       "market": "東証Ｇ",
-      "marketCap": 11700,
+      "marketCap": 13600,
       "revenueGrowthPct": 31.3,
       "tier": "A",
       "tenbagger": {
         "level": "good",
         "label": "テンバガー候補",
         "checked": true,
-        "note": "時価総額が11,700百万円（上限30,000百万円以下）と小さく、売上高成長率が前年同期比+31.3%と高水準です。小型のうちに成長を捉えられれば大きなリターンが狙えますが、その分値動きも荒く、成長の失速リスクも大きい点に注意してください"
+        "note": "時価総額が13,600百万円（上限30,000百万円以下）と小さく、売上高成長率が前年同期比+31.3%と高水準です。小型のうちに成長を捉えられれば大きなリターンが狙えますが、その分値動きも荒く、成長の失速リスクも大きい点に注意してください"
       },
       "repricingLag": {
         "score": 10,
@@ -1024,10 +1023,10 @@
         "score": 0
       },
       "breakoutVolume": {
-        "level": "good",
-        "label": "出来高急増のブレイクアウト",
-        "checked": true,
-        "note": "直近レンジ内の位置100%（高値圏）で、出来高が20日平均の2.05倍に急増しています。順張り・高値更新型のシグナルです。上部の仕込みゾーン（妙味スコア）とは別軸の判定で、乖離度が大きいこと自体は妙味スコアでは減点材料になりますが、出来高を伴う高値更新は別の意味でポジティブなシグナルです"
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
       },
       "floatSqueeze": {
         "level": null,
@@ -1053,7 +1052,7 @@
         "note": null,
         "checked": true
       },
-      "realizability": 61,
+      "realizability": 55,
       "growthPotential": 63,
       "deficitGrowth": {
         "level": null,
@@ -1083,10 +1082,9 @@
     {
       "code": "5537",
       "name": "ＡｌｂａＬｉｎｋ",
-      "price": 3845,
-      "changePct": 4.48,
+      "price": 3770,
+      "changePct": -1.95,
       "closes": [
-        3335,
         3510,
         3395,
         3290,
@@ -1105,23 +1103,24 @@
         3795,
         3825,
         3680,
-        3845
+        3845,
+        3770
       ],
       "market": "東証Ｇ",
-      "marketCap": 31500,
+      "marketCap": 30900,
       "revenueGrowthPct": 50.6,
       "tier": "B",
       "tenbagger": {
         "level": "good",
         "label": "中型成長株候補",
         "checked": true,
-        "note": "時価総額31,500百万円（上限100,000百万円以下）・売上高成長率は前年同期比+50.6%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額30,900百万円（上限100,000百万円以下）・売上高成長率は前年同期比+50.6%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "repricingLag": {
-        "score": 13,
+        "score": 14,
         "zone": "re_rating",
         "breakdown": {
-          "untapped": 1.3,
+          "untapped": 2.6,
           "improvement": 12.5,
           "valuation": 5,
           "growth": 7.5,
@@ -1130,7 +1129,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": true,
-        "repricingGap": 0.5
+        "repricingGap": 1.3
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -1198,10 +1197,9 @@
     {
       "code": "219A",
       "name": "Ｇ－ハートシード",
-      "price": 2700,
-      "changePct": 4.69,
+      "price": 2800,
+      "changePct": 3.7,
       "closes": [
-        2172,
         2236,
         2252,
         2300,
@@ -1220,23 +1218,24 @@
         2615,
         2620,
         2579,
-        2700
+        2700,
+        2800
       ],
       "market": "東証Ｇ",
-      "marketCap": 61900,
+      "marketCap": 64100,
       "revenueGrowthPct": 153.8,
       "tier": "B",
       "tenbagger": {
         "level": "good",
         "label": "中型成長株候補",
         "checked": true,
-        "note": "時価総額61,900百万円（上限100,000百万円以下）・売上高成長率は前年同期比+153.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額64,100百万円（上限100,000百万円以下）・売上高成長率は前年同期比+153.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "repricingLag": {
         "score": 16,
         "zone": "overheated",
         "breakdown": {
-          "untapped": 0.2,
+          "untapped": 0,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -1245,7 +1244,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": true,
-        "repricingGap": 0.4
+        "repricingGap": 0
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -1285,7 +1284,7 @@
         "note": null,
         "checked": true
       },
-      "realizability": 38,
+      "realizability": 36,
       "growthPotential": 100,
       "deficitGrowth": {
         "level": null,
@@ -1313,10 +1312,9 @@
     {
       "code": "135A",
       "name": "ＶＲＡＩＮ Ｓｏｌｕｔｉｏｎ",
-      "price": 5370,
-      "changePct": -0.74,
+      "price": 5170,
+      "changePct": -3.72,
       "closes": [
-        3725,
         4180,
         4320,
         4520,
@@ -1335,23 +1333,24 @@
         5040,
         5220,
         5410,
-        5370
+        5370,
+        5170
       ],
       "market": "東証Ｇ",
-      "marketCap": 55100,
+      "marketCap": 53000,
       "revenueGrowthPct": 52.9,
       "tier": "B",
       "tenbagger": {
         "level": "good",
         "label": "中型成長株候補",
         "checked": true,
-        "note": "時価総額55,100百万円（上限100,000百万円以下）・売上高成長率は前年同期比+52.9%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額53,000百万円（上限100,000百万円以下）・売上高成長率は前年同期比+52.9%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "repricingLag": {
-        "score": 10,
+        "score": 12,
         "zone": "priced_in",
         "breakdown": {
-          "untapped": 0.5,
+          "untapped": 3.2,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -1360,7 +1359,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": true,
-        "repricingGap": -0.2
+        "repricingGap": -1.6
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -1400,7 +1399,7 @@
         "note": null,
         "checked": true
       },
-      "realizability": 45,
+      "realizability": 47,
       "growthPotential": 100,
       "deficitGrowth": {
         "level": null,
@@ -1430,10 +1429,9 @@
     {
       "code": "325A",
       "name": "ＴＥＮＴＩＡＬ",
-      "price": 2058,
-      "changePct": -2.23,
+      "price": 2055,
+      "changePct": -0.15,
       "closes": [
-        1740,
         1804,
         1784,
         1755,
@@ -1452,7 +1450,8 @@
         1960,
         2030,
         2105,
-        2058
+        2058,
+        2055
       ],
       "market": "東証Ｇ",
       "marketCap": 47900,
@@ -1468,7 +1467,7 @@
         "score": 21,
         "zone": "overheated",
         "breakdown": {
-          "untapped": 1.7,
+          "untapped": 1.8,
           "improvement": 12.5,
           "valuation": 5,
           "growth": 7.5,
@@ -1477,7 +1476,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": true,
-        "repricingGap": 3.5
+        "repricingGap": 3.6
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -1548,9 +1547,9 @@
       "code": "6315",
       "name": "TOWA",
       "note": "半導体製造装置（樹脂封止装置）大手。信用買い残が直近13週の高値圏に張り付いており、この需給がクリアされたら買いを検討する監視銘柄。",
-      "price": 2491,
-      "changePct": 4.44,
-      "marketCap": 187200,
+      "price": 2573,
+      "changePct": 3.29,
+      "marketCap": 193400,
       "market": "東証Ｐ",
       "marginBuy": null,
       "marginSell": null,
@@ -1564,10 +1563,9 @@
     {
       "code": "9104",
       "name": "商船三井",
-      "price": 7049,
-      "changePct": -1.23,
+      "price": 7146,
+      "changePct": 1.38,
       "closes": [
-        7190,
         6969,
         7164,
         7114,
@@ -1586,13 +1584,14 @@
         7090,
         7053,
         7137,
-        7049
+        7049,
+        7146
       ],
       "market": "東証Ｐ",
-      "marketCap": 2550700,
-      "per": 10.1,
-      "pbr": 0.81,
-      "dividendYield": 2.92,
+      "marketCap": 2583400,
+      "per": 10.2,
+      "pbr": 0.82,
+      "dividendYield": 2.88,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -1747,10 +1746,10 @@
       },
       "revenueGrowthPct": 2.8,
       "repricingLag": {
-        "score": 18.7,
+        "score": 17.8,
         "zone": "re_rating",
         "breakdown": {
-          "untapped": 4.7,
+          "untapped": 3.8,
           "improvement": 4,
           "valuation": 10,
           "growth": 0,
@@ -1759,15 +1758,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -2.1,
+        "return1m": 2.2,
         "return3m": null,
-        "sectorReturn1m": -5.9,
-        "priceLevelPct": 81.1,
+        "sectorReturn1m": -8.1,
+        "priceLevelPct": 85,
         "revenueGrowthPct": 2.8,
         "profitGrowthPct": -0.2,
-        "per": 10.1,
-        "sectorPer": 11.7,
-        "psr": 1.3975687880869958,
+        "per": 10.2,
+        "sectorPer": 11.8,
+        "psr": 1.4154856341960815,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -1776,7 +1775,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -0.5
+        "repricingGap": -1.3
       },
       "themeMatch": {
         "level": null,
@@ -1789,9 +1788,8 @@
       "code": "4526",
       "name": "理研ビタミン",
       "price": 3085,
-      "changePct": 0.33,
+      "changePct": 0,
       "closes": [
-        3345,
         3270,
         3265,
         3270,
@@ -1810,6 +1808,7 @@
         3145,
         3105,
         3075,
+        3085,
         3085
       ],
       "market": "東証Ｐ",
@@ -1983,9 +1982,9 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -8,
+        "return1m": -7.8,
         "return3m": null,
-        "sectorReturn1m": -6.5,
+        "sectorReturn1m": -5.2,
         "priceLevelPct": 7.9,
         "revenueGrowthPct": 0.8,
         "profitGrowthPct": 0.6,
@@ -2000,7 +1999,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 2
+        "repricingGap": 3
       },
       "themeMatch": {
         "level": null,
@@ -2012,10 +2011,9 @@
     {
       "code": "9039",
       "name": "サカイ引越",
-      "price": 2922,
-      "changePct": -0.14,
+      "price": 2962,
+      "changePct": 1.37,
       "closes": [
-        2973,
         2969,
         2976,
         2992,
@@ -2034,13 +2032,14 @@
         2941,
         2933,
         2926,
-        2922
+        2922,
+        2962
       ],
       "market": "東証Ｐ",
-      "marketCap": 123800,
-      "per": 13.5,
-      "pbr": 1.17,
-      "dividendYield": 4,
+      "marketCap": 125000,
+      "per": 13.6,
+      "pbr": 1.18,
+      "dividendYield": 3.96,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -2190,10 +2189,10 @@
       },
       "revenueGrowthPct": null,
       "repricingLag": {
-        "score": 35.3,
+        "score": 32.3,
         "zone": "early_move",
         "breakdown": {
-          "untapped": 16.3,
+          "untapped": 13.3,
           "improvement": 9,
           "valuation": 10,
           "growth": 0,
@@ -2202,13 +2201,13 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -1.6,
+        "return1m": -0.5,
         "return3m": null,
-        "sectorReturn1m": -11.3,
-        "priceLevelPct": 35,
+        "sectorReturn1m": -10.9,
+        "priceLevelPct": 46.8,
         "revenueGrowthPct": null,
         "profitGrowthPct": 4,
-        "per": 13.5,
+        "per": 13.6,
         "sectorPer": 14.7,
         "psr": null,
         "hasCatalyst": false,
@@ -2220,7 +2219,7 @@
           "profitYoyPct": 4,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:78.5%→25.04-06:81.6%→26.04-06:82.2%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+4%）"
         },
-        "repricingGap": -5
+        "repricingGap": -4.5
       },
       "themeMatch": {
         "level": null,
@@ -2232,10 +2231,9 @@
     {
       "code": "4202",
       "name": "ダイセル",
-      "price": 1432,
-      "changePct": 1.92,
+      "price": 1455,
+      "changePct": 1.61,
       "closes": [
-        1482,
         1449,
         1443.5,
         1395,
@@ -2254,13 +2252,14 @@
         1431.5,
         1436.5,
         1405,
-        1432
+        1432,
+        1455
       ],
       "market": "東証Ｐ",
-      "marketCap": 366800,
-      "per": 11.4,
-      "pbr": 1,
-      "dividendYield": 4.89,
+      "marketCap": 372700,
+      "per": 11.6,
+      "pbr": 1.01,
+      "dividendYield": 4.81,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -2415,10 +2414,10 @@
       },
       "revenueGrowthPct": -1.2,
       "repricingLag": {
-        "score": 49.3,
+        "score": 45.1,
         "zone": "early_move",
         "breakdown": {
-          "untapped": 16.3,
+          "untapped": 12.1,
           "improvement": 13,
           "valuation": 15,
           "growth": 5,
@@ -2427,15 +2426,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -3.1,
+        "return1m": -1.8,
         "return3m": null,
-        "sectorReturn1m": -2.7,
-        "priceLevelPct": 34.6,
+        "sectorReturn1m": 0.8,
+        "priceLevelPct": 51.7,
         "revenueGrowthPct": -1.2,
         "profitGrowthPct": 18.1,
-        "per": 11.4,
-        "sectorPer": 16.8,
-        "psr": 0.6328185787805648,
+        "per": 11.6,
+        "sectorPer": 17,
+        "psr": 0.642997503575563,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -2445,7 +2444,7 @@
           "profitYoyPct": 18.1,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:59.1%→25.04-06:60.6%→26.04-06:85.7%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+18.1%）"
         },
-        "repricingGap": 5.8
+        "repricingGap": 5.4
       },
       "themeMatch": {
         "level": null,
@@ -2457,10 +2456,9 @@
     {
       "code": "9065",
       "name": "山九",
-      "price": 1580,
-      "changePct": 0.83,
+      "price": 1586.5,
+      "changePct": 0.41,
       "closes": [
-        1612.8,
         1620,
         1622.6,
         1600,
@@ -2479,13 +2477,14 @@
         1603,
         1591.5,
         1567,
-        1580
+        1580,
+        1586.5
       ],
       "market": "東証Ｐ",
-      "marketCap": 418600,
-      "per": 12,
+      "marketCap": 419800,
+      "per": 12.1,
       "pbr": 1.3,
-      "dividendYield": 3.34,
+      "dividendYield": 3.33,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -2640,10 +2639,10 @@
       },
       "revenueGrowthPct": 4.1,
       "repricingLag": {
-        "score": 53.3,
+        "score": 52.8,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 23.8,
+          "untapped": 23.3,
           "improvement": 17,
           "valuation": 10,
           "growth": 2.5,
@@ -2654,13 +2653,13 @@
         "alreadyMovedStrict": false,
         "return1m": -1.9,
         "return3m": null,
-        "sectorReturn1m": -11.3,
-        "priceLevelPct": 4.7,
+        "sectorReturn1m": -10.9,
+        "priceLevelPct": 6.7,
         "revenueGrowthPct": 4.1,
         "profitGrowthPct": 11,
-        "per": 12,
+        "per": 12.1,
         "sectorPer": 14.7,
-        "psr": 0.6627895746018275,
+        "psr": 0.6646895924936627,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -2670,7 +2669,7 @@
           "profitYoyPct": 11,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:46.9%→25.04-06:48%→26.04-06:51.6%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+11%）"
         },
-        "repricingGap": -1.7
+        "repricingGap": -1.3
       },
       "themeMatch": {
         "level": null,
@@ -2682,10 +2681,9 @@
     {
       "code": "4041",
       "name": "日本曹達",
-      "price": 3690,
-      "changePct": 0.68,
+      "price": 3720,
+      "changePct": 0.81,
       "closes": [
-        3975,
         3875,
         3905,
         3830,
@@ -2704,13 +2702,14 @@
         3695,
         3715,
         3665,
-        3690
+        3690,
+        3720
       ],
       "market": "東証Ｐ",
-      "marketCap": 204000,
-      "per": 12.5,
-      "pbr": 0.93,
-      "dividendYield": 4.34,
+      "marketCap": 205700,
+      "per": 12.6,
+      "pbr": 0.94,
+      "dividendYield": 4.3,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -2860,10 +2859,10 @@
       },
       "revenueGrowthPct": -2,
       "repricingLag": {
-        "score": 44.2,
+        "score": 42.6,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 21.2,
+          "untapped": 19.6,
           "improvement": 8,
           "valuation": 10,
           "growth": 5,
@@ -2872,15 +2871,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -7.6,
+        "return1m": -6.4,
         "return3m": null,
-        "sectorReturn1m": -2.7,
-        "priceLevelPct": 15.2,
+        "sectorReturn1m": 0.8,
+        "priceLevelPct": 21.7,
         "revenueGrowthPct": -2,
         "profitGrowthPct": 23.2,
-        "per": 12.5,
-        "sectorPer": 16.8,
-        "psr": 1.3413022466812632,
+        "per": 12.6,
+        "sectorPer": 17,
+        "psr": 1.3524797654036071,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -2889,7 +2888,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 13.1
+        "repricingGap": 13.9
       },
       "themeMatch": {
         "level": null,
@@ -2901,10 +2900,9 @@
     {
       "code": "6863",
       "name": "ニレコ",
-      "price": 1088,
-      "changePct": 2.26,
+      "price": 1105,
+      "changePct": 1.56,
       "closes": [
-        961,
         980,
         1016,
         985,
@@ -2923,13 +2921,14 @@
         1128,
         1100,
         1064,
-        1088
+        1088,
+        1105
       ],
       "market": "東証Ｓ",
-      "marketCap": 24000,
-      "per": 15.6,
-      "pbr": 1.39,
-      "dividendYield": 3.22,
+      "marketCap": 24400,
+      "per": 15.8,
+      "pbr": 1.41,
+      "dividendYield": 3.17,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -3084,10 +3083,10 @@
       },
       "revenueGrowthPct": 2.5,
       "repricingLag": {
-        "score": 22,
-        "zone": "re_rating",
+        "score": 21,
+        "zone": "overheated",
         "breakdown": {
-          "untapped": 4.9,
+          "untapped": 3.4,
           "improvement": 16.5,
           "valuation": 15,
           "growth": 7.5,
@@ -3096,15 +3095,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": true,
-        "return1m": 11.6,
+        "return1m": 15,
         "return3m": null,
-        "sectorReturn1m": 9.4,
-        "priceLevelPct": 80.6,
+        "sectorReturn1m": 14,
+        "priceLevelPct": 86.4,
         "revenueGrowthPct": 2.5,
         "profitGrowthPct": 56.2,
-        "per": 15.6,
-        "sectorPer": 25.4,
-        "psr": 2.1774632553075666,
+        "per": 15.8,
+        "sectorPer": 25.7,
+        "psr": 2.2137543095626926,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -3113,7 +3112,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 5.3
+        "repricingGap": 3.9
       },
       "themeMatch": {
         "level": null,
@@ -3125,10 +3124,9 @@
     {
       "code": "6371",
       "name": "椿本チエイン",
-      "price": 2667,
-      "changePct": 2.07,
+      "price": 2678,
+      "changePct": 0.41,
       "closes": [
-        2719,
         2703,
         2729,
         2624,
@@ -3147,13 +3145,14 @@
         2646,
         2654,
         2613,
-        2667
+        2667,
+        2678
       ],
       "market": "東証Ｐ",
-      "marketCap": 283300,
-      "per": 12.2,
+      "marketCap": 284400,
+      "per": 12.3,
       "pbr": 0.91,
-      "dividendYield": 3,
+      "dividendYield": 2.99,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -3308,10 +3307,10 @@
       },
       "revenueGrowthPct": 6,
       "repricingLag": {
-        "score": 52.6,
+        "score": 51.3,
         "zone": "early_move",
         "breakdown": {
-          "untapped": 11.1,
+          "untapped": 9.8,
           "improvement": 16.5,
           "valuation": 15,
           "growth": 10,
@@ -3320,15 +3319,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": 0,
+        "return1m": -1.5,
         "return3m": null,
-        "sectorReturn1m": 2.3,
-        "priceLevelPct": 55.5,
+        "sectorReturn1m": 5.6,
+        "priceLevelPct": 60.8,
         "revenueGrowthPct": 6,
         "profitGrowthPct": 60,
-        "per": 12.2,
-        "sectorPer": 17.8,
-        "psr": 0.9574892354281156,
+        "per": 12.3,
+        "sectorPer": 17.9,
+        "psr": 0.961206983959605,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -3349,10 +3348,9 @@
     {
       "code": "5192",
       "name": "三ツ星ベルト",
-      "price": 4125,
-      "changePct": 0.61,
+      "price": 4135,
+      "changePct": 0.24,
       "closes": [
-        4405,
         4355,
         4370,
         4270,
@@ -3371,13 +3369,14 @@
         4200,
         4170,
         4100,
-        4125
+        4125,
+        4135
       ],
       "market": "東証Ｐ",
-      "marketCap": 128300,
+      "marketCap": 128600,
       "per": 11.7,
       "pbr": 1.12,
-      "dividendYield": 4.68,
+      "dividendYield": 4.67,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -3527,10 +3526,10 @@
       },
       "revenueGrowthPct": 2,
       "repricingLag": {
-        "score": 51.6,
-        "zone": "pre_move",
+        "score": 51.2,
+        "zone": "early_move",
         "breakdown": {
-          "untapped": 17.6,
+          "untapped": 17.2,
           "improvement": 16.5,
           "valuation": 10,
           "growth": 7.5,
@@ -3539,15 +3538,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -6.6,
+        "return1m": -6.1,
         "return3m": null,
-        "sectorReturn1m": -4.2,
-        "priceLevelPct": 29.5,
+        "sectorReturn1m": -2.9,
+        "priceLevelPct": 31.1,
         "revenueGrowthPct": 2,
         "profitGrowthPct": 42.8,
         "per": 11.7,
-        "sectorPer": 12.3,
-        "psr": 1.3900626232421072,
+        "sectorPer": 12.4,
+        "psr": 1.393312964527942,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -3556,7 +3555,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 17.5
+        "repricingGap": 17.6
       },
       "themeMatch": {
         "level": null,
@@ -3568,10 +3567,9 @@
     {
       "code": "4204",
       "name": "積水化学工業",
-      "price": 2519.5,
-      "changePct": 0.82,
+      "price": 2529,
+      "changePct": 0.38,
       "closes": [
-        2601.5,
         2549,
         2547,
         2504,
@@ -3590,13 +3588,14 @@
         2512.5,
         2535,
         2499,
-        2519.5
+        2519.5,
+        2529
       ],
       "market": "東証Ｐ",
-      "marketCap": 121700,
+      "marketCap": 125500,
       "per": 13.4,
       "pbr": 1.2,
-      "dividendYield": 3.21,
+      "dividendYield": 3.2,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -3746,10 +3745,10 @@
       },
       "revenueGrowthPct": 0.9,
       "repricingLag": {
-        "score": 55,
+        "score": 54.2,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 21,
+          "untapped": 20.2,
           "improvement": 16.5,
           "valuation": 10,
           "growth": 7.5,
@@ -3758,15 +3757,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -3.1,
+        "return1m": -2.8,
         "return3m": null,
-        "sectorReturn1m": -2.7,
-        "priceLevelPct": 16.1,
+        "sectorReturn1m": 0.8,
+        "priceLevelPct": 19.4,
         "revenueGrowthPct": 0.9,
         "profitGrowthPct": 39.1,
         "per": 13.4,
-        "sectorPer": 16.8,
-        "psr": 0.09295178040466485,
+        "sectorPer": 17,
+        "psr": 0.095854136736117,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -3775,7 +3774,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 17.1
+        "repricingGap": 19
       },
       "themeMatch": {
         "level": null,
@@ -3787,10 +3786,9 @@
     {
       "code": "4956",
       "name": "コニシ",
-      "price": 1446,
-      "changePct": 0,
+      "price": 1457,
+      "changePct": 0.76,
       "closes": [
-        1483,
         1479,
         1467,
         1452,
@@ -3809,13 +3807,14 @@
         1479,
         1472,
         1446,
-        1446
+        1446,
+        1457
       ],
       "market": "東証Ｐ",
-      "marketCap": 101800,
-      "per": 10.9,
-      "pbr": 0.97,
-      "dividendYield": 2.63,
+      "marketCap": 102600,
+      "per": 11,
+      "pbr": 0.98,
+      "dividendYield": 2.61,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -3965,10 +3964,10 @@
       },
       "revenueGrowthPct": 0.6,
       "repricingLag": {
-        "score": 60,
+        "score": 57.6,
         "zone": "early_move",
         "breakdown": {
-          "untapped": 16,
+          "untapped": 13.6,
           "improvement": 21.5,
           "valuation": 15,
           "growth": 7.5,
@@ -3977,15 +3976,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -2.6,
+        "return1m": -1.8,
         "return3m": null,
-        "sectorReturn1m": -2.7,
-        "priceLevelPct": 36,
+        "sectorReturn1m": 0.8,
+        "priceLevelPct": 45.6,
         "revenueGrowthPct": 0.6,
         "profitGrowthPct": 54.2,
-        "per": 10.9,
-        "sectorPer": 16.8,
-        "psr": 0.7454107447517372,
+        "per": 11,
+        "sectorPer": 17,
+        "psr": 0.7512685895042067,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -3995,7 +3994,7 @@
           "profitYoyPct": 54.2,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:45.7%→25.04-06:46.4%→26.04-06:62.2%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+54.2%）"
         },
-        "repricingGap": 17.5
+        "repricingGap": 16.3
       },
       "themeMatch": {
         "level": null,
@@ -4007,10 +4006,9 @@
     {
       "code": "4540",
       "name": "ツムラ",
-      "price": 3707,
-      "changePct": 0.11,
+      "price": 3725,
+      "changePct": 0.49,
       "closes": [
-        3751,
         3714,
         3693,
         3684,
@@ -4029,13 +4027,14 @@
         3786,
         3749,
         3703,
-        3707
+        3707,
+        3725
       ],
       "market": "東証Ｐ",
-      "marketCap": 284500,
-      "per": 10.5,
+      "marketCap": 285900,
+      "per": 10.6,
       "pbr": 0.85,
-      "dividendYield": 4.26,
+      "dividendYield": 4.24,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -4195,10 +4194,10 @@
       },
       "revenueGrowthPct": 6.4,
       "repricingLag": {
-        "score": 63.8,
+        "score": 62.6,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 22.3,
+          "untapped": 21.1,
           "improvement": 16.5,
           "valuation": 15,
           "growth": 10,
@@ -4207,15 +4206,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -1.9,
+        "return1m": -0.7,
         "return3m": null,
-        "sectorReturn1m": 0.5,
-        "priceLevelPct": 10.8,
+        "sectorReturn1m": 0.2,
+        "priceLevelPct": 15.6,
         "revenueGrowthPct": 6.4,
         "profitGrowthPct": 57.8,
-        "per": 10.5,
-        "sectorPer": 28.9,
-        "psr": 1.477039690574462,
+        "per": 10.6,
+        "sectorPer": 28.8,
+        "psr": 1.4843080756950393,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -4224,7 +4223,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 30.8
+        "repricingGap": 27.9
       },
       "themeMatch": {
         "level": null,
@@ -4236,10 +4235,9 @@
     {
       "code": "6287",
       "name": "サトー",
-      "price": 2634,
-      "changePct": 0.38,
+      "price": 2638,
+      "changePct": 0.15,
       "closes": [
-        2790,
         2797,
         2774,
         2685,
@@ -4258,13 +4256,14 @@
         2697,
         2707,
         2624,
-        2634
+        2634,
+        2638
       ],
       "market": "東証Ｐ",
-      "marketCap": 88600,
-      "per": 11,
-      "pbr": 0.96,
-      "dividendYield": 3.04,
+      "marketCap": 88700,
+      "per": 11.1,
+      "pbr": 0.97,
+      "dividendYield": 3.03,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -4419,10 +4418,10 @@
       },
       "revenueGrowthPct": 5.6,
       "repricingLag": {
-        "score": 54.6,
+        "score": 54.4,
         "zone": "early_move",
         "breakdown": {
-          "untapped": 13.1,
+          "untapped": 12.9,
           "improvement": 16.5,
           "valuation": 15,
           "growth": 10,
@@ -4431,15 +4430,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -6.1,
+        "return1m": -5.4,
         "return3m": null,
-        "sectorReturn1m": 2.3,
-        "priceLevelPct": 47.5,
+        "sectorReturn1m": 5.6,
+        "priceLevelPct": 48.3,
         "revenueGrowthPct": 5.6,
         "profitGrowthPct": 72.1,
-        "per": 11,
-        "sectorPer": 17.8,
-        "psr": 0.5421148598210899,
+        "per": 11.1,
+        "sectorPer": 17.9,
+        "psr": 0.5427267276086983,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -4448,7 +4447,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 24.8
+        "repricingGap": 25.7
       },
       "themeMatch": {
         "level": null,
@@ -4460,10 +4459,9 @@
     {
       "code": "4182",
       "name": "三菱瓦斯化学",
-      "price": 4033,
-      "changePct": 3.01,
+      "price": 4093,
+      "changePct": 1.49,
       "closes": [
-        3863,
         3847,
         3933,
         3735,
@@ -4482,13 +4480,14 @@
         3884,
         3920,
         3915,
-        4033
+        4033,
+        4093
       ],
       "market": "東証Ｐ",
-      "marketCap": 853700,
-      "per": 14.3,
-      "pbr": 1.18,
-      "dividendYield": 2.73,
+      "marketCap": 866400,
+      "per": 14.5,
+      "pbr": 1.2,
+      "dividendYield": 2.69,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -4637,10 +4636,10 @@
       },
       "revenueGrowthPct": -4.6,
       "repricingLag": {
-        "score": 47,
+        "score": 45.6,
         "zone": "early_move",
         "breakdown": {
-          "untapped": 17,
+          "untapped": 15.6,
           "improvement": 12.5,
           "valuation": 10,
           "growth": 7.5,
@@ -4649,15 +4648,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": 4.9,
+        "return1m": 6,
         "return3m": null,
-        "sectorReturn1m": -2.7,
-        "priceLevelPct": 32.2,
+        "sectorReturn1m": 0.8,
+        "priceLevelPct": 37.8,
         "revenueGrowthPct": -4.6,
         "profitGrowthPct": 111,
-        "per": 14.3,
-        "sectorPer": 16.8,
-        "psr": 1.156394303772606,
+        "per": 14.5,
+        "sectorPer": 17,
+        "psr": 1.1735973114543585,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -4666,7 +4665,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 30.9
+        "repricingGap": 29.9
       },
       "themeMatch": {
         "level": "good",
@@ -4678,10 +4677,9 @@
     {
       "code": "7990",
       "name": "グローブライド",
-      "price": 2327,
-      "changePct": 0.22,
+      "price": 2356,
+      "changePct": 1.25,
       "closes": [
-        2415,
         2407,
         2395,
         2358,
@@ -4700,13 +4698,14 @@
         2370,
         2372,
         2322,
-        2327
+        2327,
+        2356
       ],
       "market": "東証Ｐ",
-      "marketCap": 51700,
+      "marketCap": 52000,
       "per": 9,
       "pbr": 0.77,
-      "dividendYield": 4.29,
+      "dividendYield": 4.27,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -4856,10 +4855,10 @@
       },
       "revenueGrowthPct": 2.4,
       "repricingLag": {
-        "score": 43.5,
+        "score": 42.7,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 24.5,
+          "untapped": 23.7,
           "improvement": 4,
           "valuation": 15,
           "growth": 0,
@@ -4868,15 +4867,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -3.5,
+        "return1m": -2.6,
         "return3m": null,
         "sectorReturn1m": -1.7,
-        "priceLevelPct": 2.2,
+        "priceLevelPct": 5.3,
         "revenueGrowthPct": 2.4,
         "profitGrowthPct": -49.1,
         "per": 9,
-        "sectorPer": 16.8,
-        "psr": 0.4072277009357573,
+        "sectorPer": 17,
+        "psr": 0.4095907243454425,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -4885,7 +4884,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -21
+        "repricingGap": -21.2
       },
       "themeMatch": {
         "level": null,
@@ -4897,10 +4896,9 @@
     {
       "code": "6902",
       "name": "デンソー",
-      "price": 1842,
-      "changePct": 1.88,
+      "price": 1853,
+      "changePct": 0.6,
       "closes": [
-        1937,
         1916.5,
         1927,
         1879,
@@ -4919,13 +4917,14 @@
         1850,
         1840,
         1808,
-        1842
+        1842,
+        1853
       ],
       "market": "東証Ｐ",
-      "marketCap": 5362000,
-      "per": 12.1,
-      "pbr": 0.9,
-      "dividendYield": 4.02,
+      "marketCap": 5394000,
+      "per": 12.2,
+      "pbr": 0.91,
+      "dividendYield": 3.99,
       "checkpointTrend": {
         "period": "I 26.04-06",
         "periodMonths": 3,
@@ -5076,10 +5075,10 @@
       },
       "revenueGrowthPct": 5.3,
       "repricingLag": {
-        "score": 43.4,
+        "score": 42.7,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 22.9,
+          "untapped": 22.2,
           "improvement": 8,
           "valuation": 10,
           "growth": 2.5,
@@ -5088,15 +5087,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -4.2,
+        "return1m": -4.3,
         "return3m": null,
         "sectorReturn1m": -4.1,
-        "priceLevelPct": 8.5,
+        "priceLevelPct": 11.3,
         "revenueGrowthPct": 5.3,
         "profitGrowthPct": 1.8,
-        "per": 12.1,
-        "sectorPer": 14.2,
-        "psr": 0.7111429414553762,
+        "per": 12.2,
+        "sectorPer": 14.3,
+        "psr": 0.7153869873573852,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -5115,12 +5114,230 @@
       }
     },
     {
+      "code": "5406",
+      "name": "神戸製鋼所",
+      "price": 2024,
+      "changePct": 1.56,
+      "closes": [
+        2029.5,
+        2064.5,
+        2001,
+        2035,
+        2029.5,
+        2021,
+        2039,
+        2020,
+        2046.5,
+        2085,
+        2069,
+        2056.5,
+        2080,
+        2077,
+        2022.5,
+        2048,
+        2006.5,
+        1992.5,
+        1993,
+        2024
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 808600,
+      "per": 8.1,
+      "pbr": 0.64,
+      "dividendYield": 3.95,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 45.3,
+        "priorProgressPcts": [
+          49.4,
+          49.9
+        ],
+        "priorOrdinaryProfitActuals": [
+          35045,
+          28759
+        ],
+        "revenue": {
+          "actual": 578349,
+          "pct": 1.6,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 20412,
+          "pct": -34.8,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 22663,
+          "pct": -21.2,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 50000,
+        "priorOrdinaryProfitActuals": [
+          91601,
+          70960,
+          57663
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": 22.8,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+1.6% − 1Q経常益YoY-21.2% ＝ スプレッド+22.8pt"
+      },
+      "progressSurprise": {
+        "level": null,
+        "value": -4.4,
+        "checked": true,
+        "passed": false,
+        "note": "今期の進捗率45.3% − 過去2年平均49.7% ＝ 進捗サプライズ-4.4pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.8,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 27337,
+        "avgSegmentProfit": 32409.5,
+        "note": "必要利益27,337百万円 ÷ 過去2年平均32,410百万円 ＝ ハードル比率0.8倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 0.9,
+        "note": "今期の進捗率45.3%は過去平均49.7%の90%で、極端な下振れは確認されません"
+      },
+      "killerHits": 1,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "v_turnaround",
+        "label": "🔄 V字回復型",
+        "note": "1Q経常益が前年比-21.2%と悪化しましたが、回復シナリオが確認できています"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計53,560百万円"
+          }
+        ],
+        "note": "特別損失・減損等 計53,560百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": -4.6,
+      "repricingLag": {
+        "score": 21.4,
+        "zone": "re_rating",
+        "breakdown": {
+          "untapped": 6.4,
+          "improvement": 0,
+          "valuation": 15,
+          "growth": 0,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -1.3,
+        "return3m": null,
+        "sectorReturn1m": -9.8,
+        "priceLevelPct": 74.3,
+        "revenueGrowthPct": -4.6,
+        "profitGrowthPct": -21.2,
+        "per": 8.1,
+        "sectorPer": 49.3,
+        "psr": 0.33185845247910906,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": -5.5
+      },
+      "themeMatch": {
+        "level": "good",
+        "label": "テーマ性あり（水素ステーション）",
+        "checked": true,
+        "note": "手動で選定したテーマページ一覧（水素ステーション）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
+      }
+    },
+    {
       "code": "6458",
       "name": "新晃工業",
-      "price": 1206,
-      "changePct": 0.5,
+      "price": 1200,
+      "changePct": -0.5,
       "closes": [
-        1232,
         1241,
         1253,
         1232,
@@ -5139,13 +5356,14 @@
         1210,
         1221,
         1200,
-        1206
+        1206,
+        1200
       ],
       "market": "東証Ｐ",
-      "marketCap": 87500,
-      "per": 11.3,
-      "pbr": 1.24,
-      "dividendYield": 4.15,
+      "marketCap": 87100,
+      "per": 11.2,
+      "pbr": 1.23,
+      "dividendYield": 4.17,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -5300,10 +5518,10 @@
       },
       "revenueGrowthPct": 4.1,
       "repricingLag": {
-        "score": 39.1,
+        "score": 41,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 20.1,
+          "untapped": 22,
           "improvement": 4,
           "valuation": 15,
           "growth": 0,
@@ -5312,15 +5530,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -2.4,
+        "return1m": -2.6,
         "return3m": null,
-        "sectorReturn1m": 2.3,
-        "priceLevelPct": 19.5,
+        "sectorReturn1m": 5.6,
+        "priceLevelPct": 12.2,
         "revenueGrowthPct": 4.1,
         "profitGrowthPct": -19.9,
-        "per": 11.3,
-        "sectorPer": 17.8,
-        "psr": 1.4745782706146042,
+        "per": 11.2,
+        "sectorPer": 17.9,
+        "psr": 1.467837341377509,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -5329,7 +5547,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -2.6
+        "repricingGap": 0.3
       },
       "themeMatch": {
         "level": "good",
@@ -5341,10 +5559,9 @@
     {
       "code": "2270",
       "name": "雪印メグ",
-      "price": 3490,
+      "price": 3485,
       "changePct": -0.14,
       "closes": [
-        3800,
         3760,
         3750,
         3765,
@@ -5363,10 +5580,11 @@
         3505,
         3520,
         3495,
-        3490
+        3490,
+        3485
       ],
       "market": "東証Ｐ",
-      "marketCap": 222800,
+      "marketCap": 222500,
       "per": 8.4,
       "pbr": 0.85,
       "dividendYield": 2.87,
@@ -5531,15 +5749,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -8.5,
+        "return1m": -8.3,
         "return3m": null,
-        "sectorReturn1m": -6.5,
+        "sectorReturn1m": -5.2,
         "priceLevelPct": 0,
         "revenueGrowthPct": 0,
         "profitGrowthPct": -6.4,
         "per": 8.4,
         "sectorPer": 20.9,
-        "psr": 0.3618286965234888,
+        "psr": 0.3613414945084213,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -5548,7 +5766,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -1.2
+        "repricingGap": -0.1
       },
       "themeMatch": {
         "level": null,
@@ -5560,10 +5778,9 @@
     {
       "code": "9107",
       "name": "川崎船",
-      "price": 3241,
-      "changePct": -0.7,
+      "price": 3263,
+      "changePct": 0.68,
       "closes": [
-        3419,
         3328,
         3425,
         3427,
@@ -5582,13 +5799,14 @@
         3326,
         3264,
         3264,
-        3241
+        3241,
+        3263
       ],
       "market": "東証Ｐ",
-      "marketCap": 1919200,
-      "per": 14,
-      "pbr": 1.09,
-      "dividendYield": 3.72,
+      "marketCap": 1944200,
+      "per": 14.2,
+      "pbr": 1.11,
+      "dividendYield": 3.67,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -5738,10 +5956,10 @@
       },
       "revenueGrowthPct": -2.8,
       "repricingLag": {
-        "score": 23.4,
-        "zone": "early_move",
+        "score": 22.4,
+        "zone": "re_rating",
         "breakdown": {
-          "untapped": 7.9,
+          "untapped": 6.9,
           "improvement": 8,
           "valuation": 5,
           "growth": 2.5,
@@ -5750,15 +5968,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -5.6,
+        "return1m": -1.8,
         "return3m": null,
-        "sectorReturn1m": -5.9,
-        "priceLevelPct": 68.3,
+        "sectorReturn1m": -8.1,
+        "priceLevelPct": 72.4,
         "revenueGrowthPct": -2.8,
         "profitGrowthPct": 10.9,
-        "per": 14,
-        "sectorPer": 11.7,
-        "psr": 1.8845913641880507,
+        "per": 14.2,
+        "sectorPer": 11.8,
+        "psr": 1.9091405430671156,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -5767,7 +5985,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 1.2
+        "repricingGap": -0.6
       },
       "themeMatch": {
         "level": null,
@@ -5779,10 +5997,9 @@
     {
       "code": "9101",
       "name": "日本郵船",
-      "price": 7076,
-      "changePct": -0.91,
+      "price": 7135,
+      "changePct": 0.83,
       "closes": [
-        7288,
         7158,
         7420,
         7290,
@@ -5801,13 +6018,14 @@
         7212,
         7139,
         7141,
-        7076
+        7076,
+        7135
       ],
       "market": "東証Ｐ",
-      "marketCap": 2845400,
-      "per": 11.8,
-      "pbr": 0.91,
-      "dividendYield": 3.42,
+      "marketCap": 2885500,
+      "per": 12,
+      "pbr": 0.92,
+      "dividendYield": 3.37,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -5962,10 +6180,10 @@
       },
       "revenueGrowthPct": -6.4,
       "repricingLag": {
-        "score": 28.4,
+        "score": 27.3,
         "zone": "re_rating",
         "breakdown": {
-          "untapped": 5.9,
+          "untapped": 4.8,
           "improvement": 12.5,
           "valuation": 5,
           "growth": 5,
@@ -5974,15 +6192,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -3.6,
+        "return1m": -0.4,
         "return3m": null,
-        "sectorReturn1m": -5.9,
-        "priceLevelPct": 76.4,
+        "sectorReturn1m": -8.1,
+        "priceLevelPct": 80.7,
         "revenueGrowthPct": -6.4,
         "profitGrowthPct": 27.3,
-        "per": 11.8,
-        "sectorPer": 11.7,
-        "psr": 1.1739955084996465,
+        "per": 12,
+        "sectorPer": 11.8,
+        "psr": 1.1905405355225032,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -5991,7 +6209,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 1.9
+        "repricingGap": 0.5
       },
       "themeMatch": {
         "level": null,
@@ -6003,10 +6221,9 @@
     {
       "code": "7458",
       "name": "第一興商",
-      "price": 1742.5,
-      "changePct": -1.27,
+      "price": 1750.5,
+      "changePct": 0.46,
       "closes": [
-        1872,
         1869,
         1832.5,
         1829,
@@ -6025,10 +6242,11 @@
         1804.5,
         1795.5,
         1765,
-        1742.5
+        1742.5,
+        1750.5
       ],
       "market": "東証Ｐ",
-      "marketCap": 182300,
+      "marketCap": 182000,
       "per": 14.4,
       "pbr": 1.47,
       "dividendYield": 3.88,
@@ -6181,10 +6399,10 @@
       },
       "revenueGrowthPct": 6.5,
       "repricingLag": {
-        "score": 44,
+        "score": 44.3,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 22,
+          "untapped": 22.3,
           "improvement": 12,
           "valuation": 5,
           "growth": 5,
@@ -6193,15 +6411,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -6.4,
+        "return1m": -6.3,
         "return3m": null,
-        "sectorReturn1m": -10.8,
-        "priceLevelPct": 12,
+        "sectorReturn1m": -10.3,
+        "priceLevelPct": 10.9,
         "revenueGrowthPct": 6.5,
         "profitGrowthPct": 12.2,
         "per": 14.4,
-        "sectorPer": 14,
-        "psr": 1.118748082233814,
+        "sectorPer": 14.1,
+        "psr": 1.1169070266953054,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -6210,237 +6428,13 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 4.4
+        "repricingGap": 4.8
       },
       "themeMatch": {
         "level": null,
         "label": null,
         "note": null,
         "checked": true
-      }
-    },
-    {
-      "code": "2395",
-      "name": "新日本科学",
-      "price": 1315,
-      "changePct": 1.7,
-      "closes": [
-        1357,
-        1350,
-        1335,
-        1330,
-        1332,
-        1322,
-        1305,
-        1329,
-        1309,
-        1320,
-        1349,
-        1348,
-        1332,
-        1352,
-        1342,
-        1298,
-        1326,
-        1323,
-        1293,
-        1315
-      ],
-      "market": "東証Ｐ",
-      "marketCap": 54700,
-      "per": 15.6,
-      "pbr": 1.31,
-      "dividendYield": 3.8,
-      "checkpointTrend": {
-        "period": "26.04-06",
-        "periodMonths": 3,
-        "progressLabel": "対上期進捗率",
-        "progressPct": 48,
-        "priorProgressPcts": [
-          18.7,
-          31.7
-        ],
-        "priorOrdinaryProfitActuals": [
-          342,
-          515
-        ],
-        "revenue": {
-          "actual": 7868,
-          "pct": 21.5,
-          "state": "numeric"
-        },
-        "opProfit": {
-          "actual": 521,
-          "pct": null,
-          "state": "turned_profitable"
-        },
-        "ordinaryProfit": {
-          "actual": 1433,
-          "pct": 180,
-          "state": "multiple"
-        }
-      },
-      "nextMilestone": {
-        "forecastOrdinaryProfit": 2988,
-        "priorOrdinaryProfitActuals": [
-          3756,
-          1829,
-          1627
-        ]
-      },
-      "spread": {
-        "level": null,
-        "value": null,
-        "checked": false,
-        "note": null
-      },
-      "progressSurprise": {
-        "level": "good",
-        "value": 22.8,
-        "checked": true,
-        "passed": true,
-        "note": "今期の進捗率48% − 過去2年平均25.2% ＝ 進捗サプライズ+22.8pt"
-      },
-      "hurdleRatio": {
-        "level": null,
-        "value": 1.2,
-        "checked": true,
-        "passed": false,
-        "requiredProfit": 1555,
-        "avgSegmentProfit": 1299.5,
-        "note": "必要利益1,555百万円 ÷ 過去2年平均1,300百万円 ＝ ハードル比率1.2倍"
-      },
-      "downsideRisk": {
-        "level": null,
-        "checked": true,
-        "ratio": 1.9,
-        "note": "今期の進捗率48%は過去平均25.2%の190%で、極端な下振れは確認されません"
-      },
-      "killerHits": 1,
-      "turnsProfitable": false,
-      "patternType": {
-        "type": null,
-        "label": null,
-        "note": null
-      },
-      "coreScreening": {
-        "passed": true,
-        "checked": true,
-        "checks": [
-          {
-            "key": "per",
-            "label": "PER",
-            "ok": true,
-            "note": "PER8〜16倍"
-          },
-          {
-            "key": "pbr",
-            "label": "PBR",
-            "ok": true,
-            "note": "PBR0.5〜1.5倍"
-          },
-          {
-            "key": "dividendYield",
-            "label": "配当利回り",
-            "ok": true,
-            "note": "配当利回り2.5%以上"
-          },
-          {
-            "key": "roe",
-            "label": "ROE",
-            "ok": true,
-            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
-          },
-          {
-            "key": "equityRatio",
-            "label": "自己資本比率",
-            "ok": true,
-            "note": "自己資本比率40%以上"
-          },
-          {
-            "key": "debtEquityRatio",
-            "label": "有利子負債倍率",
-            "ok": true,
-            "note": "有利子負債倍率1倍(100%)以下"
-          },
-          {
-            "key": "evEbitda",
-            "label": "EV/EBITDA",
-            "ok": true,
-            "note": "EV/EBITDA10倍以下"
-          }
-        ],
-        "failedReasons": [],
-        "uncheckedFields": []
-      },
-      "inflectionCause": {
-        "level": "info",
-        "label": "原価/原材料コスト増・特別損失/減損",
-        "checked": true,
-        "causes": [
-          {
-            "key": "costPressure",
-            "label": "原価/原材料コスト増",
-            "note": "粗利率が52.3%→49.9%に悪化"
-          },
-          {
-            "key": "oneTimeLoss",
-            "label": "特別損失/減損",
-            "note": "特別損失・減損等 計473百万円"
-          }
-        ],
-        "note": "粗利率が52.3%→49.9%に悪化。特別損失・減損等 計473百万円"
-      },
-      "countermeasure": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": false,
-        "hits": []
-      },
-      "fundamentalRisk": {
-        "excluded": false,
-        "reasons": []
-      },
-      "revenueGrowthPct": 0.3,
-      "repricingLag": {
-        "score": 54.8,
-        "zone": "early_move",
-        "breakdown": {
-          "untapped": 15.8,
-          "improvement": 21.5,
-          "valuation": 10,
-          "growth": 7.5,
-          "catalyst": 0,
-          "event": 0
-        },
-        "checked": true,
-        "alreadyMovedStrict": false,
-        "return1m": -2.6,
-        "return3m": null,
-        "sectorReturn1m": -4.4,
-        "priceLevelPct": 37,
-        "revenueGrowthPct": 0.3,
-        "profitGrowthPct": 178.3,
-        "per": 15.6,
-        "sectorPer": 21.8,
-        "psr": 1.6818349526503504,
-        "hasCatalyst": false,
-        "daysToEarnings": null,
-        "progressStreak": {
-          "level": "good",
-          "label": "進捗率が加速中",
-          "checked": true,
-          "profitYoyPct": 178.3,
-          "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:18.7%→25.04-06:31.7%→26.04-06:48%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+178.3%）"
-        },
-        "repricingGap": 55.1
-      },
-      "themeMatch": {
-        "level": "good",
-        "label": "テーマ性あり（再生医療・水素・バイオテクノロジー関連・創薬）",
-        "checked": true,
-        "note": "手動で選定したテーマページ一覧（再生医療・水素・バイオテクノロジー関連・創薬）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
       }
     }
   ],
