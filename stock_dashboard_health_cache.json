@@ -1,7 +1,7 @@
 {
-  "status": "ERROR",
-  "generatedAt": "2026-10-12T01:46:03.098Z",
-  "gitSha": "9e1d726",
+  "status": "PASS",
+  "generatedAt": "2026-10-12T08:58:08.924Z",
+  "gitSha": "28d8f5d",
   "logicFingerprint": "ce9b145a78c81186",
   "stocksChecked": 39,
   "creditQualityChecked": 0,
@@ -36,13 +36,7 @@
   },
   "scoreInvariantFailures": 0,
   "tagConsistencyFailures": 0,
-  "errors": [
-    {
-      "code": "broken_svg",
-      "message": "需給タイムラインのブロックが完全に閉じていない可能性があります（見出し11件・フッター/空表示10件）",
-      "affected": []
-    }
-  ],
+  "errors": [],
   "warnings": [],
   "info": []
 }
