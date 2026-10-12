@@ -193,6 +193,15 @@ test('①再発防止: htmlを渡さなければUIチェックはスキップさ
   assert.equal(h.status, HEALTH_STATUS.PASS);
 });
 
+test('実測バグ(2026-09-23〜2026-10-12、19日間index.html更新停止): <style>内のJSコメント「需給タイムライン」を見出しとして誤カウントしない', () => {
+  // scraper.mjsが実際に埋め込む<style>ブロック中のコメント（カード本体とは無関係）。
+  const styleBlock = '<style>/* ── 第9優先改修 Phase6 ④: 需給タイムライン ── */ .ctl-head{color:#fff}</style>';
+  const card = '<article><div class="credit-timeline"><div class="ctl-head">需給タイムライン</div><svg class="ctl-svg" width="1" height="1"></svg><div class="ctl-foot">最終信用残 9/11</div></div></article>';
+  const html = `<html><head>${styleBlock}</head><body>${card}</body></html>`;
+  const h = computeHealthCheck({ results: [healthyResult()], todayIso: '2026-09-11', html });
+  assert.equal(h.status, HEALTH_STATUS.PASS);
+});
+
 test('②再発防止: creditAsOfの日付形式そのものが不正ならERROR（invalid_date。future_dateチェックはnullを渡されると静かに素通りしていた）', () => {
   const r = healthyResult({ creditSupplyQuality: { creditAsOf: '2026年9月11日' } }); // "26/09/18"形式ではない
   const h = computeHealthCheck({ results: [r], todayIso: '2026-09-11' });

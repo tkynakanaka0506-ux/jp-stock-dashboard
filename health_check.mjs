@@ -128,7 +128,13 @@ function checkHtmlIntegrity(html) {
   if (ctlSvgOpens !== ctlSvgCloses) {
     pushIssue(errors, 'broken_svg', `需給タイムラインのSVGタグが壊れています（開始${ctlSvgOpens}件・正しく閉じているのは${ctlSvgCloses}件）`);
   }
-  const timelineHead = (html.match(/需給タイムライン/g) ?? []).length;
+  // 実測バグ(2026-09-23〜2026-10-12、19日間index.html更新停止): 自由文字列
+  // 「需給タイムライン」でマッチさせていたため、<style>内のJSコメント
+  // （同じ文字列を含む見出しコメント）まで見出し件数に数えてしまい、
+  // 実際のカード数と常に+1ズレてERROR判定され続けていた(見出し数=
+  // カード数+1 vs フッター数=カード数)。creditSupplyTimelineBlock()が
+  // 実際に出力する構造的マーカー(ctl-head要素そのもの)だけを数える。
+  const timelineHead = (html.match(/class="ctl-head"/g) ?? []).length;
   const timelineFoot = (html.match(/class="ctl-foot"/g) ?? []).length + (html.match(/class="ctl-empty"/g) ?? []).length;
   if (timelineHead > 0 && timelineHead !== timelineFoot) {
     pushIssue(errors, 'broken_svg', `需給タイムラインのブロックが完全に閉じていない可能性があります（見出し${timelineHead}件・フッター/空表示${timelineFoot}件）`);
