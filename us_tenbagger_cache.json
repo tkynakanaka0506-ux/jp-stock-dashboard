@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-07",
+  "date": "2026-10-12",
   "universe": 2,
   "results": [
     {
@@ -7,14 +7,10 @@
       "name": "IONQ Inc",
       "theme": "量子コンピュータ",
       "industry": "Technology",
-      "marketCap": 17538.4285031394,
-      "price": 43.29,
-      "changePct": -1.1,
+      "marketCap": 16160.958803944233,
+      "price": 39.89,
+      "changePct": 1.1,
       "closes": [
-        40.470001220703125,
-        38.13999938964844,
-        36.84000015258789,
-        36.75,
         37.5,
         37.04999923706055,
         36.84000015258789,
@@ -30,7 +26,11 @@
         43.86000061035156,
         43.9900016784668,
         43.77000045776367,
-        42.970001220703125
+        42.970001220703125,
+        43.290000915527344,
+        41.34000015258789,
+        39.45000076293945,
+        39.88999938964844
       ],
       "fiftyTwoWeekHigh": 84.64,
       "tier": "C",
@@ -38,7 +38,7 @@
         "level": "good",
         "label": "大型超成長株(Tier C)",
         "checked": true,
-        "note": "時価総額17,538百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+286.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額16,161百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+286.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "earningsTrend": {
         "level": "good",
@@ -58,10 +58,10 @@
         "checked": false
       },
       "repricingLag": {
-        "score": 26.5,
-        "zone": "re_rating",
+        "score": 31.7,
+        "zone": "early_move",
         "breakdown": {
-          "untapped": 6.5,
+          "untapped": 11.7,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -70,7 +70,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "repricingGap": 23.8
+        "repricingGap": 42.8
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -98,7 +98,7 @@
         "checked": true,
         "note": "手動で選定したテーマページ一覧（量子コンピュータ）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
       },
-      "realizability": 12,
+      "realizability": 19,
       "growthPotential": 100,
       "floatSqueeze": {
         "level": null,
@@ -112,14 +112,10 @@
       "name": "Aurora Innovation Inc",
       "theme": "自動運転（トラック）",
       "industry": "Technology",
-      "marketCap": 11523.840179000003,
-      "price": 5.75,
-      "changePct": 1.4,
+      "marketCap": 11684.171907478183,
+      "price": 5.83,
+      "changePct": 1.7,
       "closes": [
-        6.510000228881836,
-        6.5,
-        6.329999923706055,
-        6.429999828338623,
         6.460000038146973,
         6.440000057220459,
         6.360000133514404,
@@ -135,7 +131,11 @@
         5.539999961853027,
         5.519999980926514,
         5.670000076293945,
-        5.75
+        5.75,
+        5.75,
+        5.71999979019165,
+        5.730000019073486,
+        5.829999923706055
       ],
       "fiftyTwoWeekHigh": 8.565,
       "tier": "C",
@@ -143,7 +143,7 @@
         "level": "good",
         "label": "大型超成長株(Tier C)",
         "checked": true,
-        "note": "時価総額11,524百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+100%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額11,684百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+100%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "earningsTrend": {
         "level": "good",
@@ -163,10 +163,10 @@
         "checked": false
       },
       "repricingLag": {
-        "score": 39.1,
+        "score": 38.1,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 19.1,
+          "untapped": 18.1,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -175,7 +175,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "repricingGap": 45.2
+        "repricingGap": 42.8
       },
       "hasCatalyst": false,
       "growthAcceleration": {
