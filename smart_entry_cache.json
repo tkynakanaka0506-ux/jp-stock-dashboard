@@ -1,7 +1,7 @@
 {
-  "date": "2026-10-13",
-  "universe": 4007,
-  "stage2": 975,
+  "date": "2026-10-14",
+  "universe": 3976,
+  "stage2": 960,
   "matched": 0,
   "dropped": 0,
   "results": [],
@@ -1688,7 +1688,7 @@
         "alreadyMovedStrict": false,
         "return1m": 7.4,
         "return3m": null,
-        "sectorReturn1m": -7.3,
+        "sectorReturn1m": -5.2,
         "priceLevelPct": 100,
         "revenueGrowthPct": 2.8,
         "profitGrowthPct": -0.2,
@@ -1912,7 +1912,7 @@
         "alreadyMovedStrict": false,
         "return1m": -3.8,
         "return3m": null,
-        "sectorReturn1m": -2.9,
+        "sectorReturn1m": -3.2,
         "priceLevelPct": 23.7,
         "revenueGrowthPct": 0.8,
         "profitGrowthPct": 0.6,
@@ -1927,7 +1927,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 1.2
+        "repricingGap": 1
       },
       "themeMatch": {
         "level": null,
@@ -1964,10 +1964,10 @@
         3045
       ],
       "market": "東証Ｐ",
-      "marketCap": 128900,
+      "marketCap": 128200,
       "per": 14,
-      "pbr": 1.22,
-      "dividendYield": 3.84,
+      "pbr": 1.21,
+      "dividendYield": 3.86,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -2117,10 +2117,10 @@
       },
       "revenueGrowthPct": null,
       "repricingLag": {
-        "score": 22.7,
+        "score": 24.3,
         "zone": "re_rating",
         "breakdown": {
-          "untapped": 3.7,
+          "untapped": 5.3,
           "improvement": 9,
           "valuation": 10,
           "growth": 0,
@@ -2129,10 +2129,10 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": 2.4,
+        "return1m": 2.2,
         "return3m": null,
-        "sectorReturn1m": -9.4,
-        "priceLevelPct": 85.2,
+        "sectorReturn1m": -10.3,
+        "priceLevelPct": 78.9,
         "revenueGrowthPct": null,
         "profitGrowthPct": 4,
         "per": 14,
@@ -2147,7 +2147,7 @@
           "profitYoyPct": 4,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:78.5%→25.04-06:81.6%→26.04-06:82.2%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+4%）"
         },
-        "repricingGap": -1.5
+        "repricingGap": -2.2
       },
       "themeMatch": {
         "level": null,
@@ -2356,7 +2356,7 @@
         "alreadyMovedStrict": false,
         "return1m": 3.3,
         "return3m": null,
-        "sectorReturn1m": 4.5,
+        "sectorReturn1m": 4.1,
         "priceLevelPct": 50.2,
         "revenueGrowthPct": -1.2,
         "profitGrowthPct": 18.1,
@@ -2372,7 +2372,7 @@
           "profitYoyPct": 18.1,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:59.1%→25.04-06:60.6%→26.04-06:85.7%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+18.1%）"
         },
-        "repricingGap": 4.8
+        "repricingGap": 4.6
       },
       "themeMatch": {
         "level": null,
@@ -2409,10 +2409,10 @@
         1608
       ],
       "market": "東証Ｐ",
-      "marketCap": 425300,
-      "per": 12.2,
+      "marketCap": 427200,
+      "per": 12.3,
       "pbr": 1.32,
-      "dividendYield": 3.28,
+      "dividendYield": 3.27,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -2567,10 +2567,10 @@
       },
       "revenueGrowthPct": 4.1,
       "repricingLag": {
-        "score": 51.4,
+        "score": 50.8,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 21.9,
+          "untapped": 21.3,
           "improvement": 17,
           "valuation": 10,
           "growth": 2.5,
@@ -2579,15 +2579,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": -0.4,
+        "return1m": 0.9,
         "return3m": null,
-        "sectorReturn1m": -9.4,
-        "priceLevelPct": 12.5,
+        "sectorReturn1m": -10.3,
+        "priceLevelPct": 14.7,
         "revenueGrowthPct": 4.1,
         "profitGrowthPct": 11,
-        "per": 12.2,
+        "per": 12.3,
         "sectorPer": 15,
-        "psr": 0.6733980078312404,
+        "psr": 0.6764063694933127,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -2597,7 +2597,7 @@
           "profitYoyPct": 11,
           "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:46.9%→25.04-06:48%→26.04-06:51.6%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+11%）"
         },
-        "repricingGap": -1.2
+        "repricingGap": -3.1
       },
       "themeMatch": {
         "level": null,
@@ -2801,7 +2801,7 @@
         "alreadyMovedStrict": false,
         "return1m": -3.2,
         "return3m": null,
-        "sectorReturn1m": 4.5,
+        "sectorReturn1m": 4.1,
         "priceLevelPct": 16.5,
         "revenueGrowthPct": -2,
         "profitGrowthPct": 23.2,
@@ -2816,7 +2816,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 15.3
+        "repricingGap": 14.9
       },
       "themeMatch": {
         "level": null,
@@ -3025,7 +3025,7 @@
         "alreadyMovedStrict": true,
         "return1m": 10.3,
         "return3m": null,
-        "sectorReturn1m": 19.9,
+        "sectorReturn1m": 16.9,
         "priceLevelPct": 81.3,
         "revenueGrowthPct": 2.5,
         "profitGrowthPct": 56.2,
@@ -3040,7 +3040,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 7.3
+        "repricingGap": 6.7
       },
       "themeMatch": {
         "level": null,
@@ -3249,7 +3249,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0.8,
         "return3m": null,
-        "sectorReturn1m": 8.6,
+        "sectorReturn1m": 8.4,
         "priceLevelPct": 56.5,
         "revenueGrowthPct": 6,
         "profitGrowthPct": 60,
@@ -3468,7 +3468,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.6,
         "return3m": null,
-        "sectorReturn1m": -1.8,
+        "sectorReturn1m": -0.1,
         "priceLevelPct": 37.7,
         "revenueGrowthPct": 2,
         "profitGrowthPct": 42.8,
@@ -3483,7 +3483,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 13.2
+        "repricingGap": 14.3
       },
       "themeMatch": {
         "level": null,
@@ -3687,7 +3687,7 @@
         "alreadyMovedStrict": false,
         "return1m": 1.9,
         "return3m": null,
-        "sectorReturn1m": 4.5,
+        "sectorReturn1m": 4.1,
         "priceLevelPct": 25.7,
         "revenueGrowthPct": 0.9,
         "profitGrowthPct": 39.1,
@@ -3702,7 +3702,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 16.8
+        "repricingGap": 16.5
       },
       "themeMatch": {
         "level": null,
@@ -3916,7 +3916,7 @@
         "alreadyMovedStrict": false,
         "return1m": 4.3,
         "return3m": null,
-        "sectorReturn1m": 0.7,
+        "sectorReturn1m": 1.2,
         "priceLevelPct": 41.7,
         "revenueGrowthPct": 6.4,
         "profitGrowthPct": 57.8,
@@ -3931,7 +3931,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 16.6
+        "repricingGap": 16.9
       },
       "themeMatch": {
         "level": null,
@@ -4140,7 +4140,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0.6,
         "return3m": null,
-        "sectorReturn1m": 8.6,
+        "sectorReturn1m": 8.4,
         "priceLevelPct": 55.6,
         "revenueGrowthPct": 5.6,
         "profitGrowthPct": 72.1,
@@ -4155,7 +4155,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 20.8
+        "repricingGap": 20.7
       },
       "themeMatch": {
         "level": null,
@@ -4358,7 +4358,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.6,
         "return3m": null,
-        "sectorReturn1m": 4.5,
+        "sectorReturn1m": 4.1,
         "priceLevelPct": 13.8,
         "revenueGrowthPct": -4.6,
         "profitGrowthPct": 111,
@@ -4373,7 +4373,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 50.3
+        "repricingGap": 49.9
       },
       "themeMatch": {
         "level": "good",
@@ -4410,10 +4410,10 @@
         2410
       ],
       "market": "東証Ｐ",
-      "marketCap": 53500,
+      "marketCap": 53700,
       "per": 9.3,
       "pbr": 0.79,
-      "dividendYield": 4.15,
+      "dividendYield": 4.13,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -4563,10 +4563,10 @@
       },
       "revenueGrowthPct": 2.4,
       "repricingLag": {
-        "score": 38.7,
+        "score": 38.8,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 19.7,
+          "untapped": 19.8,
           "improvement": 4,
           "valuation": 15,
           "growth": 0,
@@ -4575,15 +4575,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": 1.3,
+        "return1m": 1,
         "return3m": null,
-        "sectorReturn1m": 1.5,
-        "priceLevelPct": 21.3,
+        "sectorReturn1m": -0.1,
+        "priceLevelPct": 20.8,
         "revenueGrowthPct": 2.4,
         "profitGrowthPct": -49.1,
         "per": 9.3,
         "sectorPer": 17,
-        "psr": 0.4214058413938687,
+        "psr": 0.4229811903336589,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -4592,7 +4592,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -18.2
+        "repricingGap": -19.3
       },
       "themeMatch": {
         "level": null,
@@ -4797,7 +4797,7 @@
         "alreadyMovedStrict": false,
         "return1m": -2,
         "return3m": null,
-        "sectorReturn1m": -5.2,
+        "sectorReturn1m": -3.4,
         "priceLevelPct": 10.5,
         "revenueGrowthPct": 5.3,
         "profitGrowthPct": 1.8,
@@ -4812,7 +4812,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.4
+        "repricingGap": 2
       },
       "themeMatch": {
         "level": "good",
@@ -5016,7 +5016,7 @@
         "alreadyMovedStrict": false,
         "return1m": -0.2,
         "return3m": null,
-        "sectorReturn1m": -7.1,
+        "sectorReturn1m": -4.8,
         "priceLevelPct": 67.3,
         "revenueGrowthPct": -4.6,
         "profitGrowthPct": -21.2,
@@ -5031,7 +5031,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -6.5
+        "repricingGap": -5.7
       },
       "themeMatch": {
         "level": "good",
@@ -5240,7 +5240,7 @@
         "alreadyMovedStrict": false,
         "return1m": 0.5,
         "return3m": null,
-        "sectorReturn1m": 8.6,
+        "sectorReturn1m": 8.4,
         "priceLevelPct": 54.9,
         "revenueGrowthPct": 4.1,
         "profitGrowthPct": -19.9,
@@ -5255,7 +5255,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 0.1
+        "repricingGap": 0
       },
       "themeMatch": {
         "level": "good",
@@ -5459,7 +5459,7 @@
         "alreadyMovedStrict": false,
         "return1m": -5.2,
         "return3m": null,
-        "sectorReturn1m": -2.9,
+        "sectorReturn1m": -3.2,
         "priceLevelPct": 13.4,
         "revenueGrowthPct": 0,
         "profitGrowthPct": -6.4,
@@ -5474,7 +5474,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -0.8
+        "repricingGap": -1
       },
       "themeMatch": {
         "level": null,
@@ -5511,10 +5511,10 @@
         3488
       ],
       "market": "東証Ｐ",
-      "marketCap": 274500,
-      "per": 15.2,
-      "pbr": 1.18,
-      "dividendYield": 3.44,
+      "marketCap": 257200,
+      "per": 15.1,
+      "pbr": 1.17,
+      "dividendYield": 3.47,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -5664,10 +5664,10 @@
       },
       "revenueGrowthPct": -2.8,
       "repricingLag": {
-        "score": 17.2,
+        "score": 18.1,
         "zone": "re_rating",
         "breakdown": {
-          "untapped": 1.7,
+          "untapped": 2.6,
           "improvement": 8,
           "valuation": 5,
           "growth": 2.5,
@@ -5676,15 +5676,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": 4.2,
+        "return1m": 4.7,
         "return3m": null,
-        "sectorReturn1m": -7.3,
-        "priceLevelPct": 93,
+        "sectorReturn1m": -5.2,
+        "priceLevelPct": 89.4,
         "revenueGrowthPct": -2.8,
         "profitGrowthPct": 10.9,
-        "per": 15.2,
+        "per": 15.1,
         "sectorPer": 12.3,
-        "psr": 0.2695499840921321,
+        "psr": 0.2525619523078192,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -5693,7 +5693,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": -0.5
+        "repricingGap": -0.6
       },
       "themeMatch": {
         "level": null,
@@ -5730,10 +5730,10 @@
         7557
       ],
       "market": "東証Ｐ",
-      "marketCap": 363000,
-      "per": 12.7,
-      "pbr": 0.98,
-      "dividendYield": 3.18,
+      "marketCap": 347600,
+      "per": 12.6,
+      "pbr": 0.97,
+      "dividendYield": 3.19,
       "checkpointTrend": {
         "period": "26.04-06",
         "periodMonths": 3,
@@ -5888,10 +5888,10 @@
       },
       "revenueGrowthPct": -6.4,
       "repricingLag": {
-        "score": 22.6,
+        "score": 23.1,
         "zone": "re_rating",
         "breakdown": {
-          "untapped": 0.1,
+          "untapped": 0.6,
           "improvement": 12.5,
           "valuation": 5,
           "growth": 5,
@@ -5900,15 +5900,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "return1m": 4.9,
+        "return1m": 4.4,
         "return3m": null,
-        "sectorReturn1m": -7.3,
-        "priceLevelPct": 99.6,
+        "sectorReturn1m": -5.2,
+        "priceLevelPct": 97.6,
         "revenueGrowthPct": -6.4,
         "profitGrowthPct": 27.3,
-        "per": 12.7,
+        "per": 12.6,
         "sectorPer": 12.3,
-        "psr": 0.14977169100491028,
+        "psr": 0.14341774047742925,
         "hasCatalyst": false,
         "daysToEarnings": null,
         "progressStreak": {
@@ -6121,7 +6121,7 @@
         "alreadyMovedStrict": false,
         "return1m": -4.2,
         "return3m": null,
-        "sectorReturn1m": -10.1,
+        "sectorReturn1m": -8.6,
         "priceLevelPct": 11.7,
         "revenueGrowthPct": 6.5,
         "profitGrowthPct": 12.2,
@@ -6136,7 +6136,7 @@
           "note": null,
           "checked": true
         },
-        "repricingGap": 3.1
+        "repricingGap": 4.4
       },
       "themeMatch": {
         "level": null,
