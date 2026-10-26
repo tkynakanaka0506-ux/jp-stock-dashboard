@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-24",
-  "universe": 3975,
+  "date": "2026-10-26",
+  "universe": 3961,
   "stage2": 949,
   "matched": 0,
   "dropped": 0,
@@ -52,7 +52,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "receivablesAnomaly": {
         "level": null,
@@ -83,6 +83,83 @@
       },
       "grossMarginImproving": null,
       "opMarginImproving": null
+    },
+    {
+      "code": "4418",
+      "name": "Ｇ－ＪＤＳＣ",
+      "price": 1084,
+      "changePct": -3.47,
+      "closes": [
+        1129,
+        1104,
+        1082,
+        1114,
+        1131,
+        1125,
+        1120,
+        1119,
+        1108,
+        1066,
+        1103,
+        1132,
+        1155,
+        1086,
+        1159,
+        1097,
+        1072,
+        1088,
+        1123,
+        1084
+      ],
+      "market": "東証Ｇ",
+      "marketCap": 17600,
+      "progressStreak": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false
+      },
+      "dividendPotential": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false
+      },
+      "hiddenAsset": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "receivablesAnomaly": {
+        "level": "bad",
+        "label": "売掛金急増",
+        "checked": true,
+        "note": "売上高-1%に対し売上債権+24.7%。売上が伸びていないのに売掛金だけ膨らんでおり、回収遅延の懸念があります。"
+      },
+      "revenueGrowthPct": -1,
+      "growthAcceleration": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true,
+        "score": 30
+      },
+      "themeMatch": {
+        "level": "good",
+        "label": "テーマ性あり（AIエージェント・フィジカルAI）",
+        "checked": true,
+        "note": "手動で選定したテーマページ一覧（AIエージェント・フィジカルAI）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
+      },
+      "growthAnomalyCaution": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "reasonCodes": []
+      },
+      "grossMarginImproving": true,
+      "opMarginImproving": true
     },
     {
       "code": "9251",
@@ -161,6 +238,85 @@
       },
       "grossMarginImproving": null,
       "opMarginImproving": null
+    },
+    {
+      "code": "141A",
+      "name": "Ｇ－トライアル",
+      "price": 3575,
+      "changePct": 1.71,
+      "closes": [
+        3640,
+        3790,
+        3750,
+        3775,
+        3815,
+        3750,
+        3865,
+        3935,
+        3930,
+        3715,
+        3700,
+        3520,
+        3455,
+        3565,
+        3585,
+        3540,
+        3660,
+        3585,
+        3515,
+        3575
+      ],
+      "market": "東証Ｇ",
+      "marketCap": 439200,
+      "progressStreak": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false
+      },
+      "dividendPotential": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "hiddenAsset": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      },
+      "receivablesAnomaly": {
+        "level": "bad",
+        "label": "売掛金急増",
+        "checked": true,
+        "note": "売上高+67.6%に対し売上債権+462.4%（売上の6.8倍のペース）。回収サイクルの長期化や押し込み販売の懸念があります。"
+      },
+      "revenueGrowthPct": 67.6,
+      "growthAcceleration": {
+        "level": "good",
+        "label": "成長が加速",
+        "checked": true,
+        "score": 100,
+        "note": "売上高成長率が前期の+12%から今期は+67.6%に加速しています。粗利率も改善しており、成長の質も伴っています"
+      },
+      "themeMatch": {
+        "level": "good",
+        "label": "テーマ性あり（人工知能）",
+        "checked": true,
+        "note": "手動で選定したテーマページ一覧（人工知能）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
+      },
+      "growthAnomalyCaution": {
+        "level": "warn",
+        "label": "異常成長・要確認",
+        "checked": true,
+        "reasonCodes": [
+          "ONE_TIME_ITEM_CURRENT"
+        ],
+        "note": "売上高成長率+67.6%という高い伸びですが、特別損益・減損等の一時的な項目（合計4,259,000,000円）が計上されており、本業の成長とは別の要因が業績に影響している可能性があります。「異常値だから無条件で高評価」にはせず、決算内容の確認をおすすめします"
+      },
+      "grossMarginImproving": true,
+      "opMarginImproving": false
     }
   ],
   "tenbaggerCandidatesA": [
@@ -234,7 +390,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "aggressiveInvestment": {
         "level": null,
@@ -262,14 +418,14 @@
         "note": null,
         "checked": false
       },
-      "operatingCf": null,
-      "cash": null,
+      "operatingCf": -51306000,
+      "cash": 4249115000,
       "interestBearingDebt": null,
       "majorShareholder": {
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "growthAnomalyCaution": {
         "level": null,
@@ -349,7 +505,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "aggressiveInvestment": {
         "level": null,
@@ -377,14 +533,14 @@
         "note": null,
         "checked": false
       },
-      "operatingCf": null,
-      "cash": null,
-      "interestBearingDebt": null,
+      "operatingCf": -1387292000,
+      "cash": 7915547000,
+      "interestBearingDebt": 16212400000,
       "majorShareholder": {
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "growthAnomalyCaution": {
         "level": null,
@@ -464,7 +620,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "aggressiveInvestment": {
         "level": null,
@@ -492,21 +648,23 @@
         "note": null,
         "checked": false
       },
-      "operatingCf": null,
-      "cash": null,
-      "interestBearingDebt": null,
+      "operatingCf": -855030000,
+      "cash": 2587658000,
+      "interestBearingDebt": 2762375000,
       "majorShareholder": {
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "growthAnomalyCaution": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": false,
-        "reasonCodes": []
+        "level": "warn",
+        "label": "異常成長・要確認",
+        "checked": true,
+        "reasonCodes": [
+          "ONE_TIME_ITEM_CURRENT"
+        ],
+        "note": "売上高成長率+174.8%という高い伸びですが、特別損益・減損等の一時的な項目（合計1,080,000円）が計上されており、本業の成長とは別の要因が業績に影響している可能性があります。「異常値だから無条件で高評価」にはせず、決算内容の確認をおすすめします"
       }
     },
     {
@@ -567,7 +725,7 @@
         "label": null,
         "note": null,
         "checked": true,
-        "score": 0
+        "score": 15
       },
       "breakoutVolume": {
         "level": null,
@@ -579,7 +737,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "aggressiveInvestment": {
         "level": null,
@@ -607,14 +765,14 @@
         "note": null,
         "checked": false
       },
-      "operatingCf": null,
-      "cash": null,
+      "operatingCf": 347053000,
+      "cash": 1755597000,
       "interestBearingDebt": null,
       "majorShareholder": {
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "growthAnomalyCaution": {
         "level": null,
@@ -694,7 +852,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "aggressiveInvestment": {
         "level": null,
@@ -722,14 +880,14 @@
         "note": null,
         "checked": false
       },
-      "operatingCf": null,
-      "cash": null,
-      "interestBearingDebt": null,
+      "operatingCf": -587740000,
+      "cash": 2458533000,
+      "interestBearingDebt": 210090000,
       "majorShareholder": {
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "growthAnomalyCaution": {
         "level": null,
@@ -1026,7 +1184,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "aggressiveInvestment": {
         "level": null,
@@ -1052,16 +1210,16 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
-      "operatingCf": null,
-      "cash": null,
-      "interestBearingDebt": null,
+      "operatingCf": 76729000,
+      "cash": 861011000,
+      "interestBearingDebt": 122500000,
       "majorShareholder": {
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "growthAnomalyCaution": {
         "level": null,
@@ -1371,7 +1529,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "aggressiveInvestment": {
         "level": null,
@@ -1399,14 +1557,14 @@
         "note": null,
         "checked": false
       },
-      "operatingCf": null,
-      "cash": null,
-      "interestBearingDebt": null,
+      "operatingCf": 81185000,
+      "cash": 1945624000,
+      "interestBearingDebt": 37260000,
       "majorShareholder": {
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "growthAnomalyCaution": {
         "level": null,
@@ -1488,7 +1646,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "aggressiveInvestment": {
         "level": null,
@@ -1516,14 +1674,14 @@
         "note": null,
         "checked": false
       },
-      "operatingCf": null,
-      "cash": null,
-      "interestBearingDebt": null,
+      "operatingCf": 92104000,
+      "cash": 3569357000,
+      "interestBearingDebt": 1621932000,
       "majorShareholder": {
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "growthAnomalyCaution": {
         "level": null,
@@ -1603,7 +1761,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "aggressiveInvestment": {
         "level": null,
@@ -1631,14 +1789,14 @@
         "note": null,
         "checked": false
       },
-      "operatingCf": null,
-      "cash": null,
+      "operatingCf": 223000000,
+      "cash": 138000000,
       "interestBearingDebt": null,
       "majorShareholder": {
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "growthAnomalyCaution": {
         "level": null,
@@ -1718,7 +1876,7 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "aggressiveInvestment": {
         "level": null,
@@ -1744,16 +1902,16 @@
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
-      "operatingCf": null,
-      "cash": null,
+      "operatingCf": -529128000,
+      "cash": 6335462000,
       "interestBearingDebt": null,
       "majorShareholder": {
         "level": null,
         "label": null,
         "note": null,
-        "checked": false
+        "checked": true
       },
       "growthAnomalyCaution": {
         "level": null,
@@ -1781,6 +1939,4660 @@
       "creditDate": null
     }
   ],
-  "inflectionCandidates": [],
+  "inflectionCandidates": [
+    {
+      "code": "6742",
+      "name": "京三製作所",
+      "price": 1065,
+      "changePct": -1.11,
+      "closes": [
+        1120,
+        1092,
+        1074,
+        1106,
+        1128,
+        1132,
+        1174,
+        1189,
+        1179,
+        1150,
+        1195,
+        1218,
+        1212,
+        1134,
+        1142,
+        1153,
+        1087,
+        1125,
+        1077,
+        1065
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 66300,
+      "per": 15.5,
+      "pbr": 1.2,
+      "dividendYield": 2.56,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 122.5,
+        "priorProgressPcts": [],
+        "priorOrdinaryProfitActuals": [
+          -1138,
+          -1218
+        ],
+        "revenue": {
+          "actual": 14794,
+          "pct": 20.8,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 97,
+          "pct": null,
+          "state": "turned_profitable"
+        },
+        "ordinaryProfit": {
+          "actual": 490,
+          "pct": null,
+          "state": "turned_profitable"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 400,
+        "priorOrdinaryProfitActuals": [
+          -2378,
+          -1118,
+          -1123
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": null,
+        "checked": false,
+        "note": null
+      },
+      "progressSurprise": {
+        "level": null,
+        "value": null,
+        "checked": false,
+        "note": null
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": -1.6,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": -90,
+        "avgSegmentProfit": 57.5,
+        "note": "必要利益-90百万円 ÷ 過去2年平均58百万円 ＝ ハードル比率-1.6倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": false,
+        "ratio": null,
+        "note": null
+      },
+      "killerHits": 1,
+      "turnsProfitable": true,
+      "patternType": {
+        "type": "v_turnaround",
+        "label": "🔄 V字回復型",
+        "note": "前期は赤字だったが、黒字に転換しました"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "原価/原材料コスト増・特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "costPressure",
+            "label": "原価/原材料コスト増",
+            "note": "粗利率が21.9%→19.1%に悪化"
+          },
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計33百万円"
+          }
+        ],
+        "note": "粗利率が21.9%→19.1%に悪化。特別損失・減損等 計33百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 9.1,
+      "repricingLag": {
+        "score": 26.8,
+        "zone": "early_move",
+        "breakdown": {
+          "untapped": 10.3,
+          "improvement": 4,
+          "valuation": 10,
+          "growth": 2.5,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -5.8,
+        "return3m": null,
+        "sectorReturn1m": 6.5,
+        "priceLevelPct": 58.8,
+        "revenueGrowthPct": 9.1,
+        "profitGrowthPct": null,
+        "per": 15.5,
+        "sectorPer": 21.9,
+        "psr": 0.7119692446468074,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 6.9
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "9104",
+      "name": "商船三井",
+      "price": 7207,
+      "changePct": -2.28,
+      "closes": [
+        7106,
+        7121,
+        6900,
+        7090,
+        7053,
+        7137,
+        7049,
+        7146,
+        7058,
+        7118,
+        7301,
+        7557,
+        7658,
+        7297,
+        7351,
+        7527,
+        7420,
+        7469,
+        7375,
+        7207
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 2664100,
+      "per": 10.5,
+      "pbr": 0.85,
+      "dividendYield": 2.79,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 41.4,
+        "priorProgressPcts": [
+          43.3,
+          45.6
+        ],
+        "priorOrdinaryProfitActuals": [
+          108539,
+          52233
+        ],
+        "revenue": {
+          "actual": 730987,
+          "pct": 68.9,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 38516,
+          "pct": 3.9,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 52153,
+          "pct": -0.2,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 126000,
+        "priorOrdinaryProfitActuals": [
+          154531,
+          250922,
+          114607
+        ]
+      },
+      "spread": {
+        "level": "good",
+        "value": 69.1,
+        "checked": true,
+        "passed": true,
+        "note": "1Q売上高YoY+68.9% − 1Q経常益YoY-0.2% ＝ スプレッド+69.1pt"
+      },
+      "progressSurprise": {
+        "level": null,
+        "value": -3.1,
+        "checked": true,
+        "passed": false,
+        "note": "今期の進捗率41.4% − 過去2年平均44.5% ＝ 進捗サプライズ-3.1pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.7,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 73847,
+        "avgSegmentProfit": 102378.5,
+        "note": "必要利益73,847百万円 ÷ 過去2年平均102,379百万円 ＝ ハードル比率0.7倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 0.9,
+        "note": "今期の進捗率41.4%は過去平均44.5%の90%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "v_turnaround",
+        "label": "🔄 V字回復型",
+        "note": "1Q経常益が前年比-0.2%と悪化しましたが、回復シナリオが確認できています"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "販管費増加・特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "fixedCostIncrease",
+            "label": "販管費増加",
+            "note": "販管費が前期比+20.2%"
+          },
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計22,415百万円"
+          }
+        ],
+        "note": "販管費が前期比+20.2%。特別損失・減損等 計22,415百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 2.8,
+      "repricingLag": {
+        "score": 18.3,
+        "zone": "re_rating",
+        "breakdown": {
+          "untapped": 4.3,
+          "improvement": 4,
+          "valuation": 10,
+          "growth": 0,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": 3.3,
+        "return3m": null,
+        "sectorReturn1m": -2.1,
+        "priceLevelPct": 82.8,
+        "revenueGrowthPct": 2.8,
+        "profitGrowthPct": -0.2,
+        "per": 10.5,
+        "sectorPer": 10.9,
+        "psr": 1.4597024378964856,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": -0.7
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "4526",
+      "name": "理研ビタミン",
+      "price": 3285,
+      "changePct": 1.55,
+      "closes": [
+        3340,
+        3320,
+        3160,
+        3145,
+        3105,
+        3075,
+        3085,
+        3085,
+        3115,
+        3090,
+        3135,
+        3145,
+        3120,
+        3165,
+        3190,
+        3205,
+        3200,
+        3210,
+        3235,
+        3285
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 103500,
+      "per": 12.8,
+      "pbr": 1.14,
+      "dividendYield": 3.26,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 67,
+        "priorProgressPcts": [
+          61.2,
+          57.9
+        ],
+        "priorOrdinaryProfitActuals": [
+          2927,
+          2531
+        ],
+        "revenue": {
+          "actual": 25133,
+          "pct": 8.1,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 2248,
+          "pct": -4.9,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 2547,
+          "pct": 0.6,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 3800,
+        "priorOrdinaryProfitActuals": [
+          5220,
+          4786,
+          4368
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": 7.5,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+8.1% − 1Q経常益YoY+0.6% ＝ スプレッド+7.5pt"
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 7.4,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率67% − 過去2年平均59.6% ＝ 進捗サプライズ+7.4pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.7,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 1253,
+        "avgSegmentProfit": 1848,
+        "note": "必要利益1,253百万円 ÷ 過去2年平均1,848百万円 ＝ ハードル比率0.7倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1.1,
+        "note": "今期の進捗率67%は過去平均59.6%の110%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "guidance_conservative",
+        "label": "🚀 上方修正本命型",
+        "note": "1Q経常益は前年比+0.6%と好調なのに、次の公式予想に対するハードル比率が0.7倍と低く、会社予想が保守的すぎる（上方修正の可能性がある）と考えられます"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "原価/原材料コスト増・特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "costPressure",
+            "label": "原価/原材料コスト増",
+            "note": "粗利率が32.7%→30.9%に悪化"
+          },
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計295百万円"
+          }
+        ],
+        "note": "粗利率が32.7%→30.9%に悪化。特別損失・減損等 計295百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 0.8,
+      "repricingLag": {
+        "score": 27.3,
+        "zone": "re_rating",
+        "breakdown": {
+          "untapped": 4.3,
+          "improvement": 8,
+          "valuation": 15,
+          "growth": 0,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": 0.9,
+        "return3m": null,
+        "sectorReturn1m": 3,
+        "priceLevelPct": 82.9,
+        "revenueGrowthPct": 0.8,
+        "profitGrowthPct": 0.6,
+        "per": 12.8,
+        "sectorPer": 21.3,
+        "psr": 1.074766355140187,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 0.5
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "9039",
+      "name": "サカイ引越センター",
+      "price": 3060,
+      "changePct": 0.16,
+      "closes": [
+        3080,
+        3040,
+        2956,
+        2941,
+        2933,
+        2926,
+        2922,
+        2962,
+        2975,
+        2963,
+        2986,
+        3045,
+        3025,
+        3050,
+        3035,
+        3030,
+        3030,
+        3020,
+        3055,
+        3060
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 130600,
+      "per": 14.2,
+      "pbr": 1.23,
+      "dividendYield": 3.79,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 82.2,
+        "priorProgressPcts": [
+          78.5,
+          81.6
+        ],
+        "priorOrdinaryProfitActuals": [
+          5284,
+          5450
+        ],
+        "revenue": {
+          "actual": 35306,
+          "pct": 4.5,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 5553,
+          "pct": 3.6,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 5668,
+          "pct": 4,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 6895,
+        "priorOrdinaryProfitActuals": [
+          7183,
+          6734,
+          6675
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": 0.5,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+4.5% − 1Q経常益YoY+4% ＝ スプレッド+0.5pt"
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 2.1,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率82.2% − 過去2年平均80.1% ＝ 進捗サプライズ+2.1pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.9,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 1227,
+        "avgSegmentProfit": 1337.5,
+        "note": "必要利益1,227百万円 ÷ 過去2年平均1,338百万円 ＝ ハードル比率0.9倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1,
+        "note": "今期の進捗率82.2%は過去平均80.1%の100%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": null,
+        "label": null,
+        "note": null
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計52百万円"
+          }
+        ],
+        "note": "特別損失・減損等 計52百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": null,
+      "repricingLag": {
+        "score": 19,
+        "zone": "re_rating",
+        "breakdown": {
+          "untapped": 0,
+          "improvement": 9,
+          "valuation": 10,
+          "growth": 0,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": 0.2,
+        "return3m": null,
+        "sectorReturn1m": -3.4,
+        "priceLevelPct": 100,
+        "revenueGrowthPct": null,
+        "profitGrowthPct": 4,
+        "per": 14.2,
+        "sectorPer": 15.2,
+        "psr": null,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": "good",
+          "label": "進捗率が加速中",
+          "checked": true,
+          "profitYoyPct": 4,
+          "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:78.5%→25.04-06:81.6%→26.04-06:82.2%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+4%）"
+        },
+        "repricingGap": 0
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "4202",
+      "name": "ダイセル",
+      "price": 1436,
+      "changePct": 0.35,
+      "closes": [
+        1442.5,
+        1426,
+        1385.5,
+        1431.5,
+        1436.5,
+        1405,
+        1432,
+        1455,
+        1460.5,
+        1440,
+        1458,
+        1453,
+        1476,
+        1444.5,
+        1472.5,
+        1468.5,
+        1447.5,
+        1444,
+        1431,
+        1436
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 369700,
+      "per": 11.5,
+      "pbr": 1,
+      "dividendYield": 4.85,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 85.7,
+        "priorProgressPcts": [
+          59.1,
+          60.6
+        ],
+        "priorOrdinaryProfitActuals": [
+          18179,
+          12343
+        ],
+        "revenue": {
+          "actual": 152383,
+          "pct": 9.4,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 14041,
+          "pct": 7.7,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 14573,
+          "pct": 18.1,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 17000,
+        "priorOrdinaryProfitActuals": [
+          30702,
+          30745,
+          20371
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": -8.7,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+9.4% − 1Q経常益YoY+18.1% ＝ スプレッド-8.7pt"
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 25.8,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率85.7% − 過去2年平均59.9% ＝ 進捗サプライズ+25.8pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.2,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 2427,
+        "avgSegmentProfit": 10297,
+        "note": "必要利益2,427百万円 ÷ 過去2年平均10,297百万円 ＝ ハードル比率0.2倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1.4,
+        "note": "今期の進捗率85.7%は過去平均59.9%の140%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "guidance_conservative",
+        "label": "🚀 上方修正本命型",
+        "note": "1Q経常益は前年比+18.1%と好調なのに、次の公式予想に対するハードル比率が0.2倍と低く、会社予想が保守的すぎる（上方修正の可能性がある）と考えられます"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "原価/原材料コスト増・特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "costPressure",
+            "label": "原価/原材料コスト増",
+            "note": "粗利率が28.1%→25.2%に悪化"
+          },
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計71,836百万円"
+          }
+        ],
+        "note": "粗利率が28.1%→25.2%に悪化。特別損失・減損等 計71,836百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": -1.2,
+      "repricingLag": {
+        "score": 42.2,
+        "zone": "early_move",
+        "breakdown": {
+          "untapped": 14.2,
+          "improvement": 13,
+          "valuation": 10,
+          "growth": 5,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": 0.1,
+        "return3m": null,
+        "sectorReturn1m": 3.2,
+        "priceLevelPct": 43.1,
+        "revenueGrowthPct": -1.2,
+        "profitGrowthPct": 18.1,
+        "per": 11.5,
+        "sectorPer": 16,
+        "psr": 0.63782177910353,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": "good",
+          "label": "進捗率が加速中",
+          "checked": true,
+          "profitYoyPct": 18.1,
+          "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:59.1%→25.04-06:60.6%→26.04-06:85.7%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+18.1%）"
+        },
+        "repricingGap": 6.6
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "9065",
+      "name": "山九",
+      "price": 1631.5,
+      "changePct": -0.37,
+      "closes": [
+        1644.8,
+        1633,
+        1567,
+        1603,
+        1591.5,
+        1567,
+        1580,
+        1586.5,
+        1582,
+        1587,
+        1588,
+        1608,
+        1618,
+        1630,
+        1641.5,
+        1648,
+        1638,
+        1636.5,
+        1637.5,
+        1631.5
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 435100,
+      "per": 12.5,
+      "pbr": 1.35,
+      "dividendYield": 3.21,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 51.6,
+        "priorProgressPcts": [
+          46.9,
+          48
+        ],
+        "priorOrdinaryProfitActuals": [
+          9492,
+          9758
+        ],
+        "revenue": {
+          "actual": 154564,
+          "pct": 0.4,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 10218,
+          "pct": 6.2,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 10832,
+          "pct": 11,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 21000,
+        "priorOrdinaryProfitActuals": [
+          18104,
+          20259,
+          20317
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": -10.6,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+0.4% − 1Q経常益YoY+11% ＝ スプレッド-10.6pt"
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 4.1,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率51.6% − 過去2年平均47.5% ＝ 進捗サプライズ+4.1pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 1,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 10168,
+        "avgSegmentProfit": 10663,
+        "note": "必要利益10,168百万円 ÷ 過去2年平均10,663百万円 ＝ ハードル比率1倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1.1,
+        "note": "今期の進捗率51.6%は過去平均47.5%の110%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": null,
+        "label": null,
+        "note": null
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "販管費増加・特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "fixedCostIncrease",
+            "label": "販管費増加",
+            "note": "販管費が前期比+11.5%"
+          },
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計444百万円"
+          }
+        ],
+        "note": "販管費が前期比+11.5%。特別損失・減損等 計444百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 4.1,
+      "repricingLag": {
+        "score": 48.6,
+        "zone": "pre_move",
+        "breakdown": {
+          "untapped": 19.1,
+          "improvement": 17,
+          "valuation": 10,
+          "growth": 2.5,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": 0,
+        "return3m": null,
+        "sectorReturn1m": -3.4,
+        "priceLevelPct": 23.8,
+        "revenueGrowthPct": 4.1,
+        "profitGrowthPct": 11,
+        "per": 12.5,
+        "sectorPer": 15.2,
+        "psr": 0.6889148206145608,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": "good",
+          "label": "進捗率が加速中",
+          "checked": true,
+          "profitYoyPct": 11,
+          "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:46.9%→25.04-06:48%→26.04-06:51.6%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+11%）"
+        },
+        "repricingGap": 3.2
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "4041",
+      "name": "日本曹達",
+      "price": 3585,
+      "changePct": -0.55,
+      "closes": [
+        3875,
+        3840,
+        3690,
+        3695,
+        3715,
+        3665,
+        3690,
+        3720,
+        3715,
+        3670,
+        3685,
+        3725,
+        3725,
+        3650,
+        3670,
+        3650,
+        3605,
+        3615,
+        3605,
+        3585
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 199300,
+      "per": 12.2,
+      "pbr": 0.91,
+      "dividendYield": 4.44,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 74.4,
+        "priorProgressPcts": [
+          62.6,
+          46.5
+        ],
+        "priorOrdinaryProfitActuals": [
+          5233,
+          4529
+        ],
+        "revenue": {
+          "actual": 34248,
+          "pct": 4.9,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 3734,
+          "pct": 18.3,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 5581,
+          "pct": 23.2,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 7500,
+        "priorOrdinaryProfitActuals": [
+          9292,
+          8364,
+          9742
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": -18.3,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+4.9% − 1Q経常益YoY+23.2% ＝ スプレッド-18.3pt"
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 19.8,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率74.4% − 過去2年平均54.6% ＝ 進捗サプライズ+19.8pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.5,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 1919,
+        "avgSegmentProfit": 4172,
+        "note": "必要利益1,919百万円 ÷ 過去2年平均4,172百万円 ＝ ハードル比率0.5倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1.4,
+        "note": "今期の進捗率74.4%は過去平均54.6%の140%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "guidance_conservative",
+        "label": "🚀 上方修正本命型",
+        "note": "1Q経常益は前年比+23.2%と好調なのに、次の公式予想に対するハードル比率が0.5倍と低く、会社予想が保守的すぎる（上方修正の可能性がある）と考えられます"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計3,840百万円"
+          }
+        ],
+        "note": "特別損失・減損等 計3,840百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": -2,
+      "repricingLag": {
+        "score": 47,
+        "zone": "pre_move",
+        "breakdown": {
+          "untapped": 24,
+          "improvement": 8,
+          "valuation": 10,
+          "growth": 5,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -7,
+        "return3m": null,
+        "sectorReturn1m": 3.2,
+        "priceLevelPct": 4,
+        "revenueGrowthPct": -2,
+        "profitGrowthPct": 23.2,
+        "per": 12.2,
+        "sectorPer": 16,
+        "psr": 1.310399694919489,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 20
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "6371",
+      "name": "椿本チエイン",
+      "price": 2629,
+      "changePct": -0.45,
+      "closes": [
+        2723,
+        2699,
+        2650,
+        2646,
+        2654,
+        2613,
+        2667,
+        2678,
+        2648,
+        2586,
+        2616,
+        2669,
+        2643,
+        2616,
+        2661,
+        2681,
+        2636,
+        2605,
+        2641,
+        2629
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 285100,
+      "per": 12.3,
+      "pbr": 0.91,
+      "dividendYield": 2.98,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 58,
+        "priorProgressPcts": [
+          54,
+          43
+        ],
+        "priorOrdinaryProfitActuals": [
+          6058,
+          4354
+        ],
+        "revenue": {
+          "actual": 85050,
+          "pct": 30.2,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 5163,
+          "pct": 57.4,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 6965,
+          "pct": 60,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 12000,
+        "priorOrdinaryProfitActuals": [
+          10364,
+          11225,
+          10116
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": -29.8,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+30.2% − 1Q経常益YoY+60% ＝ スプレッド-29.8pt"
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 9.5,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率58% − 過去2年平均48.5% ＝ 進捗サプライズ+9.5pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.9,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 5035,
+        "avgSegmentProfit": 5464.5,
+        "note": "必要利益5,035百万円 ÷ 過去2年平均5,465百万円 ＝ ハードル比率0.9倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1.2,
+        "note": "今期の進捗率58%は過去平均48.5%の120%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": null,
+        "label": null,
+        "note": null
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "販管費増加・特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "fixedCostIncrease",
+            "label": "販管費増加",
+            "note": "販管費が前期比+10.8%"
+          },
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計11,253百万円"
+          }
+        ],
+        "note": "販管費が前期比+10.8%。特別損失・減損等 計11,253百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 6,
+      "repricingLag": {
+        "score": 45.6,
+        "zone": "early_move",
+        "breakdown": {
+          "untapped": 9.1,
+          "improvement": 16.5,
+          "valuation": 10,
+          "growth": 10,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -1.4,
+        "return3m": null,
+        "sectorReturn1m": 4.7,
+        "priceLevelPct": 63.6,
+        "revenueGrowthPct": 6,
+        "profitGrowthPct": 60,
+        "per": 12.3,
+        "sectorPer": 16,
+        "psr": 0.9635728239341891,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 14.2
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "5192",
+      "name": "三ツ星ベルト",
+      "price": 4225,
+      "changePct": -0.82,
+      "closes": [
+        4330,
+        4285,
+        4180,
+        4200,
+        4170,
+        4100,
+        4125,
+        4135,
+        4155,
+        4100,
+        4110,
+        4210,
+        4235,
+        4210,
+        4230,
+        4240,
+        4200,
+        4195,
+        4260,
+        4225
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 132300,
+      "per": 12,
+      "pbr": 1.16,
+      "dividendYield": 4.54,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 66.6,
+        "priorProgressPcts": [
+          54.1,
+          52.4
+        ],
+        "priorOrdinaryProfitActuals": [
+          2320,
+          2660
+        ],
+        "revenue": {
+          "actual": 25201,
+          "pct": 12.9,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 3289,
+          "pct": 37.3,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 3799,
+          "pct": 42.8,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 5700,
+        "priorOrdinaryProfitActuals": [
+          5611,
+          4286,
+          5075
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": -29.9,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+12.9% − 1Q経常益YoY+42.8% ＝ スプレッド-29.9pt"
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 13.3,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率66.6% − 過去2年平均53.3% ＝ 進捗サプライズ+13.3pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.9,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 1901,
+        "avgSegmentProfit": 2190.5,
+        "note": "必要利益1,901百万円 ÷ 過去2年平均2,191百万円 ＝ ハードル比率0.9倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1.2,
+        "note": "今期の進捗率66.6%は過去平均53.3%の120%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": null,
+        "label": null,
+        "note": null
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計1,926百万円"
+          }
+        ],
+        "note": "特別損失・減損等 計1,926百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 2,
+      "repricingLag": {
+        "score": 49.8,
+        "zone": "early_move",
+        "breakdown": {
+          "untapped": 15.8,
+          "improvement": 16.5,
+          "valuation": 10,
+          "growth": 7.5,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -1.7,
+        "return3m": null,
+        "sectorReturn1m": 2.8,
+        "priceLevelPct": 36.8,
+        "revenueGrowthPct": 2,
+        "profitGrowthPct": 42.8,
+        "per": 12,
+        "sectorPer": 12.2,
+        "psr": 1.4334005070532405,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 17
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "4204",
+      "name": "積水化学工業",
+      "price": 2586.5,
+      "changePct": 0.52,
+      "closes": [
+        2525,
+        2522.5,
+        2491.5,
+        2512.5,
+        2535,
+        2499,
+        2519.5,
+        2529,
+        2535,
+        2531.5,
+        2524,
+        2547,
+        2538,
+        2529,
+        2576,
+        2566,
+        2554.5,
+        2560,
+        2573,
+        2586.5
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 151300,
+      "per": 13.8,
+      "pbr": 1.23,
+      "dividendYield": 3.12,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 57,
+        "priorProgressPcts": [
+          55.1,
+          41.3
+        ],
+        "priorOrdinaryProfitActuals": [
+          26545,
+          20195
+        ],
+        "revenue": {
+          "actual": 332970,
+          "pct": 9.1,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 25479,
+          "pct": 20.1,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 28084,
+          "pct": 39.1,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 49300,
+        "priorOrdinaryProfitActuals": [
+          51536,
+          48142,
+          48951
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": -30,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+9.1% − 1Q経常益YoY+39.1% ＝ スプレッド-30pt"
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 8.8,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率57% − 過去2年平均48.2% ＝ 進捗サプライズ+8.8pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.8,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 21216,
+        "avgSegmentProfit": 25176.5,
+        "note": "必要利益21,216百万円 ÷ 過去2年平均25,177百万円 ＝ ハードル比率0.8倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1.2,
+        "note": "今期の進捗率57%は過去平均48.2%の120%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "guidance_conservative",
+        "label": "🚀 上方修正本命型",
+        "note": "1Q経常益は前年比+39.1%と好調なのに、次の公式予想に対するハードル比率が0.8倍と低く、会社予想が保守的すぎる（上方修正の可能性がある）と考えられます"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計50,442百万円"
+          }
+        ],
+        "note": "特別損失・減損等 計50,442百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 0.9,
+      "repricingLag": {
+        "score": 48.6,
+        "zone": "early_move",
+        "breakdown": {
+          "untapped": 14.6,
+          "improvement": 16.5,
+          "valuation": 10,
+          "growth": 7.5,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": 2.7,
+        "return3m": null,
+        "sectorReturn1m": 3.2,
+        "priceLevelPct": 41.7,
+        "revenueGrowthPct": 0.9,
+        "profitGrowthPct": 39.1,
+        "per": 13.8,
+        "sectorPer": 16,
+        "psr": 0.11555960867071316,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 12
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "4956",
+      "name": "コニシ",
+      "price": 1495,
+      "changePct": -0.93,
+      "closes": [
+        1519,
+        1516,
+        1481,
+        1479,
+        1472,
+        1446,
+        1446,
+        1457,
+        1458,
+        1449,
+        1465,
+        1497,
+        1512,
+        1519,
+        1519,
+        1514,
+        1502,
+        1518,
+        1509,
+        1495
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 106300,
+      "per": 11.4,
+      "pbr": 1.02,
+      "dividendYield": 2.52,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 62.2,
+        "priorProgressPcts": [
+          45.7,
+          46.4
+        ],
+        "priorOrdinaryProfitActuals": [
+          2359,
+          2258
+        ],
+        "revenue": {
+          "actual": 36202,
+          "pct": 12.3,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 3257,
+          "pct": 52.5,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 3481,
+          "pct": 54.2,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 5600,
+        "priorOrdinaryProfitActuals": [
+          5208,
+          5166,
+          4865
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": -41.9,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+12.3% − 1Q経常益YoY+54.2% ＝ スプレッド-41.9pt"
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 16.1,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率62.2% − 過去2年平均46.1% ＝ 進捗サプライズ+16.1pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.8,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 2119,
+        "avgSegmentProfit": 2707,
+        "note": "必要利益2,119百万円 ÷ 過去2年平均2,707百万円 ＝ ハードル比率0.8倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1.3,
+        "note": "今期の進捗率62.2%は過去平均46.1%の130%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "guidance_conservative",
+        "label": "🚀 上方修正本命型",
+        "note": "1Q経常益は前年比+54.2%と好調なのに、次の公式予想に対するハードル比率が0.8倍と低く、会社予想が保守的すぎる（上方修正の可能性がある）と考えられます"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計37百万円"
+          }
+        ],
+        "note": "特別損失・減損等 計37百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "checked": true,
+        "hits": [],
+        "note": "直近の適時開示タイトルからは対策（価格改定・合理化等）を確認できませんでした。決算短信・決算説明資料の本文までは確認していないため、対策が無いとは限りません"
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 0.6,
+      "repricingLag": {
+        "score": 41,
+        "zone": "re_rating",
+        "breakdown": {
+          "untapped": 2,
+          "improvement": 21.5,
+          "valuation": 10,
+          "growth": 7.5,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -0.6,
+        "return3m": null,
+        "sectorReturn1m": 3.2,
+        "priceLevelPct": 92.1,
+        "revenueGrowthPct": 0.6,
+        "profitGrowthPct": 54.2,
+        "per": 11.4,
+        "sectorPer": 16,
+        "psr": 0.7783611214843779,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": "good",
+          "label": "進捗率が加速中",
+          "checked": true,
+          "profitYoyPct": 54.2,
+          "note": "同じ時期（対上期進捗率）の進捗率が2年連続で上昇しています（24.04-06:45.7%→25.04-06:46.4%→26.04-06:62.2%）。業績の上振れ基調が続いており、次の決算でも好材料が出る可能性があります（経常利益は前年同期比+54.2%）"
+        },
+        "repricingGap": 2.5
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "4540",
+      "name": "ツムラ",
+      "price": 3738,
+      "changePct": 0.73,
+      "closes": [
+        3878,
+        3857,
+        3797,
+        3786,
+        3749,
+        3703,
+        3707,
+        3725,
+        3749,
+        3745,
+        3772,
+        3824,
+        3795,
+        3841,
+        3834,
+        3818,
+        3813,
+        3758,
+        3711,
+        3738
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 288500,
+      "per": 10.7,
+      "pbr": 0.86,
+      "dividendYield": 4.2,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 59.5,
+        "priorProgressPcts": [
+          60.3,
+          37.6
+        ],
+        "priorOrdinaryProfitActuals": [
+          14118,
+          6181
+        ],
+        "revenue": {
+          "actual": 49704,
+          "pct": 15.3,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 7881,
+          "pct": 2.1,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 9753,
+          "pct": 57.8,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 16400,
+        "priorOrdinaryProfitActuals": [
+          12675,
+          23402,
+          16419
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": -42.5,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+15.3% − 1Q経常益YoY+57.8% ＝ スプレッド-42.5pt"
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 10.5,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率59.5% − 過去2年平均49% ＝ 進捗サプライズ+10.5pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.7,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 6647,
+        "avgSegmentProfit": 9761,
+        "note": "必要利益6,647百万円 ÷ 過去2年平均9,761百万円 ＝ ハードル比率0.7倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1.2,
+        "note": "今期の進捗率59.5%は過去平均49%の120%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "guidance_conservative",
+        "label": "🚀 上方修正本命型",
+        "note": "1Q経常益は前年比+57.8%と好調なのに、次の公式予想に対するハードル比率が0.7倍と低く、会社予想が保守的すぎる（上方修正の可能性がある）と考えられます"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "原価/原材料コスト増・販管費増加・特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "costPressure",
+            "label": "原価/原材料コスト増",
+            "note": "粗利率が50%→47.5%に悪化"
+          },
+          {
+            "key": "fixedCostIncrease",
+            "label": "販管費増加",
+            "note": "販管費が前期比+11.6%"
+          },
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計1,194百万円"
+          }
+        ],
+        "note": "粗利率が50%→47.5%に悪化。販管費が前期比+11.6%。特別損失・減損等 計1,194百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 6.4,
+      "repricingLag": {
+        "score": 60.4,
+        "zone": "pre_move",
+        "breakdown": {
+          "untapped": 18.9,
+          "improvement": 16.5,
+          "valuation": 15,
+          "growth": 10,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -3.1,
+        "return3m": null,
+        "sectorReturn1m": 1.7,
+        "priceLevelPct": 24.5,
+        "revenueGrowthPct": 6.4,
+        "profitGrowthPct": 57.8,
+        "per": 10.7,
+        "sectorPer": 30.4,
+        "psr": 1.497806505204683,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 27.9
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "6287",
+      "name": "サトー",
+      "price": 2687,
+      "changePct": -0.81,
+      "closes": [
+        2739,
+        2740,
+        2672,
+        2697,
+        2707,
+        2624,
+        2634,
+        2638,
+        2631,
+        2634,
+        2664,
+        2699,
+        2697,
+        2700,
+        2738,
+        2715,
+        2686,
+        2682,
+        2709,
+        2687
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 90500,
+      "per": 11.3,
+      "pbr": 0.99,
+      "dividendYield": 2.97,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 55.9,
+        "priorProgressPcts": [
+          49.4,
+          42.3
+        ],
+        "priorOrdinaryProfitActuals": [
+          2411,
+          1885
+        ],
+        "revenue": {
+          "actual": 44621,
+          "pct": 18,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 3429,
+          "pct": 45.4,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 3245,
+          "pct": 72.1,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 5800,
+        "priorOrdinaryProfitActuals": [
+          4307,
+          4883,
+          4460
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": -54.1,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+18% − 1Q経常益YoY+72.1% ＝ スプレッド-54.1pt"
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 10.1,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率55.9% − 過去2年平均45.8% ＝ 進捗サプライズ+10.1pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 1,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 2555,
+        "avgSegmentProfit": 2523.5,
+        "note": "必要利益2,555百万円 ÷ 過去2年平均2,524百万円 ＝ ハードル比率1倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1.2,
+        "note": "今期の進捗率55.9%は過去平均45.8%の120%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": null,
+        "label": null,
+        "note": null
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "原価/原材料コスト増・特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "costPressure",
+            "label": "原価/原材料コスト増",
+            "note": "粗利率が41%→40%に悪化"
+          },
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計2,832百万円"
+          }
+        ],
+        "note": "粗利率が41%→40%に悪化。特別損失・減損等 計2,832百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 5.6,
+      "repricingLag": {
+        "score": 48.6,
+        "zone": "early_move",
+        "breakdown": {
+          "untapped": 12.1,
+          "improvement": 16.5,
+          "valuation": 10,
+          "growth": 10,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -1.7,
+        "return3m": null,
+        "sectorReturn1m": 4.7,
+        "priceLevelPct": 51.7,
+        "revenueGrowthPct": 5.6,
+        "profitGrowthPct": 72.1,
+        "per": 11.3,
+        "sectorPer": 16,
+        "psr": 0.5537403477856505,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 21.8
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "4182",
+      "name": "三菱瓦斯化学",
+      "price": 3537,
+      "changePct": -0.06,
+      "closes": [
+        3906,
+        3819,
+        3772,
+        3884,
+        3920,
+        3915,
+        4033,
+        4093,
+        4089,
+        3909,
+        3885,
+        3835,
+        3920,
+        3692,
+        3728,
+        3704,
+        3566,
+        3693,
+        3539,
+        3537
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 752100,
+      "per": 12.6,
+      "pbr": 1.04,
+      "dividendYield": 3.1,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 63.5,
+        "priorProgressPcts": [
+          47.9,
+          43.9
+        ],
+        "priorOrdinaryProfitActuals": [
+          17954,
+          13830
+        ],
+        "revenue": {
+          "actual": 223704,
+          "pct": 25.7,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 27845,
+          "pct": 150,
+          "state": "multiple"
+        },
+        "ordinaryProfit": {
+          "actual": 29187,
+          "pct": 110,
+          "state": "multiple"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 46000,
+        "priorOrdinaryProfitActuals": [
+          24947,
+          37444,
+          31480
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": null,
+        "checked": false,
+        "note": null
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 17.6,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率63.5% − 過去2年平均45.9% ＝ 進捗サプライズ+17.6pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.9,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 16813,
+        "avgSegmentProfit": 18570,
+        "note": "必要利益16,813百万円 ÷ 過去2年平均18,570百万円 ＝ ハードル比率0.9倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1.4,
+        "note": "今期の進捗率63.5%は過去平均45.9%の140%で、極端な下振れは確認されません"
+      },
+      "killerHits": 2,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": null,
+        "label": null,
+        "note": null
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計161,191百万円"
+          }
+        ],
+        "note": "特別損失・減損等 計161,191百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": -4.6,
+      "repricingLag": {
+        "score": 54.7,
+        "zone": "pre_move",
+        "breakdown": {
+          "untapped": 24.7,
+          "improvement": 12.5,
+          "valuation": 10,
+          "growth": 7.5,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -9,
+        "return3m": null,
+        "sectorReturn1m": 3.2,
+        "priceLevelPct": 1.4,
+        "revenueGrowthPct": -4.6,
+        "profitGrowthPct": 111,
+        "per": 12.6,
+        "sectorPer": 16,
+        "psr": 1.0187702423185863,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 64.5
+      },
+      "themeMatch": {
+        "level": "good",
+        "label": "テーマ性あり（バイオ後発薬）",
+        "checked": true,
+        "note": "手動で選定したテーマページ一覧（バイオ後発薬）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
+      }
+    },
+    {
+      "code": "7990",
+      "name": "グローブライド",
+      "price": 2425,
+      "changePct": -0.61,
+      "closes": [
+        2459,
+        2461,
+        2370,
+        2370,
+        2372,
+        2322,
+        2327,
+        2356,
+        2338,
+        2327,
+        2370,
+        2410,
+        2418,
+        2434,
+        2466,
+        2458,
+        2442,
+        2446,
+        2440,
+        2425
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 54100,
+      "per": 9.4,
+      "pbr": 0.8,
+      "dividendYield": 4.11,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 36.7,
+        "priorProgressPcts": [
+          53.6,
+          48.1
+        ],
+        "priorOrdinaryProfitActuals": [
+          2592,
+          2452
+        ],
+        "revenue": {
+          "actual": 33701,
+          "pct": 6.3,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 1164,
+          "pct": -50.9,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 1249,
+          "pct": -49.1,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 3400,
+        "priorOrdinaryProfitActuals": [
+          7198,
+          4840,
+          5094
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": 55.4,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+6.3% − 1Q経常益YoY-49.1% ＝ スプレッド+55.4pt"
+      },
+      "progressSurprise": {
+        "level": null,
+        "value": -14.2,
+        "checked": true,
+        "passed": false,
+        "note": "今期の進捗率36.7% − 過去2年平均50.9% ＝ 進捗サプライズ-14.2pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.9,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 2151,
+        "avgSegmentProfit": 2445,
+        "note": "必要利益2,151百万円 ÷ 過去2年平均2,445百万円 ＝ ハードル比率0.9倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 0.7,
+        "note": "今期の進捗率36.7%は過去平均50.9%の70%で、極端な下振れは確認されません"
+      },
+      "killerHits": 1,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "v_turnaround",
+        "label": "🔄 V字回復型",
+        "note": "1Q経常益が前年比-49.1%と悪化しましたが、回復シナリオが確認できています"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計1,049百万円"
+          }
+        ],
+        "note": "特別損失・減損等 計1,049百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 2.4,
+      "repricingLag": {
+        "score": 37.1,
+        "zone": "pre_move",
+        "breakdown": {
+          "untapped": 18.1,
+          "improvement": 4,
+          "valuation": 15,
+          "growth": 0,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -0.9,
+        "return3m": null,
+        "sectorReturn1m": 8.3,
+        "priceLevelPct": 27.6,
+        "revenueGrowthPct": 2.4,
+        "profitGrowthPct": -49.1,
+        "per": 9.4,
+        "sectorPer": 16.9,
+        "psr": 0.4261318882132392,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": -10.2
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "6902",
+      "name": "デンソー",
+      "price": 1849,
+      "changePct": -0.24,
+      "closes": [
+        1924,
+        1919.5,
+        1847,
+        1850,
+        1840,
+        1808,
+        1842,
+        1853,
+        1840.5,
+        1826,
+        1826,
+        1850,
+        1844.5,
+        1845,
+        1871.5,
+        1869.5,
+        1872,
+        1861.5,
+        1853.5,
+        1849
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 5401300,
+      "per": 12.2,
+      "pbr": 0.91,
+      "dividendYield": 3.99,
+      "checkpointTrend": {
+        "period": "I 26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": null,
+        "priorProgressPcts": [
+          48.9,
+          57.4
+        ],
+        "priorOrdinaryProfitActuals": [
+          137718,
+          140227
+        ],
+        "revenue": {
+          "actual": 1913868,
+          "pct": 9.1,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 84178,
+          "pct": -21.5,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 112634,
+          "pct": -19.7,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": null,
+        "priorOrdinaryProfitActuals": [
+          247663,
+          281734,
+          244442
+        ]
+      },
+      "spread": {
+        "level": "good",
+        "value": 28.8,
+        "checked": true,
+        "passed": true,
+        "note": "1Q売上高YoY+9.1% − 1Q経常益YoY-19.7% ＝ スプレッド+28.8pt"
+      },
+      "progressSurprise": {
+        "level": null,
+        "value": null,
+        "checked": false,
+        "note": null
+      },
+      "hurdleRatio": {
+        "level": null,
+        "value": null,
+        "checked": false,
+        "note": null
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": false,
+        "ratio": null,
+        "note": null
+      },
+      "killerHits": 1,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "v_turnaround",
+        "label": "🔄 V字回復型",
+        "note": "1Q経常益が前年比-19.7%と悪化しましたが、回復シナリオが確認できています"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "原価/原材料コスト増・特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "costPressure",
+            "label": "原価/原材料コスト増",
+            "note": "粗利率が8.8%→6.5%に悪化"
+          },
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計3,066百万円"
+          }
+        ],
+        "note": "粗利率が8.8%→6.5%に悪化。特別損失・減損等 計3,066百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 5.3,
+      "repricingLag": {
+        "score": 42.5,
+        "zone": "pre_move",
+        "breakdown": {
+          "untapped": 22,
+          "improvement": 8,
+          "valuation": 10,
+          "growth": 2.5,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -3.6,
+        "return3m": null,
+        "sectorReturn1m": 3.9,
+        "priceLevelPct": 11.9,
+        "revenueGrowthPct": 5.3,
+        "profitGrowthPct": 1.8,
+        "per": 12.2,
+        "sectorPer": 13.9,
+        "psr": 0.7163551603287809,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 9.8
+      },
+      "themeMatch": {
+        "level": "good",
+        "label": "テーマ性あり（バイオ航空燃料）",
+        "checked": true,
+        "note": "手動で選定したテーマページ一覧（バイオ航空燃料）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
+      }
+    },
+    {
+      "code": "5406",
+      "name": "神戸製鋼所",
+      "price": 2018,
+      "changePct": -0.25,
+      "closes": [
+        2080,
+        2077,
+        2022.5,
+        2048,
+        2006.5,
+        1992.5,
+        1993,
+        2024,
+        2007,
+        1976,
+        1987.5,
+        2030,
+        2021,
+        1987,
+        2013.5,
+        2010.5,
+        2001,
+        2015,
+        2023,
+        2018
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 811000,
+      "per": 8.1,
+      "pbr": 0.64,
+      "dividendYield": 3.94,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 45.3,
+        "priorProgressPcts": [
+          49.4,
+          49.9
+        ],
+        "priorOrdinaryProfitActuals": [
+          35045,
+          28759
+        ],
+        "revenue": {
+          "actual": 578349,
+          "pct": 1.6,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 20412,
+          "pct": -34.8,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 22663,
+          "pct": -21.2,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 50000,
+        "priorOrdinaryProfitActuals": [
+          91601,
+          70960,
+          57663
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": 22.8,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+1.6% − 1Q経常益YoY-21.2% ＝ スプレッド+22.8pt"
+      },
+      "progressSurprise": {
+        "level": null,
+        "value": -4.4,
+        "checked": true,
+        "passed": false,
+        "note": "今期の進捗率45.3% − 過去2年平均49.7% ＝ 進捗サプライズ-4.4pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.8,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 27337,
+        "avgSegmentProfit": 32409.5,
+        "note": "必要利益27,337百万円 ÷ 過去2年平均32,410百万円 ＝ ハードル比率0.8倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 0.9,
+        "note": "今期の進捗率45.3%は過去平均49.7%の90%で、極端な下振れは確認されません"
+      },
+      "killerHits": 1,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "v_turnaround",
+        "label": "🔄 V字回復型",
+        "note": "1Q経常益が前年比-21.2%と悪化しましたが、回復シナリオが確認できています"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計53,560百万円"
+          }
+        ],
+        "note": "特別損失・減損等 計53,560百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": -4.6,
+      "repricingLag": {
+        "score": 27.4,
+        "zone": "re_rating",
+        "breakdown": {
+          "untapped": 12.4,
+          "improvement": 0,
+          "valuation": 15,
+          "growth": 0,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -2.5,
+        "return3m": null,
+        "sectorReturn1m": 0.1,
+        "priceLevelPct": 50.4,
+        "revenueGrowthPct": -4.6,
+        "profitGrowthPct": -21.2,
+        "per": 8.1,
+        "sectorPer": 39.4,
+        "psr": 0.3328434392289852,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": -5.1
+      },
+      "themeMatch": {
+        "level": "good",
+        "label": "テーマ性あり（水素ステーション）",
+        "checked": true,
+        "note": "手動で選定したテーマページ一覧（水素ステーション）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
+      }
+    },
+    {
+      "code": "6458",
+      "name": "新晃工業",
+      "price": 1208,
+      "changePct": -0.9,
+      "closes": [
+        1242,
+        1234,
+        1203,
+        1210,
+        1221,
+        1200,
+        1206,
+        1200,
+        1215,
+        1207,
+        1210,
+        1235,
+        1244,
+        1224,
+        1236,
+        1229,
+        1211,
+        1218,
+        1219,
+        1208
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 88100,
+      "per": 11.3,
+      "pbr": 1.25,
+      "dividendYield": 4.12,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 49.5,
+        "priorProgressPcts": [
+          57.1,
+          49.4
+        ],
+        "priorOrdinaryProfitActuals": [
+          2230,
+          1917
+        ],
+        "revenue": {
+          "actual": 11445,
+          "pct": -6.4,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 1175,
+          "pct": -29.1,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 1535,
+          "pct": -19.9,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 3100,
+        "priorOrdinaryProfitActuals": [
+          2789,
+          3907,
+          3883
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": 13.5,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY-6.4% − 1Q経常益YoY-19.9% ＝ スプレッド+13.5pt"
+      },
+      "progressSurprise": {
+        "level": null,
+        "value": -3.8,
+        "checked": true,
+        "passed": false,
+        "note": "今期の進捗率49.5% − 過去2年平均53.3% ＝ 進捗サプライズ-3.8pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.9,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 1565,
+        "avgSegmentProfit": 1821.5,
+        "note": "必要利益1,565百万円 ÷ 過去2年平均1,822百万円 ＝ ハードル比率0.9倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 0.9,
+        "note": "今期の進捗率49.5%は過去平均53.3%の90%で、極端な下振れは確認されません"
+      },
+      "killerHits": 1,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "v_turnaround",
+        "label": "🔄 V字回復型",
+        "note": "1Q経常益が前年比-19.9%と悪化しましたが、回復シナリオが確認できています"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "販管費増加・特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "fixedCostIncrease",
+            "label": "販管費増加",
+            "note": "販管費が前期比+11.6%"
+          },
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計189百万円"
+          }
+        ],
+        "note": "販管費が前期比+11.6%。特別損失・減損等 計189百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 4.1,
+      "repricingLag": {
+        "score": 32.2,
+        "zone": "pre_move",
+        "breakdown": {
+          "untapped": 18.2,
+          "improvement": 4,
+          "valuation": 10,
+          "growth": 0,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -2.4,
+        "return3m": null,
+        "sectorReturn1m": 4.7,
+        "priceLevelPct": 27.2,
+        "revenueGrowthPct": 4.1,
+        "profitGrowthPct": -19.9,
+        "per": 11.3,
+        "sectorPer": 16,
+        "psr": 1.4846896644702472,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": -0.6
+      },
+      "themeMatch": {
+        "level": "good",
+        "label": "テーマ性あり（サーバー冷却）",
+        "checked": true,
+        "note": "手動で選定したテーマページ一覧（サーバー冷却）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
+      }
+    },
+    {
+      "code": "2270",
+      "name": "雪印メグミルク",
+      "price": 3595,
+      "changePct": 0.7,
+      "closes": [
+        3670,
+        3610,
+        3525,
+        3505,
+        3520,
+        3495,
+        3490,
+        3485,
+        3485,
+        3445,
+        3485,
+        3520,
+        3470,
+        3540,
+        3555,
+        3565,
+        3555,
+        3555,
+        3570,
+        3595
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 229500,
+      "per": 8.7,
+      "pbr": 0.87,
+      "dividendYield": 2.78,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 39.9,
+        "priorProgressPcts": [
+          49.9,
+          40.6
+        ],
+        "priorOrdinaryProfitActuals": [
+          6359,
+          4300
+        ],
+        "revenue": {
+          "actual": 155129,
+          "pct": 1.8,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 3678,
+          "pct": 5.8,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 4026,
+          "pct": -6.4,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 10100,
+        "priorOrdinaryProfitActuals": [
+          12240,
+          12754,
+          10592
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": 8.2,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+1.8% − 1Q経常益YoY-6.4% ＝ スプレッド+8.2pt"
+      },
+      "progressSurprise": {
+        "level": null,
+        "value": -5.4,
+        "checked": true,
+        "passed": false,
+        "note": "今期の進捗率39.9% − 過去2年平均45.3% ＝ 進捗サプライズ-5.4pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 1,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 6074,
+        "avgSegmentProfit": 6343.5,
+        "note": "必要利益6,074百万円 ÷ 過去2年平均6,344百万円 ＝ ハードル比率1倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 0.9,
+        "note": "今期の進捗率39.9%は過去平均45.3%の90%で、極端な下振れは確認されません"
+      },
+      "killerHits": 1,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "v_turnaround",
+        "label": "🔄 V字回復型",
+        "note": "1Q経常益が前年比-6.4%と悪化しましたが、回復シナリオが確認できています"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計7,853百万円"
+          }
+        ],
+        "note": "特別損失・減損等 計7,853百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 0,
+      "repricingLag": {
+        "score": 37.3,
+        "zone": "pre_move",
+        "breakdown": {
+          "untapped": 18.3,
+          "improvement": 4,
+          "valuation": 15,
+          "growth": 0,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -1.5,
+        "return3m": null,
+        "sectorReturn1m": 3,
+        "priceLevelPct": 26.8,
+        "revenueGrowthPct": 0,
+        "profitGrowthPct": -6.4,
+        "per": 8.7,
+        "sectorPer": 21.3,
+        "psr": 0.37270954152666375,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 1
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "9101",
+      "name": "日本郵船",
+      "price": 7129,
+      "changePct": -1.9,
+      "closes": [
+        7365,
+        7303,
+        7078,
+        7212,
+        7139,
+        7141,
+        7076,
+        7135,
+        7092,
+        7226,
+        7358,
+        7557,
+        7531,
+        7292,
+        7259,
+        7361,
+        7230,
+        7325,
+        7267,
+        7129
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 2945500,
+      "per": 12.2,
+      "pbr": 0.94,
+      "dividendYield": 3.3,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 44.5,
+        "priorProgressPcts": [
+          43.5,
+          47.2
+        ],
+        "priorOrdinaryProfitActuals": [
+          125787,
+          55943
+        ],
+        "revenue": {
+          "actual": 727656,
+          "pct": 21.1,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 57708,
+          "pct": 69.8,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 71222,
+          "pct": 27.3,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 160000,
+        "priorOrdinaryProfitActuals": [
+          159297,
+          289239,
+          118636
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": -6.2,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+21.1% − 1Q経常益YoY+27.3% ＝ スプレッド-6.2pt"
+      },
+      "progressSurprise": {
+        "level": null,
+        "value": -0.9,
+        "checked": true,
+        "passed": false,
+        "note": "今期の進捗率44.5% − 過去2年平均45.4% ＝ 進捗サプライズ-0.9pt"
+      },
+      "hurdleRatio": {
+        "level": "good",
+        "value": 0.8,
+        "checked": true,
+        "passed": true,
+        "requiredProfit": 88778,
+        "avgSegmentProfit": 113072.5,
+        "note": "必要利益88,778百万円 ÷ 過去2年平均113,073百万円 ＝ ハードル比率0.8倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1,
+        "note": "今期の進捗率44.5%は過去平均45.4%の100%で、極端な下振れは確認されません"
+      },
+      "killerHits": 1,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": "guidance_conservative",
+        "label": "🚀 上方修正本命型",
+        "note": "1Q経常益は前年比+27.3%と好調なのに、次の公式予想に対するハードル比率が0.8倍と低く、会社予想が保守的すぎる（上方修正の可能性がある）と考えられます"
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "販管費増加・特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "fixedCostIncrease",
+            "label": "販管費増加",
+            "note": "販管費が前期比+12.5%"
+          },
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計18,040百万円"
+          }
+        ],
+        "note": "販管費が前期比+12.5%。特別損失・減損等 計18,040百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": -6.4,
+      "repricingLag": {
+        "score": 26.7,
+        "zone": "re_rating",
+        "breakdown": {
+          "untapped": 4.2,
+          "improvement": 12.5,
+          "valuation": 5,
+          "growth": 5,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -1.3,
+        "return3m": null,
+        "sectorReturn1m": -2.1,
+        "priceLevelPct": 83.1,
+        "revenueGrowthPct": -6.4,
+        "profitGrowthPct": 27.3,
+        "per": 12.2,
+        "sectorPer": 10.9,
+        "psr": 1.2152961869282735,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 1.6
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    },
+    {
+      "code": "7458",
+      "name": "第一興商",
+      "price": 1770.5,
+      "changePct": 0.25,
+      "closes": [
+        1910.5,
+        1881.5,
+        1824.5,
+        1804.5,
+        1795.5,
+        1765,
+        1742.5,
+        1750.5,
+        1737,
+        1720,
+        1713.5,
+        1736.5,
+        1705.5,
+        1740,
+        1757,
+        1758.5,
+        1766.5,
+        1754.5,
+        1766,
+        1770.5
+      ],
+      "market": "東証Ｐ",
+      "marketCap": 184800,
+      "per": 14.6,
+      "pbr": 1.49,
+      "dividendYield": 3.83,
+      "checkpointTrend": {
+        "period": "26.04-06",
+        "periodMonths": 3,
+        "progressLabel": "対上期進捗率",
+        "progressPct": 52.3,
+        "priorProgressPcts": [
+          46.3,
+          53.1
+        ],
+        "priorOrdinaryProfitActuals": [
+          4164,
+          4571
+        ],
+        "revenue": {
+          "actual": 41157,
+          "pct": 1.5,
+          "state": "numeric"
+        },
+        "opProfit": {
+          "actual": 4991,
+          "pct": 17.6,
+          "state": "numeric"
+        },
+        "ordinaryProfit": {
+          "actual": 5129,
+          "pct": 12.2,
+          "state": "numeric"
+        }
+      },
+      "nextMilestone": {
+        "forecastOrdinaryProfit": 9800,
+        "priorOrdinaryProfitActuals": [
+          9758,
+          8991,
+          8606
+        ]
+      },
+      "spread": {
+        "level": null,
+        "value": -10.7,
+        "checked": true,
+        "passed": false,
+        "note": "1Q売上高YoY+1.5% − 1Q経常益YoY+12.2% ＝ スプレッド-10.7pt"
+      },
+      "progressSurprise": {
+        "level": "good",
+        "value": 2.6,
+        "checked": true,
+        "passed": true,
+        "note": "今期の進捗率52.3% − 過去2年平均49.7% ＝ 進捗サプライズ+2.6pt"
+      },
+      "hurdleRatio": {
+        "level": null,
+        "value": 1.1,
+        "checked": true,
+        "passed": false,
+        "requiredProfit": 4671,
+        "avgSegmentProfit": 4431,
+        "note": "必要利益4,671百万円 ÷ 過去2年平均4,431百万円 ＝ ハードル比率1.1倍"
+      },
+      "downsideRisk": {
+        "level": null,
+        "checked": true,
+        "ratio": 1.1,
+        "note": "今期の進捗率52.3%は過去平均49.7%の110%で、極端な下振れは確認されません"
+      },
+      "killerHits": 1,
+      "turnsProfitable": false,
+      "patternType": {
+        "type": null,
+        "label": null,
+        "note": null
+      },
+      "coreScreening": {
+        "passed": true,
+        "checked": true,
+        "checks": [
+          {
+            "key": "per",
+            "label": "PER",
+            "ok": true,
+            "note": "PER8〜16倍"
+          },
+          {
+            "key": "pbr",
+            "label": "PBR",
+            "ok": true,
+            "note": "PBR0.5〜1.5倍"
+          },
+          {
+            "key": "dividendYield",
+            "label": "配当利回り",
+            "ok": true,
+            "note": "配当利回り2.5%以上"
+          },
+          {
+            "key": "roe",
+            "label": "ROE",
+            "ok": true,
+            "note": "過去実績平均ROEまたは今期予想ROEが8%以上"
+          },
+          {
+            "key": "equityRatio",
+            "label": "自己資本比率",
+            "ok": true,
+            "note": "自己資本比率40%以上"
+          },
+          {
+            "key": "debtEquityRatio",
+            "label": "有利子負債倍率",
+            "ok": true,
+            "note": "有利子負債倍率1倍(100%)以下"
+          },
+          {
+            "key": "evEbitda",
+            "label": "EV/EBITDA",
+            "ok": true,
+            "note": "EV/EBITDA10倍以下"
+          }
+        ],
+        "failedReasons": [],
+        "uncheckedFields": []
+      },
+      "inflectionCause": {
+        "level": "info",
+        "label": "特別損失/減損",
+        "checked": true,
+        "causes": [
+          {
+            "key": "oneTimeLoss",
+            "label": "特別損失/減損",
+            "note": "特別損失・減損等 計5,036百万円"
+          }
+        ],
+        "note": "特別損失・減損等 計5,036百万円"
+      },
+      "countermeasure": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": false,
+        "hits": []
+      },
+      "fundamentalRisk": {
+        "excluded": false,
+        "reasons": []
+      },
+      "revenueGrowthPct": 6.5,
+      "repricingLag": {
+        "score": 38.2,
+        "zone": "early_move",
+        "breakdown": {
+          "untapped": 16.2,
+          "improvement": 12,
+          "valuation": 5,
+          "growth": 5,
+          "catalyst": 0,
+          "event": 0
+        },
+        "checked": true,
+        "alreadyMovedStrict": false,
+        "return1m": -7,
+        "return3m": null,
+        "sectorReturn1m": 0.8,
+        "priceLevelPct": 35.1,
+        "revenueGrowthPct": 6.5,
+        "profitGrowthPct": 12.2,
+        "per": 14.6,
+        "sectorPer": 14.1,
+        "psr": 1.134090211721387,
+        "hasCatalyst": false,
+        "daysToEarnings": null,
+        "progressStreak": {
+          "level": null,
+          "label": null,
+          "note": null,
+          "checked": true
+        },
+        "repricingGap": 11.2
+      },
+      "themeMatch": {
+        "level": null,
+        "label": null,
+        "note": null,
+        "checked": true
+      }
+    }
+  ],
   "logicFingerprint": "ce9b145a78c81186"
 }

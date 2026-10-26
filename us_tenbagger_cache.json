@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-24",
+  "date": "2026-10-26",
   "universe": 2,
   "results": [
     {
@@ -58,7 +58,7 @@
         "checked": false
       },
       "repricingLag": {
-        "score": 51.2,
+        "score": 44.2,
         "zone": "pre_move",
         "breakdown": {
           "untapped": 24.2,
@@ -66,7 +66,7 @@
           "valuation": 0,
           "growth": 7.5,
           "catalyst": 0,
-          "event": 7
+          "event": 0
         },
         "checked": true,
         "alreadyMovedStrict": false,
