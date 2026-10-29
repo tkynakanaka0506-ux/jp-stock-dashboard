@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-28",
+  "date": "2026-10-29",
   "universe": 2,
   "results": [
     {
@@ -7,9 +7,9 @@
       "name": "IonQ, Inc.",
       "theme": "量子コンピュータ",
       "industry": "Semiconductors",
-      "marketCap": 14148.9833036606,
-      "price": 32.255,
-      "changePct": -2.1,
+      "marketCap": 13925.691524982698,
+      "price": 32.43,
+      "changePct": 5.4,
       "closes": [
         43.86000061035156,
         43.9900016784668,
@@ -38,7 +38,7 @@
         "level": "good",
         "label": "大型超成長株(Tier C)",
         "checked": true,
-        "note": "時価総額14,149百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+286.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額13,926百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+286.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "earningsTrend": {
         "level": "good",
@@ -98,7 +98,7 @@
         "checked": true,
         "note": "手動で選定したテーマページ一覧（量子コンピュータ）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
       },
-      "realizability": 29,
+      "realizability": 30,
       "growthPotential": 100,
       "floatSqueeze": {
         "level": null,
@@ -112,9 +112,9 @@
       "name": "Aurora Innovation, Inc.",
       "theme": "自動運転（トラック）",
       "industry": "Technology",
-      "marketCap": 10261.227883761807,
-      "price": 5.085,
-      "changePct": -0.7,
+      "marketCap": 10201.103513796876,
+      "price": 5.09,
+      "changePct": 4.5,
       "closes": [
         5.539999961853027,
         5.519999980926514,
@@ -143,18 +143,18 @@
         "level": "good",
         "label": "大型超成長株(Tier C)",
         "checked": true,
-        "note": "時価総額10,261百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+100%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額10,201百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+200%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "earningsTrend": {
         "level": "good",
         "label": "増収増益が加速",
         "checked": true,
-        "revenueGrowthPct": 100,
+        "revenueGrowthPct": 200,
         "netIncomeGrowthPct": null,
-        "prevRevenueGrowthPct": null,
-        "rndGrowthPct": 11.1,
+        "prevRevenueGrowthPct": 100,
+        "rndGrowthPct": 13.4,
         "pretaxIncomeGrowthPct": null,
-        "note": "直近四半期(2026-06-30)の売上高は前年同期比+100%"
+        "note": "直近四半期(2026-09-30)の売上高は前年同期比+200%"
       },
       "taxEffectCaution": {
         "level": null,
@@ -175,15 +175,15 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "repricingGap": 48
+        "repricingGap": 91.6
       },
       "hasCatalyst": false,
       "growthAcceleration": {
-        "level": null,
-        "label": null,
-        "note": null,
-        "checked": false,
-        "score": null
+        "level": "good",
+        "label": "成長が加速",
+        "checked": true,
+        "score": 100,
+        "note": "売上高成長率が前期の+100%から今期は+200%に加速しています"
       },
       "breakoutVolume": {
         "level": null,
