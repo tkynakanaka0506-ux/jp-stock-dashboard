@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-29",
+  "date": "2026-10-31",
   "universe": 2,
   "results": [
     {
@@ -7,13 +7,10 @@
       "name": "IonQ, Inc.",
       "theme": "量子コンピュータ",
       "industry": "Semiconductors",
-      "marketCap": 13925.691524982698,
-      "price": 32.43,
-      "changePct": 5.4,
+      "marketCap": 12899.406557947037,
+      "price": 30.04,
+      "changePct": -5.3,
       "closes": [
-        43.86000061035156,
-        43.9900016784668,
-        43.77000045776367,
         42.970001220703125,
         43.290000915527344,
         41.34000015258789,
@@ -30,7 +27,10 @@
         31.15999984741211,
         31.270000457763672,
         30.760000228881836,
-        32.95000076293945
+        32.95000076293945,
+        32.43000030517578,
+        31.719999313354492,
+        30.040000915527344
       ],
       "fiftyTwoWeekHigh": 73.65,
       "tier": "C",
@@ -38,7 +38,7 @@
         "level": "good",
         "label": "大型超成長株(Tier C)",
         "checked": true,
-        "note": "時価総額13,926百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+286.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額12,899百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+286.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "earningsTrend": {
         "level": "good",
@@ -58,10 +58,10 @@
         "checked": false
       },
       "repricingLag": {
-        "score": 41.6,
+        "score": 45,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 21.6,
+          "untapped": 25,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -70,7 +70,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "repricingGap": 108
+        "repricingGap": 131.4
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -98,7 +98,7 @@
         "checked": true,
         "note": "手動で選定したテーマページ一覧（量子コンピュータ）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
       },
-      "realizability": 30,
+      "realizability": 36,
       "growthPotential": 100,
       "floatSqueeze": {
         "level": null,
@@ -112,13 +112,10 @@
       "name": "Aurora Innovation, Inc.",
       "theme": "自動運転（トラック）",
       "industry": "Technology",
-      "marketCap": 10201.103513796876,
-      "price": 5.09,
-      "changePct": 4.5,
+      "marketCap": 8808.636367110103,
+      "price": 4.36,
+      "changePct": -1,
       "closes": [
-        5.539999961853027,
-        5.519999980926514,
-        5.670000076293945,
         5.75,
         5.75,
         5.71999979019165,
@@ -135,15 +132,18 @@
         4.860000133514404,
         4.809999942779541,
         4.869999885559082,
-        5.119999885559082
+        5.119999885559082,
+        5.090000152587891,
+        4.40500020980835,
+        4.360000133514404
       ],
       "fiftyTwoWeekHigh": 8.565,
-      "tier": "C",
+      "tier": "B",
       "tenbagger": {
         "level": "good",
-        "label": "大型超成長株(Tier C)",
+        "label": "中型成長株候補(Tier B)",
         "checked": true,
-        "note": "時価総額10,201百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+200%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額8,809百万USD（上限10,000百万USD以下）・売上高成長率は前年同期比+200%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜5倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "earningsTrend": {
         "level": "good",
@@ -163,10 +163,10 @@
         "checked": false
       },
       "repricingLag": {
-        "score": 41.8,
+        "score": 45,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 21.8,
+          "untapped": 25,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -175,7 +175,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "repricingGap": 91.6
+        "repricingGap": 123.1
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -203,7 +203,7 @@
         "checked": true,
         "note": "手動で選定したテーマページ一覧（自動運転（トラック））に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
       },
-      "realizability": 49,
+      "realizability": 12,
       "growthPotential": 100,
       "floatSqueeze": {
         "level": null,
