@@ -1,5 +1,5 @@
 {
-  "date": "2026-11-04",
+  "date": "2026-11-05",
   "universe": 2,
   "results": [
     {
@@ -7,11 +7,10 @@
       "name": "IonQ, Inc.",
       "theme": "量子コンピュータ",
       "industry": "Semiconductors",
-      "marketCap": 12877.936487575435,
-      "price": 29.99,
-      "changePct": -0.2,
+      "marketCap": 12684.70289852284,
+      "price": 29.54,
+      "changePct": 4.9,
       "closes": [
-        43.290000915527344,
         41.34000015258789,
         39.45000076293945,
         39.88999938964844,
@@ -30,7 +29,8 @@
         32.43000030517578,
         31.719999313354492,
         30.040000915527344,
-        28.170000076293945
+        28.170000076293945,
+        29.989999771118164
       ],
       "fiftyTwoWeekHigh": 73.65,
       "tier": "C",
@@ -38,7 +38,7 @@
         "level": "good",
         "label": "大型超成長株(Tier C)",
         "checked": true,
-        "note": "時価総額12,878百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+286.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額12,685百万USD（上限20,000百万USD以下）・売上高成長率は前年同期比+286.8%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜3倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "earningsTrend": {
         "level": "good",
@@ -58,10 +58,10 @@
         "checked": false
       },
       "repricingLag": {
-        "score": 45,
+        "score": 42.6,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 25,
+          "untapped": 22.6,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -70,7 +70,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "repricingGap": 134.4
+        "repricingGap": 118
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -98,7 +98,7 @@
         "checked": true,
         "note": "手動で選定したテーマページ一覧（量子コンピュータ）に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
       },
-      "realizability": 36,
+      "realizability": 37,
       "growthPotential": 100,
       "floatSqueeze": {
         "level": null,
@@ -112,11 +112,10 @@
       "name": "Aurora Innovation, Inc.",
       "theme": "自動運転（トラック）",
       "industry": "Technology",
-      "marketCap": 8627.312041394796,
-      "price": 4.27,
-      "changePct": -2.1,
+      "marketCap": 8243.426888318503,
+      "price": 4.08,
+      "changePct": -3.5,
       "closes": [
-        5.75,
         5.71999979019165,
         5.730000019073486,
         5.829999923706055,
@@ -135,7 +134,8 @@
         5.090000152587891,
         4.40500020980835,
         4.360000133514404,
-        4.230000019073486
+        4.230000019073486,
+        4.269999980926514
       ],
       "fiftyTwoWeekHigh": 8.565,
       "tier": "B",
@@ -143,7 +143,7 @@
         "level": "good",
         "label": "中型成長株候補(Tier B)",
         "checked": true,
-        "note": "時価総額8,627百万USD（上限10,000百万USD以下）・売上高成長率は前年同期比+200%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜5倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
+        "note": "時価総額8,243百万USD（上限10,000百万USD以下）・売上高成長率は前年同期比+200%です。この規模からの10倍（テンバガー）達成は現実的ではありませんが、2〜5倍程度の成長余地は狙える水準です。Tier A（低時価総額のテンバガー候補）とは前提が異なる点にご注意ください"
       },
       "earningsTrend": {
         "level": "good",
@@ -163,10 +163,10 @@
         "checked": false
       },
       "repricingLag": {
-        "score": 45,
+        "score": 44.7,
         "zone": "pre_move",
         "breakdown": {
-          "untapped": 25,
+          "untapped": 24.7,
           "improvement": 12.5,
           "valuation": 0,
           "growth": 7.5,
@@ -175,7 +175,7 @@
         },
         "checked": true,
         "alreadyMovedStrict": false,
-        "repricingGap": 126.4
+        "repricingGap": 123.9
       },
       "hasCatalyst": false,
       "growthAcceleration": {
@@ -203,7 +203,7 @@
         "checked": true,
         "note": "手動で選定したテーマページ一覧（自動運転（トラック））に掲載されている銘柄です。自動発見ではなく決め打ちのテーマ一覧との照合のため、このリストに無いテーマは拾えません"
       },
-      "realizability": 14,
+      "realizability": 18,
       "growthPotential": 100,
       "floatSqueeze": {
         "level": null,
