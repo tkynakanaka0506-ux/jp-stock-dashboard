@@ -1,0 +1,40 @@
+name: Stock Dashboard Sync (market hours)
+
+on:
+  schedule:
+    # 15分おき。00:00-06:50 UTC Mon-Fri = 09:00-15:50 JST Mon-Fri
+    # (元のMac launchdは5分おきだったが、GitHub Actionsのスケジュール実行は
+    # 混雑時に数分〜十数分遅延することが公式に明言されているため、
+    # その遅延に対して余裕を持たせる間隔に緩めてある)
+    - cron: '*/15 0-6 * * 1-5'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stock-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - run: npm ci
+
+      - run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: sync and push
+        env:
+          EDINET_API_KEY: ${{ secrets.EDINET_API_KEY }}
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+        run: bash sync_and_push.sh --no-open --market-hours
