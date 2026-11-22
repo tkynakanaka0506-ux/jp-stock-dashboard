@@ -17,6 +17,8 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     timeout-minutes: 300
+    env:
+      TZ: Asia/Tokyo
     steps:
       - uses: actions/checkout@v4
 
